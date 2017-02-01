@@ -5,7 +5,7 @@ import React from "react";
 
 //import Title from "./Header/Title";
 
-export default class Header extends React.Component {
+export default class Cubemain extends React.Component {
 /*	handleChange(e) {
 		const title = e.target.value;
 		this.props.changeTitle(title);
@@ -20,7 +20,7 @@ export default class Header extends React.Component {
 {/*
 			<img src="images/carousel01.jpg" alt="Cube" width="50%"  />
 */}
-				<img src="http://placehold.it/500x150" alt="Carousel"   />
+				<img src="http://placehold.it/500x150?text=Carousel Placeholder" alt="Carousel"   />
 
 
 					{/*
