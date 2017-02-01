@@ -17,18 +17,19 @@ export default class Cubemain extends React.Component {
 			<main className="main">
 			<div className="container"><span className="item active"></span>
 
-{/*
-			<img src="images/carousel01.jpg" alt="Cube" width="50%"  />
-*/}
+
+				 {/*
+				  CAROUSEL HERE
+
+				  <img src="images/carousel01.jpg" alt="Cube" width="50%"  />
+				*/}
 				<img src="http://placehold.it/500x150?text=Carousel Placeholder" alt="Carousel"   />
 
 
-					{/*
-				CAROUSEL HERE
-					  */}
+
 
 			<div align="center">
-			<img src="images/nav.jpg" alt="Cube" width="500" useMap="#Map" />
+			<img src="images/nav.jpg" alt="Cube" width="80%" useMap="#Map" />
 			<map name="Map">
 				<area shape="rect" coords="-1,1,201,197" href="/expert-picks"/>
 				<area shape="rect" coords="199,-1,405,198" href="/publications"/>

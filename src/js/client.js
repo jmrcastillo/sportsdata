@@ -15,7 +15,7 @@ import SportsPages from "./pages/SportsPages";
 import BettingTools from "./pages/BettingTools";
 
 
-const app = document.getElementById('app');
+const app = document.getElementById('cubeapp');
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={Layout}>
