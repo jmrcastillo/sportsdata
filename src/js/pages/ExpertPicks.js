@@ -5,10 +5,48 @@
  * Created by me on 1/15/17.
  */
 import React from "react";
+import $ from "jquery";
 
 //import Iframe from "react-iframe";
 
 export default class ExpertPicks extends React.Component {
+
+	constructor() {
+		super();
+		this.state = {
+			handicappers: {},
+		};
+	}
+
+	componentDidMount() {
+		this.loadCubeHandicappers();
+	//	this.loadDonationsFromServer();
+	//	setInterval(this.loadDonationsFromServer, this.props.pollInterval);
+	}
+
+	loadCubeHandicappers() {
+		let url =  "https://www.playbook.com/cube-api3/experts";
+
+		console.log ("Trying to load url", url);
+
+		$.ajax({
+			//url: this.props.url,
+			url: url,
+			dataType: 'json',
+			type: 'GET',
+			cache: false,
+			success: function(handicappers) {
+				this.setState({handicappers: handicappers});
+				console.log ("Got handicappers ", handicappers);
+
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.log ("Got ERROR", err.toString());
+				console.error(url, status, err.toString());
+			}.bind(this)
+		});
+	}
+
 	render() {
 		return (
 			<div>
