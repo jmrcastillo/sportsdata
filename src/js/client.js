@@ -26,14 +26,14 @@ ReactDOM.render(
 			<Route path="settings" name="settings" component={Settings}></Route>
  */}
 
-{/*			<Route path="publications" name="publications" component={Publications} />
+			<Route path="publications" name="publications" component={Publications} />
 			<Route path="scores-lines" name="scores-lines" component={ScoresLines} />
 			<Route path="videos-podcasts" name="videos-podcasts" component={VideosPodcasts} />
 			<Route path="line-moves" name="line-moves" component={LineMoves} />
 			<Route path="trends-matchups" name="trends-matchups" component={TrendsMatchups} />
 			<Route path="steam-alerts" name="steam-alerts" component={SteamAlerts} />
 			<Route path="sports-pages" name="sports-pages" component={SportsPages} />
-			<Route path="betting-tools" name="betting-tools" component={BettingTools} />*/}
+			<Route path="betting-tools" name="betting-tools" component={BettingTools} />
 
 
 		</Route>
