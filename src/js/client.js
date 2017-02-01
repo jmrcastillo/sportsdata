@@ -5,6 +5,8 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import Layout from "./components/Layout";  // Nav & Footer?
 
 import Cubemain from "./pages/Cubemain";
+import ExpertPicks from "./pages/ExpertPicks";
+
 import Publications from "./pages/Publications";
 import ScoresLines from "./pages/ScoresLines";
 import VideosPodcasts from "./pages/VideosPodcasts";
@@ -13,6 +15,7 @@ import TrendsMatchups from "./pages/TrendsMatchups";
 import SteamAlerts from "./pages/SteamAlerts";
 import SportsPages from "./pages/SportsPages";
 import BettingTools from "./pages/BettingTools";
+
 
 
 const app = document.getElementById('cubeapp');
@@ -26,6 +29,7 @@ ReactDOM.render(
 			<Route path="settings" name="settings" component={Settings}></Route>
  */}
 
+			<Route path="expert-picks" name="expert-picks" component={ExpertPicks} />
 			<Route path="publications" name="publications" component={Publications} />
 			<Route path="scores-lines" name="scores-lines" component={ScoresLines} />
 			<Route path="videos-podcasts" name="videos-podcasts" component={VideosPodcasts} />
