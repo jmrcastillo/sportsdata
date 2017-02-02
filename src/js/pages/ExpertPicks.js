@@ -14,7 +14,7 @@ export default class ExpertPicks extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			handicappers: {},
+			handicappers: [],
 		};
 	}
 
@@ -26,8 +26,7 @@ export default class ExpertPicks extends React.Component {
 
 	loadCubeHandicappers() {
 		let url =  "https://www.playbook.com/cube-api3/experts";
-
-		console.log ("Trying to load url", url);
+		//console.log ("Trying to load url", url);
 
 		$.ajax({
 			//url: this.props.url,
@@ -35,22 +34,34 @@ export default class ExpertPicks extends React.Component {
 			dataType: 'json',
 			type: 'GET',
 			cache: false,
-			success: function(handicappers) {
-				this.setState({handicappers: handicappers});
-				console.log ("Got handicappers ", handicappers);
+			success: (handicappers) => {
 
-			}.bind(this),
-			error: function(xhr, status, err) {
-				console.log ("Got ERROR", err.toString());
+				this.setState({handicappers: Object.values(handicappers)});
+			//	console.log ("Got handicappers ", handicappers);
+			},
+			error: (xhr, status, err) => {
+			//	console.log ("Got ERROR", err.toString());
 				console.error(url, status, err.toString());
-			}.bind(this)
+			}
 		});
 	}
 
 	render() {
+
 		return (
 			<div>
-				Expert PICKS List
+				Expert PICKS List HERE
+				<table width="100%" border="0" cellSpacing="0" cellPadding="0">
+				<tbody>
+					{this.state.handicappers.map((handicapper, i) =>
+						<tr key={i}>
+						<td key="0" width="70" align="left"><img src={handicapper.photo_uri} /></td>
+						<td key="1">&nbsp;{handicapper.handicapper_name}</td>
+						<td key="2" width="14" align="right"><img src="images/arrow.png" width="11" height="20" border="0" /></td>
+						</tr>
+					)}
+				</tbody>
+				</table>
 			</div>
 		);
 	}
@@ -108,5 +119,16 @@ export default class ExpertPicks extends React.Component {
  }
  });
 
+
+ */
+
+/*
+
+ return `<tr>
+ <td width="70" align="left">{handicapper.photo_uri</td>
+ <td>&nbsp;{handicapper.handicapper_name}</td>
+ <td width="14" align="right"><img src="../arrow.png" width="11" height="20" border="0">
+ </tr>
+ `;
 
  */
