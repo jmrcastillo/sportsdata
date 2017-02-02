@@ -46,6 +46,12 @@ export default class ExpertPicks extends React.Component {
 		});
 	}
 
+	handleClick(e) {
+		console.log ("CLICKED");
+		debugger;
+		this.context.router.transitionTo('/');
+	}
+
 	render() {
 
 		return (
@@ -55,7 +61,7 @@ export default class ExpertPicks extends React.Component {
 				<tbody>
 					{this.state.handicappers.map((handicapper, i) =>
 						<tr key={i}>
-						<td key="0" width="70" align="left"><img src={handicapper.photo_uri} /></td>
+							<td key="0" width="70" align="left"><a href="/"> <img src={handicapper.photo_uri} /></a></td>
 						<td key="1">&nbsp;{handicapper.handicapper_name}</td>
 						<td key="2" width="14" align="right"><img src="images/arrow.png" width="11" height="20" border="0" /></td>
 						</tr>
@@ -66,6 +72,57 @@ export default class ExpertPicks extends React.Component {
 		);
 	}
 }
+
+
+/*
+ var ReactTable = React.createClass({
+ handleClick: function(e) {
+ this.router.transitionTo('index');
+ },
+ render: function() {
+ return(
+ <div>
+ <table>
+ <thead>
+ <tr>
+ <th>Name</th>
+ <th>Age</th>
+ <th>Full Detail</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr onClick={this.handleClick.bind(this)}>
+ <td>{user.name}</td>
+ <td>{user.age}</td>
+ <td>{details}</td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ );
+ }
+
+
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 
