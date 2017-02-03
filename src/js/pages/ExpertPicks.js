@@ -54,8 +54,6 @@ export default class ExpertPicks extends React.Component {
 
 	render() {
 
-
-
 		return (
 
 			<div>
@@ -63,11 +61,11 @@ export default class ExpertPicks extends React.Component {
 				<table width="100%" border="0" cellSpacing="0" cellPadding="0">
 				<tbody>
 				{this.state.handicappers.map((handicapper, i) => {
-					var url = "/picks/" + handicapper.ecapper_id;
+					var url = "/#/picks/" + handicapper.ecapper_id;
 					return <tr key={i}>
 					<td key="0" width="70" align="left"><a href={url}> <img src={handicapper.photo_uri} /></a></td>
-					<td key="1">&nbsp;{handicapper.handicapper_name}</td>
-					<td key="2" width="14" align="right"><img src="images/arrow.png" width="11" height="20" border="0" /></td>
+						<td key="1">&nbsp;<a href={url}>{handicapper.handicapper_name}</a></td>
+						<td key="2" width="14" align="right"><a href={url}><img src="images/arrow.png" width="11" height="20" border="0" /></a></td>
 					</tr>
 				})}
 				</tbody>

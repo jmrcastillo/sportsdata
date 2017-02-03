@@ -15,7 +15,8 @@ import TrendsMatchups from "./pages/TrendsMatchups";
 import SteamAlerts from "./pages/SteamAlerts";
 import SportsPages from "./pages/SportsPages";
 import BettingTools from "./pages/BettingTools";
-
+import EcapperPicks from "./pages/EcapperPicks";
+import PickForSale from "./pages/PickForSale";
 
 
 const app = document.getElementById('cubeapp');
@@ -27,7 +28,10 @@ ReactDOM.render(
 			<Route path="archives(/:article)" name="archives" component={Archives}></Route>
 
 			<Route path="settings" name="settings" component={Settings}></Route>
- */}
+
+            <Route path='/about(/:name)' component={About} />
+
+	*/}
 
 			<Route path="expert-picks" name="expert-picks" component={ExpertPicks} />
 			<Route path="publications" name="publications" component={Publications} />
@@ -38,7 +42,10 @@ ReactDOM.render(
 			<Route path="steam-alerts" name="steam-alerts" component={SteamAlerts} />
 			<Route path="sports-pages" name="sports-pages" component={SportsPages} />
 			<Route path="betting-tools" name="betting-tools" component={BettingTools} />
+			<Route path='ecapper-picks(/:ecapper)' component={EcapperPicks} />
+			<Route path='pick-forsale(/:pick_id)' component={PickForSale} />
 
+		{/*	<Route path='picks' component={Picks} />*/}
 
 		</Route>
 	</Router>,
