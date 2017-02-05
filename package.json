@@ -21,6 +21,7 @@
     "react-dom": "^0.14.6",
     "react-iframe": "0.0.4",
     "react-router": "^3.0.2",
+    "react-ux-password-field": "^0.9.12",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
   },

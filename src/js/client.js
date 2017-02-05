@@ -18,6 +18,7 @@ import BettingTools from "./pages/BettingTools";
 import EcapperPicks from "./pages/EcapperPicks";
 import PickForSale from "./pages/PickForSale";
 
+import Login from "./pages/Login";
 
 const app = document.getElementById('cubeapp');
 ReactDOM.render(
@@ -44,6 +45,7 @@ ReactDOM.render(
 			<Route path="betting-tools" name="betting-tools" component={BettingTools} />
 			<Route path='ecapper-picks(/:ecapperdata)' component={EcapperPicks} />
 			<Route path='pick-forsale(/:pick_id)' component={PickForSale} />
+			<Route path='login' name="login" component={Login} />
 
 		{/*	<Route path='picks' component={Picks} />*/}
 

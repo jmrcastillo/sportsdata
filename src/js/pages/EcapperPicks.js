@@ -9,58 +9,6 @@ import Money from "money-formatter";
 import SportsCodes from "../lib/SportsCodes";
 
 
-/*
-
-class Codes  {
-
-	constructor() {
-		this.sports = {
-			12: 'NFL Football',
-			13: 'NCAA Football',
-			10: 'NBA Basketball',
-			11: 'NCAA Basketball',
-			1: 'NBA Baseball',
-			6: 'Hockey',
-			8: 'Soccer',
-			7: 'Horse Racing',
-			9: 'Auto Racing',
-			5: 'Golf',
-			3: 'Boxing',
-		};
-	}
-	getText(sport) {
-		return this.sports[sport];
-	}
-}
-
-var SportsCodes = new Codes();
-*/
-
-class ShoppingList extends React.Component {
-	render() {
-		return (
-			<div className="shopping-list">
-				<h1>Shopping List for {this.props.name}</h1>
-				<ul>
-					<li>Instagram</li>
-					<li>WhatsApp</li>
-					<li>Oculus</li>
-				</ul>
-			</div>
-		);
-	}
-}
-
-class AnyText extends React.Component {
-	render() {
-		return (
-			<div>
-		ANY TEXT
-			</div>
-		);
-	}
-}
-
 class GreenText extends React.Component {
 
 	render() {
@@ -72,18 +20,6 @@ class GreenText extends React.Component {
 		);
 	}
 }
-
-/*
-class GreenText extends React.component {
-
-	render() {
-		const color = {color: "green"};
-		return
-		<span style={color}>
-		{this.props.text}
-		</span>
-	}
-}*/
 
 export default class EcapperPicks extends React.Component {
 
