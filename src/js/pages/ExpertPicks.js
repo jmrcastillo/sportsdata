@@ -7,7 +7,7 @@
 import React from "react";
 import $ from "jquery";
 
-//import Iframe from "react-iframe";
+import Base64 from "base-64";
 
 export default class ExpertPicks extends React.Component {
 
@@ -61,7 +61,8 @@ export default class ExpertPicks extends React.Component {
 				<table width="100%" border="0" cellSpacing="0" cellPadding="0">
 				<tbody>
 				{this.state.handicappers.map((handicapper, i) => {
-					var url = "/#/picks/" + handicapper.ecapper_id;
+					const parameter = `${handicapper.ecapper_id}|${handicapper.photo_uri}|${handicapper.handicapper_name}`;
+					const url = "/#/ecapper-picks/" + Base64.encode(parameter);
 					return <tr key={i}>
 					<td key="0" width="70" align="left"><a href={url}> <img src={handicapper.photo_uri} /></a></td>
 						<td key="1">&nbsp;<a href={url}>{handicapper.handicapper_name}</a></td>

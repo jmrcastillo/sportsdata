@@ -42,7 +42,7 @@ ReactDOM.render(
 			<Route path="steam-alerts" name="steam-alerts" component={SteamAlerts} />
 			<Route path="sports-pages" name="sports-pages" component={SportsPages} />
 			<Route path="betting-tools" name="betting-tools" component={BettingTools} />
-			<Route path='ecapper-picks(/:ecapper)' component={EcapperPicks} />
+			<Route path='ecapper-picks(/:ecapperdata)' component={EcapperPicks} />
 			<Route path='pick-forsale(/:pick_id)' component={PickForSale} />
 
 		{/*	<Route path='picks' component={Picks} />*/}
