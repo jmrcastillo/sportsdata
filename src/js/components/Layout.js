@@ -15,6 +15,10 @@ import Header from "./Header";
 
 //import NameForm from "./NameForm";
 
+window.cubedata = {
+	IS_AUTHENTICATED: false,
+	DESTINATION_ROUTE: '/fakeroute'
+};
 
 export default class Layout extends React.Component {
 	constructor() {
@@ -38,3 +42,9 @@ export default class Layout extends React.Component {
 		);
 	}
 }
+/*
+ ThemedText.contextTypes = {
+ color: React.PropTypes.string
+ }
+
+ */

@@ -20,7 +20,43 @@ import PickForSale from "./pages/PickForSale";
 
 import Login from "./pages/Login";
 
-const app = document.getElementById('cubeapp');
+
+/*
+class CubeApp extends React.Component {
+
+	render() {
+		const color = {color: "green"};
+		return (
+			<span style={color}>
+			{this.props.text}
+			</span>
+		);
+	}
+}
+
+
+
+var App = React.createClass({
+	render: function() {
+		return (
+			<div>
+				<h1>Simple SPA</h1>
+				<ul className="header">
+					<li>Home</li>
+					<li>Stuff</li>
+					<li>Contact</li>
+				</ul>
+				<div className="content">
+
+				</div>
+			</div>
+		)
+	}
+});*/
+
+
+
+const cubeapp = document.getElementById('cubeapp');
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={Layout}>
@@ -51,7 +87,7 @@ ReactDOM.render(
 
 		</Route>
 	</Router>,
-	app);
+	cubeapp);
 
 
 
