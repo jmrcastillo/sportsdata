@@ -8,7 +8,6 @@ import Base64 from "base-64";
 import Money from "money-formatter";
 import SportsCodes from "../lib/SportsCodes";
 
-
 class GreenText extends React.Component {
 
 	render() {
@@ -82,6 +81,8 @@ export default class EcapperPicks extends React.Component {
 			<table width="100%" border="0" cellSpacing="0" cellPadding="0">
 			<tbody>
 			{this.state.picks.map((pick, i) => {
+				if (pick.price > 0) {
+
 				var url = "/#/pick-forsale/" + pick.pick_id;
 				return (
 					<tr key={i}>
@@ -112,10 +113,10 @@ export default class EcapperPicks extends React.Component {
 								</td>
 							</tr>
 							<tr>
-								<td width="100" align="left"> {pick.price == 0 ? <GreenText text="FREE"/> : Money.format ('USD', pick.price)}
+								<td width="100" align="left">  {Money.format ('USD', pick.price)}
 							{/*	<GreenText text="FREE"/>*/}
 								</td>
-								<td align="right">{pick.price > 0 ? <img src="images/buy_now.png" width="70" height="20" border="0" /> : ''}</td>
+								<td align="right"><img src="images/buy_now.png" width="70" height="20" border="0" /></td>
 							</tr>
 							<tr>
 							<td colSpan="2"><hr /></td>
@@ -125,7 +126,7 @@ export default class EcapperPicks extends React.Component {
 					</td>
 					</tr>
 			)
-		})}
+		}})}
 		</tbody>
 		</table>
 		</div>
