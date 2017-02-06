@@ -19,6 +19,7 @@ import EcapperPicks from "./pages/EcapperPicks";
 import PickForSale from "./pages/PickForSale";
 
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 
 /*
@@ -82,6 +83,7 @@ ReactDOM.render(
 			<Route path='ecapper-picks(/:ecapperdata)' component={EcapperPicks} />
 			<Route path='pick-forsale(/:pick_id)' component={PickForSale} />
 			<Route path='login' name="login" component={Login} />
+			<Route path='register' name="register" component={Register} />
 
 		{/*	<Route path='picks' component={Picks} />*/}
 

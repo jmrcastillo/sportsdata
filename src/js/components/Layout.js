@@ -38,7 +38,7 @@ export default class Layout extends React.Component {
 		return (
 			<div>
 				<Header/>
-				{window.cubedata.IS_AUTHENTICATED ? "" : "Guest"}
+				{window.cubedata.IS_AUTHENTICATED ? "" : "Not logged in - "}
 				{window.cubedata.IS_AUTHENTICATED ? "Logged in as " + window.cubedata.LOGGED_IN_MEMBER :
 					<a href="/#/login"> Login </a> }
 
