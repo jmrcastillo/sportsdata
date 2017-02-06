@@ -12,11 +12,11 @@ export default class Header extends React.Component {
 	}*/
 
 	render() {
-		console.log ("Render Header");
+	//	console.log ("Render Header");
 		return (
 
 			<header className="header">
-				<h1 className="header__title">Playbook Cube</h1>
+				<h1 className="header__title">Cube PWA</h1>
 				<button id="butRefresh" className="headerButton" aria-label="Refresh"/>
 				<button id="butAdd" className="headerButton" aria-label="Add"/>
 			</header>

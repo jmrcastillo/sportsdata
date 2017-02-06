@@ -12,13 +12,14 @@ export default class Login extends React.Component {
 		super(props);
 		this.state = {
 			member_id: '',
-			password: ''
+			password: '',
+			login_failed: false
 		}
 	}
 /*
  {"member_id":"five0","password":"johnny777"}
  */
-	tryLogin (successCallback) {
+	tryLogin (successCallback, failCallback) {
 		let url =  `https://www.playbook.com/cube-api4/login/key/0`;
 			console.log ("Faking load url", url);
 
@@ -30,10 +31,11 @@ export default class Login extends React.Component {
 			type: 'POST',
 			cache: false,
 			success:(data) => {
-				successCallback (data)
+				successCallback (data, this)
 			},
 			error: (xhr, status, err) => {
 				console.error(url, status, err.toString());
+				failCallback(this);
 			}
 		});
 
@@ -49,13 +51,19 @@ export default class Login extends React.Component {
 				onSubmit={(event) => {
 			      //  alert('Going to try values: ' + this.state.member_id + ' Pass: ' + this.state.passwd);
 					event.preventDefault();
-					this.tryLogin(data => {
-						// ALSO WANT TO LAND SOMEWHERE ELSE??
+					this.tryLogin((data, self) => {
 						window.cubedata.IS_AUTHENTICATED = true;
+						window.cubedata.LOGGED_IN_MEMBER = this.state.member_id;
 						console.log ("User is now logged in, data returned:", data);
 						console.log ("AUTH: ", window.cubedata.IS_AUTHENTICATED, " DEST ROUTE: ", window.cubedata.DESTINATION_ROUTE );
+						// TODO:  push to window.cubedata.DESTINATION_ROUTE
+						self.props.router.push('/')
+					},
+					(self) => {
+						self.setState ({login_failed: true});
+					}
 
-					})
+					)
 				}}
 			>
 
@@ -67,7 +75,7 @@ export default class Login extends React.Component {
 			} />
 			</li>
 			<li><label for="password">Password </label>
-					<PasswordField
+					<PasswordField infoBar={false}
 						onChange={(value) =>
 						{ this.setState({password: value}); }
 						}
@@ -75,6 +83,9 @@ export default class Login extends React.Component {
 			<li>
 					<input type="submit" value="Login" />
 				</li>*
+				<li>
+					{this.state.login_failed ? "Member ID or Password  incorrect" : ''}
+				</li>
 			</ul>
 
 		</form>

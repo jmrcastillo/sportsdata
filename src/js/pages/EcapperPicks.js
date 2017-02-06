@@ -112,8 +112,8 @@ export default class EcapperPicks extends React.Component {
 								</td>
 							</tr>
 							<tr>
-								<td width="100" align="left">{/* pick.price == 0 ? "<em>FREE</em>" : Money.format ('USD', pick.price)*/}
-								<GreenText text="FREE"/>
+								<td width="100" align="left"> {pick.price == 0 ? <GreenText text="FREE"/> : Money.format ('USD', pick.price)}
+							{/*	<GreenText text="FREE"/>*/}
 								</td>
 								<td align="right">{pick.price > 0 ? <img src="images/buy_now.png" width="70" height="20" border="0" /> : ''}</td>
 							</tr>
