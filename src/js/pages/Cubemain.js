@@ -22,7 +22,7 @@ export default class Cubemain extends React.Component {
 						Documentation at
 				        https://github.com/FormidableLabs/nuka-carousel
 				 */}
-				<Carousel autoplay={true} wrapAround={false} width="100%">
+				<Carousel autoplay={true} wrapAround={false} width="80%">
 					<img src="/images/carousel04.jpg"/>
 					<img src="/images/carousel02.jpg"/>
 					<img src="/images/carousel03.jpg"/>
