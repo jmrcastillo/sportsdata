@@ -2,6 +2,7 @@
  * Created by me on 1/31/17.
  */
 import React from "react";
+import Carousel from "nuka-carousel";
 
 //import Title from "./Header/Title";
 
@@ -17,13 +18,16 @@ export default class Cubemain extends React.Component {
 			<main className="main">
 			<div className="container"><span className="item active"></span>
 
-
-				 {/*
-				  CAROUSEL HERE
-
-				  <img src="images/carousel01.jpg" alt="Cube" width="50%"  />
-				*/}
-				<img src="http://placehold.it/500x150?text=Carousel Placeholder" alt="Carousel"   />
+				{/*		React Component Carousel
+						Documentation at
+				        https://github.com/FormidableLabs/nuka-carousel
+				 */}
+				<Carousel autoplay={true} wrapAround={true} width="750px">
+					<img src="/images/carousel01.jpg"/>
+					<img src="/images/carousel02.jpg"/>
+					<img src="/images/carousel03.jpg"/>
+					<img src="/images/carousel04.jpg"/>
+				</Carousel>
 
 
 
