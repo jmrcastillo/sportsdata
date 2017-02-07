@@ -22,18 +22,18 @@ export default class Cubemain extends React.Component {
 						Documentation at
 				        https://github.com/FormidableLabs/nuka-carousel
 				 */}
-				<Carousel autoplay={true} wrapAround={true} width="750px">
-					<img src="/images/carousel01.jpg"/>
+				<Carousel autoplay={true} wrapAround={false} width="100%">
+					<img src="/images/carousel04.jpg"/>
 					<img src="/images/carousel02.jpg"/>
 					<img src="/images/carousel03.jpg"/>
-					<img src="/images/carousel04.jpg"/>
+					<img src="/images/carousel01.jpg"/>
 				</Carousel>
 
 
 
 
 			<div align="center">
-			<img src="images/nav.jpg" alt="Cube" width="80%" useMap="#Map" />
+			<img src="images/nav.jpg" alt="Cube" width="100%" useMap="#Map" />
 			<map name="Map">
 				<area shape="rect" coords="-1,1,201,197" href="/#/expert-picks"/>
 				<area shape="rect" coords="199,-1,405,198" href="/#/publications"/>
