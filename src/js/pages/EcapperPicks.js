@@ -7,8 +7,9 @@ import $ from "jquery";
 import Base64 from "base-64";
 import Money from "money-formatter";
 import SportsCodes from "../lib/SportsCodes";
+import Update from "immutability-helper";
 
-class GreenText extends React.Component {
+/*class GreenText extends React.Component {
 
 	render() {
 		const color = {color: "green"};
@@ -18,7 +19,7 @@ class GreenText extends React.Component {
 			</span>
 		);
 	}
-}
+}*/
 
 export default class EcapperPicks extends React.Component {
 
@@ -27,6 +28,7 @@ export default class EcapperPicks extends React.Component {
 
 		this.state = {
 			picks: [],
+			teaserEnabled: [],
 		};
 	}
 	componentWillMount() {
@@ -48,9 +50,15 @@ export default class EcapperPicks extends React.Component {
 			type: 'GET',
 			cache: false,
 			success: (picks) => {
+				const paidPicks = Object.values(picks).filter(pick=> {
+					if (pick.price > 0) {
+						return pick;
+					}
+				});
+				this.setState({picks: paidPicks});
+				this.setState ({teaserEnabled: paidPicks.map((pick) => {return false})});
 
-				this.setState({picks: Object.values(picks)});
-				console.log ("Got picks ", picks);
+				console.log ("Got picks ", paidPicks);
 			},
 			error: (xhr, status, err) => {
 				console.error(url, status, err.toString());
@@ -67,7 +75,6 @@ export default class EcapperPicks extends React.Component {
 
 	render() {
 
-		//const { ecapperdata} = this.props.params;
 /*
  "pick_id":324331,
  "title":"Marc Lawrence 15-1 ATS College Hoops Killer Revenge Play! - Thursday ",
@@ -99,22 +106,21 @@ export default class EcapperPicks extends React.Component {
 								<td colSpan="2">{pick.title}</td>
 							</tr>
 							<tr>
-								<td colSpan="2">
-{/*									<ReadMore lines={1} onShowMore={this.props.onChange} text="more">
-									{pick.teaser}
-									</ReadMore>*/}
-{/*									<TextTruncate
-										line={1}
-										truncateText="…"
-										text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-										textTruncateChild={<a href="#">Read on</a>}
-									/>*/}
-									{pick.teaser}
+								<td colSpan="2" onClick={(event) => {
+
+										console.log ("toggling to", i, ! this.state.teaserEnabled[i])
+
+										this.setState({teaserEnabled:
+											Update(this.state.teaserEnabled,
+											{[i]: {$set: ! this.state.teaserEnabled[i]}})
+										})
+
+									}}>
+									{this.state.teaserEnabled[i] ? pick.teaser + ' <<Read less' : 'Read more >>'}
 								</td>
 							</tr>
 							<tr>
 								<td width="100" align="left">  {Money.format ('USD', pick.price)}
-							{/*	<GreenText text="FREE"/>*/}
 								</td>
 								<td align="right"><img src="images/buy_now.png" width="70" height="20" border="0" /></td>
 							</tr>
@@ -134,17 +140,13 @@ export default class EcapperPicks extends React.Component {
 	}
 }
 
-/*					<tr key={i}>
- <td key="0" width="300" align="left"><a href={url}>{pick.title}</a></td>
- <td key="1" width="370"  align="left"><a href={url}>{pick.teaser.substring(0, 80)}</a></td>
- <td key="2" align="left"><a href={url}>{pick.price}</a></td>
 
- </tr>
+/*
+	Another way to do the Update function for array element in this.state:
+ this.state.teaserEnabled[i] = ! this.state.teaserEnabled[i];
+ this.forceUpdate();
+
  */
-
-
-
-
 
 
 
