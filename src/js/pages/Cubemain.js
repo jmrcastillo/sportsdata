@@ -33,7 +33,7 @@ export default class Cubemain extends React.Component {
 
 
 			<div align="center">
-			<img src="images/nav.jpg" alt="Cube" width="100%" useMap="#Map" />
+			<img src="/images/nav.jpg" alt="Cube" width="100%" useMap="#Map" />
 			<map name="Map">
 				<area shape="rect" coords="-1,1,201,197" href="/#/expert-picks"/>
 				<area shape="rect" coords="199,-1,405,198" href="/#/publications"/>
