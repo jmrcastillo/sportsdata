@@ -90,7 +90,8 @@ export default class EcapperPicks extends React.Component {
 			{this.state.picks.map((pick, i) => {
 				if (pick.price > 0) {
 
-				var url = "/#/pick-forsale/" + pick.pick_id;
+			//	const url = "/#/pick-forsale/" + pick.pick_id;
+				const buyUrl = `https://www.ipsports.net/ecps/default/gpicks_4sale.php?SITE_ID=4&SEARCH_MODE=ECAPPER_ID&ECAPPER_ID=${this.state.ecapper_id}`;
 				return (
 					<tr key={i}>
 					<td>
@@ -108,7 +109,7 @@ export default class EcapperPicks extends React.Component {
 							<tr>
 								<td colSpan="2" onClick={(event) => {
 
-										console.log ("toggling to", i, ! this.state.teaserEnabled[i])
+									//	console.log ("toggling to", i, ! this.state.teaserEnabled[i])
 
 										this.setState({teaserEnabled:
 											Update(this.state.teaserEnabled,
@@ -122,7 +123,7 @@ export default class EcapperPicks extends React.Component {
 							<tr>
 								<td width="100" align="left">  {Money.format ('USD', pick.price)}
 								</td>
-								<td align="right"><img src="images/buy_now.png" width="70" height="20" border="0" /></td>
+								<td align="right"><a href={buyUrl}><img src="images/buy_now.png" width="70" height="20" border="0"/></a></td>
 							</tr>
 							<tr>
 							<td colSpan="2"><hr /></td>
