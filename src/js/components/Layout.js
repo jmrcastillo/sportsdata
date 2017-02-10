@@ -37,10 +37,12 @@ export default class Layout extends React.Component {
 	render() {
 		return (
 			<div>
-				<Header/>
-				{window.cubedata.IS_AUTHENTICATED ? "" : "Not logged in - "}
+
+				<Header router={this.props.router}/>
+
+{/*				{window.cubedata.IS_AUTHENTICATED ? "" : "Not logged in - "}
 				{window.cubedata.IS_AUTHENTICATED ? "Logged in as " + window.cubedata.LOGGED_IN_MEMBER :
-					<a href="/#/login"> Login </a> }
+					<a href="/#/login"> Login </a> }*/}
 
 
 				{this.props.children}
