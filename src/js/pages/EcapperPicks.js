@@ -84,7 +84,10 @@ export default class EcapperPicks extends React.Component {
  */
 		return (
 			<div>
+				<div></div>
+{/*
 			PICKS List for {this.state.handicapper_name}
+*/}
 			<table width="100%" border="0" cellSpacing="0" cellPadding="0">
 			<tbody>
 			{this.state.picks.map((pick, i) => {

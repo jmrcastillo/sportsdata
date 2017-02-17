@@ -17,6 +17,8 @@ import SportsPages from "./pages/SportsPages";
 import BettingTools from "./pages/BettingTools";
 import EcapperPicks from "./pages/EcapperPicks";
 import PickForSale from "./pages/PickForSale";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Purchases from "./pages/Purchases";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -80,6 +82,9 @@ ReactDOM.render(
 			<Route path="steam-alerts" name="steam-alerts" component={SteamAlerts} />
 			<Route path="sports-pages" name="sports-pages" component={SportsPages} />
 			<Route path="betting-tools" name="betting-tools" component={BettingTools} />
+			<Route path="privacy-policy" name="privacy-policy" component={PrivacyPolicy} />
+			<Route path="purchases" name="purchases" component={Purchases} />
+
 			<Route path='ecapper-picks(/:ecapperdata)' component={EcapperPicks} />
 			<Route path='pick-forsale(/:pick_id)' component={PickForSale} />
 			<Route path='login' name="login" component={Login} />

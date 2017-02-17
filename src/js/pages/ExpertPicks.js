@@ -53,11 +53,21 @@ export default class ExpertPicks extends React.Component {
 	}
 
 	render() {
-
+		var letterStyle = {
+			padding: 10,
+			margin: 0,
+			backgroundColor: "#000000",
+			color: "#ffffff",
+			fontFamily: "monospace",
+			fontSize: "32",
+			textAlign: "center"
+		};
 		return (
 
 			<div>
-				Expert PICKS List HERE
+				<div style={letterStyle}>
+					EXPERT PICKS
+				</div>
 				<table width="100%" border="0" cellSpacing="0" cellPadding="0">
 				<tbody>
 				{this.state.handicappers.map((handicapper, i) => {
