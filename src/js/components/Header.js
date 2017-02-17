@@ -27,33 +27,41 @@ export default class Header extends React.Component {
 		this.setState({
 			schema:
 				[
-					{
-						name: "Home",
-						id: 0,
-						isOpen: false,
-						children: [],
-					},
-					{
-						name: "Expert Picks",
-						id: 1,
-						isOpen: false,
-						children: [],
+                    {
+                        name: "---",
+                        id: 0,
+                        isOpen: false,
+                        children: [
+                            {
+                                name: "Home",
+                                id: 0,
+                                isOpen: false,
+                                children: [],
+                            },
+                            {
+                                name: "Expert Picks",
+                                id: 1,
+                                isOpen: false,
+                                children: [],
 
-					},
-					{
-						name: "Purchases",
-						id: 2,
-						isOpen: false,
-						children: [],
+                            },
+                            {
+                                name: "Purchases",
+                                id: 2,
+                                isOpen: false,
+                                children: [],
 
-					},
-					{
-						name: "Privacy Policy",
-						id: 3,
-						isOpen: false,
-						children: [],
+                            },
+                            {
+                                name: "Privacy Policy",
+                                id: 3,
+                                isOpen: false,
+                                children: [],
 
-					},
+                            },
+                        ],
+                    },
+
 				]
 
 		});
@@ -65,7 +73,8 @@ export default class Header extends React.Component {
 		return (
 			<InfinityMenu
 				tree={this.state.schema}
-			//	onNodeMouseClick={this.onNodeMouseClick.bind(this)}
+                disableDefaultHeaderContent={true}
+                //	onNodeMouseClick={this.onNodeMouseClick.bind(this)}
 				onNodeMouseClick={(event, schema, node, level, keyPath) => {
 					this.setState({
 						schema: schema
