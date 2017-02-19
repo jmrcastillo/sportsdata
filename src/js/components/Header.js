@@ -28,7 +28,7 @@ export default class Header extends React.Component {
 			schema:
 				[
                     {
-                        name: "---",
+                        name: "Playbook Cube",
                         id: 0,
                         isOpen: false,
                         children: [
@@ -39,7 +39,7 @@ export default class Header extends React.Component {
                                 children: [],
                             },
                             {
-                                name: "Expert Picks",
+                                name: "Privacy Policy",
                                 id: 1,
                                 isOpen: false,
                                 children: [],
@@ -53,12 +53,49 @@ export default class Header extends React.Component {
 
                             },
                             {
-                                name: "Privacy Policy",
+                                name: "Expert Picks",
                                 id: 3,
                                 isOpen: false,
                                 children: [],
 
                             },
+                            {
+                                name: "Newsletters & Publications",
+                                id: 4,
+                                isOpen: false,
+                                children: [],
+
+                            },
+                            {
+                                name: "Scores & Lines",
+                                id: 5,
+                                isOpen: false,
+                                children: [],
+
+                            },
+                            {
+                                name: "Videos & Podcasts",
+                                id: 6,
+                                isOpen: false,
+                                children: [],
+
+                            },
+                            {
+                                name: "Betting Tools",
+                                id: 7,
+                                isOpen: false,
+                                children: [],
+
+                            },
+                            {
+                                name: "Steam Alerts",
+                                id: 8,
+                                isOpen: false,
+                                children: [],
+
+                            },
+
+
                         ],
                     },
 
@@ -85,14 +122,29 @@ export default class Header extends React.Component {
 							this.props.router.push('/');
 						break;
 						case "1":
-							this.props.router.push('expert-picks');
+							this.props.router.push('privacy-policy');
 						break;
 						case "2":
 							this.props.router.push('purchases');
 							break;
 						case "3":
-							this.props.router.push('privacy-policy');
+							this.props.router.push('expert-picks');
 						break;
+                        case "4":
+                            this.props.router.push('publications');
+                            break;
+                        case "5":
+                            this.props.router.push('scores-lines');
+                            break;
+                        case "6":
+                            this.props.router.push('videos-podcasts');
+                            break;
+                        case "7":
+                            this.props.router.push('betting-tools');
+                            break;
+                        case "8":
+                            this.props.router.push('steam-alerts');
+                            break;
 					}
 
 				}}
