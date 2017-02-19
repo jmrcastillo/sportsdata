@@ -33,20 +33,23 @@ export default class Cubemain extends React.Component {
 
 
 
-			<div align="center">
-			<img src="/images/nav.jpg" alt="Cube" width="100%" useMap="#Map" />
-			<map name="Map">
-				<area shape="rect" coords="-1,1,201,197" href="/#/expert-picks"/>
-				<area shape="rect" coords="199,-1,405,198" href="/#/publications"/>
-				<area shape="rect" coords="402,1,598,199" href="/#/scores-lines"/>
-				<area shape="rect" coords="-2,195,200,395" href="/#/videos-podcasts"/>
-				<area shape="rect" coords="201,197,400,397" href="/#/line-moves"/>
-				<area shape="rect" coords="401,195,599,394" href="/#/trends-matchups"/>
-				<area shape="rect" coords="2,395,202,590" href="/#/steam-alerts"/>
-				<area shape="rect" coords="200,395,401,590" href="/#/sports-pages"/>
-				<area shape="rect" coords="400,394,597,590" href="/#/betting-tools"/>
-			</map>
-			</div>
+				<table width="100%" border="0">
+					<tr>
+						<td><div align="center"><a href="/#/expert-picks"><img src="/images/nav_tiles/tile01.jpg"/></a></div></td>
+						<td><div align="center"><a href="/#/publications"><img src="/images/nav_tiles/tile02.jpg"/></a></div></td>
+						<td><div align="center"><a href="/#/scores-lines"><img src="/images/nav_tiles/tile03.jpg"/></a></div></td>
+					</tr>
+					<tr>
+						<td><div align="center"><a href="/#/videos-podcasts"><img src="/images/nav_tiles/tile04.jpg"/></a></div></td>
+						<td><div align="center"><a href="/#/line-moves"><img src="/images/nav_tiles/tile05.jpg"/></a></div></td>
+						<td><div align="center"><a href="/#/trends-matchups"><img src="/images/nav_tiles/tile06.png"/></a></div></td>
+					</tr>
+					<tr>
+						<td><div align="center"><a href="/#/steam-alerts"><img src="/images/nav_tiles/tile07.jpg"/></a></div></td>
+						<td><div align="center"><a href="/#/sports-pages"><img src="/images/nav_tiles/tile08.png"/></a></div></td>
+						<td><div align="center"><a href="/#/betting-tools"><img src="/images/nav_tiles/tile09.png"/></a></div></td>
+					</tr>
+				</table>
 			</div>
 			</main>
 
