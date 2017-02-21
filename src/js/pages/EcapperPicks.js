@@ -94,7 +94,7 @@ export default class EcapperPicks extends React.Component {
 				if (pick.price > 0) {
 
 			//	const url = "/#/pick-forsale/" + pick.pick_id;
-				const buyUrl = `https://www.ipsports.net/ecps/default/gpicks_4sale.php?SITE_ID=4&SEARCH_MODE=ECAPPER_ID&ECAPPER_ID=${this.state.ecapper_id}`;
+				const buyUrl = `https://www.ipsports.net/ecps/default/gpicks_4sale.php?SITE_ID=11&SEARCH_MODE=ECAPPER_ID&ECAPPER_ID=${this.state.ecapper_id}`;
 				return (
 					<tr key={i}>
 					<td>
