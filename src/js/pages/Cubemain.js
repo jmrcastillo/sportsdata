@@ -34,21 +34,23 @@ export default class Cubemain extends React.Component {
 
 
 				<table width="100%" border="0">
+					<tbody>
 					<tr>
-						<td><div align="center"><a href="/#/expert-picks"><img src="/images/nav_tiles/tile01.jpg" width="100%"/></a></div></td>
-						<td><div align="center"><a href="/#/publications"><img src="/images/nav_tiles/tile02.jpg" width="100%"/></a></div></td>
-						<td><div align="center"><a href="/#/scores-lines"><img src="/images/nav_tiles/tile03.jpg" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/expert-picks"><img src="/images/nav_tiles/tile01.png"/></a></div></td>
+						<td><div align="center"><a href="/#/publications"><img src="/images/nav_tiles/tile02.png"/></a></div></td>
+						<td><div align="center"><a href="/#/scores-lines"><img src="/images/nav_tiles/tile03.png"/></a></div></td>
 					</tr>
 					<tr>
-						<td><div align="center"><a href="/#/videos-podcasts"><img src="/images/nav_tiles/tile04.jpg" width="100%"/></a></div></td>
-						<td><div align="center"><a href="/#/line-moves"><img src="/images/nav_tiles/tile05.jpg" width="100%"/></a></div></td>
-						<td><div align="center"><a href="/#/trends-matchups"><img src="/images/nav_tiles/tile06.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/videos-podcasts"><img src="/images/nav_tiles/tile04.png"/></a></div></td>
+						<td><div align="center"><a href="/#/line-moves"><img src="/images/nav_tiles/tile05.png"/></a></div></td>
+						<td><div align="center"><a href="/#/trends-matchups"><img src="/images/nav_tiles/tile06.png"/></a></div></td>
 					</tr>
 					<tr>
-						<td><div align="center"><a href="/#/steam-alerts"><img src="/images/nav_tiles/tile07.jpg" width="100%"/></a></div></td>
-						<td><div align="center"><a href="/#/sports-pages"><img src="/images/nav_tiles/tile08.png" width="100%"/></a></div></td>
-						<td><div align="center"><a href="/#/betting-tools"><img src="/images/nav_tiles/tile09.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/steam-alerts"><img src="/images/nav_tiles/tile07.png"/></a></div></td>
+						<td><div align="center"><a href="/#/sports-pages"><img src="/images/nav_tiles/tile08.png"/></a></div></td>
+						<td><div align="center"><a href="/#/betting-tools"><img src="/images/nav_tiles/tile09.png"/></a></div></td>
 					</tr>
+					</tbody>
 				</table>
 			</div>
 			</main>
