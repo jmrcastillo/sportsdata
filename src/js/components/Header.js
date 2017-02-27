@@ -18,7 +18,18 @@ export default class Header extends React.Component {
 		super();
 
 		this.state = {
-			 schema: []
+            schema: [],
+            functions: [
+                ()=>{this.props.router.push('/')},
+                ()=>{this.props.router.push('privacy-policy')},
+                ()=>{this.props.router.push('purchases')},
+                ()=>{this.props.router.push('expert-picks')},
+                ()=>{this.props.router.push('publications')},
+                ()=>{this.props.router.push('scores-lines')},
+                ()=>{this.props.router.push('videos-podcasts')},
+                ()=>{this.props.router.push('betting-tools')},
+                ()=>{this.props.router.push('steam-alerts')},
+            ]
 		};
 	}
 
@@ -106,6 +117,49 @@ export default class Header extends React.Component {
 
 	}
 
+/*
+    componentWillMount() {
+
+        this.setState({
+            schema:
+                [
+                    {
+                        name: "Home",
+                        id: 0,
+                        isOpen: false,
+                        children: [],
+                    },
+                    {
+                        name: "Expert Picks",
+                        id: 1,
+                        isOpen: false,
+                        children: [],
+
+                    },
+                    {
+                        name: "Purchases",
+                        id: 2,
+                        isOpen: false,
+                        children: [],
+
+                    },
+                    {
+                        name: "Privacy Policy",
+                        id: 3,
+                        isOpen: false,
+                        children: [],
+
+                    },
+                ]
+
+        });
+
+
+    }
+*/
+
+
+
 	render() {
 		return (
 			<InfinityMenu
@@ -116,47 +170,13 @@ export default class Header extends React.Component {
 					this.setState({
 						schema: schema
 					});
-					console.log("Mouse click: ", node, level, keyPath);
-					if (node.id === 1) {
-                      //  debugger;
 
-                        console.log("node.id is one - privacy-policy");
+//					console.log("Mouse click: ", node, level, keyPath);
+ //                   console.log("node.id is ", node.id);
+                    this.state.functions[node.id]();
 
-                    }
-                    if (node.id === "1") {
-                    //    debugger;
 
-                        console.log("node.id is string 1 - privacy-policy");
-                    }
-					switch (node.id) {
-						case 0:
-							this.props.router.push('/');
-						break;
-						case 1:
-							this.props.router.push('privacy-policy');
-						break;
-						case 2:
-							this.props.router.push('purchases');
-							break;
-						case 3:
-							this.props.router.push('expert-picks');
-						break;
-                        case 4:
-                            this.props.router.push('publications');
-                            break;
-                        case 5:
-                            this.props.router.push('scores-lines');
-                            break;
-                        case 6:
-                            this.props.router.push('videos-podcasts');
-                            break;
-                        case 7:
-                            this.props.router.push('betting-tools');
-                            break;
-                        case 8:
-                            this.props.router.push('steam-alerts');
-                            break;
-					}
+
 
 				}}
 			//	maxLeaves={2}
