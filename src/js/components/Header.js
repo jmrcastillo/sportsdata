@@ -21,14 +21,19 @@ export default class Header extends React.Component {
             schema: [],
             functions: [
                 ()=>{this.props.router.push('/')},
-                ()=>{this.props.router.push('expert-picks')},
-                ()=>{this.props.router.push('purchases')},
                 ()=>{this.props.router.push('privacy-policy')},
+                ()=>{this.props.router.push('purchases')},
+                ()=>{this.props.router.push('expert-picks')},
+                ()=>{this.props.router.push('publications')},
+                ()=>{this.props.router.push('scores-lines')},
+                ()=>{this.props.router.push('videos-podcasts')},
+                ()=>{this.props.router.push('betting-tools')},
+                ()=>{this.props.router.push('steam-alerts')},
             ]
 		};
 	}
 
-/*	componentWillMount() {
+	componentWillMount() {
 
 		this.setState({
 			schema:
@@ -110,8 +115,9 @@ export default class Header extends React.Component {
 		});
 
 
-	}*/
+	}
 
+/*
     componentWillMount() {
 
         this.setState({
@@ -150,6 +156,7 @@ export default class Header extends React.Component {
 
 
     }
+*/
 
 
 
@@ -164,38 +171,10 @@ export default class Header extends React.Component {
 						schema: schema
 					});
 //					console.log("Mouse click: ", node, level, keyPath);
-                    console.log("node.id is ", node.id);
+ //                   console.log("node.id is ", node.id);
                     this.state.functions[node.id]();
 
-                    {/*					switch (keyPath) {
-						case "0":
-							this.props.router.push('/');
-						break;
-						case "1":
-							this.props.router.push('privacy-policy');
-						break;
-						case "2":
-							this.props.router.push('purchases');
-							break;
-						case "3":
-							this.props.router.push('expert-picks');
-						break;
-                        case "4":
-                            this.props.router.push('publications');
-                            break;
-                        case "5":
-                            this.props.router.push('scores-lines');
-                            break;
-                        case "6":
-                            this.props.router.push('videos-podcasts');
-                            break;
-                        case "7":
-                            this.props.router.push('betting-tools');
-                            break;
-                        case "8":
-                            this.props.router.push('steam-alerts');
-                            break;
-					}*/}
+
 
 				}}
 			//	maxLeaves={2}
