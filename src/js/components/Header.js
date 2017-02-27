@@ -116,33 +116,44 @@ export default class Header extends React.Component {
 					this.setState({
 						schema: schema
 					});
-//					console.log("Mouse click: ", node, level, keyPath);
-					switch (keyPath) {
-						case "0":
+					console.log("Mouse click: ", node, level, keyPath);
+					if (node.id === 1) {
+                      //  debugger;
+
+                        console.log("node.id is one - privacy-policy");
+
+                    }
+                    if (node.id === "1") {
+                    //    debugger;
+
+                        console.log("node.id is string 1 - privacy-policy");
+                    }
+					switch (node.id) {
+						case 0:
 							this.props.router.push('/');
 						break;
-						case "1":
+						case 1:
 							this.props.router.push('privacy-policy');
 						break;
-						case "2":
+						case 2:
 							this.props.router.push('purchases');
 							break;
-						case "3":
+						case 3:
 							this.props.router.push('expert-picks');
 						break;
-                        case "4":
+                        case 4:
                             this.props.router.push('publications');
                             break;
-                        case "5":
+                        case 5:
                             this.props.router.push('scores-lines');
                             break;
-                        case "6":
+                        case 6:
                             this.props.router.push('videos-podcasts');
                             break;
-                        case "7":
+                        case 7:
                             this.props.router.push('betting-tools');
                             break;
-                        case "8":
+                        case 8:
                             this.props.router.push('steam-alerts');
                             break;
 					}
