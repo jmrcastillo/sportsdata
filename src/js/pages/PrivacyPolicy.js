@@ -11,7 +11,7 @@ export default class PrivacyPolicy extends React.Component {
 		return (
 			<div>
 
-				<Iframe url="http://mobile.playbook.com/cube/privacy.php"  width="50%"/>
+				<Iframe url="http://mobile.playbook.com/cube/privacy.php"  width="100%"/>
 
 			</div>
 		);

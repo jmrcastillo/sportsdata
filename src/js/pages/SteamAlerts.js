@@ -12,7 +12,7 @@ export default class SteamAlerts extends React.Component {
 	render() {
 		return (
 			<div>
-				<Iframe url="http://mobile.playbook.com/cube/steam.php"  width="50%"/>
+				<Iframe url="http://mobile.playbook.com/cube/steam.php"  width="100%"/>
 			</div>
 		);
 	}

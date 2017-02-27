@@ -12,7 +12,7 @@ export default class LineMoves extends React.Component {
 	render() {
 		return (
 			<div>
-				<Iframe url="http://mobile.playbook.com/cube/tlm2012.html"  width="50%"/>
+				<Iframe url="http://mobile.playbook.com/cube/tlm2012.html"  width="100%"/>
 			</div>
 		);
 	}

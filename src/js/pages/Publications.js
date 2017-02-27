@@ -15,7 +15,7 @@ export default class Publications extends React.Component {
 		return (
 			<div>
 
-				<Iframe url="https://www.cube-app.com/cube-content/cube/pubs.html"  width="50%"/>
+				<Iframe url="https://www.cube-app.com/cube-content/cube/pubs.html"  width="100%"/>
 
 			</div>
 		);
