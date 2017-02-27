@@ -18,11 +18,17 @@ export default class Header extends React.Component {
 		super();
 
 		this.state = {
-			 schema: []
+            schema: [],
+            functions: [
+                ()=>{this.props.router.push('/')},
+                ()=>{this.props.router.push('expert-picks')},
+                ()=>{this.props.router.push('purchases')},
+                ()=>{this.props.router.push('privacy-policy')},
+            ]
 		};
 	}
 
-	componentWillMount() {
+/*	componentWillMount() {
 
 		this.setState({
 			schema:
@@ -104,7 +110,48 @@ export default class Header extends React.Component {
 		});
 
 
-	}
+	}*/
+
+    componentWillMount() {
+
+        this.setState({
+            schema:
+                [
+                    {
+                        name: "Home",
+                        id: 0,
+                        isOpen: false,
+                        children: [],
+                    },
+                    {
+                        name: "Expert Picks",
+                        id: 1,
+                        isOpen: false,
+                        children: [],
+
+                    },
+                    {
+                        name: "Purchases",
+                        id: 2,
+                        isOpen: false,
+                        children: [],
+
+                    },
+                    {
+                        name: "Privacy Policy",
+                        id: 3,
+                        isOpen: false,
+                        children: [],
+
+                    },
+                ]
+
+        });
+
+
+    }
+
+
 
 	render() {
 		return (
@@ -117,7 +164,10 @@ export default class Header extends React.Component {
 						schema: schema
 					});
 //					console.log("Mouse click: ", node, level, keyPath);
-					switch (keyPath) {
+                    console.log("node.id is ", node.id);
+                    this.state.functions[node.id]();
+
+                    {/*					switch (keyPath) {
 						case "0":
 							this.props.router.push('/');
 						break;
@@ -145,7 +195,7 @@ export default class Header extends React.Component {
                         case "8":
                             this.props.router.push('steam-alerts');
                             break;
-					}
+					}*/}
 
 				}}
 			//	maxLeaves={2}
