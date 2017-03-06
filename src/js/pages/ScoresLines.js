@@ -12,7 +12,7 @@ export default class ScoresLines extends React.Component {
 	render() {
 		return (
 			<div>
-				<Iframe url="http://mobile.playbook.com/lines/lines.php"  width="100%"/>
+				<Iframe url="https://www.ipsports.net/ecps/cube-content/lines/lines.php"  width="100%"/>
 			</div>
 		);
 	}
