@@ -12,7 +12,7 @@ export default class SportsPages extends React.Component {
 	render() {
 		return (
 			<div>
-				<Iframe url="http://mobile.playbook.com/cube/sportspages.php"  width="100%"/>
+				<Iframe url="http://mobile.playbook.com/cube/sportspages.html"  width="100%"/>
 			</div>
 		);
 	}

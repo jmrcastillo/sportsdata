@@ -12,7 +12,7 @@ export default class TrendsMatchups extends React.Component {
 	render() {
 		return (
 			<div>
-				<Iframe url="http://cube.statfox.com"  width="50%"/>
+				<Iframe url="http://cube.statfox.com"  width="100%"/>
 			</div>
 		);
 	}
