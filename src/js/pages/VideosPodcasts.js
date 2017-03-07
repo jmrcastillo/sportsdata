@@ -12,7 +12,7 @@ export default class VideosPodcasts extends React.Component {
 	render() {
 		return (
 			<div>
-				<Iframe url="http://mobile.playbook.com/cube/video_podcast.html"  width="50%"/>
+				<Iframe url="https://www.ipsports.net/ecps/cube-content/cube/video_podcast/video_podcast.html"  width="100%"/>
 			</div>
 		);
 	}
