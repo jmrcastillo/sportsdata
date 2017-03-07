@@ -12,7 +12,7 @@ export default class BettingTools extends React.Component {
 	render() {
 		return (
 			<div>
-				<Iframe url="http://mobile.playbook.com/cube/hcap_lounge2012.html"  width="100%"/>
+				<Iframe url="https://www.ipsports.net/ecps/cube-content/cube/hcap_lounge2012.html"  width="100%"/>
 			</div>
 		);
 	}
