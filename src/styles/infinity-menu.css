@@ -1,7 +1,7 @@
 .infinity-menu-node-container {
 	width: 100%;
 	background-color: rgb(209, 209, 209);
-	color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
 	height: 40px;
 	padding-left: 10px;
 	padding-top: 20px;
@@ -15,7 +15,7 @@
 .infinity-menu-leaf-container {
 	width: 100%;
 	background-color: rgb(94, 96, 99);
-	color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
 	height: 30px;
 	padding-left: 20px;
 	padding-top: 15px;
@@ -23,13 +23,13 @@
 }
 
 .infinity-menu-leaf-container:hover {
-	background-color: rgb(73, 73, 73);
+	background-color: rgb(209, 209, 209);
 }
 
 .infinity-menu-load-more-container {
 	width: 100%;
 	background-color: rgb(209, 209, 209);
-	color: rgb(94, 96, 99);
+	color: rgb(0, 0, 0);
 	height: 30px;
 	padding-left: 20px;
 	padding-top: 15px;
