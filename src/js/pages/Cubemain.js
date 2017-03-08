@@ -37,7 +37,7 @@ export default class Cubemain extends React.Component {
 					<tbody>
 					<tr>
 						<td><div align="center"><a href="/#/expert-picks"><img src="/images/nav_tiles/tile01.png" width="100%"/></a></div></td>
-						<td><div align="center"><a href="https://www.ipsports.net/ecps/default/member_login.php?SITE_ID=11"><img src="/images/nav_tiles/tile02.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/publications"><img src="/images/nav_tiles/tile02.png" width="100%"/></a></div></td>
 						<td><div align="center"><a href="/#/scores-lines"><img src="/images/nav_tiles/tile03.png" width="100%"/></a></div></td>
 					</tr>
 					<tr>
