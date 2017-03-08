@@ -821,7 +821,7 @@ const Carousel = React.createClass({
   },
 
   getStyleTagStyles() {
-    return '.slider-slide > img {width: 100%; display: block;}'
+    return '.slider-slide > img {width: 100%; display: block; alt: slider;}'
   },
 
   getDecoratorStyles(position) {
