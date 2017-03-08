@@ -22,7 +22,7 @@ export default class Header extends React.Component {
             functions: [
                 ()=>{this.props.router.push('/')},
                 ()=>{this.props.router.push('privacy-policy')},
-                ()=>{this.props.router.push('purchases')},
+                ()=>{this.props.router.push('https://www.ipsports.net/ecps/default/member_login.php?SITE_ID=11')},
                 ()=>{this.props.router.push('expert-picks')},
                 ()=>{this.props.router.push('publications')},
                 ()=>{this.props.router.push('scores-lines')},
