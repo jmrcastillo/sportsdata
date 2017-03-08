@@ -101,7 +101,7 @@ export default class EcapperPicks extends React.Component {
 						<table>
 							<tbody>
 							<tr>
-								<td colSpan="2"><img src={this.state.photo_uri} width="70"  alt=${this.state.handicapper_name} border="0"/>&nbsp;&nbsp;{this.state.handicapper_name}</td>
+								<td colSpan="2"><img src={this.state.photo_uri} width="70"  alt={this.state.handicapper_name} border="0"/>&nbsp;&nbsp;{this.state.handicapper_name}</td>
 							</tr>
 							<tr>
 								<td colSpan="2">{SportsCodes.getText(pick.sport)}</td>
