@@ -46,62 +46,62 @@ export default class Header extends React.Component {
                         children: [
                             {
                                 name: "Home",
-                                id: 0,
+                                id: 1,
                                 isOpen: false,
                                 children: [],
                             },
                             {
                                 name: "Privacy Policy",
-                                id: 1,
-                                isOpen: false,
-                                children: [],
-
-                            },
-                            {
-                                name: "Purchases",
                                 id: 2,
                                 isOpen: false,
                                 children: [],
 
                             },
                             {
-                                name: "Expert Picks",
+                                name: "Purchases",
                                 id: 3,
                                 isOpen: false,
                                 children: [],
 
                             },
                             {
-                                name: "Newsletters & Publications",
+                                name: "Expert Picks",
                                 id: 4,
                                 isOpen: false,
                                 children: [],
 
                             },
                             {
-                                name: "Scores & Lines",
+                                name: "Newsletters & Publications",
                                 id: 5,
                                 isOpen: false,
                                 children: [],
 
                             },
                             {
-                                name: "Videos & Podcasts",
+                                name: "Scores & Lines",
                                 id: 6,
                                 isOpen: false,
                                 children: [],
 
                             },
                             {
-                                name: "Betting Tools",
+                                name: "Videos & Podcasts",
                                 id: 7,
                                 isOpen: false,
                                 children: [],
 
                             },
                             {
-                                name: "Steam Alerts",
+                                name: "Betting Tools",
                                 id: 8,
+                                isOpen: false,
+                                children: [],
+
+                            },
+                            {
+                                name: "Steam Alerts",
+                                id: 9,
                                 isOpen: false,
                                 children: [],
 
