@@ -32,6 +32,9 @@
         navigator.serviceWorker.register('service-worker.js')
             .then(function(reg){
                 console.log("Yes, it did.");
+         /*       self.addEventListener('install', function(event) {
+                    // Perform install steps
+                });*/
             }).catch(function(err) {
             console.log("No it didn't. This happened: ", err)
         });
