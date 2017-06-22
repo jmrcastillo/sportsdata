@@ -28,6 +28,7 @@ export default class Cubemain extends React.Component {
 					<img src="/images/carousel02.jpg"/>
 					<img src="/images/carousel03.jpg"/>
 					<img src="/images/carousel01.jpg"/>
+					<img src="/images/carousel05.jpg"/>
 				</Carousel>
 
 
