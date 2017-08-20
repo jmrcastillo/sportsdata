@@ -13,7 +13,7 @@ import VideosPodcasts from "./pages/VideosPodcasts";
 import LineMoves from "./pages/LineMoves";
 import TrendsMatchups from "./pages/TrendsMatchups";
 import SteamAlerts from "./pages/SteamAlerts";
-import SportsPages from "./pages/SportsPages";
+import Wagertalk from "./pages/Wagertalk";
 import BettingTools from "./pages/BettingTools";
 import EcapperPicks from "./pages/EcapperPicks";
 import PickForSale from "./pages/PickForSale";
@@ -80,7 +80,7 @@ ReactDOM.render(
 			<Route path="line-moves" name="line-moves" component={LineMoves} />
 			<Route path="trends-matchups" name="trends-matchups" component={TrendsMatchups} />
 			<Route path="steam-alerts" name="steam-alerts" component={SteamAlerts} />
-			<Route path="sports-pages" name="sports-pages" component={SportsPages} />
+			<Route path="wagertalk" name="wagertalk" component={Wagertalk} />
 			<Route path="betting-tools" name="betting-tools" component={BettingTools} />
 			<Route path="privacy-policy" name="privacy-policy" component={PrivacyPolicy} />
 			<Route path="purchases" name="purchases" component={Purchases} />

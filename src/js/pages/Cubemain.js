@@ -42,7 +42,7 @@ export default class Cubemain extends React.Component {
 						<td><div align="center"><a href="/#/scores-lines"><img src="/images/nav_tiles/tile03.png" width="100%"/></a></div></td>
 					</tr>
 					<tr>
-						<td><div align="center"><a href="/#/videos-podcasts"><img src="/images/nav_tiles/tile04.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/wagertalk"><img src="/images/nav_tiles/tile04.png" width="100%"/></a></div></td>
 						<td><div align="center"><a href="/#/line-moves"><img src="/images/nav_tiles/tile05.png" width="100%"/></a></div></td>
 						{/*<td><div align="center"><a href="/#/trends-matchups"><img src="/images/nav_tiles/tile06.png" width="100%"/></a></div></td>*/}
                         <td><div align="center"><a href="http://cube.statfox.com"><img src="/images/nav_tiles/tile06.png" width="100%"/></a></div></td>
@@ -51,7 +51,7 @@ export default class Cubemain extends React.Component {
 					</tr>
 					<tr>
 						<td><div align="center"><a href="/#/steam-alerts"><img src="/images/nav_tiles/tile07.png" width="100%"/></a></div></td>
-						<td><div align="center"><a href="/#/sports-pages"><img src="/images/nav_tiles/tile08.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/videos-podcastsq"><img src="/images/nav_tiles/tile08.png" width="100%"/></a></div></td>
 						<td><div align="center"><a href="/#/betting-tools"><img src="/images/nav_tiles/tile09.png" width="100%"/></a></div></td>
 					</tr>
 					</tbody>

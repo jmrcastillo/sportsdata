@@ -27,7 +27,7 @@ export default class Header extends React.Component {
                 ()=>{this.props.router.push('expert-picks')},
                 ()=>{this.props.router.push('publications')},
                 ()=>{this.props.router.push('scores-lines')},
-                ()=>{this.props.router.push('videos-podcasts')},
+                ()=>{this.props.router.push('wagertalk')},
                 ()=>{this.props.router.push('betting-tools')},
                 ()=>{this.props.router.push('steam-alerts')},
             ]
