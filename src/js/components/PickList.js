@@ -93,8 +93,8 @@ export default class PickList extends React.Component {
      }*/
 
     render() {
-        function createMarkup() {
-            return {__html: 'First &middot; Second'};
+        function htmlTeaser(teaser) {
+            return {__html: teaser};
         }
         return (
             <div>
@@ -151,7 +151,7 @@ export default class PickList extends React.Component {
                                             <tr>
                                                 <td bgcolor="white"><div align="left" dangerouslySetInnerHTML={
 
-                                                    createMarkup()
+                                                    htmlTeaser(pick.teaser)
 
                                                 } /></td>
                                             </tr>
