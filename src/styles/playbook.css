@@ -1,0 +1,667 @@
+@charset "UTF-8";
+/* CSS Document */
+* { margin:0; padding:0;}
+html, body { height:100%;}
+body { font-family:Tahoma, Geneva, sans-serif; font-size:100%; line-height:1em; color:#404141; padding: 0; leftmargin: 0;  marginheight: 0;  marginwidth: 0; topmargin: 0; }
+
+input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;}
+.row-store { background-color:#CCC; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px; height:24px; padding-top:10px;}
+
+
+.fleft { float:left;}
+.fright { float:right;}
+.clear { clear:both;}
+
+.alignright { text-align:right;}
+.aligncenter { text-align:center;}
+
+.wrapper { width:100%; overflow:hidden;}
+.container { width:100%;}
+.container2 { width:100%;}
+.container3 { width:100%;}
+.container4 { width:97%; margin-left:10px;}
+.container5 { width:97%; margin-left:10px; padding:2px;}
+.container6 { width:97%; margin-left:4px;}
+.container7 { width:99%; margin-left:4px;}
+.container8 { width:100%; margin-left:4px;}
+.container9 { width:98%;}
+.container10 { width:70%; margin-left:80px}
+p { margin-bottom:16px;}
+
+/*==================forms====================*/
+input, select { vertical-align:middle; font-weight:normal;}
+img {border:0; vertical-align:top; text-align:left;}
+object { vertical-align:top;}
+
+#contacts-form { clear:right; width:100%; overflow:hidden;}
+#contacts-form fieldset { border:none; float:left; }
+#contacts-form .field { clear:both; padding-bottom:7px; width:100%; overflow:hidden;}
+#contacts-form label { float:left; width:79px; color:#2cb6e9; font-weight:bold;}
+#contacts-form input { width:240px; padding:2px 0 2px 3px; border:1px solid #d9d9d9; background:none;}
+#contacts-form textarea { width:790px; height:192px; border:1px solid #d9d9d9; background:none; padding:2px 0 2px 3px; margin-bottom:15px; overflow:auto;}
+#contacts-form .button { width:150px; float:right;}
+
+/*==================list====================*/
+ul { list-style:none;}
+
+.list1 li { padding-bottom:32px; }
+.list1 li p { margin-bottom:6px;}
+.list1 li a { font-weight:bold;}
+
+.list2 { padding:4px 0 10px 0;}
+.list2 li { width:100%; overflow:hidden; padding-bottom:20px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px;}
+.list2 li.last { padding-bottom:0 !important;}
+.list2 li img { float:left; margin-right:4px;}
+.list2 li h5 { padding-top:6px;}
+.list2 li h6 { padding-top:4px;}
+
+.list3 li { list-style-type:disc; list-style-position:inside; padding-bottom:15px;}
+.list3.color1 li { color:#58b01f;}
+.list3.color2 li { color:#ff8002;}
+.list3.color3 li { color:#f32e10;}
+.list3 li span { color:#404141 !important;}
+
+.list4 dt { font-weight:bold; margin-bottom:16px; color:#2cb6e9;}
+.list4 dd { padding-bottom:20px;}
+.list4 li { width:100%; overflow:hidden; padding-bottom:6px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px;}
+
+.list15 li { padding-bottom:32px; }
+.list15 li p { margin-bottom:6px;}
+.list15 li a { font-weight:bold;}
+.list5 li img { float:left; margin-right:8px;}
+
+.list6 { padding:4px 4px 4px 4px;}
+.list6 li { width:100%; overflow:hidden; padding-bottom:6px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px;}
+.list6 li.last { padding-bottom:0 !important;}
+.list6 li img { float:left; margin-right:4px;}
+.list6 li h5 { padding-top:6px;}
+.list6 li h6 { padding-top:4px;}
+
+.carousel { width:100%; overflow:hidden;}
+.carousel li { float:left; margin-right:15px;}
+.carousel li.prev { margin-right:17px; padding-top:74px;}
+.carousel li.next { margin-right:0; padding-top:74px;}
+
+.phones-list li { width:100%; overflow:hidden; padding-bottom:16px;}
+.phones-list li strong { float:left; width:69px; color:#2cb6e9;}
+
+/*==================other====================*/
+.img-indent { margin:0 20px 0 0; float:left;}
+.img-indent.fright { float:right; margin:0 0 0 20px;}
+.img-indent.alt { margin-bottom:30px;}
+.img-box { width:100%; overflow:hidden; padding-bottom:20px;}
+.img-box img { float:left; margin:0 20px 0 0;}
+
+.extra-wrap { overflow:hidden; }
+
+
+/*==================txt, links, lines, titles====================*/
+.verdana14brd { font-weight: bold; color: #880000; font-size: 14px; font-family: Verdana }
+.verdana14bnavy { font-weight: bold; color: navy; font-size: 14px; font-family: Verdana }
+.verdana18 { font-weight: normal; font-size: 18px; font-family: Verdana }
+.verdana18b { font-weight: bold; font-size: 18px; font-family: Verdana }
+.verdana22b { font-weight: bold; font-size: 22px; font-family: Verdana }
+.verdana18brd { font-weight: bold; color: #880000; font-size: 18px; font-family: Verdana }
+.verdana18bnavy { font-weight: bold; color: navy; font-size: 18px; font-family: Verdana }
+.verdana24 { font-weight: normal; font-size: 24px; font-family: Verdana }
+.verdana24b { font-weight: boldl; font-size: 24px; font-family: Verdana }
+.verdana24brd {
+    font-weight: bold;
+    color: #880000;
+    font-size: 24px;
+    font-family: Verdana
+}
+.verdana24blu {
+    font-weight: bold;
+    color: navy;
+    font-size: 24px;
+    font-family: Verdana
+}
+.verdana24b {
+    font-weight: bold;
+    color: black;
+    font-size: 24px;
+    font-family: Verdana
+}
+
+.verdana32b {
+    font-weight: bold;
+    color: black;
+    font-size: 32px;
+    font-family: Verdana
+}
+
+.verdana40b {
+    font-weight: bold;
+    color: black;
+    font-size: 40px;
+    font-family: Verdana
+}
+
+.verdana32blu {
+    font-weight: bold;
+    color: navy;
+    font-size: 32px;
+    font-family: Verdana
+}
+.verdana32brd {
+    font-weight: bold;
+    color: #880000;
+    font-size: 32px;
+    font-family: Verdana
+}
+.verdana48brd {
+    font-weight: bold;
+    color: #880000;
+    font-size: 48px;
+    font-family: Verdana
+}
+
+a {color:#2cb6e9; outline:none; text-decoration:none;}
+a:hover{text-decoration:none;}
+
+h1 { font-size:3em; line-height:1em; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#fff; font-weight:normal; letter-spacing:-1px; width:600px; margin-bottom:42px;}
+h2 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:22px; line-height:1em; font-weight:normal; margin-bottom:23px; color:#515151;}
+h2.alt { letter-spacing:-1px;}
+h3 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:22px; line-height:1em; font-weight:normal; color:#515151; margin-bottom:4px;}
+h4 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px; font-weight:normal; color:#b3b1b1; float:right; }
+h4 strong { font-size:1.1em; color:#2cb6e9; display:block;}
+h5 { font-size:1em; margin-bottom:5px;}
+h6 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:22px; line-height:1em; font-weight:normal; color:#515151; margin-bottom:2px;}
+h7 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px; line-height:1em; font-weight:normal; color:#b3b1b1;}
+h8 { font-size:28px; line-height:1em; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#fff; font-weight:normal; letter-spacing:-1px; width:600px; margin-bottom:12px;}
+h9 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:22px; line-height:1em; font-weight:normal; color:#515151; margin-bottom:4px;}
+h10 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:22px; line-height:1em; font-weight:normal; margin-bottom:23px; color:#515151;}
+.txt1 { color:#2cb6e9;}
+h11 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:22px; line-height:1em; font-weight:normal; margin-bottom:23px; color:#515151;}
+h12 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5em; font-weight:normal; margin-top:23px; color:#b3b1b1;}
+h13 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:22px; line-height:1.5em; font-weight:normal; margin-bottom:23px; color:#515151;}
+h14 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:18px; line-height:1.5em; font-weight:normal; margin-bottom:23px; color:#515151;}
+h15 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:1.25em; color:#333333; line-height:1.1em;}
+h16 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5em; font-weight:normal; margin-top:23px; color:#1d1d1d;}
+
+/*header*/
+#header .row-1 { height:137px; }
+
+#header .logo { float:left; padding:22px 0 0 10px;}
+#header .top-links { float:right; padding:45px 35px 0 0;}
+#header .top-links li { float:left; margin-left:8px;}
+
+#header .nav-box { background:url(images/nav-box-bg.gif) left top repeat-x; width:100%;}
+#header .nav-box .left { background:url(images/nav-box-left.gif) no-repeat left top;}
+#header .nav-box .right { background:url(images/nav-box-right.gif) no-repeat right top; height:47px;}
+
+
+/*-- header navigation --*/
+#header .nav-box ul { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; }
+#header .nav-box ul li { display:inline; }
+#header .nav-box ul li a { display:block; float:left; color:#fff; text-decoration:none; font-size:12px; }
+#header .nav-box ul li a em { display:block; float:left; font-style:normal; background:url(images/divider-left.gif) no-repeat left 12px;}
+#header .nav-box ul li a em b { display:block; float:left; height:47px; line-height:47px; width:130px; text-align:center; background:url(images/divider-right.gif) no-repeat right 10px; cursor:pointer; }
+
+#header .nav-box ul li a:hover { background:url(images/nav-act.gif) left top repeat-x;}
+#header .nav-box ul li a:hover em { background:url(images/divider-left-act.gif) no-repeat left 12px;}
+#header .nav-box ul li a:hover b { background:url(images/divider-right-act.gif) no-repeat right 12px;}
+#header .nav-box ul li a.current { background:url(images/nav-act.gif) left top repeat-x;}
+#header .nav-box ul li a.current em { background:url(images/divider-left-act.gif) no-repeat left 12px;}
+#header .nav-box ul li a.current b { background:url(images/divider-right-act.gif) no-repeat right 12px;}
+
+#header .nav-box ul li a.first em { background:none;}
+#header .nav-box ul li a.first:hover em { background:url(images/nav-left-act.gif) no-repeat left top;}
+#header .nav-box ul li a.first-current { background:url(images/nav-act.gif) left top repeat-x;}
+#header .nav-box ul li a.first-current em { background:url(images/nav-left-act.gif) no-repeat left top !important;}
+#header .nav-box ul li a.first-current b { background:url(images/divider-right-act.gif) no-repeat right 12px;}
+
+#header .nav-box ul li a.last b { background:none; width:160px;}
+#header .nav-box ul li a.last:hover b { background:url(images/nav-right-act.gif) no-repeat right top;}
+
+#header .nav-box ul li a.last-current { background:url(images/nav-act.gif) left top repeat-x; }
+#header .nav-box ul li a.last-current em { background:url(images/divider-left-act.gif) no-repeat left 12px;}
+#header .nav-box ul li a.last-current b { background:url(images/nav-right-act.gif) no-repeat right top !important; width:160px;}
+
+
+
+#tabs .tsabsdiv { width:95%;}
+
+
+/*content*/
+#content { padding:0 0 0px 0; background:#fff;}
+#content .section { padding-bottom:20px;}
+
+#content .button { background:url(images/button-bg.gif) left top repeat-x; display:block; text-align:center; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#fff; text-decoration:none; text-transform:uppercase;}
+#content .button em { display:block; font-style:normal; background:url(images/button-left.gif) no-repeat left top;}
+#content .button em b { display:block; height:35px; line-height:35px; background:url(images/button-right.gif) no-repeat right top; cursor:pointer;}
+#content .button:hover { color:#000;}
+
+#content .button1 { background:url(images/button1-bg.gif) left top repeat-x; display:block; text-align:center; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#fff; text-decoration:none; text-transform:uppercase;}
+#content .button1 em { display:block; font-style:normal; background:url(images/button1-left.gif) no-repeat left top;}
+#content .button1 em b { display:block; height:35px; line-height:35px; background:url(images/button1-right.gif) no-repeat right top; cursor:pointer;}
+#content .button1:hover { color:#000;}
+
+#content .button2 { background:url(images/button2-bg.gif) left top repeat-x; display:block; text-align:center; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#fff; text-decoration:none; text-transform:uppercase;}
+#content .button2 em { display:block; font-style:normal; background:url(images/button2-left.gif) no-repeat left top;}
+#content .button2 em b { display:block; height:35px; line-height:35px; background:url(images/button2-right.gif) no-repeat right top; cursor:pointer;}
+#content .button2:hover { color:#000;}
+
+#content .button3 { background:url(images/button3-bg.gif) left top repeat-x; display:block; text-align:center; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#fff; text-decoration:none; text-transform:uppercase;}
+#content .button3 em { display:block; font-style:normal; background:url(images/button3-left.gif) no-repeat left top;}
+#content .button3 em b { display:block; height:35px; line-height:35px; background:url(images/button3-right.gif) no-repeat right top; cursor:pointer;}
+#content .button3:hover { color:#000;}
+
+.main-banner-big { background:url(images/main-banner-big.jpg) no-repeat left top; width:950px; height:303px; margin-bottom:20px;}
+.main-banner-big .inner { padding:70px 0 0 52px;}
+.main-banner-big .button { background:url(images/button.jpg) no-repeat left top !important; width:170px; height:36px; line-height:32px; float:left; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:1.75em; text-align:center; color:#fff; text-decoration:none; text-transform:none !important;}
+.main-banner-big .button:hover { color:#000;}
+
+.main-banner-small-about { background:url(images/main-banner-small_about.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-about .inner { padding:47px 0 0 52px;}
+.main-banner-small-about h1 { font-size:30px; width:350px;}
+
+.main-banner-small-recap { background:url(images/main-banner-small_recap.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-recap .inner { padding:47px 0 0 52px;}
+.main-banner-small-recap h1 { font-size:30px; width:350px;}
+
+.main-banner-small-pbpubs { background:url(images/main-banner-small_pubs.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-pbpubs .inner { padding:47px 0 0 52px;}
+.main-banner-small-pbpubs h1 { font-size:30px; width:350px;}
+
+.main-banner-small-pbhcap { background:url(images/main-banner-small_hcap.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-pbhcap .inner { padding:47px 0 0 52px;}
+.main-banner-small-pbhcap h1 { font-size:30px; width:350px;}
+
+.main-banner-small-picks { background:url(images/main-banner-small_picks.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-picks .inner { padding:47px 0 0 52px;}
+.main-banner-small-picks h1 { font-size:30px; width:350px;}
+
+
+.main-banner-small-lines { background:url(images/main-banner-small_lines.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-lines .inner { padding:47px 0 0 52px;}
+.main-banner-small-lines h1 { font-size:30px; width:350px;}
+
+.main-banner-small-tlm { background:url(images/main-banner-small_tlm.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-tlms .inner { padding:47px 0 0 52px;}
+.main-banner-small-tlm h1 { font-size:30px; width:350px;}
+
+.main-banner-small-football { background:url(images/main-banner-small_football.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-football .inner { padding:47px 0 0 52px;}
+.main-banner-small-football h1 { font-size:30px; width:350px;}
+
+.main-banner-small-baseball { background:url(images/main-banner-small_baseball.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-baseball .inner { padding:47px 0 0 52px;}
+.main-banner-small-baseball h1 { font-size:30px; width:350px;}
+
+.main-banner-small-basketball { background:url(images/main-banner-small_basketball.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-basketball .inner { padding:47px 0 0 52px;}
+.main-banner-small-basketball h1 { font-size:30px; width:350px;}
+
+.main-banner-small-myplaybook { background:url(images/main-banner-small_myplaybook.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-myplaybook .inner { padding:47px 0 0 52px;}
+.main-banner-small-myplaybook h1 { font-size:30px; width:350px;}
+
+.main-banner-small-bettingtools { background:url(images/main-banner-small_bettingtools.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-bettingtools .inner { padding:47px 0 0 52px;}
+.main-banner-small-bettingtools h1 { font-size:30px; width:350px;}
+
+.main-banner-small-statscenter { background:url(images/main-banner-small_statscenter.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-statscenter .inner { padding:47px 0 0 52px;}
+.main-banner-small-statscenter h1 { font-size:30px; width:350px;}
+
+.main-banner-small-alexsmart { background:url(images/main-banner-small_alex_smart.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-alexsmart .inner { padding:47px 0 0 52px;}
+.main-banner-small-alexsmart h1 { font-size:30px; width:350px;}
+
+.main-banner-small-ralphm { background:url(images/main-banner-small_ralphm.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-ralphm .inner { padding:47px 0 0 52px;}
+.main-banner-small-ralphm h1 { font-size:30px; width:350px;}
+
+.main-banner-small-jryan { background:url(images/main-banner-small_jryan.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-jryan .inner { padding:47px 0 0 52px;}
+.main-banner-small-jryan h1 { font-size:30px; width:350px;}
+
+
+.main-banner-small-marclawrence { background:url(images/main-banner-small_marc_lawrence.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-marclawrence .inner { padding:47px 0 0 52px;}
+.main-banner-small-marclawrence h1 { font-size:30px; width:350px;}
+
+.main-banner-small-billmilton { background:url(images/main-banner-small_bill_milton.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-billmiltone .inner { padding:47px 0 0 52px;}
+.main-banner-small-billmilton h1 { font-size:30px; width:350px;}
+
+.main-banner-small-scottr { background:url(images/main-banner-small_scottr.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-scottr .inner { padding:47px 0 0 52px;}
+.main-banner-small-scottr h1 { font-size:30px; width:350px;}
+
+.main-banner-small-bryanleonard { background:url(images/main-banner-small_bryan_leonard.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-bryanleonard .inner { padding:47px 0 0 52px;}
+.main-banner-small-bryanleonard h1 { font-size:30px; width:350px;}
+
+.main-banner-small-docssports { background:url(images/main-banner-small_docs_sports.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-docssports .inner { padding:47px 0 0 52px;}
+.main-banner-small-docssports h1 { font-size:30px; width:350px;}
+
+.main-banner-small-jamespatrick { background:url(images/main-banner-small_james_patrick.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-jamespatrick .inner { padding:47px 0 0 52px;}
+.main-banner-small-jamespatrick h1 { font-size:30px; width:350px;}
+
+.main-banner-small-jgreb { background:url(images/main-banner-small_jgreb.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-jgreb .inner { padding:47px 0 0 52px;}
+.main-banner-small-jgreb h1 { font-size:30px; width:350px;}
+
+.main-banner-small-jerrylambert { background:url(images/main-banner-small_jerry_lambert.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-jerrylambert .inner { padding:47px 0 0 52px;}
+.main-banner-small-jerrylambert h1 { font-size:30px; width:350px;}
+
+.main-banner-small-jimfeist { background:url(images/main-banner-small_jim_feist.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-jimfeist .inner { padding:47px 0 0 52px;}
+.main-banner-small-jimfeist h1 { font-size:30px; width:350px;}
+
+.main-banner-small-joenelson { background:url(images/main-banner-small_joe_nelson.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-joenelson .inner { padding:47px 0 0 52px;}
+.main-banner-small-joenelson h1 { font-size:30px; width:350px;}
+
+.main-banner-small-jorgegonzalez { background:url(images/main-banner-small_jorge_gonzalez.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-jorgegonzalez .inner { padding:47px 0 0 52px;}
+.main-banner-small-jorgegonzalez h1 { font-size:30px; width:350px;}
+
+.main-banner-small-mattfargo { background:url(images/main-banner-small_matt_fargo.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-mattfargo .inner { padding:47px 0 0 52px;}
+.main-banner-small-mattfargo h1 { font-size:30px; width:350px;}
+
+.main-banner-small-richardwitt { background:url(images/main-banner-small_richard_witt.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-richardwitt .inner { padding:47px 0 0 52px;}
+.main-banner-small-richardwitt h1 { font-size:30px; width:350px;}
+
+.main-banner-small-robvinciletti { background:url(images/main-banner-small_rob_vinciletti.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-robvinciletti .inner { padding:47px 0 0 52px;}
+.main-banner-small-robvinciletti h1 { font-size:30px; width:350px;}
+
+.main-banner-small-robbieganious { background:url(images/main-banner-small_robbie_ganious.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-robbieganious .inner { padding:47px 0 0 52px;}
+.main-banner-small-robbieganious h1 { font-size:30px; width:350px;}
+
+.main-banner-small-rockyatkison { background:url(images/main-banner-small_rocky_atkison.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-rockyatkison .inner { padding:47px 0 0 52px;}
+.main-banner-small-rockyatkison h1 { font-size:30px; width:350px;}
+
+.main-banner-small-brianh { background:url(images/main-banner-small_brianh.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-brianh .inner { padding:47px 0 0 52px;}
+.main-banner-small-brianh h1 { font-size:30px; width:350px;}
+
+.main-banner-small-braddiamond { background:url(images/main-banner-small_brad_diamond.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-braddiamond .inner { padding:47px 0 0 52px;}
+.main-banner-small-braddiamond h1 { font-size:30px; width:350px;}
+
+.main-banner-small-stanlisowski { background:url(images/main-banner-small_stan_lisowski.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-stanlisowski .inner { padding:47px 0 0 52px;}
+.main-banner-small-stanlisowski h1 { font-size:30px; width:350px;}
+
+.main-banner-small-stevemerril { background:url(images/main-banner-small_steve_merril.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-stevemerril .inner { padding:47px 0 0 52px;}
+.main-banner-small-stevemerril h1 { font-size:30px; width:350px;}
+
+.main-banner-small-timnolan { background:url(images/main-banner-small_tim_nolan.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-timnolan .inner { padding:47px 0 0 52px;}
+.main-banner-small-timnolan h1 { font-size:30px; width:350px;}
+
+.main-banner-small-brucemarshall { background:url(images/main-banner-small_bruce_marshall.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-brucemarshall .inner { padding:47px 0 0 52px;}
+.main-banner-small-brucemarshall h1 { font-size:30px; width:350px;}
+
+.main-banner-small-tomfreese { background:url(images/main-banner-small_tom_freese.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-tomfreese .inner { padding:47px 0 0 52px;}
+.main-banner-small-tomfreese h1 { font-size:30px; width:350px;}
+
+.main-banner-small-tomstryker { background:url(images/main-banner-small_tom_stryker.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-tomstryker .inner { padding:47px 0 0 52px;}
+.main-banner-small-tomstryker h1 { font-size:30px; width:350px;}
+
+.main-banner-small-victorking { background:url(images/main-banner-small_victor_king.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-victorking .inner { padding:47px 0 0 52px;}
+.main-banner-small-victorking h1 { font-size:30px; width:350px;}
+
+.main-banner-small-mikemuzyka { background:url(images/main-banner-small_mike_muzyka.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-mikemuzyka .inner { padding:47px 0 0 52px;}
+.main-banner-small-mikemuzyka h1 { font-size:30px; width:350px;}
+
+.main-banner-small-blogs { background:url(images/main-banner-small_blogs.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-blogs .inner { padding:47px 0 0 52px;}
+.main-banner-small-blogs h1 { font-size:30px; width:350px;}
+
+.main-banner-small-memberships { background:url(images/main-banner-small_memberships.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-memberships .inner { padding:47px 0 0 52px;}
+.main-banner-small-memberships h1 { font-size:30px; width:350px;}
+
+.main-banner-small-library { background:url(images/main-banner-small_library.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-library .inner { padding:47px 0 0 52px;}
+.main-banner-small-library h1 { font-size:30px; width:350px;}
+
+.main-banner-small-advantage { background:url(images/main-banner-small_advantage.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-advantage .inner { padding:47px 0 0 52px;}
+.main-banner-small-advantage h1 { font-size:30px; width:350px;}
+
+.main-banner-small-2minute { background:url(images/main-banner-small_2minute.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-2minute .inner { padding:47px 0 0 52px;}
+.main-banner-small-2minute h1 { font-size:30px; width:350px;}
+
+.main-banner-small-linesscores { background:url(images/main-banner-small_lines_scores.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-linesscores .inner { padding:47px 0 0 52px;}
+.main-banner-small-linesscores h1 { font-size:30px; width:350px;}
+
+.main-banner-small-markfanco { background:url(images/main-banner-small_mark_fanco.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-markfanco .inner { padding:47px 0 0 52px;}
+.main-banner-small-markfanco h1 { font-size:30px; width:350px;}
+
+.main-banner-small-joedamico { background:url(images/main-banner-small_joedamico.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-joedamico .inner { padding:47px 0 0 52px;}
+.main-banner-small-joedamico h1 { font-size:30px; width:350px;}
+
+.main-banner-small-tjpemberton { background:url(images/main-banner-small-tjpem.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-tjpemberton .inner { padding:47px 0 0 52px;}
+.main-banner-small-tjpemberton h1 { font-size:30px; width:350px;}
+
+.main-banner-small-chronicles { background:url(images/main-banner-small_chronicles.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-chronicles .inner { padding:47px 0 0 52px;}
+.main-banner-small-chronicles h1 { font-size:30px; width:350px;}
+
+.main-banner-small-pickspolicy { background:url(images/main-banner-small_picks_policy.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-pickspolicy .inner { padding:47px 0 0 52px;}
+.main-banner-small-pickspolicy h1 { font-size:30px; width:350px;}
+
+.main-banner-small-privacypolicy { background:url(images/main-banner-small_privacy_policy.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-privacypolicy .inner { padding:47px 0 0 52px;}
+.main-banner-small-privacypolicy h1 { font-size:30px; width:350px;}
+
+.main-banner-small-psc { background:url(images/main-banner-small_psc.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-psc .inner { padding:47px 0 0 52px;}
+.main-banner-small-psc h1 { font-size:30px; width:350px;}
+
+.main-banner-small-basemember { background:url(images/main-banner-small_basemember.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-basemember .inner { padding:47px 0 0 52px;}
+.main-banner-small-basemember h1 { font-size:30px; width:350px;}
+
+.main-banner-small-danbranham { background:url(images/main-banner-small_danbranham.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-danbranham .inner { padding:47px 0 0 52px;}
+.main-banner-small-danbranham h1 { font-size:30px; width:350px;}
+
+.main-banner-small-socialstudies { background:url(images/main-banner-small_socialstudies.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-socialstudies .inner { padding:47px 0 0 52px;}
+.main-banner-small-socialstudies h1 { font-size:30px; width:350px;}
+
+.main-banner-small-normh { background:url(images/main-banner-small_normh.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-normh .inner { padding:47px 0 0 52px;}
+.main-banner-small-normh h1 { font-size:30px; width:350px;}
+
+.main-banner-small-hammer { background:url(images/main-banner-small-hammer.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-hammer .inner { padding:47px 0 0 52px;}
+.main-banner-small-hammer h1 { font-size:30px; width:350px;}
+
+.main-banner-small-vids { background:url(images/main-banner-small_vids.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-vids .inner { padding:47px 0 0 52px;}
+.main-banner-small-vids h1 { font-size:30px; width:350px;}
+
+.main-banner-small-jzsource { background:url(images/main-banner-small_jzsource.jpg) no-repeat left top; width:950px; height:163px; margin-bottom:20px;}
+.main-banner-small-jzsource .inner { padding:47px 0 0 52px;}
+.main-banner-small-jzsource h1 { font-size:30px; width:350px;}
+
+.main-banner-small-billyc { background:url(images/main-banner-small_billyc.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-billyc .inner { padding:47px 0 0 52px;}
+.main-banner-small-billyc h1 { font-size:30px; width:350px;}
+
+.main-banner-small-performance { background:url(images/main-banner-small_performance.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-performance .inner { padding:47px 0 0 52px;}
+.main-banner-small-performance h1 { font-size:30px; width:350px;}
+
+.main-banner-small-store { background:url(images/main-banner-small_store.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-store .inner { padding:47px 0 0 52px;}
+.main-banner-small-store h1 { font-size:30px; width:350px;}
+
+.main-banner-small-rossbenjamin { background:url(images/main-banner-small_rossbenjamin.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-rossbenjamin .inner { padding:47px 0 0 52px;}
+.main-banner-small-rossbenjamin h1 { font-size:30px; width:350px;}
+
+.main-banner-small-peterbrown { background:url(images/main-banner-small_peter_brown.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-peterbrown .inner { padding:47px 0 0 52px;}
+.main-banner-small-peterbrown h1 { font-size:30px; width:350px;}
+
+.main-banner-small-pb_fb_news { background:url(images/main-banner-small_pb_fb_news.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-pb_fb_news  .inner { padding:47px 0 0 52px;}
+.main-banner-small-pb_fb_news  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-flipbook { background:url(images/main-banner-small_flipbook.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-flipbook  .inner { padding:47px 0 0 52px;}
+.main-banner-small-flipbook  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-midweek { background:url(images/main-banner-small_midweek.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-midweek  .inner { padding:47px 0 0 52px;}
+.main-banner-small-midweek  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-tipsheet { background:url(images/main-banner-small_tipsheet.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-tipsheet  .inner { padding:47px 0 0 52px;}
+.main-banner-small-tipsheet  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-vwg { background:url(images/main-banner-small_vegaswiseguys.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-vwg  .inner { padding:47px 0 0 52px;}
+.main-banner-small-vwg  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-sammyj { background:url(images/main-banner-small_sammyj.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-sammyj  .inner { padding:47px 0 0 52px;}
+.main-banner-small-sammyj  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-tonyg { background:url(images/main-banner-small_tonyg.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-tonyg  .inner { padding:47px 0 0 52px;}
+.main-banner-small-tonyg  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-khunter { background:url(images/main-banner-small_khunter.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-khunter  .inner { padding:47px 0 0 52px;}
+.main-banner-small-khunter  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-bshively { background:url(images/main-banner-small_bshively.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-bshively  .inner { padding:47px 0 0 52px;}
+.main-banner-small-bshively  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-chirimbes { background:url(images/main-banner-small_chirimbes.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-chirimbes  .inner { padding:47px 0 0 52px;}
+.main-banner-small-chirimbes  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-jboyd { background:url(images/main-banner-small_jboyd.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-jboyd  .inner { padding:47px 0 0 52px;}
+.main-banner-small-jboyd  h1 { font-size:30px; width:350px;}
+
+.main-banner-small-dk { background:url(Playbook-DraftKings/main-banner-small_dk.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-dk .inner { padding:47px 0 0 52px;}
+.main-banner-small-dk h1 { font-size:30px; width:350px;}
+
+.main-banner-small-dfs { background:url(Playbook-DraftKings/main-banner-small_dfs.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-dfs .inner { padding:47px 0 0 52px;}
+.main-banner-small-dfs h1 { font-size:30px; width:350px;}
+
+.main-banner-small-mikea { background:url(images/main-banner-small_mikea.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-mikea .inner { padding:47px 0 0 52px;}
+.main-banner-small-mikea h1 { font-size:30px; width:350px;}
+
+.main-banner-small-steam { background:url(images/main-banner-small_steam.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-steam .inner { padding:47px 0 0 52px;}
+.main-banner-small-steam h1 { font-size:30px; width:350px;}
+
+.main-banner-small-bkannon { background:url(images/main-banner-small_bkannon.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-bkannon .inner { padding:47px 0 0 52px;}
+.main-banner-small-bkannon h1 { font-size:30px; width:350px;}
+
+.main-banner-small-games { background:url(http://www.playbook.com/images/main-banner-small_games.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-games .inner { padding:47px 0 0 52px;}
+.main-banner-small-games h1 { font-size:30px; width:350px;}
+
+.main-banner-small-dougup { background:url(/images/main-banner-small_dougup.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-dougup .inner { padding:47px 0 0 52px;}
+.main-banner-small-dougup h1 { font-size:30px; width:350px;}
+
+.main-banner-small-tokens { background:url(/images/main-banner-small_tokens.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-tokens .inner { padding:47px 0 0 52px;}
+.main-banner-small-tokens h1 { font-size:30px; width:350px;}
+
+
+
+
+/*extra-content*/
+#extra-content { background:#ededed; border-bottom:1px solid #fff; padding:20px 0 29px 0;}
+#extra-content .section { padding-bottom:20px;}
+
+#extra-content .box { background:url(images/box1-bg.gif) left top repeat-x #fff; width:100%;}
+#extra-content .box .border-top {background:url(images/border.gif) repeat-x top;}
+#extra-content .box .border-bot {background:url(images/border.gif) repeat-x bottom;}
+#extra-content .box .border-left {background:url(images/border.gif) repeat-y left;}
+#extra-content .box .border-right {background:url(images/border.gif) repeat-y right;}
+#extra-content .box .left-top-corner {background:url(images/left-top-corner1.gif) no-repeat left top;}
+#extra-content .box .right-top-corner {background:url(images/right-top-corner1.gif) no-repeat right top;}
+#extra-content .box .left-bot-corner {background:url(images/left-bot-corner1.gif) no-repeat left bottom; width:100%;}
+#extra-content .box .right-bot-corner {background:url(images/right-bot-corner1.gif) no-repeat right bottom; }
+
+
+/*==================boxes====================*/
+.box { background:url(images/box-bg.gif) left top repeat-x; width:100%;}
+.box .border-top {background:url(images/border.gif) repeat-x top;}
+.box .border-bot {background:url(images/border.gif) repeat-x bottom;}
+.box .border-left {background:url(images/border.gif) repeat-y left;}
+.box .border-right {background:url(images/border.gif) repeat-y right;}
+.box .left-top-corner {background:url(images/left-top-corner.gif) no-repeat left top;}
+.box .right-top-corner {background:url(images/right-top-corner.gif) no-repeat right top;}
+.box .left-bot-corner {background:url(images/left-bot-corner.gif) no-repeat left bottom; width:100%;}
+.box .right-bot-corner {background:url(images/right-bot-corner.gif) no-repeat right bottom; }
+.box .inner { padding:27px 35px 30px 34px;}
+.box .inner2 { padding:8px 5px 10px 10px;}
+.box .inner3 { padding:0px 0px 0px 0px;}
+
+.box1 { background:#ededed; width:100%;}
+.box1 .border-top {background:url(images/border-top.gif) repeat-x top;}
+.box1 .border-bot {background:url(images/border-bot.gif) repeat-x bottom;}
+.box1 .border-left {background:url(images/border-left.gif) repeat-y left;}
+.box1 .border-right {background:url(images/border-right.gif) repeat-y right;}
+.box1 .left-top-corner {background:url(images/left-top-corner2.gif) no-repeat left top;}
+.box1 .right-top-corner {background:url(images/right-top-corner2.gif) no-repeat right top;}
+.box1 .left-bot-corner {background:url(images/left-bot-corner2.gif) no-repeat left bottom; width:100%;}
+.box1 .right-bot-corner {background:url(images/right-bot-corner2.gif) no-repeat right bottom; }
+.box1 .inner { padding:27px 35px 30px 34px;}
+
+.dept-list { float:left;}
+.dept-list dd { clear:both; text-align:right;}
+.dept-list dd span { float:left; padding-right:25px;}
+.dept-list dd p { text-align:left;}
+
+
+
+
+
+
+/*footer*/
+#footer { color:#fff; padding:7px 0 10px 0;}
+
+#footer .nav { text-align:center; padding-bottom:10px;}
+#footer .nav li { display:inline;}
+#footer .nav li a { color:#fff; padding:0 5px 0 9px;}
+
+#footer .fleft { padding:0 0 0 44px;}
+#footer .fright { padding:0 44px 0 0;}
+
+/*==========================================*/
+
+#content .inner_copy {border:0;color:#f00;float:left;width:50%!important;margin:-202px 0 0 0;overflow:hidden;line-height:0;padding:0;font-size:12px}

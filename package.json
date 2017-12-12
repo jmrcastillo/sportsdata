@@ -14,6 +14,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "base-64": "^0.1.0",
+    "crypto-js": "^3.1.9-1",
     "iconv-lite": "^0.4.15",
     "immutability-helper": "^2.1.1",
     "jquery": "^3.1.1",
@@ -26,13 +27,18 @@
     "react-infinity-menu": "^3.0.2",
     "react-router": "^3.0.2",
     "react-ux-password-field": "^0.9.12",
+    "urlsafe-base64": "^1.0.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+
+   },
+
+
   "scripts": {
-    "start": "webpack-dev-server --host=localhost --port=1029  --content-base src --inline --hot",
-    "dev": "webpack-dev-server --host=cubepwa.dtison.net --port=1025  --content-base src --inline --hot",
+    "start": "webpack-dev-server --host=localhost --port=1039  --content-base src --inline --hot",
+    "dev": "webpack-dev-server --host=cubepwa.dtison.net --port=1035  --content-base src --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 
 import Layout from "./components/Layout";  // Nav & Footer?
 
-import Cubemain from "./pages/Cubemain";
+import Picksmain from "./pages/Picksmain";
 import ExpertPicks from "./pages/ExpertPicks";
 
 import Publications from "./pages/Publications";
@@ -24,46 +24,13 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 
-/*
-class CubeApp extends React.Component {
-
-	render() {
-		const color = {color: "green"};
-		return (
-			<span style={color}>
-			{this.props.text}
-			</span>
-		);
-	}
-}
 
 
-
-var App = React.createClass({
-	render: function() {
-		return (
-			<div>
-				<h1>Simple SPA</h1>
-				<ul className="header">
-					<li>Home</li>
-					<li>Stuff</li>
-					<li>Contact</li>
-				</ul>
-				<div className="content">
-
-				</div>
-			</div>
-		)
-	}
-});*/
-
-
-
-const cubeapp = document.getElementById('cubeapp');
+const picksapp = document.getElementById('picksapp');
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={Layout}>
-			<IndexRoute component={Cubemain}></IndexRoute>
+			<IndexRoute component={Picksmain}></IndexRoute>
 {/*
 			<Route path="archives(/:article)" name="archives" component={Archives}></Route>
 
@@ -94,7 +61,40 @@ ReactDOM.render(
 
 		</Route>
 	</Router>,
-	cubeapp);
+	picksapp);
 
 
 
+
+/*
+ class CubeApp extends React.Component {
+
+ render() {
+ const color = {color: "green"};
+ return (
+ <span style={color}>
+ {this.props.text}
+ </span>
+ );
+ }
+ }
+
+
+
+ var App = React.createClass({
+ render: function() {
+ return (
+ <div>
+ <h1>Simple SPA</h1>
+ <ul className="header">
+ <li>Home</li>
+ <li>Stuff</li>
+ <li>Contact</li>
+ </ul>
+ <div className="content">
+
+ </div>
+ </div>
+ )
+ }
+ });*/
