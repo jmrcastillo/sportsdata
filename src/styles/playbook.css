@@ -156,6 +156,8 @@ ul { list-style:none;}
     font-size: 48px;
     font-family: Verdana
 }
+.trebuchet14B { font-weight: bold; font-size: 14px; font-family: trebuchet }
+.trebuchet12B { font-weight: bold; font-size: 12px; font-family: trebuchet }
 
 a {color:#2cb6e9; outline:none; text-decoration:none;}
 a:hover{text-decoration:none;}
