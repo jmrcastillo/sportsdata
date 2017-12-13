@@ -163,7 +163,8 @@ export default class Header extends React.Component {
 
 	render() {
 		return (
-			<InfinityMenu
+		    <div>
+{/*			<InfinityMenu
 				tree={this.state.schema}
                 disableDefaultHeaderContent={true}
                 //	onNodeMouseClick={this.onNodeMouseClick.bind(this)}
@@ -181,8 +182,8 @@ export default class Header extends React.Component {
 
 				}}
 			//	maxLeaves={2}
-			/>
-
+			/>*/}
+            </div>
 
 		);
 	}
