@@ -8,6 +8,7 @@ input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;
 .row-store { background-color:#CCC; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px; height:24px; padding-top:10px;}
 
 
+
 .fleft { float:left;}
 .fright { float:right;}
 .clear { clear:both;}
@@ -16,17 +17,7 @@ input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;
 .aligncenter { text-align:center;}
 
 .wrapper { width:100%; overflow:hidden;}
-.container { width:100%;}
-.container2 { width:100%;}
-.container3 { width:100%;}
-.container4 { width:97%; margin-left:10px;}
-.container5 { width:97%; margin-left:10px; padding:2px;}
-.container6 { width:97%; margin-left:4px;}
-.container7 { width:99%; margin-left:4px;}
-.container8 { width:100%; margin-left:4px;}
-.container9 { width:98%;}
-.container10 { width:70%; margin-left:80px}
-p { margin-bottom:16px;}
+
 
 /*==================forms====================*/
 input, select { vertical-align:middle; font-weight:normal;}
@@ -156,8 +147,10 @@ ul { list-style:none;}
     font-size: 48px;
     font-family: Verdana
 }
-.trebuchet14B { font-weight: bold; font-size: 14px; font-family: trebuchet }
-.trebuchet12B { font-weight: bold; font-size: 12px; font-family: trebuchet }
+.trebuchet12 { font-weight: normal; font-size: 12px; font-family: trebuchet ms }
+.trebuchet12b { font-weight: bold; font-size: 12px; font-family: trebuchet ms }
+.trebuchet13 { font-weight: normal; font-size: 13px; font-family: trebuchet ms }
+.trebuchet14 { font-style: normal; font-size: 14px; font-family: trebuchet ms; text-decoration: none }
 
 a {color:#2cb6e9; outline:none; text-decoration:none;}
 a:hover{text-decoration:none;}
@@ -602,6 +595,110 @@ h16 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:16px; 
 .main-banner-small-tokens h1 { font-size:30px; width:350px;}
 
 
+body {background:url(http://www.playbook.com/images/header-bg.gif) left top repeat-x #fff;}
+.container {width:950px; margin:0 auto; }
+.container2 {
+    width:647px;
+    margin:0 auto;
+    float: left;
+}
+.container3 {
+    width:350px;
+    margin:0 auto;
+    float: right;
+}
+
+.container4 {
+    width:1000px;
+    margin:0 auto;
+
+}
+
+
+
+#header {height:134px; background:url(http://www.playbook.com/images/header-bg.gif) left top repeat-x #fff; }
+#header, #content, #extra-content, #footer { font-size:0.75em;}
+
+.col-1, .col-2, .col-3,.col-4, .col-5, col-8, .col-9 { float:left;}
+
+/*======= index.html =======*/
+#page1 #content .col-1 {width:302px; margin-right:22px;}
+#page1 #content .col-2 {width:302px; margin-right:22px;}
+#page1 #content .col-3 {width:302px;}
+#page1 #content .col-4 {
+    width:625px;
+    margin-right:22px;
+}
+#page1 #content .col-5 {
+    width:302px;
+}
+
+#page1 #content .col-5a {
+    width:342px;
+    float:right;
+    margin-left:12px;
+}
+
+
+
+#page1 #content .col-6 {
+    width:625px;
+    margin-right:2px;
+}
+#page1 #content .col-7 {
+    width:625px;
+    margin-right:12px;
+
+}
+
+#page1 #content .col-8 {
+    width:675px; float:right;margin-left:22px;
+}
+
+#page1 #content .col-9 {
+    width:675px;
+    margin-right:12px;
+}
+
+#page1 #content .col-9 {
+    width:685px;
+    margin-right:4px;
+}
+
+#page1 #content .col-10 {
+    width:312px;
+
+}
+
+#page1 #extra-content .col-1 {width:464px; margin-right:22px;}
+#page1 #extra-content .col-2 {width:464px;}
+
+#page2 #content .col-1 {width:302px; margin-right:22px;}
+#page2 #content .col-2 {width:302px; margin-right:22px;}
+#page2 #content .col-3 {width:302px;}
+#page2 #extra-content .col-1 {width:464px; margin-right:22px;}
+#page2 #extra-content .col-2 {width:464px;}
+
+
+/*======= index-2.html =======*/
+#page3 #content .col-1 {width:302px; margin-right:22px;}
+#page3 #content .col-2 {width:302px; margin-right:22px;}
+#page3 #content .col-3 {width:302px;}
+
+/*======= index-4.html =======*/
+#page5 #content .col-1 {width:302px; margin-right:22px;}
+#page5 #content .col-2 {width:626px;}
+
+/*======= index-5.html =======*/
+#page6 #content .col-1 {width:302px; margin-right:22px;}
+#page6 #content .col-2 {width:302px; margin-right:22px;}
+#page6 #content .col-3 {width:302px;}
+
+
+/*=========================*/
+
+
+#footer {background:url(http://www.playbook.com/images/footer-bg.gif) left top repeat-x #717171;}
 
 
 /*extra-content*/

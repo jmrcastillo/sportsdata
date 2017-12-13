@@ -114,7 +114,7 @@ export default class PickList extends React.Component {
                                                 <td bgcolor="white">&nbsp;</td>
                                             </tr>
                                             <tr>
-                                                <td bgcolor="white"><div align="left" class="trebuchet12B">{pick.title}</div></td>
+                                                <td bgcolor="white"><div align="left" class="trebuchet13"><b>{pick.title}</b></div></td>
                                             </tr>
                                             </tbody>
                                         </table></td>
@@ -129,7 +129,7 @@ export default class PickList extends React.Component {
                                             <tr>
                                                 <td width="85" valign="middle"><img src="images/buynow.png" width="85"  border="0" align="left"></img></td>
 
-                                                <td valign="middle">Pay After Win: {Money.format ('USD', pick.price)}</td>
+                                                <td valign="middle" class="trebuchet13">Pay After Win: {Money.format ('USD', pick.price)}</td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp;</td>
@@ -137,7 +137,7 @@ export default class PickList extends React.Component {
                                             </tr>
                                             <tr>
                                                 <td><img src="images/buynow.png" width="85" border="0" align="left"></img></td>
-                                                <td valign="middle">Guaranteed Pre-Paid:  {Money.format ('USD', (Math.floor(pick.price * .6)))}</td>
+                                                <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:  {Money.format ('USD', (Math.floor(pick.price * .6)))}</td>
                                             </tr>
                                                 </tbody>
                                         </table>
@@ -147,7 +147,7 @@ export default class PickList extends React.Component {
                                             <table width="100%" border="0" cellPadding="0" cellSpacing="0">
                                             <tbody>
                                             <tr>
-                                                <td bgcolor="white">
+                                                <td bgcolor="white" class="trebuchet13">
                                                    <div align="left" dangerouslySetInnerHTML={
                                                     { __html: pick.teaser }
                                                 } />
