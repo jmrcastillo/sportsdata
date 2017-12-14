@@ -91,24 +91,117 @@ export default class PickList extends React.Component {
 
         return (
             <div>
-                PICKS LIST
-                <table>
-                <tbody>
-                {this.state.picks.map((pick, i) => {
-                    return (
-                        <tr key={i}>
-                            <td>
-                            <Pick pick={pick} />
-                            </td>
-                        </tr>
+                <div className="col-9a maxheight">
+                    {/*<!-- box begin -->*/}
+                    <div className="box maxheight">
+                        <div className="border-top maxheight">
+                            <div className="border-right maxheight">
+                                <div className="border-bot maxheight">
+                                    <div className="border-left maxheight">
+                                        <div className="left-top-corner maxheight">
+                                            <div className="right-top-corner maxheight">
+                                                <div className="right-bot-corner maxheight">
+                                                    <div className="left-bot-corner maxheight">
+                                                        <div className="inner2">
+                                                            <br />
+                                                            <h3>Guaranteed Experts Picks</h3><h4>You Win Or You Don't Pay - It's That Simple</h4>
+                                                            <h5>Red Hot Experts Best Bets</h5>
+                                                            <div align="center">
+                                                                <table width="640" border="0" cellSpacing="0" cellPadding="0">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td height="40" align="center" bgcolor="#000000">
+                                                                        <table width="630" border="0" cellSpacing="0" cellPadding="0">
+                                                                        <tbody>
+                                                                        <tr>
+                                                                        <td align="right">
+{/*                                                                                <script type="text/javascript" language="javascript"><!--
+function leapto(form)  {
+var myindex=form.dest.selectedIndex
+window.location=(form.dest.options[myindex].value);
+
+}
+// -->
+                                                                            </script>*/}
+                                                                                [Script for dropdown]
+                                                                                <form name="myform1" id="myform1">
+                                                                                    <select name="dest" size="1" onchange="leapto(document.myform1);">
+                                                                                        <option value="">Sort By</option>
+
+                                                                                        <option value="../football/issue12/newsletter.pdf">Issue 12</option>
+                                                                                        <option value="../football/issue11/newsletter.pdf">Issue 11</option>
+                                                                                        <option value="../football/issue10/newsletter.pdf">Issue 10</option>
+                                                                                        <option value="../football/issue9/newsletter.pdf">Issue 9</option>
+                                                                                        <option value="../football/issue8/newsletter.pdf">Issue 8</option>
+                                                                                        <option value="../football/issue7/newsletter.pdf">Issue 7</option>
+                                                                                        <option value="../football/issue6/newsletter.pdf">Issue 6</option>
+                                                                                        <option value="../football/issue5/newsletter.pdf">Issue 5</option>
+                                                                                        <option value="../football/issue4/newsletter.pdf">Issue 4</option>
+                                                                                        <option value="../football/issue3/newsletter.pdf">Issue 3</option>
+                                                                                        <option value="../football/issue2/newsletter.pdf">Issue 2</option>
+                                                                                        <option value="../football/pre/newsletter.pdf">Preseason</option>
+                                                                                    </select>
+                                                                                </form></td>
+                                                                        </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" bgcolor="#000000"><table width="630" border="0" cellSpacing="0" cellPadding="0">
+                                                                        <tbody>
+                                                                        {/*<!-- Start sports red bar-->*/}
+                                                                        <tr>
+                                                                            <td height="28" bgcolor="#990000">&nbsp;&nbsp;<span className="trebuchet14B"><font color="white">NBA</font></span></td>
+                                                                        </tr>
+                                                                        {/*<!-- End sports red bar -->*/}
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                        <table>
+                                                                            <tbody>
+                                                                            {this.state.picks.map((pick, i) => {
+                                                                                return (
+                                                                                    <tr key={i}>
+                                                                                        <td>
+                                                                                            <Pick pick={pick} />
+                                                                                        </td>
+                                                                                    </tr>
 
 
-                    )
-                })}
+                                                                                )
+                                                                            })}
 
-                </tbody>
-                </table>
-                END PICKS LIST
+                                                                            </tbody>
+                                                                        </table>
+
+
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td bgcolor="#000000">&nbsp;</td>
+                                                                </tr>
+                                                                </tbody>
+                                                                </table>
+                                                                <img src="http://www.playbook.com/images/grey_line3.gif" alt="" width="550" height="12" />
+                                                            </div>
+                                                            <br />
+                                                            <br />
+                                                            <br />
+                                                        </div><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/*<!-- box end -->*/}
+                </div>
+
+
 
             </div>
 

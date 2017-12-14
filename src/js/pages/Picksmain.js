@@ -66,9 +66,12 @@ export default class Picksmain extends React.Component {
 
 			<main className="main">
 			<div className="container">
-				<span className="item active"></span>
-				-- PICKS FRAGMENTS HERE --
-<br /><br />
+			<span className="item active">
+
+			</span>
+			<br />
+			<br />
+
 
 				<PickList/>
 

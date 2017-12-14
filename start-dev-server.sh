@@ -1,3 +1,3 @@
 #!/bin/bash
 
-screen -dmS ORION npm start
+screen -dmS PICKS npm start
