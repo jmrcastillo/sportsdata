@@ -89,6 +89,15 @@ export default class PickList extends React.Component {
 
     render() {
 
+        const sportBoxStyle = {
+            backgroundColor:'#990000',
+
+        };
+        const pickBoxStyle = {
+            backgroundColor:'#000000',
+
+        };
+
         return (
             <div>
                 <div className="col-9a maxheight">
@@ -110,7 +119,7 @@ export default class PickList extends React.Component {
                                                                 <table width="640" border="0" cellSpacing="0" cellPadding="0">
                                                                 <tbody>
                                                                 <tr>
-                                                                    <td height="40" align="center" bgcolor="#000000">
+                                                                    <td height="40" align="center" style={pickBoxStyle}>
                                                                         <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                         <tbody>
                                                                         <tr>
@@ -148,11 +157,12 @@ window.location=(form.dest.options[myindex].value);
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td align="center" bgcolor="#000000"><table width="630" border="0" cellSpacing="0" cellPadding="0">
+                                                                    <td align="center" style={sportBoxStyle}>
+                                                                        <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                         <tbody>
                                                                         {/*<!-- Start sports red bar-->*/}
                                                                         <tr>
-                                                                            <td height="28" bgcolor="#990000">&nbsp;&nbsp;<span className="trebuchet14B"><font color="white">NBA</font></span></td>
+                                                                            <td height="28" style={sportBoxStyle}>&nbsp;&nbsp;<span className="trebuchet14B"><font color="white">NBA</font></span></td>
                                                                         </tr>
                                                                         {/*<!-- End sports red bar -->*/}
                                                                         </tbody>
@@ -162,7 +172,7 @@ window.location=(form.dest.options[myindex].value);
                                                                             <tbody>
                                                                             {this.state.picks.map((pick, i) => {
                                                                                 return (
-                                                                                    <tr key={i}>
+                                                                                    <tr key={i} >
                                                                                         <td>
                                                                                             <Pick pick={pick} />
                                                                                         </td>
@@ -179,7 +189,7 @@ window.location=(form.dest.options[myindex].value);
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td bgcolor="#000000">&nbsp;</td>
+                                                                    <td backgroundColor="black">&nbsp;</td>
                                                                 </tr>
                                                                 </tbody>
                                                                 </table>

@@ -22,20 +22,28 @@ export default class Pick extends React.Component {
 
     render() {
 
+        const sportBoxStyle = {
+            backgroundColor:'#990000',
+        };
+        const pickBoxStyle = {
+            backgroundColor:'#ffffff',
+
+        };
+
         return (
 
 
-            <table width="630" border="0" cellSpacing="2" cellPadding="2" bgcolor="#FFFFFF">
+            <table width="630" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
                 <tbody>
                 <tr>
                     <td colSpan="3">
                         <table width="100%" border="0" cellPadding="0" cellSpacing="0">
                             <tbody>
                             <tr>
-                                <td bgcolor="white">&nbsp;</td>
+                                <td style={pickBoxStyle}>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td bgcolor="white"><div align="left" class="trebuchet13"><b>{this.props.pick.title}</b></div></td>
+                                <td style={pickBoxStyle}><div align="left" class="trebuchet13"><b>{this.props.pick.title}</b></div></td>
                             </tr>
                             </tbody>
                         </table></td>
@@ -68,7 +76,7 @@ export default class Pick extends React.Component {
                         <table width="100%" border="0" cellPadding="0" cellSpacing="0">
                             <tbody>
                             <tr>
-                                <td bgcolor="white" class="trebuchet13">
+                                <td style={pickBoxStyle} class="trebuchet13">
                                     <div align="left" dangerouslySetInnerHTML={
                                     { __html: this.props.pick.teaser }
                                     } />

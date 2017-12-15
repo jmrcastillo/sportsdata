@@ -129,7 +129,7 @@ input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;
 #footer {background:url(http://www.playbook.com/images/footer-bg.gif) left top repeat-x #717171;}
 
 /*==================txt, links, lines, titles====================*/
-.trebuchet13 { font-weight: normal; color: #000000; font-size: 14px; font-family: trebuchet ms }
+.trebuchet13 { font-weight: normal; color: #000000; font-size: 13px; font-family: trebuchet ms }
 .verdana14brd { font-weight: bold; color: #880000; font-size: 14px; font-family: Verdana }
 .verdana14bnavy { font-weight: bold; color: navy; font-size: 14px; font-family: Verdana }
 .verdana18 { font-weight: normal; font-size: 18px; font-family: Verdana }
@@ -213,3 +213,33 @@ h13 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:22px; 
 h14 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:18px; line-height:1.5em; font-weight:normal; margin-bottom:23px; color:#515151;}
 h15 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:1.25em; color:#333333; line-height:1.1em;}
 h16 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5em; font-weight:normal; margin-top:23px; color:#1d1d1d;}
+
+/*==================boxes====================*/
+.box { background:url(http://www.playbook.com/images/box-bg.gif) left top repeat-x; width:100%;}
+.box .border-top {background:url(http://www.playbook.com/images/border.gif) repeat-x top;}
+.box .border-bot {background:url(http://www.playbook.com/images/border.gif) repeat-x bottom;}
+.box .border-left {background:url(http://www.playbook.com/images/border.gif) repeat-y left;}
+.box .border-right {background:url(http://www.playbook.com/images/border.gif) repeat-y right;}
+.box .left-top-corner {background:url(http://www.playbook.com/images/left-top-corner.gif) no-repeat left top;}
+.box .right-top-corner {background:url(http://www.playbook.com/images/right-top-corner.gif) no-repeat right top;}
+.box .left-bot-corner {background:url(http://www.playbook.com/images/left-bot-corner.gif) no-repeat left bottom; width:100%;}
+.box .right-bot-corner {background:url(http://www.playbook.com/images/right-bot-corner.gif) no-repeat right bottom; }
+.box .inner { padding:27px 35px 30px 34px;}
+.box .inner2 { padding:8px 5px 10px 10px;}
+.box .inner3 { padding:0px 0px 0px 0px;}
+
+.box1 { background:#ededed; width:100%;}
+.box1 .border-top {background:url(http://www.playbook.com/images/border-top.gif) repeat-x top;}
+.box1 .border-bot {background:url(http://www.playbook.com/images/border-bot.gif) repeat-x bottom;}
+.box1 .border-left {background:url(http://www.playbook.com/images/border-left.gif) repeat-y left;}
+.box1 .border-right {background:url(http://www.playbook.com/images/border-right.gif) repeat-y right;}
+.box1 .left-top-corner {background:url(http://www.playbook.com/images/left-top-corner2.gif) no-repeat left top;}
+.box1 .right-top-corner {background:url(http://www.playbook.com/images/right-top-corner2.gif) no-repeat right top;}
+.box1 .left-bot-corner {background:url(http://www.playbook.com/images/left-bot-corner2.gif) no-repeat left bottom; width:100%;}
+.box1 .right-bot-corner {background:url(http://www.playbook.com/images/right-bot-corner2.gif) no-repeat right bottom; }
+.box1 .inner { padding:27px 35px 30px 34px;}
+
+.dept-list { float:left;}
+.dept-list dd { clear:both; text-align:right;}
+.dept-list dd span { float:left; padding-right:25px;}
+.dept-list dd p { text-align:left;}
