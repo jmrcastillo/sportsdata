@@ -5,6 +5,7 @@
 import React from "react";
 import PicksAPI from "../lib/PicksAPI";
 import Pick from "../components/Pick";
+import Moment from "moment";
 
 export default class PickList extends React.Component {
 
@@ -22,80 +23,67 @@ export default class PickList extends React.Component {
     }
     componentDidMount() {
 
-//        PicksAPI.loadServerTime().done((time)=>console.log("PROMISED time return: ", time));
+        this.loadPicks(this);
+
+     //   setInterval(this.loadPicks, 30000, this);
+
+        // Todo: setInterval for every minute:
+        /*
+            pickExpirationUTC - Coming from server as UTC date/time.
+            currentDateUTC - current local system time adjusted to UTC date / time
+            diff - # of minutes remaining to expiration time that came from server
+
+            For each pick we can calculate the current minutes remaining until expired.
+            If <= 2 mins, drop the pick off the list
+
+
+        */
+    }
+
+
+    loadPicks(self) {
+
         PicksAPI.loadPicks().done((picks)=>{
-        //        console.log("PROMISED picks return: ", picks)
-                this.setState({picks:picks})
+                self.setState({picks:picks})
             }
         );
+        var d = new Date();
+        const moment = new Moment();
+//2017-12-16 00:05
+
+      //  console.log("Picks loaded... UTC epoch date: ", Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), d.getMinutes(), d.getSeconds()));
+
+
+        var date1 = new Moment('2016-10-08 10:29:23');
+        var date2 = new Moment('2016-10-08 11:06:55');
+        var diff = date2.diff(date1, 'minutes');
+
+     //   console.log ("MOMENT", moment, moment.utc(), diff);
+
+
+
+        const pickExpirationUTC = Moment('2017-12-16 00:05');
+
+
+        //const currentDateUTC = Moment().utc();
+        //const other = Moment.utc().toDate()
+        const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
+
+
+        console.log ("pickExpirationUTC ", pickExpirationUTC, "currentDateUTC", currentDateUTC, "diff: ", pickExpirationUTC.diff(currentDateUTC, 'minutes'), currentDateUTC);
+
+
 
     }
-
-  /*  loadPicks() {
-        let url =  "https://www.playbook.com/picks-api1/get-server-time";
-        console.log ("Loading url", url);
-
-        var time = 0;
-        $.ajax({
-            url: url,
-            dataType: 'json',
-            type: 'GET',
-            cache: false,
-            success: (result) => {
-                time = result;
-                //	this.setState({handicappers: Object.values(handicappers)});
-                console.log ("Got server time", time);
-            },
-            error: (xhr, status, err) => {
-                console.error(url, status, err.toString());
-            }
-        }).then(() => console.log('AFTER DONE', time));
-        return time;
-    }
-*/
-
-/*    loadPicks() {
-        let url =  `https://www.playbook.com/cube-api3/experts/${this.state.ecapper_id}/picks`;
-        //	console.log ("Trying to load url", url);
-
-        $.ajax({
-            //url: this.props.url,
-            url: url,
-            dataType: 'json',
-            type: 'GET',
-            cache: false,
-            success: (picks) => {
-                const paidPicks = Object.values(picks).filter(pick=> {
-                    if (pick.price > 0) {
-                        return pick;
-                    }
-                });
-                this.setState({picks: paidPicks});
-                this.setState ({teaserEnabled: paidPicks.map((pick) => {return false})});
-
-                console.log ("Got picks ", paidPicks);
-            },
-            error: (xhr, status, err) => {
-                console.error(url, status, err.toString());
-            }
-        });
-    }*/
-
-    /*	handleClick(e) {
-     console.log ("CLICKED");
-     debugger;
-     this.context.router.transitionTo('/');
-     }*/
+//.getUnixTime()
 
     render() {
 
-        const sportBoxStyle = {
+        const sportBox = {
             backgroundColor:'#990000',
-
         };
-        const pickBoxStyle = {
+        const pickBox = {
             backgroundColor:'#000000',
-
         };
 
         return (
@@ -119,7 +107,7 @@ export default class PickList extends React.Component {
                                                                 <table width="640" border="0" cellSpacing="0" cellPadding="0">
                                                                 <tbody>
                                                                 <tr>
-                                                                    <td height="40" align="center" style={pickBoxStyle}>
+                                                                    <td height="40" align="center" style={pickBox}>
                                                                         <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                         <tbody>
                                                                         <tr>
@@ -157,12 +145,12 @@ window.location=(form.dest.options[myindex].value);
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td align="center" style={sportBoxStyle}>
+                                                                    <td align="center" style={sportBox}>
                                                                         <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                         <tbody>
                                                                         {/*<!-- Start sports red bar-->*/}
                                                                         <tr>
-                                                                            <td height="28" style={sportBoxStyle}>&nbsp;&nbsp;<span className="trebuchet14B"><font color="white">NBA</font></span></td>
+                                                                            <td height="28" style={sportBox}>&nbsp;&nbsp;<span className="trebuchet14B"><font color="white">NBA</font></span></td>
                                                                         </tr>
                                                                         {/*<!-- End sports red bar -->*/}
                                                                         </tbody>
@@ -219,64 +207,65 @@ window.location=(form.dest.options[myindex].value);
         );
     }
 }
+//        PicksAPI.loadServerTime().done((time)=>console.log("PROMISED time return: ", time));
+//        console.log("PROMISED picks return: ", picks)
 
 
-/*
- <div></div>
+/*  loadPicks() {
+ let url =  "https://www.playbook.com/picks-api1/get-server-time";
+ console.log ("Loading url", url);
 
-<table width="100%" border="0" cellSpacing="0" cellPadding="0">
-    <tbody>
-    {this.state.picks.map((pick, i) => {
-        if (pick.price > 0) {
-
-            //	const url = "/#/pick-forsale/" + pick.pick_id;
-            const buyUrl = `https://www.ipsports.net/ecps/default/gpicks_4sale.php?SITE_ID=11&SEARCH_MODE=ECAPPER_ID&ECAPPER_ID=${this.state.ecapper_id}`;
-            return (
-                <tr key={i}>
-                    <td>
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td colSpan="2"><img src={this.state.photo_uri} width="70"  alt={this.state.handicapper_name} border="0"/>&nbsp;&nbsp;{this.state.handicapper_name}</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">{SportsCodes.getText(pick.sport)}</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">{pick.title}</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2" onClick={(event) => {
-
-                                    //	console.log ("toggling to", i, ! this.state.teaserEnabled[i])
-
-                                    this.setState({teaserEnabled:
-                                        Update(this.state.teaserEnabled,
-                                            {[i]: {$set: ! this.state.teaserEnabled[i]}})
-                                    })
-
-                                }}>
-                                    {this.state.teaserEnabled[i] ? pick.teaser + ' <<Read less' : 'Read more >>'}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100" align="left">  {Money.format ('USD', pick.price)}
-                                </td>
-                                <td align="right"><a href={buyUrl}><img src="images/buy_now.png" width="70" height="20" border="0"/></a></td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2"><hr /></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-            )
-        }})}
-    </tbody>
-</table>
+ var time = 0;
+ $.ajax({
+ url: url,
+ dataType: 'json',
+ type: 'GET',
+ cache: false,
+ success: (result) => {
+ time = result;
+ //	this.setState({handicappers: Object.values(handicappers)});
+ console.log ("Got server time", time);
+ },
+ error: (xhr, status, err) => {
+ console.error(url, status, err.toString());
+ }
+ }).then(() => console.log('AFTER DONE', time));
+ return time;
+ }
  */
 
+/*    loadPicks() {
+ let url =  `https://www.playbook.com/cube-api3/experts/${this.state.ecapper_id}/picks`;
+ //	console.log ("Trying to load url", url);
+
+ $.ajax({
+ //url: this.props.url,
+ url: url,
+ dataType: 'json',
+ type: 'GET',
+ cache: false,
+ success: (picks) => {
+ const paidPicks = Object.values(picks).filter(pick=> {
+ if (pick.price > 0) {
+ return pick;
+ }
+ });
+ this.setState({picks: paidPicks});
+ this.setState ({teaserEnabled: paidPicks.map((pick) => {return false})});
+
+ console.log ("Got picks ", paidPicks);
+ },
+ error: (xhr, status, err) => {
+ console.error(url, status, err.toString());
+ }
+ });
+ }*/
+
+/*	handleClick(e) {
+ console.log ("CLICKED");
+ debugger;
+ this.context.router.transitionTo('/');
+ }*/
 
 
 

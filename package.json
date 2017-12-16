@@ -18,6 +18,7 @@
     "iconv-lite": "^0.4.15",
     "immutability-helper": "^2.1.1",
     "jquery": "^3.1.1",
+    "moment": "^2.19.4",
     "money-formatter": "^0.1.4",
     "nuka-carousel": "^2.0.4",
     "react": "^0.14.6",
@@ -31,11 +32,7 @@
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
   },
-  "devDependencies": {
-
-   },
-
-
+  "devDependencies": {},
   "scripts": {
     "start": "webpack-dev-server --host=localhost --port=1039  --content-base src --inline --hot",
     "dev": "webpack-dev-server --host=cubepwa.dtison.net --port=1035  --content-base src --inline --hot",
