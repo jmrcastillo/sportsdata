@@ -123,7 +123,7 @@ export default class PickList extends React.Component {
                                                                         <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td align="right">
+                                                                        <td align="right"><h4>
 {/*                                                                                <script type="text/javascript" language="javascript"><!--
 function leapto(form)  {
 var myindex=form.dest.selectedIndex
@@ -131,8 +131,9 @@ window.location=(form.dest.options[myindex].value);
 
 }
 // -->
-                                                                            </script>*/}
-                                                                                [Script for dropdown]
+                                                                            </script>
+                                                                                [Script for dropdown]*/}
+
                                                                                 <form name="myform1" id="myform1">
                                                                                     <select name="dest" size="1" onchange="leapto(document.myform1);">
                                                                                         <option value="">Sort By</option>
@@ -150,7 +151,7 @@ window.location=(form.dest.options[myindex].value);
                                                                                         <option value="../football/issue2/newsletter.pdf">Issue 2</option>
                                                                                         <option value="../football/pre/newsletter.pdf">Preseason</option>
                                                                                     </select>
-                                                                                </form></td>
+                                                                                </form></h4></td>
                                                                         </tr>
                                                                             </tbody>
                                                                         </table>
