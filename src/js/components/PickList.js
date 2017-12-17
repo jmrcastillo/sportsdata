@@ -25,7 +25,7 @@ export default class PickList extends React.Component {
 
         this.loadPicks(this, true);
 
-     //   setInterval(this.loadPicks, 30000, this);
+        setInterval(this.loadPicks, 60000, this);
 
         // Todo: setInterval for every minute:
         /*
