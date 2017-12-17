@@ -36,7 +36,7 @@ export default class Pick extends React.Component {
 
         const diff = pickExpirationUTC.diff(currentDateUTC, 'minutes');
         const expiresIn = `Game starting in: ${diff} minutes`;
-
+        const expireStyle = diff <= 10 ? ''
         return (
 
 
@@ -50,7 +50,7 @@ export default class Pick extends React.Component {
                                 <td style={pickBoxStyle}>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td style={pickBoxStyle}><div align="left" class="trebuchet13"><b>{this.props.pick.title}<br />{expiresIn}</b></div></td>
+                                <td style={pickBoxStyle}><div align="left" class="trebuchet13"><b>{this.props.pick.title}<br /><span className={}>{expiresIn}</span></b></div></td>
                             </tr>
                             </tbody>
                         </table></td>
