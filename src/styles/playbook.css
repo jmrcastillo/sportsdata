@@ -191,6 +191,16 @@ input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;
     font-family: Verdana
 }
 
+.expiresin120 {
+     font-family: Trebuchet MS;
+     color: Navy
+ }
+.expiresin10 {
+    font-family: Trebuchet MS;
+    color: Maroon
+}
+
+
 a {color:#2cb6e9; outline:none; text-decoration:none;}
 a:hover{text-decoration:none;}
 
