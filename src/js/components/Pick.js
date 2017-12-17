@@ -4,6 +4,7 @@
 
 import React from "react";
 import Money from "money-formatter";
+import Moment from "moment";
 
 
 export default class Pick extends React.Component {
@@ -30,6 +31,12 @@ export default class Pick extends React.Component {
 
         };
 
+        const pickExpirationUTC = Moment(this.props.pick.expiration_date);
+        const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
+
+        const diff = pickExpirationUTC.diff(currentDateUTC, 'minutes');
+        const expiresIn = `Expires: ${diff} minutes`;
+
         return (
 
 
@@ -43,7 +50,7 @@ export default class Pick extends React.Component {
                                 <td style={pickBoxStyle}>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td style={pickBoxStyle}><div align="left" class="trebuchet13"><b>{this.props.pick.title}</b></div></td>
+                                <td style={pickBoxStyle}><div align="left" class="trebuchet13"><b>{this.props.pick.title}&nbsp;{expiresIn}</b></div></td>
                             </tr>
                             </tbody>
                         </table></td>

@@ -23,7 +23,7 @@ export default class PickList extends React.Component {
     }
     componentDidMount() {
 
-        this.loadPicks(this);
+        this.loadPicks(this, true);
 
      //   setInterval(this.loadPicks, 30000, this);
 
@@ -41,12 +41,28 @@ export default class PickList extends React.Component {
     }
 
 
-    loadPicks(self) {
+    loadPicks(self, firstLoad=false) {
 
-        PicksAPI.loadPicks().done((picks)=>{
-                self.setState({picks:picks})
+        var newPicks = [];
+
+        PicksAPI.loadPicks().done((picks) => {
+            newPicks = picks.map(pick => {
+                    // Todo:  Any processing on load..
+                    return pick;
+                });
+
+                self.setState({picks:newPicks});
+
             }
         );
+
+        //      console.log ("newPicks inside ", newPicks);
+
+/*        if (firstLoad) {
+            self.setState({picks:newPicks});
+            return;
+        }*/
+
         var d = new Date();
         const moment = new Moment();
 //2017-12-16 00:05
