@@ -198,7 +198,7 @@ input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;
 .expiresin120 {
      font-family: Trebuchet MS;
      font-weight: bold;
-     color: Navy
+     color: Blue
  }
 .expiresin10 {
     font-family: Trebuchet MS;
@@ -206,6 +206,8 @@ input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;
 }
 
 .price-bold {
+    font-family: Trebuchet MS;
+    font-size: 12px;
     font-weight: bold;
 }
 

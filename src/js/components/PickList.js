@@ -148,11 +148,11 @@ window.location=(form.dest.options[myindex].value);
                                                                 </tr>
                                                                 <tr>
                                                                     <td align="center" style={sportBox}>
-                                                                        <table width="630" border="0" cellSpacing="0" cellPadding="0">
-                                                                        <tbody>
+                                                                    <table width="630" border="0" cellSpacing="0" cellPadding="0">
+                                                                    <tbody>
                                                                         {/*<!-- Start sports red bar-->*/}
                                                                         <tr>
-                                                                            <td height="28" style={sportBox}>&nbsp;&nbsp;<span className="trebuchet14B"><font color="white">NBA</font></span></td>
+                                                                            <td height="28" style={sportBox}>&nbsp;&nbsp;<span className="trebuchet14B"><font color="white">FOOTBALL</font></span></td>
                                                                         </tr>
                                                                         {/*<!-- End sports red bar -->*/}
                                                                         </tbody>

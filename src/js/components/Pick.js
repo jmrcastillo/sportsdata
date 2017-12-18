@@ -35,12 +35,11 @@ export default class Pick extends React.Component {
         const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
 
         var minutes = pickExpirationUTC.diff(currentDateUTC, 'minutes');
-
-        const soon = 1200;
+        const soon = 120;
         const verySoon = 10;
 
         const expireStyle = minutes <= verySoon ? 'expiresin10' : minutes <= soon ? 'expiresin120' : 'expiresinLongtime';
-        const expireIcon = minutes <= verySoon ? 'fa fa-bell faa-ring animated' : minutes <= soon ? 'fa  fa-hourglass-end faa-shake animated ' : '';
+        const expireIcon = minutes <= verySoon ? 'fa fa-bell faa-ring animated' : minutes <= soon ? 'fa  fa-spinner fa-spin ' : '';
 
         const expiresIn = `  ${SportsCodes.getGameStart(this.props.pick.sport, minutes)} in ${minutes} minutes. `;
         return (
