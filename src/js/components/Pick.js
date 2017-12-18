@@ -5,7 +5,7 @@
 import React from "react";
 import Money from "money-formatter";
 import Moment from "moment";
-
+import SportsCodes from "../lib/SportsCodes"
 
 export default class Pick extends React.Component {
 
@@ -34,9 +34,12 @@ export default class Pick extends React.Component {
         const pickExpirationUTC = Moment(this.props.pick.expiration_date);
         const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
 
-        const diff = pickExpirationUTC.diff(currentDateUTC, 'minutes');
-        const expiresIn = `Game starting in: ${diff} minutes`;
-        const expireStyle = diff <= 10 ? ''
+        var minutes = pickExpirationUTC.diff(currentDateUTC, 'minutes');
+        minutes = 8;
+        const expireStyle = minutes <= 10 ? 'expiresin10' : minutes <= 120 ? 'expiresin120' : 'expiresinLongtime';
+        const expireIcon = minutes <= 10 ? 'fa fa-bell faa-ring animated' : minutes <= 120 ? 'fa  fa-hourglass-end faa-shake animated fa-2x' : '';
+
+        const expiresIn = `  ${SportsCodes.getGameStart(this.props.pick.sport, minutes)} in ${minutes} minutes. `;
         return (
 
 
@@ -47,10 +50,22 @@ export default class Pick extends React.Component {
                         <table width="100%" border="0" cellPadding="0" cellSpacing="0">
                             <tbody>
                             <tr>
-                                <td style={pickBoxStyle}>&nbsp;</td>
+                                <td style={pickBoxStyle}>&nbsp; <i className="faa-ring animated " /></td>
                             </tr>
                             <tr>
-                                <td style={pickBoxStyle}><div align="left" class="trebuchet13"><b>{this.props.pick.title}<br /><span className={}>{expiresIn}</span></b></div></td>
+                                <td style={pickBoxStyle}><div align="left" class="trebuchet13"><b>{this.props.pick.title}<br />
+
+
+
+                                    <i className={expireIcon} ></i>
+                                    <span className={expireStyle}
+                                        dangerouslySetInnerHTML={
+                                        { __html: expiresIn}
+                                        }
+                                    />
+                                </b>
+                                </div>
+                                </td>
                             </tr>
                             </tbody>
                         </table></td>
@@ -65,7 +80,8 @@ export default class Pick extends React.Component {
                             <tr>
                                 <td width="85" valign="middle"><img src="images/buynow.png" width="85"  border="0" align="left"></img></td>
 
-                                <td valign="middle" class="trebuchet13">Pay After Win: {Money.format ('USD', this.props.pick.price)}</td>
+                                <td valign="middle" class="trebuchet13">Pay After Win: <span className="price-bold">{Money.format ('USD', this.props.pick.price)}</span>
+                                </td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
@@ -73,7 +89,7 @@ export default class Pick extends React.Component {
                             </tr>
                             <tr>
                                 <td><img src="images/buynow.png" width="85" border="0" align="left"></img></td>
-                                <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:  {Money.format ('USD', (Math.floor(this.props.pick.price * .6)))}</td>
+                                <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:  <span className="price-bold">{Money.format ('USD', (Math.floor(this.props.pick.price * .6)))}</span></td>
                             </tr>
                             </tbody>
                         </table>

@@ -22,6 +22,27 @@ class SportsCodes  {
 	getText(sport) {
 		return this.sports[sport];
 	}
+	getGameStart(sport, minutes) {
+	//	console.log("Getting game start for sport", sport, minutes);
+
+		var gameStart = "Game starts";
+		if (minutes > 10) {
+			return gameStart;
+		}
+
+		switch (parseInt(sport, 10)) {
+			case 12:
+			case 13:
+				gameStart = "KICKOFF";
+			break;
+			case 10:
+			case 11:
+				gameStart = "COIN TOSS";
+			break;
+
+		}
+		return gameStart;
+	}
 
 }
 export default (new SportsCodes);

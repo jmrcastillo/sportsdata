@@ -56,7 +56,6 @@ export default class PickList extends React.Component {
             }
         );
 
-        //      console.log ("newPicks inside ", newPicks);
 
 /*        if (firstLoad) {
             self.setState({picks:newPicks});
@@ -67,31 +66,17 @@ export default class PickList extends React.Component {
         const moment = new Moment();
 //2017-12-16 00:05
 
-      //  console.log("Picks loaded... UTC epoch date: ", Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), d.getMinutes(), d.getSeconds()));
-
-
-        var date1 = new Moment('2016-10-08 10:29:23');
-        var date2 = new Moment('2016-10-08 11:06:55');
-        var diff = date2.diff(date1, 'minutes');
-
-     //   console.log ("MOMENT", moment, moment.utc(), diff);
-
-
 
         const pickExpirationUTC = Moment('2017-12-16 00:05');
 
-
-        //const currentDateUTC = Moment().utc();
-        //const other = Moment.utc().toDate()
         const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
 
 
-        console.log ("pickExpirationUTC ", pickExpirationUTC, "currentDateUTC", currentDateUTC, "diff: ", pickExpirationUTC.diff(currentDateUTC, 'minutes'), currentDateUTC);
+ //       console.log ("pickExpirationUTC ", pickExpirationUTC, "currentDateUTC", currentDateUTC, "diff: ", pickExpirationUTC.diff(currentDateUTC, 'minutes'), currentDateUTC);
 
 
 
     }
-//.getUnixTime()
 
     render() {
 
