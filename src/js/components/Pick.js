@@ -35,7 +35,7 @@ export default class Pick extends React.Component {
         const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
 
         var minutes = pickExpirationUTC.diff(currentDateUTC, 'minutes');
-        minutes = 8;
+    //    minutes = 8;
         const expireStyle = minutes <= 10 ? 'expiresin10' : minutes <= 120 ? 'expiresin120' : 'expiresinLongtime';
         const expireIcon = minutes <= 10 ? 'fa fa-bell faa-ring animated' : minutes <= 120 ? 'fa  fa-hourglass-end faa-shake animated fa-2x' : '';
 
