@@ -25,7 +25,7 @@ class SportsCodes  {
 	getGameStart(sport, minutes) {
 	//	console.log("Getting game start for sport", sport, minutes);
 
-		var gameStart = "Game starts";
+		var gameStart = "Game starting";
 		if (minutes > 10) {
 			return gameStart;
 		}
