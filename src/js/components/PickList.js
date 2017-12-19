@@ -27,55 +27,36 @@ export default class PickList extends React.Component {
 
         this.loadPicks(this, true);
 
-//        setInterval(this.loadPicks, 60000, this);
+       setInterval(this.loadPicks, 60000, this);
 
     }
 
 
     loadPicks(self, firstLoad=false) {
 
-        var newPicks = [];
+    //    var newPicks = [];
 
         PicksAPI.loadPicks().done((picks) => {
-            newPicks = picks.map(pick => {
+/*            newPicks = picks.map(pick => {
                     // Todo:  Any processing on load..
                     return pick;
                 });
 
-                self.setState({picks:newPicks});
+                self.setState({picks:newPicks});*/
 
-            var allPicks = {};
+                var allPicks = {};
+                SportsCodes.getSportsOrdered().forEach (sport=>{
+                    allPicks[sport] = [];
+                });
 
+                picks.forEach(pick=>{
+                    allPicks[pick.sport].push(pick);
+                });
 
-            SportsCodes.getSportsOrdered().forEach (sport=>{
-           //     console.log("Processing sport code", sport)
-                allPicks[sport] = [];
-            });
-
-
-            picks.forEach(pick=>{
-                allPicks[pick.sport].push(pick);
-            });
-
-
-            self.setState({allPicks: allPicks});
-
-
+                self.setState({allPicks: allPicks});
 
             }
         );
-
-
-        var d = new Date();
-        const moment = new Moment();
-
-        const pickExpirationUTC = Moment('2017-12-16 00:05');
-        const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
-
-
- //       console.log ("pickExpirationUTC ", pickExpirationUTC, "currentDateUTC", currentDateUTC, "diff: ", pickExpirationUTC.diff(currentDateUTC, 'minutes'), currentDateUTC);
-
-
 
     }
 
@@ -113,7 +94,8 @@ export default class PickList extends React.Component {
                                                                         <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td align="right"><h4>
+                                                                        <td align="right">
+                                                                        <h4>
 {/*                                                                                <script type="text/javascript" language="javascript"><!--
 function leapto(form)  {
 var myindex=form.dest.selectedIndex
@@ -141,23 +123,21 @@ window.location=(form.dest.options[myindex].value);
                                                                                         <option value="../football/issue2/newsletter.pdf">Issue 2</option>
                                                                                         <option value="../football/pre/newsletter.pdf">Preseason</option>
                                                                                     </select>
-                                                                                </form></h4></td>
-                                                                        </tr>
+                                                                                </form>
+                                                                            </h4>
+                                                                            </td>
+                                                                            </tr>
                                                                             </tbody>
                                                                         </table>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td align="center" >
-
-
+                                                                    {/*  Picks grouped by sport */}
                                                                     {SportsCodes.getSportsOrdered().map((sport, i) => {
 
                                                                         const picks = this.state.allPicks[sport];
-
                                                                         if (typeof (picks) != 'undefined' && picks.length > 0) {
-
-                                                                          //  console.log("Sport -->", sport, picks, "size", picks.length);
 
                                                                             return (
                                                                                 <div key={sport}>
@@ -165,7 +145,6 @@ window.location=(form.dest.options[myindex].value);
                                                                                            cellSpacing="0"
                                                                                            cellPadding="0">
                                                                                         <tbody>
-                                                                                        {/*<!-- Start sports red bar-->*/}
                                                                                         <tr>
                                                                                             <td height="28"
                                                                                                 style={sportBox}>&nbsp;&nbsp;
@@ -174,24 +153,21 @@ window.location=(form.dest.options[myindex].value);
                                                                                                     color="white">{SportsCodes.getText(sport)}</font></span>
                                                                                             </td>
                                                                                         </tr>
-                                                                                        {/*<!-- End sports red bar -->*/}
                                                                                         </tbody>
                                                                                     </table>
 
                                                                                     <table>
                                                                                         <tbody>
-                                                                                        LIST OF PICKS
-                                                                                        {/*                                                                            {picks.map((pick, i) => {
+                                                                                        {/*  List of picks for this sport */}
+
+                                                                                        {picks.map((pick, i) => {
                                                                                          return (
                                                                                          <tr key={i} >
                                                                                          <td>
                                                                                          <Pick pick={pick} />
                                                                                          </td>
                                                                                          </tr>
-
-
-                                                                                         )
-                                                                                         })}*/}
+                                                                                         )})}
 
                                                                                         </tbody>
                                                                                     </table>
@@ -199,20 +175,9 @@ window.location=(form.dest.options[myindex].value);
 
                                                                                 </div>
 
-
                                                                             )
                                                                         }
                                                                     })}
-
-
-
-
-
-
-
-
-
-
 
                                                                     </td>
                                                                 </tr>
@@ -226,7 +191,8 @@ window.location=(form.dest.options[myindex].value);
                                                             <br />
                                                             <br />
                                                             <br />
-                                                        </div><br />
+                                                        </div>
+                                                        <br />
                                                     </div>
                                                 </div>
                                             </div>
