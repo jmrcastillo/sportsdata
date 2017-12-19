@@ -6,6 +6,7 @@ import React from "react";
 import PicksAPI from "../lib/PicksAPI";
 import Pick from "../components/Pick";
 import Moment from "moment";
+import SportsCodes from "../lib/SportsCodes"
 
 export default class PickList extends React.Component {
 
@@ -14,7 +15,20 @@ export default class PickList extends React.Component {
 
         this.state = {
             picks: [],
-            teaserEnabled: [],
+            allPicks: [],
+
+    /*        proFBPicks: [],
+            collegeFBPicks: [],
+            proBBPicks: [],
+            collegeBBPicks: [],
+            baseballPicks: [],
+            hockeyPicks: [],
+            soccerPicks: [],
+            horsePicks: [],
+            autoPicks: [],
+            golfPicks: [],
+            boxingPicks: [],
+            teaserEnabled: [],*/
         };
     }
     componentWillMount() {
@@ -25,19 +39,8 @@ export default class PickList extends React.Component {
 
         this.loadPicks(this, true);
 
-        setInterval(this.loadPicks, 60000, this);
+//        setInterval(this.loadPicks, 60000, this);
 
-        // Todo: setInterval for every minute:
-        /*
-            pickExpirationUTC - Coming from server as UTC date/time.
-            currentDateUTC - current local system time adjusted to UTC date / time
-            diff - # of minutes remaining to expiration time that came from server
-
-            For each pick we can calculate the current minutes remaining until expired.
-            If <= 2 mins, drop the pick off the list
-
-
-        */
     }
 
 
@@ -53,22 +56,31 @@ export default class PickList extends React.Component {
 
                 self.setState({picks:newPicks});
 
+            var allPicks = {};
+            Object.keys(SportsCodes.getSports()).map(sport=>{
+                allPicks[sport] = [];
+            })
+
+
+             picks.forEach(pick=>{
+                allPicks[pick.sport].push(pick);
+            });
+
+
+
+    console.log(allPicks);
+            self.setState({allPicks: allPicks});
+
+
+
             }
         );
 
 
-/*        if (firstLoad) {
-            self.setState({picks:newPicks});
-            return;
-        }*/
-
         var d = new Date();
         const moment = new Moment();
-//2017-12-16 00:05
-
 
         const pickExpirationUTC = Moment('2017-12-16 00:05');
-
         const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
 
 
@@ -148,6 +160,16 @@ window.location=(form.dest.options[myindex].value);
                                                                 </tr>
                                                                 <tr>
                                                                     <td align="center" style={sportBox}>
+
+
+
+
+
+
+
+
+
+
                                                                     <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                     <tbody>
                                                                         {/*<!-- Start sports red bar-->*/}
@@ -174,6 +196,9 @@ window.location=(form.dest.options[myindex].value);
 
                                                                             </tbody>
                                                                         </table>
+
+
+
 
 
                                                                     </td>
@@ -270,4 +295,35 @@ window.location=(form.dest.options[myindex].value);
  }*/
 
 
+
+/*
+
+ // Pro football
+ picks = picks.filter(pick=>{
+ if (pick.sport === '12') {
+ return true;
+ }
+ });
+ self.setState({proFBPicks:picks});
+
+ console.log ("TESTING 1234");
+
+ const separatedPicks = Object.keys(SportsCodes.getSports()).map(sport=>{
+ console.log ("Sport is ", sport, typeof(sport));
+ return {
+ sport: sport,
+ picks: picks.filter(pick=>{
+ console.log ("pick sport is ", pick.sport, typeof (pick.sport));
+ if (pick.sport === sport) {
+ return true;
+ }
+ })
+ };
+
+ });
+ */
+
+
+
+//           console.log ("separated picks: ", separatedPicks);
 

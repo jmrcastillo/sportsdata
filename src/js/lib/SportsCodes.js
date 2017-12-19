@@ -44,5 +44,8 @@ class SportsCodes  {
 		return gameStart;
 	}
 
+	getSports() {
+		return this.sports;
+	}
 }
 export default (new SportsCodes);
