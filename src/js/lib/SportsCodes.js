@@ -10,7 +10,7 @@ class SportsCodes  {
 			13: 'NCAA Football',
 			10: 'NBA Basketball',
 			11: 'NCAA Basketball',
-			1: 'NBA Baseball',
+			1: 'MLB Baseball',
 			6: 'Hockey',
 			8: 'Soccer',
 			7: 'Horse Racing',
@@ -37,7 +37,7 @@ class SportsCodes  {
 			break;
 			case 10:
 			case 11:
-				gameStart = "COIN TOSS";
+				gameStart = "TIP OFF";
 			break;
 
 		}
