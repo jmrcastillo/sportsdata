@@ -17,18 +17,6 @@ export default class PickList extends React.Component {
             picks: [],
             allPicks: [],
 
-    /*        proFBPicks: [],
-            collegeFBPicks: [],
-            proBBPicks: [],
-            collegeBBPicks: [],
-            baseballPicks: [],
-            hockeyPicks: [],
-            soccerPicks: [],
-            horsePicks: [],
-            autoPicks: [],
-            golfPicks: [],
-            boxingPicks: [],
-            teaserEnabled: [],*/
         };
     }
     componentWillMount() {
@@ -57,18 +45,19 @@ export default class PickList extends React.Component {
                 self.setState({picks:newPicks});
 
             var allPicks = {};
-            Object.keys(SportsCodes.getSports()).map(sport=>{
+
+
+            SportsCodes.getSportsOrdered().forEach (sport=>{
+           //     console.log("Processing sport code", sport)
                 allPicks[sport] = [];
-            })
+            });
 
 
-             picks.forEach(pick=>{
+            picks.forEach(pick=>{
                 allPicks[pick.sport].push(pick);
             });
 
 
-
-    console.log(allPicks);
             self.setState({allPicks: allPicks});
 
 
@@ -159,43 +148,67 @@ window.location=(form.dest.options[myindex].value);
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td align="center" style={sportBox}>
+                                                                    <td align="center" >
+
+
+                                                                    {SportsCodes.getSportsOrdered().map((sport, i) => {
+
+                                                                        const picks = this.state.allPicks[sport];
+
+                                                                        if (typeof (picks) != 'undefined' && picks.length > 0) {
+
+                                                                          //  console.log("Sport -->", sport, picks, "size", picks.length);
+
+                                                                            return (
+                                                                                <div key={sport}>
+                                                                                    <table width="630" border="0"
+                                                                                           cellSpacing="0"
+                                                                                           cellPadding="0">
+                                                                                        <tbody>
+                                                                                        {/*<!-- Start sports red bar-->*/}
+                                                                                        <tr>
+                                                                                            <td height="28"
+                                                                                                style={sportBox}>&nbsp;&nbsp;
+                                                                                                <span
+                                                                                                    className="trebuchet14B"><font
+                                                                                                    color="white">{SportsCodes.getText(sport)}</font></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        {/*<!-- End sports red bar -->*/}
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                    <table>
+                                                                                        <tbody>
+                                                                                        LIST OF PICKS
+                                                                                        {/*                                                                            {picks.map((pick, i) => {
+                                                                                         return (
+                                                                                         <tr key={i} >
+                                                                                         <td>
+                                                                                         <Pick pick={pick} />
+                                                                                         </td>
+                                                                                         </tr>
+
+
+                                                                                         )
+                                                                                         })}*/}
+
+                                                                                        </tbody>
+                                                                                    </table>
+
+
+                                                                                </div>
+
+
+                                                                            )
+                                                                        }
+                                                                    })}
 
 
 
 
 
 
-
-
-
-
-                                                                    <table width="630" border="0" cellSpacing="0" cellPadding="0">
-                                                                    <tbody>
-                                                                        {/*<!-- Start sports red bar-->*/}
-                                                                        <tr>
-                                                                            <td height="28" style={sportBox}>&nbsp;&nbsp;<span className="trebuchet14B"><font color="white">FOOTBALL</font></span></td>
-                                                                        </tr>
-                                                                        {/*<!-- End sports red bar -->*/}
-                                                                        </tbody>
-                                                                    </table>
-
-                                                                        <table>
-                                                                            <tbody>
-                                                                            {this.state.picks.map((pick, i) => {
-                                                                                return (
-                                                                                    <tr key={i} >
-                                                                                        <td>
-                                                                                            <Pick pick={pick} />
-                                                                                        </td>
-                                                                                    </tr>
-
-
-                                                                                )
-                                                                            })}
-
-                                                                            </tbody>
-                                                                        </table>
 
 
 

@@ -5,7 +5,7 @@
 class SportsCodes  {
 
 	constructor() {
-		this.sports = {
+ 		this.sports = {
 			12: 'NFL Football',
 			13: 'NCAA Football',
 			10: 'NBA Basketball',
@@ -18,6 +18,12 @@ class SportsCodes  {
 			5: 'Golf',
 			3: 'Boxing',
 		};
+
+		this.sportsOrdered = [
+			12,13,10,11,1,6,8,7,9,5,3
+		]
+
+
 	}
 	getText(sport) {
 		return this.sports[sport];
@@ -44,8 +50,8 @@ class SportsCodes  {
 		return gameStart;
 	}
 
-	getSports() {
-		return this.sports;
+	getSportsOrdered() {
+		return this.sportsOrdered;
 	}
 }
 export default (new SportsCodes);
