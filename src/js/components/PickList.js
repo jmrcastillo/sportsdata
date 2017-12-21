@@ -132,7 +132,7 @@ window.location=(form.dest.options[myindex].value);
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td align="center" >
+                                                                    <td align="center" style={sportBox}>
                                                                     {/*  Picks grouped by sport */}
                                                                     {SportsCodes.getSportsOrdered().map((sport, i) => {
 
