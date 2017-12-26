@@ -64,12 +64,7 @@ export default class PickList extends React.Component {
 
     render() {
 
-        const sportBox = {
-            backgroundColor:'#990000',
-        };
-        const pickBox = {
-            backgroundColor:'#000000',
-        };
+
 
         return (
 
@@ -98,7 +93,7 @@ export default class PickList extends React.Component {
                                                                 <table width="640" border="0" cellSpacing="0" cellPadding="0">
                                                                 <tbody>
                                                                 <tr>
-                                                                    <td height="40" align="center" style={pickBox}>
+                                                                    <td height="40"  style={{textAlign: 'center', backgroundColor: '#000000' }}>
                                                                         <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                         <tbody>
                                                                         <tr>
@@ -140,7 +135,7 @@ window.location=(form.dest.options[myindex].value);
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td align="center" style={sportBox}>
+                                                                    <td style={{ backgroundColor: '#990000' }}>
                                                                     {/*  Picks grouped by sport */}
                                                                     {SportsCodes.getSportsOrdered().map((sport, i) => {
 
@@ -154,8 +149,7 @@ window.location=(form.dest.options[myindex].value);
                                                                                            cellPadding="0">
                                                                                         <tbody>
                                                                                         <tr>
-                                                                                            <td height="28"
-                                                                                                style={sportBox}>&nbsp;&nbsp;
+                                                                                            <td height="28" style={{ backgroundColor: '#990000' }}>&nbsp;&nbsp;
                                                                                                 <span
                                                                                                     className="trebuchet14B"><font
                                                                                                     color="white">{SportsCodes.getText(sport)}</font></span>
@@ -235,28 +229,24 @@ window.location=(form.dest.options[myindex].value);
                                                                 <br />
                                                             <Cart/>
                                                                     <br />
-                                                                    <p align="center"><a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
+                                                                    <p style={{textAlign: 'center'}}><a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
                                                                     <br />
                                                                     <h11>&nbsp;Playbook Publications</h11>
-                                                                    <ul className="list5">
-                                                                        <li>
-                                                                            <br />
+                                                                    <span className="list5">
+                                                                       <br />
                                                                             <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" alt="NFL Totals Tip Sheet!" width="82" height="104" hspace="4" border="0" align="left" /><span className="topnav_trebuchet14Bred">2017 Playbook Football Handicapper's Yearbook Magazine</span><br />
                                                                                 <span className="topnav_trebuchet12">Marc Lawrence's Playbook Football Preview Guide magazine is the nation's best-selling combination College and NFL Preview publication and is now available for sale and on the newsstands nationwide in mid-June. The 2017 magazine contains 248 pages of wall-to-wall information, jam packed with stats, logs, trends, winning systems, College and NFL previews, ATS Top 10 Teams, exclusive charts (Monday Night results, Coaches records, College Overtime games and many more.
 </span>
                                                                             </a>
 
-                                                                        </li>
-                                                                        <li>
+
                                                                             <br />
                                                                             <br />
                                                                             <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=300106&SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/fb.jpg" alt="" width="82" height="104" border="0" />
                                                                                 <h5><span className="topnav_trebuchet14Bred">2017 Weekly Playbook Football Newsletter</span></h5>
                                                                                 <span className="topnav_trebuchet12">Includes: Playbook Football Newsletter online weekly subscription The weekly Playbook Football Newsletter spans College and NFL Games throughout the 2017 season straight through the Super Bowl, featuring comprehensive write-ups on every College and NFL game along with star-rated Best Bets, Upset Specials, Awesome Angles, Top Trends, Incredible Stats, Wise Guy Contest Picks and a complete schedule with opening lines and projected margins for the entire week. Don't make a move without it!</span></a>
-                                                                        </li>
 
-                                                                    </ul>
-
+                                                                    </span>
                                                         </div><br /><br />
 
                                                     </div>

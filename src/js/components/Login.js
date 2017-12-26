@@ -28,31 +28,31 @@ export default class Login extends React.Component {
             {/*<!--Start login box-->*/}
             <table width="320" border="0" cellSpacing="0" cellPadding="0">
                 <tbody>
-                <tr style={{verticalAlign: top }}>
-                    <td height="40" align="center" bgcolor="#000000"><div title="Page 1">
+                <tr style={{verticalAlign: 'top' }}>
+                    <td height="40" style={{textAlign: 'center', backgroundColor: '#000000' }}>
                         <div>
                             <div>
-                                <span className="trebuchet14B"><font color="white">Login To View Todays Featured Free Play</font> </span>
+                                <h3><span className="trebuchet14BW">Login To View Todays Featured Free Play</span></h3>
                             </div>
                         </div>
-                    </div></td>
+                    </td>
                 </tr>
                 <tr>
-                    <td align="center" backgroundColor="#000000"><table width="310" border="0" cellSpacing="0" cellPadding="0">
+                    <td style={{textAlign: 'center', backgroundColor: '#000000' }}><table width="310" border="0" cellSpacing="0" cellPadding="0">
                         <tbody>
                         <tr>
-                            <td backgroundColor="#FFFFFF"><form name="form1" method="post" action=""><table width="100%" border="0" cellSpacing="0" cellPadding="0">
+                            <td style={{textAlign: 'center', backgroundColor: '#000000' }}><form name="form1" method="post" action=""><table width="100%" border="0" cellSpacing="0" cellPadding="0">
                                 <tbody>
                                 <tr>
-                                    <td height="32" align="center">
+                                    <td height="32" style={{textAlign: 'center' }}>
 
-                                        Username:
+                                        <span className="trebuchet14BW">Username:</span>&nbsp;
                                         <input name="MEMBER_ID" type="text" id="MEMBER_ID" size="16" maxLength="80" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td height="32" align="center">
-                                        Password:
+                                        <span className="trebuchet14BW">Password:</span>&nbsp;&nbsp;
                                         <input name="PASSWORD" type="text" id="PASSWORD" size="16" maxLength="12" /></td>
                                 </tr>
                                 <tr>
@@ -65,7 +65,7 @@ export default class Login extends React.Component {
                     </table></td>
                 </tr>
                 <tr>
-                    <td align="center" backgroundColor="#000000">&nbsp;</td>
+                    <td style={{textAlign: 'center', backgroundColor: '#000000' }}>&nbsp;</td>
                 </tr>
                 </tbody>
             </table>

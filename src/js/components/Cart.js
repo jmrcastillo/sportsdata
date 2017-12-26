@@ -31,33 +31,30 @@ export default class Login extends React.Component {
             {/*<!--Start Cart Box-->*/}
             <table width="320" border="0" cellSpacing="0" cellPadding="0">
                 <tbody>
-                <tr>
-                    <td height="40" align="center" bgcolor="#990000"><div title="Page 1">
+                <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
+                    <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
                         <div>
-                            <div> <span className="trebuchet14B"><font color="white">My Cart</font></span> </div>
+                            <div> <span className="trebuchet14BW">My Cart</span> </div>
                         </div>
                     </div></td>
                 </tr>
                 <tr>
-                    <td align="center" bgcolor="#990000"><table width="310" border="0" cellSpacing="0" cellPadding="0">
+                    <td style={{textAlign: 'center', backgroundColor: '#990000' }} >
+                        <table width="310" border="0" cellSpacing="0" cellPadding="0">
                         <tbody>
                         <tr>
-                            <td bgcolor="#FFFFFF">
-                                <table width="100%" border="0" cellSpacing="2" cellPadding="2">
+                            <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
+                                <table width="320" border="0" cellSpacing="2" cellPadding="2">
                                     <tbody>
                                     <tr>
-                                        <td colSpan="3" align="left"><strong>Items In My Cart</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a></td>
+                                        <td colSpan="3" style={{textAlign: 'center', backgroundColor: 'White'}}><span className="trebuchet14B">Items In My Cart</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
                                     </tr>
                                     <tr>
-                                        <td width="25" align="center">&nbsp;</td>
-                                        <td height="44" align="center"><span className="trebuchet14B">Your Cart Is Empty</span></td>
-                                        <td align="center">&nbsp;</td>
+                                        <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>
+                                        <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}><span className="trebuchet14B">Your Cart Is Empty</span></td>
+                                        <td style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>
                                     </tr>
-                                    <tr>
-                                        <td height="44" align="center">&nbsp;</td>
-                                        <td align="center">&nbsp;</td>
-                                        <td align="center">&nbsp;</td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
                             </td>
@@ -66,10 +63,10 @@ export default class Login extends React.Component {
                     </table></td>
                 </tr>
                 <tr>
-                    <td align="center" bgcolor="#990000">&nbsp;</td>
+                    <td style={{textAlign: 'center', backgroundColor: 'Maroon'}}>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td align="center" bgcolor="#FFFFFF"><img src="images/checkoutCC.png" width="211" height="50" /><br />
+                    <td style={{textAlign: 'center', backgroundColor: 'White'}}><img src="images/checkoutCC.png" width="211" height="50" /><br />
 
                         <img src="images/checkoutT.png" width="211" height="50" /></td>
                 </tr>
