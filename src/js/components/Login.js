@@ -28,7 +28,7 @@ export default class Login extends React.Component {
             {/*<!--Start login box-->*/}
             <table width="320" border="0" cellSpacing="0" cellPadding="0">
                 <tbody>
-                <tr>
+                <tr style={{verticalAlign: top }}>
                     <td height="40" align="center" bgcolor="#000000"><div title="Page 1">
                         <div>
                             <div>

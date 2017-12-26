@@ -77,7 +77,8 @@ export default class PickList extends React.Component {
                 <table width="1000" border="0" cellSpacing="0" cellPadding="0">
                 <tbody>
                 <tr>
-                <td align="left" valign="top">
+
+                <td align="left" style={{verticalAlign: 'top' }}>
                   <div className="col-9a maxheight">
                     {/*<!-- box begin -->*/}
                     <div className="box maxheight">
@@ -213,7 +214,7 @@ window.location=(form.dest.options[myindex].value);
                 </div>
 
                     </td>
-                    <td>
+                    <td style={{verticalAlign: 'top' }}>
 
 
 
