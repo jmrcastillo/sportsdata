@@ -45,7 +45,7 @@ export default class Pick extends React.Component {
         return (
 
 
-            <table width="630" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
+            <table width="640" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
                 <tbody>
                 <tr>
                     <td colSpan="3">
