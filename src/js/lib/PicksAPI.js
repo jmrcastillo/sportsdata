@@ -41,6 +41,12 @@ class PicksAPI  {
 	}
 
 
+	login(member_id, password) {
+		return $.getJSON(`https://www.playbook.com/picks-api1/login/${member_id}/${password}`).then(function(result) {
+			return result;
+		});
+	}
+
 
 
 }
