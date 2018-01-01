@@ -50,6 +50,7 @@ export default class Login extends React.Component {
                                         <td colSpan="3" style={{textAlign: 'center', backgroundColor: 'White'}}><span className="trebuchet14B">Items In My Cart</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
                                     </tr>
                                     <tr>
+                                        {/* LINE 53 trash icon*/}
                                         <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>
                                         <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}><span className="trebuchet14B">Your Cart Is Empty</span></td>
                                         <td style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>

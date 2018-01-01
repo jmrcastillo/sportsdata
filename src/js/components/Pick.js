@@ -31,7 +31,8 @@ export default class Pick extends React.Component {
 
         };
 
-        const pickExpirationUTC = Moment(this.props.pick.expiration_date);
+        // TODO:  Need checkbox on pick input form to implement time notices
+/*        const pickExpirationUTC = Moment(this.props.pick.expiration_date);
         const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
 
         var minutes = pickExpirationUTC.diff(currentDateUTC, 'minutes');
@@ -40,8 +41,13 @@ export default class Pick extends React.Component {
 
         const expireStyle = minutes <= verySoon ? 'expiresin10' : minutes <= soon ? 'expiresin120' : 'expiresinLongtime';
         const expireIcon = minutes <= verySoon ? 'fa fa-bell faa-ring animated' : minutes <= soon ? 'fa  fa-spinner fa-spin ' : '';
-
         const expiresIn = `  ${SportsCodes.getGameStart(this.props.pick.sport, minutes)} in ${minutes} minutes. `;
+        */
+        // TODO:  Replaces with this for now 2018-01-01
+        const  expireStyle = 'expiresinLongtime';
+        const expireIcon = '';
+        const expiresIn = '';
+
         return (
 
 

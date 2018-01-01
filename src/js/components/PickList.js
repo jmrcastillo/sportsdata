@@ -19,6 +19,7 @@ export default class PickList extends React.Component {
         this.state = {
             picks: [],
             allPicks: [],
+            freePicks: [],
 
         };
     }
@@ -30,7 +31,7 @@ export default class PickList extends React.Component {
 
         this.loadPicks(this, true);
 
-       setInterval(this.loadPicks, 60000, this);
+        setInterval(this.loadPicks, 60000, this);
 
     }
 
@@ -47,12 +48,24 @@ export default class PickList extends React.Component {
 
                 self.setState({picks:newPicks});*/
 
+                const freePicks = picks.filter(pick=>{
+                    return parseInt(pick.price) === 0;
+                });
+                self.setState({freePicks: freePicks});
+
+
+                var paidPicks = picks.filter(pick=>{
+                    return parseInt(pick.price) > 0;
+                });
+
+
+
                 var allPicks = {};
                 SportsCodes.getSportsOrdered().forEach (sport=>{
                     allPicks[sport] = [];
                 });
 
-                picks.forEach(pick=>{
+                paidPicks.forEach(pick=>{
                     allPicks[pick.sport].push(pick);
                 });
 
@@ -60,12 +73,25 @@ export default class PickList extends React.Component {
 
             }
         );
-
     }
 
+    mostRecentFreePick(self) {
+        if (this.state.freePicks.length == 0) {
+            return null;
+        }
+        return this.state.freePicks.reduce((prev, curr, index)=> {
+
+            if (Moment(curr.created_date) > Moment(prev.created_date)) {
+                return curr;
+            } else {
+                return prev;
+            }
+        }, this.state.freePicks[0])
+    }
+
+
     render() {
-
-
+        console.log ("** Most Recent free pick: ", this.mostRecentFreePick(this));
 
         return (
 
