@@ -15,22 +15,28 @@ export default class Login extends React.Component {
 
         const memberIDCookie = new Cookies().get("pb-member");
 
-        console.log ("Login constructor - memberIDCookie:", memberIDCookie);
         this.state = {
-            member_id: typeof (memberIDCookie) === 'undefined' ? '' : memberIDCookie,
+            record_id: typeof (memberIDCookie) === 'undefined' ? '' : memberIDCookie,
+            member_id: '',
             password: '',
             logged_in: ! (typeof (memberIDCookie) === 'undefined'),
             member: null,
         }
+        // Auto-login member on record_id
+        if (this.state.logged_in) {
+            PicksAPI.loginMember(this.state.record_id).done((result) => {
+                console.log("CONSTRUCTOR Login results", result);
+                if (result.success) {
+                    this.setState({member: result.member});
+                }
+            });
+
+        }
 
     }
     componentWillMount() {
-
     }
     componentDidMount() {
-        console.log ("SETTING member cookie");
-         new Cookies().set("pb-member", 'scope5', {path: "/"});
-
     }
 
     login(member_id, password) {
@@ -39,9 +45,7 @@ export default class Login extends React.Component {
             if (result.success) {
                 this.setState({logged_in: true,
                             member: result.member});
-          //      new Cookies().set("pb-member", this.state.member_id, {path: "/"});
-
-
+                new Cookies().set("pb-member", result.member.record_id, {path: "/"});
             }
         });
 
@@ -50,11 +54,14 @@ export default class Login extends React.Component {
 
     render() {
 
-        console.log('LOGIN (member_id), (logged_in):', this.state.member_id, this.state.logged_in);
+   //     console.log('LOGIN (member_id), (logged_in):', this.state.member_id, this.state.logged_in);
 
         if (this.state.logged_in) {
             return (
+                <div>
+                    [experimental] Welcome back {this.state.member ? this.state.member.first_name : ''}<br/>
                 <Freeplay freePick={this.props.freePick}/>
+                </div>
             )
         }
         else {

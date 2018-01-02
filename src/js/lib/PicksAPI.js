@@ -37,7 +37,6 @@ class PicksAPI  {
 				return picks;
 			}).fail(()=>console.log('GETPICKS FAIL.'))
 		})
-
 	}
 
 
@@ -47,6 +46,20 @@ class PicksAPI  {
 		});
 	}
 
+
+	loginMember(record_id) {
+		return this.loadServerTime().then((time) => {
+			var data = {time: time + 10};
+			var text = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping').toString();
+			text = URLSafeBase64.encode(text);
+			return $.getJSON(`https://www.playbook.com/picks-api1/login-member/${record_id}/${text}`).then(function(result) {
+				console.log ("LOGINMEMBER RETURNING ", result);
+
+				return result;
+			});
+
+		})
+	}
 
 
 }
