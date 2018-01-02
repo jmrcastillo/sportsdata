@@ -28,6 +28,7 @@
     "react-infinity-menu": "^3.0.2",
     "react-router": "^3.0.2",
     "react-ux-password-field": "^0.9.12",
+    "universal-cookie": "^2.1.2",
     "urlsafe-base64": "^1.0.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"

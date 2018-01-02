@@ -5,15 +5,21 @@
 import React from "react";
 import PicksAPI from "../lib/PicksAPI";
 import Freeplay from "../components/Freeplay";
+import Cookies from "universal-cookie";
+
 
 export default class Login extends React.Component {
 
     constructor() {
         super();
+
+        const memberIDCookie = new Cookies().get("pb-member");
+
+        console.log ("Login constructor - memberIDCookie:", memberIDCookie);
         this.state = {
-            member_id: '',
+            member_id: typeof (memberIDCookie) === 'undefined' ? '' : memberIDCookie,
             password: '',
-            logged_in: false,
+            logged_in: ! (typeof (memberIDCookie) === 'undefined'),
             member: null,
         }
 
@@ -22,6 +28,8 @@ export default class Login extends React.Component {
 
     }
     componentDidMount() {
+        console.log ("SETTING member cookie");
+         new Cookies().set("pb-member", 'scope5', {path: "/"});
 
     }
 
@@ -31,6 +39,8 @@ export default class Login extends React.Component {
             if (result.success) {
                 this.setState({logged_in: true,
                             member: result.member});
+          //      new Cookies().set("pb-member", this.state.member_id, {path: "/"});
+
 
             }
         });
@@ -40,9 +50,11 @@ export default class Login extends React.Component {
 
     render() {
 
+        console.log('LOGIN (member_id), (logged_in):', this.state.member_id, this.state.logged_in);
+
         if (this.state.logged_in) {
             return (
-                <Freeplay/>
+                <Freeplay freePick={this.props.freePick}/>
             )
         }
         else {

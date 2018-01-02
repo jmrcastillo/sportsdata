@@ -75,23 +75,23 @@ export default class PickList extends React.Component {
         );
     }
 
-    mostRecentFreePick(self) {
+    featuredFreePick(self) {
         if (this.state.freePicks.length == 0) {
             return null;
         }
         return this.state.freePicks.reduce((prev, curr, index)=> {
 
-            if (Moment(curr.created_date) > Moment(prev.created_date)) {
+ /*           if (Moment(curr.created_date) > Moment(prev.created_date)) {
                 return curr;
             } else {
                 return prev;
-            }
+            }*/
+            return (Moment(curr.created_date) > Moment(prev.created_date)) ? curr : prev;
         }, this.state.freePicks[0])
     }
 
 
     render() {
-        console.log ("** Most Recent free pick: ", this.mostRecentFreePick(this));
 
         return (
 
@@ -251,7 +251,7 @@ window.location=(form.dest.options[myindex].value);
                                                 <div className="right-bot-corner maxheight">
                                                     <div className="left-bot-corner maxheight">
                                                         <div className="inner2">
-                                                            <Login />
+                                                            <Login freePick={this.featuredFreePick(this.state.freePicks)} />
                                                             <br />
                                                                 <br />
                                                             <Cart/>

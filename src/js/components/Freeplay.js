@@ -21,6 +21,10 @@ export default class Freeplay extends React.Component {
 
     render() {
 
+
+        const freePickTitle = this.props.freePick ? this.props.freePick.title : 'Free pick is not available yet.';
+        const freePickBody = this.props.freePick ? this.props.freePick.body : '';
+
         return (
         <div>
 
@@ -36,8 +40,16 @@ export default class Freeplay extends React.Component {
                         <tbody>
                         <tr>
                             <td style={{textAlign: 'center', backgroundColor: '#FFFFFF' }}>
-                                <span style={{textAlign: 'center'}}>&nbsp;DOC'S SPORTS SATURDAY NCAA FREE PLAY
-                                <br />#162 Take Iowa State Cyclones over Oklahoma State Cowboys (Saturday 12 pm ABC) Both teams are coming off losses last week but still have a chance to earn a spot in the newly created Big 12 Championship Game this season.  >> Read More</span></td>
+                                <span style={{textAlign: 'center'}}>{freePickTitle}
+                                <br />
+                                    <span
+                                        dangerouslySetInnerHTML={
+                                            {__html: freePickBody}
+                                        }
+
+                                    />
+
+                                </span></td>
                         </tr>
                         </tbody>
                     </table></td>
