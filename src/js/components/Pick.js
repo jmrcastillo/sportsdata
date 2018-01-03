@@ -9,14 +9,19 @@ import SportsCodes from "../lib/SportsCodes"
 
 export default class Pick extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+       // console.log ("<Pick> logged in ", props.loggedIn);
 
     }
     componentWillMount() {
 
     }
     componentDidMount() {
+
+    }
+
+    componentWillUnmount() {
 
     }
 
@@ -89,7 +94,9 @@ export default class Pick extends React.Component {
                         <table width="96%" border="0" cellSpacing="0" cellPadding="0">
                             <tbody>
                             <tr>
-                                <td width="85" valign="middle"><img src="images/buynow.png" width="85"  border="0" align="left"></img></td>
+                                <td width="85" valign="middle">
+                                <img src="images/buynow.png" className={this.props.loggedIn ? 'buynow-enabled' : 'buynow-disabled'} width="85"  border="0" align="left"/>
+                                </td>
 
                                 <td valign="middle" class="trebuchet13">Pay After Win: <span className="price-bold">{Money.format ('USD', this.props.pick.price)}</span>
                                 </td>
@@ -99,7 +106,10 @@ export default class Pick extends React.Component {
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td><img src="images/buynow.png" width="85" border="0" align="left"></img></td>
+                                <td>
+                                <img src="images/buynow.png" className={this.props.loggedIn ? 'buynow-enabled' : 'buynow-disabled'} width="85" border="0" align="left"/>
+
+                                </td>
                                 <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:  <span className="price-bold">{Money.format ('USD', (Math.floor(this.props.pick.price * .6)))}</span></td>
                             </tr>
                             </tbody>

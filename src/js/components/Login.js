@@ -10,8 +10,8 @@ import Cookies from "universal-cookie";
 
 export default class Login extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         const memberIDCookie = new Cookies().get("pb-member");
 
@@ -28,6 +28,8 @@ export default class Login extends React.Component {
                 console.log("CONSTRUCTOR Login results", result);
                 if (result.success) {
                     this.setState({member: result.member});
+                    console.log("Login PUBLISHING logged-in");
+                    this.props.observer.publish('logged-in');
                 }
             });
 
@@ -37,6 +39,9 @@ export default class Login extends React.Component {
     componentWillMount() {
     }
     componentDidMount() {
+/*        this.props.observer.subscribe('logged-in', (data)=> {
+            console.log('<Login> received logged-in message as a test: ');
+        });*/
     }
 
     login(member_id, password) {
@@ -46,6 +51,7 @@ export default class Login extends React.Component {
                 this.setState({logged_in: true,
                             member: result.member});
                 new Cookies().set("pb-member", result.member.record_id, {path: "/"});
+                this.props.observer.publish('logged-in');
             }
         });
     }

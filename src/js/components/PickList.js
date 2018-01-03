@@ -10,17 +10,20 @@ import SportsCodes from "../lib/SportsCodes"
 import Login from "../components/Login";
 
 import Cart from "../components/Cart";
+import ReactObserver from 'react-event-observer';
+import TestComponent from "../components/TestComponent";
 
 export default class PickList extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.observer = ReactObserver();
 
         this.state = {
             picks: [],
             allPicks: [],
             freePicks: [],
-
+            logged_in: false,
         };
     }
     componentWillMount() {
@@ -30,9 +33,21 @@ export default class PickList extends React.Component {
     componentDidMount() {
 
         this.loadPicks(this, true);
-
         setInterval(this.loadPicks, 60000, this);
 
+
+        // Messaging observer
+        this.observer.subscribe('logged-in', (data)=> {
+            console.log('<PickList> received logged-in message. ');
+            this.setState({logged_in: true});
+        });
+
+
+
+    }
+
+    componentWillUnmount() {
+        this.observer.unsubscribe('logged-in');
     }
 
 
@@ -114,8 +129,11 @@ export default class PickList extends React.Component {
                                                     <div className="left-bot-corner maxheight">
                                                         <div className="inner2">
                                                             <br />
-                                                            <h3>Guaranteed Experts Picks</h3><h4>You Win Or You Don't Pay - It's That Simple</h4>
+                                                            <h3>Guaranteed Experts Picks</h3>
+                                                            <h4>You Win Or You Don't Pay - It's That Simple</h4>
                                                             <h5>Red Hot Experts Best Bets</h5>
+                                                            <h1>{this.state.logged_in ? '' : 'PLEASE LOGIN TO BUY PICKS'}</h1>
+
                                                             <div align="center">
                                                                 <table width="640" border="0" cellSpacing="0" cellPadding="0">
                                                                 <tbody>
@@ -163,6 +181,35 @@ window.location=(form.dest.options[myindex].value);
                                                                 </tr>
                                                                 <tr>
                                                                     <td style={{ backgroundColor: '#990000' }}>
+
+
+
+
+                                                                  {/*      {
+                                                                            //const a = [0,1];
+                                                                            [0].forEach((element, i)=>{
+                                                                                console.log ("Faking a pick with <TestComponent>", i);
+                                                                                <div key={i}>
+                                                                                <TestComponent
+                                                                                />
+                                                                                    </div>
+
+                                                                            })
+                                                                        }*/}
+
+                                            {/*                     {
+
+
+                                                                                <TestComponent
+                                                                                    observer={this.observer}
+                                                                                />
+
+                                                                        }**/}
+
+
+
+
+
                                                                     {/*  Picks grouped by sport */}
                                                                     {SportsCodes.getSportsOrdered().map((sport, i) => {
 
@@ -171,6 +218,7 @@ window.location=(form.dest.options[myindex].value);
 
                                                                             return (
                                                                                 <div key={sport}>
+
                                                                                     <table width="630" border="0"
                                                                                            cellSpacing="0"
                                                                                            cellPadding="0">
@@ -193,7 +241,10 @@ window.location=(form.dest.options[myindex].value);
                                                                                          return (
                                                                                          <tr key={i} >
                                                                                          <td>
-                                                                                         <Pick pick={pick} />
+                                                                                         <Pick
+                                                                                             pick={pick}
+                                                                                             loggedIn={this.state.logged_in}
+                                                                                         />
                                                                                          </td>
                                                                                          </tr>
                                                                                          )})}
@@ -251,9 +302,14 @@ window.location=(form.dest.options[myindex].value);
                                                 <div className="right-bot-corner maxheight">
                                                     <div className="left-bot-corner maxheight">
                                                         <div className="inner2">
-                                                            <Login freePick={this.featuredFreePick(this.state.freePicks)} />
+                                                            <Login
+                                                                freePick={this.featuredFreePick(this.state.freePicks)}
+                                                                observer={this.observer}
+                                                            />
+
+
                                                             <br />
-                                                                <br />
+                                                           <br />
                                                             <Cart/>
                                                                     <br />
                                                                     <p style={{textAlign: 'center'}}><a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
