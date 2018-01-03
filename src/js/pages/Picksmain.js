@@ -3,7 +3,6 @@
  */
 import React from "react";
 //import Carousel from "nuka-carousel";
-import Carousel from "../lib/carousel";
 
 //import Title from "./Header/Title";
 
