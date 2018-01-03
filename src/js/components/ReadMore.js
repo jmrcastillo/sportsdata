@@ -51,7 +51,8 @@ export default class ReadMore extends React.Component {
             }}>{read}</a>}*/}
             <a onClick={event=>{
                 this.setState({expanded: ! this.state.expanded});
-            }}>{text.length > 0 ? read : ''}</a>
+            }}>&nbsp;{text.length > 0 ? read : ''}</a>
+
         </div>
 
 

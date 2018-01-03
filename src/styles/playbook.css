@@ -407,3 +407,8 @@ h16 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:16px; 
 .dept-list dd { clear:both; text-align:right;}
 .dept-list dd span { float:left; padding-right:25px;}
 .dept-list dd p { text-align:left;}
+
+.buynow-disabled {opacity: 0.33;}
+.buynow-enabled {opacity: 1;}
+
+
