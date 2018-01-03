@@ -48,8 +48,6 @@ export default class Login extends React.Component {
                 new Cookies().set("pb-member", result.member.record_id, {path: "/"});
             }
         });
-
-
     }
 
     render() {
@@ -77,7 +75,7 @@ export default class Login extends React.Component {
                                 <div>
                                     <div>
                                         <h3><span
-                                            className="trebuchet14BW">Login To View Todays Featured Free Play</span>
+                                            className="trebuchet14BW">Login To View Today's Featured Free Play</span>
                                         </h3>
                                     </div>
                                 </div>

@@ -26,6 +26,7 @@
     "react-global": "^0.1.8",
     "react-iframe": "0.0.4",
     "react-infinity-menu": "^3.0.2",
+    "react-responsive-modal": "^2.0.0",
     "react-router": "^3.0.2",
     "react-ux-password-field": "^0.9.12",
     "striptags": "^3.1.1",
