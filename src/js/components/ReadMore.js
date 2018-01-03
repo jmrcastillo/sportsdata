@@ -28,10 +28,11 @@ export default class ReadMore extends React.Component {
 
         let text = this.props.text;
 
+        let read = 'Read less..';
 
         if (! this.state.expanded) {
             text = Striptags(text.substring(0, 25));
-
+            read = 'Read more..';
         }
 
 
@@ -45,10 +46,12 @@ export default class ReadMore extends React.Component {
 
             />
 
-            {this.state.expanded ? '' : <a onClick={event=>{
-                this.setState({expanded: true});
-            }}>Read more..</a>}
-
+{/*            {this.state.expanded ? '' : <a onClick={event=>{
+                this.setState({expanded: ! this.state.expanded});
+            }}>{read}</a>}*/}
+            <a onClick={event=>{
+                this.setState({expanded: ! this.state.expanded});
+            }}>{text.length > 0 ? read : ''}</a>
         </div>
 
 
