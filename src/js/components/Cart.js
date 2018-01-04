@@ -3,6 +3,7 @@
  */
 
 import React from "react";
+//import Utils from '../lib/Utils';
 
 
 export default class Login extends React.Component {
@@ -13,13 +14,22 @@ export default class Login extends React.Component {
             picks: [{pick_id: 0}, {pick_id: 1}],
         }
 
+/*        const ta = [0,1,2];
+        if (this.state.picks.contains(2)) {
+            console.log("The test array contains 2");
+        }*/
 
     }
     componentWillMount() {
 
     }
     componentDidMount() {
-
+        this.props.observer.subscribe('add-pick', (data)=> {
+            console.log('<Cart> received add-pick message. ', data);
+        });
+    }
+    componentWillUnmount() {
+        this.props.observer.unsubscribe('add-pick');
     }
 
 
@@ -57,23 +67,28 @@ export default class Login extends React.Component {
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             {/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
                                     </tr>
-                                    <tr>
-                                        {/* LINE 53 trash icon*/}
-                                        <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>
-                                        <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
 
-                                            {this.state.picks.map((pick, i) => {
-                                                return (
-                                                 <div>
-                                                     {pick.pick_id}
-                                                 <br/>
-                                                 </div>
-                                                )})}
+                                    {this.state.picks.map((pick, i) => {
+                                        return (
+                                            <tr key={i}>
+
+                                                <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                    <i className={'fa fa-trash'} ></i>
+                                                </td>
+                                                <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                    {pick.pick_id}
 
 
-                                            </td>
-                                        <td style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>
-                                    </tr>
+
+                                                </td>
+                                                <td style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>
+                                            </tr>
+
+
+                                        )})}
+
+
+
 
                                     </tbody>
                                 </table>

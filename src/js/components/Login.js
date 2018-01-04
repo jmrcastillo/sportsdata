@@ -40,6 +40,7 @@ export default class Login extends React.Component {
     }
     componentWillMount() {
     }
+
     componentDidMount() {
         this.props.observer.subscribe('logged-in', (data)=> {
             console.log('<Login> received logged-in message. ');
@@ -47,12 +48,16 @@ export default class Login extends React.Component {
             this.logged_in = true;
 
         });
-      this.props.observer.subscribe('logged-out', (data)=> {
+        this.props.observer.subscribe('logged-out', (data)=> {
           console.log('<Login> received logged-out message. ');
 
          // this.setState({logged_in: false});
           this.logged_in = false;
         });
+    }
+    componentWillUnmount() {
+        this.props.observer.unsubscribe('logged-in');
+        this.props.observer.unsubscribe('logged-out');
     }
 
     login(member_id, password) {

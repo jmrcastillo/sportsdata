@@ -6,6 +6,7 @@ import React from "react";
 import Login from "../components/Login";
 import Modal from 'react-modal';
 
+
 export default class BuyNow extends React.Component {
 
     constructor(props) {
@@ -26,33 +27,28 @@ export default class BuyNow extends React.Component {
         };
     }
     componentWillMount() {
-        //     console.log('LOGIN (member_id), (logged_in):', this.state.member_id, this.state.logged_in);
-
     }
     componentDidMount() {
         this.props.observer.subscribe('logged-in', (data)=> {
             this.setState({modalIsOpen: false});
         });
     }
+    componentWillUnmount() {
+        this.props.observer.unsubscribe('logged-in');
+    }
+
+
     render() {
 
-    //    console.log ("<BuyNow> Render", this.props);
         const onClickLoggedIn = (event)=>{
-            alert ("Adds this pick to the cart");
+           // alert ("Adds this pick to the cart");
+            this.props.observer.publish('add-pick', {pick: this.props.pick,
+                                                    isPAW: this.props.isPAW})
         };
         const onClickLoggedOut = (event)=>{
             this.setState({modalIsOpen: true});
         };
         const onClick=this.props.loggedIn ? onClickLoggedIn : onClickLoggedOut;
-
-/*
-        if (onClick === onClickLoggedIn) {
-            console.log ("<BuyNow> Render Function is onClickedLoggedIn");
-        }
-        if (onClick === onClickLoggedOut) {
-            console.log ("<BuyNow> Render Function is onClickedLoggedOut");
-        }
-*/
 
 
         return (

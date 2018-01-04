@@ -43,9 +43,7 @@ export default class PickList extends React.Component {
         });
         this.observer.subscribe('logged-out', (data)=> {
             console.log('<PickList> received logged-out message. ');
-
             this.setState({logged_in: false});
-       //     this.forceUpdate();
         });
 
 
@@ -53,6 +51,7 @@ export default class PickList extends React.Component {
 
     componentWillUnmount() {
         this.observer.unsubscribe('logged-in');
+        this.observer.unsubscribe('logged-out');
     }
 
 
@@ -316,7 +315,9 @@ window.location=(form.dest.options[myindex].value);
 
                                                             <br />
                                                            <br />
-                                                            <Cart/>
+                                                            <Cart
+                                                                observer={this.observer}
+                                                            />
                                                                     <br />
                                                                     <p style={{textAlign: 'center'}}><a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
                                                                     <br />
