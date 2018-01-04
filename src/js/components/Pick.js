@@ -4,8 +4,11 @@
 
 import React from "react";
 import Money from "money-formatter";
+
+// Temporarily disabled for pick expiration soon notices
 import Moment from "moment";
 import SportsCodes from "../lib/SportsCodes"
+
 
 export default class Pick extends React.Component {
 

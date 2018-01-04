@@ -11,7 +11,7 @@ import Login from "../components/Login";
 
 import Cart from "../components/Cart";
 import ReactObserver from 'react-event-observer';
-import TestComponent from "../components/TestComponent";
+import ModalTest from "../components/ModalTest";
 
 export default class PickList extends React.Component {
 
@@ -129,6 +129,7 @@ export default class PickList extends React.Component {
                                                     <div className="left-bot-corner maxheight">
                                                         <div className="inner2">
                                                             <br />
+                                                            <ModalTest/>
                                                             <h3>Guaranteed Experts Picks</h3>
                                                             <h4>You Win Or You Don't Pay - It's That Simple</h4>
                                                             <h5>Red Hot Experts Best Bets</h5>
