@@ -80,7 +80,7 @@ export default class Login extends React.Component {
             if (this.logged_in) {
             return (
                 <div>
-                    <span
+                    <span className="trebuchet14" style={{textAlign: 'center'}}
                         onClick={(event)=>{
                             //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
                             alert("Logging out now.. ");
@@ -88,7 +88,9 @@ export default class Login extends React.Component {
                             this.props.observer.publish('logged-out');
 
                         }}>
-                    Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong><br/>
+
+                    <span className="trebuchet14" style={{textAlign: 'center'}}>
+                        Welcome back {this.state.member ? this.state.member.first_name : ''}</span><br/>
                     </span>
 
                 <Freeplay freePick={this.props.freePick}/>
@@ -115,7 +117,7 @@ export default class Login extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td style={{textAlign: 'center', backgroundColor: '#000000'}}>
+                            <td width="4" style={{textAlign: "center", backgroundColor: '#000000'}}>
                                 <table width="310" border="0" cellSpacing="0" cellPadding="0">
                                     <tbody>
                                     <tr>
@@ -128,7 +130,7 @@ export default class Login extends React.Component {
                                                 event.preventDefault();
                                             }}>
 
-                                                <table width="100%" border="0" cellSpacing="0" cellPadding="0">
+                                                <table width="310" border="0" cellSpacing="0" cellPadding="0">
                                                     <tbody>
                                                     <tr>
                                                         <td height="32" style={{textAlign: 'center'}}>

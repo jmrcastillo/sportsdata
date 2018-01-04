@@ -86,7 +86,6 @@ export default class Login extends React.Component {
                                     {this.state.picks.map((pick, i) => {
                                         return (
                                             <tr key={i}>
-
                                                 <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>
                                                     <i className={'fa fa-trash'} ></i>
                                                 </td>
@@ -95,8 +94,6 @@ export default class Login extends React.Component {
                                                 </td>
                                                 <td style={{textAlign: 'center', backgroundColor: 'White'}}>{pick.price}</td>
                                             </tr>
-
-
                                         )})}
 
 
