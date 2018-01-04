@@ -83,7 +83,7 @@ export default class Login extends React.Component {
                             this.props.observer.publish('logged-out');
 
                         }}>
-                    Welcome back {this.state.member ? this.state.member.first_name : ''}<br/>
+                    Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong><br/>
                     </span>
 
                 <Freeplay freePick={this.props.freePick}/>

@@ -7,8 +7,12 @@ import React from "react";
 
 export default class Login extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            picks: [{pick_id: 0}, {pick_id: 1}],
+        }
+
 
     }
     componentWillMount() {
@@ -21,6 +25,7 @@ export default class Login extends React.Component {
 
     render() {
 
+        const itemsTitle = this.state.picks.length === 0 ? "Add picks to cart to purchase" : "Items In My Cart";
         return (
         <div>
 
@@ -47,12 +52,26 @@ export default class Login extends React.Component {
                                 <table width="320" border="0" cellSpacing="2" cellPadding="2">
                                     <tbody>
                                     <tr>
-                                        <td colSpan="3" style={{textAlign: 'center', backgroundColor: 'White'}}><span className="trebuchet14B">Items In My Cart</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
+                                        <td colSpan="3" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                            <span className="trebuchet14B">{itemsTitle}</span>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            {/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
                                     </tr>
                                     <tr>
                                         {/* LINE 53 trash icon*/}
                                         <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>
-                                        <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}><span className="trebuchet14B">Your Cart Is Empty</span></td>
+                                        <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
+
+                                            {this.state.picks.map((pick, i) => {
+                                                return (
+                                                 <div>
+                                                     {pick.pick_id}
+                                                 <br/>
+                                                 </div>
+                                                )})}
+
+
+                                            </td>
                                         <td style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>
                                     </tr>
 
