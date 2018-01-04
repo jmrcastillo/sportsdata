@@ -49,7 +49,7 @@ export default class ReadMore extends React.Component {
 {/*            {this.state.expanded ? '' : <a onClick={event=>{
                 this.setState({expanded: ! this.state.expanded});
             }}>{read}</a>}*/}
-            <a onClick={event=>{
+            <a className="topnav_trebuchet14Bred" onClick={event=>{
                 this.setState({expanded: ! this.state.expanded});
             }}>&nbsp;{text.length > 0 ? read : ''}</a>
 
