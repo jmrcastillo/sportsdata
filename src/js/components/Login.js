@@ -90,7 +90,7 @@ export default class Login extends React.Component {
                         }}>
 
                     <span className="trebuchet14" style={{textAlign: 'center'}}>
-                        Welcome back {this.state.member ? this.state.member.first_name : ''}</span><br/>
+                        Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong></span><br/>
                     </span>
 
                 <Freeplay freePick={this.props.freePick}/>
