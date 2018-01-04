@@ -3,6 +3,7 @@
  */
 
 import React from "react";
+import Login from "../components/Login";
 import Modal from 'react-modal';
 
 export default class ModalTest extends React.Component {
@@ -28,7 +29,11 @@ export default class ModalTest extends React.Component {
         //     console.log('LOGIN (member_id), (logged_in):', this.state.member_id, this.state.logged_in);
 
     }
-
+    componentDidMount() {
+        this.props.observer.subscribe('logged-in', (data)=> {
+            this.setState({modalIsOpen: false});
+        });
+    }
     render() {
 
 
@@ -67,6 +72,7 @@ export default class ModalTest extends React.Component {
                         <button>inside</button>
                         <button>the modal</button>
                     </form>
+                    <Login observer={this.props.observer}/>
                 </Modal>
             </div>
         );

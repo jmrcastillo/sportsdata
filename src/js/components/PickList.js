@@ -41,7 +41,12 @@ export default class PickList extends React.Component {
             console.log('<PickList> received logged-in message. ');
             this.setState({logged_in: true});
         });
+        this.observer.subscribe('logged-out', (data)=> {
+            console.log('<PickList> received logged-out message. ');
 
+            this.setState({logged_in: false});
+       //     this.forceUpdate();
+        });
 
 
     }
@@ -129,7 +134,9 @@ export default class PickList extends React.Component {
                                                     <div className="left-bot-corner maxheight">
                                                         <div className="inner2">
                                                             <br />
-                                                            <ModalTest/>
+                                                            <ModalTest
+                                                                observer={this.observer}
+                                                            />
                                                             <h3>Guaranteed Experts Picks</h3>
                                                             <h4>You Win Or You Don't Pay - It's That Simple</h4>
                                                             <h5>Red Hot Experts Best Bets</h5>

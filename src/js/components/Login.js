@@ -22,6 +22,8 @@ export default class Login extends React.Component {
             logged_in: ! (typeof (memberIDCookie) === 'undefined'),
             member: null,
         }
+        this.logged_in = this.state.logged_in;
+
         // Auto-login member on record_id
         if (this.state.logged_in) {
             PicksAPI.loginMember(this.state.record_id).done((result) => {
@@ -39,9 +41,18 @@ export default class Login extends React.Component {
     componentWillMount() {
     }
     componentDidMount() {
-/*        this.props.observer.subscribe('logged-in', (data)=> {
-            console.log('<Login> received logged-in message as a test: ');
-        });*/
+        this.props.observer.subscribe('logged-in', (data)=> {
+            console.log('<Login> received logged-in message. ');
+        //    this.setState({logged_in: true});
+            this.logged_in = true;
+
+        });
+      this.props.observer.subscribe('logged-out', (data)=> {
+          console.log('<Login> received logged-out message. ');
+
+         // this.setState({logged_in: false});
+          this.logged_in = false;
+        });
     }
 
     login(member_id, password) {
@@ -60,9 +71,16 @@ export default class Login extends React.Component {
 
    //     console.log('LOGIN (member_id), (logged_in):', this.state.member_id, this.state.logged_in);
 
-        if (this.state.logged_in) {
+     //   if (this.state.logged_in) {
+            if (this.logged_in) {
             return (
-                <div>
+                <div  onClick={(event)=>{
+                  //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
+                    alert("Logging out now.. ");
+                    new Cookies().remove('pb-member');
+                    this.props.observer.publish('logged-out');
+
+                }}>
                     [experimental] Welcome back {this.state.member ? this.state.member.first_name : ''}<br/>
                 <Freeplay freePick={this.props.freePick}/>
                 </div>
