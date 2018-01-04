@@ -3,7 +3,6 @@
  */
 
 import React from "react";
-//import Utils from '../lib/Utils';
 
 
 export default class Login extends React.Component {
@@ -11,13 +10,13 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            picks: [{pick_id: 0}, {pick_id: 1}],
+            picks: [],
         }
 
-/*        const ta = [0,1,2];
-        if (this.state.picks.contains(2)) {
+         const ta = [0,1,2];
+   /*     if (this.state.picks.contains(2)) {
             console.log("The test array contains 2");
-        }*/
+        } */
 
     }
     componentWillMount() {
@@ -25,7 +24,21 @@ export default class Login extends React.Component {
     }
     componentDidMount() {
         this.props.observer.subscribe('add-pick', (data)=> {
-            console.log('<Cart> received add-pick message. ', data);
+
+            const findIndex = this.state.picks.findIndex((pick)=>{
+                console.log("findIndex: pick.pick_id, data.pick.pick_id", pick.pick_id, data.pick.pick_id);
+                return pick.pick_id === data.pick.pick_id;
+            });
+//            console.log('<Cart> received add-pick message. ', data, findIndex);
+
+
+            if (findIndex === -1) {
+                console.log ("findIndex was -1", this.state.picks);
+
+                this.setState({
+                    picks: this.state.picks.concat([data.pick])
+                })
+            }
         });
     }
     componentWillUnmount() {
@@ -36,6 +49,8 @@ export default class Login extends React.Component {
     render() {
 
         const itemsTitle = this.state.picks.length === 0 ? "Add picks to cart to purchase" : "Items In My Cart";
+
+        console.log("<Cart> # Picks ", this.state.picks.length);
         return (
         <div>
 
@@ -76,12 +91,9 @@ export default class Login extends React.Component {
                                                     <i className={'fa fa-trash'} ></i>
                                                 </td>
                                                 <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                                    {pick.pick_id}
-
-
-
+                                                    {pick.title}
                                                 </td>
-                                                <td style={{textAlign: 'center', backgroundColor: 'White'}}>&nbsp;</td>
+                                                <td style={{textAlign: 'center', backgroundColor: 'White'}}>{pick.price}</td>
                                             </tr>
 
 
