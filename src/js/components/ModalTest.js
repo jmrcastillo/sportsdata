@@ -52,6 +52,7 @@ export default class ModalTest extends React.Component {
                     }}
                     style={this.customStyles}
                     contentLabel="Example Modal"
+                    ariaHideApp={false}
                 >
 
                     <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
