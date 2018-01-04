@@ -74,14 +74,18 @@ export default class Login extends React.Component {
      //   if (this.state.logged_in) {
             if (this.logged_in) {
             return (
-                <div  onClick={(event)=>{
-                  //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
-                    alert("Logging out now.. ");
-                    new Cookies().remove('pb-member');
-                    this.props.observer.publish('logged-out');
+                <div>
+                    <span
+                        onClick={(event)=>{
+                            //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
+                            alert("Logging out now.. ");
+                            new Cookies().remove('pb-member');
+                            this.props.observer.publish('logged-out');
 
-                }}>
-                    [experimental] Welcome back {this.state.member ? this.state.member.first_name : ''}<br/>
+                        }}>
+                    Welcome back {this.state.member ? this.state.member.first_name : ''}<br/>
+                    </span>
+
                 <Freeplay freePick={this.props.freePick}/>
                 </div>
             )
