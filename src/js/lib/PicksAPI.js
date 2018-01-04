@@ -53,8 +53,6 @@ class PicksAPI  {
 			var text = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping').toString();
 			text = URLSafeBase64.encode(text);
 			return $.getJSON(`https://www.playbook.com/picks-api1/login-member/${record_id}/${text}`).then(function(result) {
-				console.log ("LOGINMEMBER RETURNING ", result);
-
 				return result;
 			});
 

@@ -8,6 +8,7 @@ import Money from "money-formatter";
 // Temporarily disabled for pick expiration soon notices
 import Moment from "moment";
 import SportsCodes from "../lib/SportsCodes"
+import BuyNow from "../components/BuyNow";
 
 
 export default class Pick extends React.Component {
@@ -98,7 +99,14 @@ export default class Pick extends React.Component {
                             <tbody>
                             <tr>
                                 <td width="85" valign="middle">
+{/*
                                 <img src="images/buynow.png" className={this.props.loggedIn ? 'buynow-enabled' : 'buynow-disabled'} width="85"  border="0" align="left"/>
+*/}
+                                <BuyNow
+                                    observer={this.props.observer}
+                                    loggedIn={this.props.loggedIn}
+                                />
+
                                 </td>
 
                                 <td valign="middle" class="trebuchet13">Pay After Win: <span className="price-bold">{Money.format ('USD', this.props.pick.price)}</span>
@@ -110,7 +118,15 @@ export default class Pick extends React.Component {
                             </tr>
                             <tr>
                                 <td>
+{/*
                                 <img src="images/buynow.png" className={this.props.loggedIn ? 'buynow-enabled' : 'buynow-disabled'} width="85" border="0" align="left"/>
+*/}
+                                    <BuyNow
+                                        observer={this.props.observer}
+                                        loggedIn={this.props.loggedIn}
+                                    />
+
+
 
                                 </td>
                                 <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:  <span className="price-bold">{Money.format ('USD', (Math.floor(this.props.pick.price * .6)))}</span></td>
