@@ -26,13 +26,15 @@ export default class ReadMore extends React.Component {
 
     render() {
 
-        let text = this.props.text;
 
-        let read = 'Read less..';
+        let text = this.props.text;
+        let read = 'Read less';
 
         if (! this.state.expanded) {
-            text = Striptags(text.substring(0, 275));
-            read = 'Read more..';
+            text = Striptags(text.substring(0, 150));
+            text = text.substr(0, text.lastIndexOf(' '));
+            text += '..  ';
+            read = 'Read more';
         }
 
 

@@ -7,8 +7,8 @@ import ReadMore from '../components/ReadMore';
 
 export default class Freeplay extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
     }
     componentWillMount() {
@@ -21,10 +21,8 @@ export default class Freeplay extends React.Component {
 
     render() {
 
-
         const freePickTitle = this.props.freePick ? this.props.freePick.title : 'Free pick is not available yet.';
         const freePickBody = this.props.freePick ? this.props.freePick.body : '';
-
 
         return (
         <div>

@@ -25,16 +25,14 @@ export default class Login extends React.Component {
     componentDidMount() {
         this.props.observer.subscribe('add-pick', (data)=> {
 
+            //            console.log('<Cart> received add-pick message. ', data, findIndex);
+
             const findIndex = this.state.picks.findIndex((pick)=>{
-                console.log("findIndex: pick.pick_id, data.pick.pick_id", pick.pick_id, data.pick.pick_id);
+          //      console.log("findIndex: pick.pick_id, data.pick.pick_id", pick.pick_id, data.pick.pick_id);
                 return pick.pick_id === data.pick.pick_id;
             });
-//            console.log('<Cart> received add-pick message. ', data, findIndex);
-
 
             if (findIndex === -1) {
-                console.log ("findIndex was -1", this.state.picks);
-
                 this.setState({
                     picks: this.state.picks.concat([data.pick])
                 })
@@ -50,7 +48,7 @@ export default class Login extends React.Component {
 
         const itemsTitle = this.state.picks.length === 0 ? "Add picks to cart to purchase" : "Items In My Cart";
 
-        console.log("<Cart> # Picks ", this.state.picks.length);
+  //      console.log("<Cart> # Picks ", this.state.picks.length);
         return (
         <div>
 
