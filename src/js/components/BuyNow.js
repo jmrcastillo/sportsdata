@@ -37,24 +37,30 @@ export default class BuyNow extends React.Component {
         this.props.observer.unsubscribe('logged-in');
     }
 
-
     render() {
 
+
         const onClickLoggedIn = (event)=>{
-           // alert ("Adds this pick to the cart");
+            // alert ("Adds this pick to the cart");
             this.props.observer.publish('add-pick', {pick: this.props.pick,
-                                                    isPAW: this.props.isPAW})
+                isPAW: this.props.isPAW})
         };
         const onClickLoggedOut = (event)=>{
             this.setState({modalIsOpen: true});
-        };
-        const onClick=this.props.loggedIn ? onClickLoggedIn : onClickLoggedOut;
+            this.props.observer.publish('add-pick', {pick: this.props.pick,
+                isPAW: this.props.isPAW})
 
+
+        };
+        const onClick = this.props.loggedIn ? onClickLoggedIn : onClickLoggedOut;
+
+        const buynowClass = 'buynow-enabled';
 
         return (
+
             <div>
-                <img src="images/buynow.png"  className={this.props.loggedIn ? 'buynow-enabled' : 'buynow-disabled'}
-                    onClick={onClick} width="85"  border="0" align="left"/>
+                <img src="images/buynow.png"  className={buynowClass}
+                     onClick={onClick} width="85"  border="0" align="left"/>
 
 
                 <Modal
@@ -83,6 +89,7 @@ export default class BuyNow extends React.Component {
 
 
     }
+
 }
 
 
