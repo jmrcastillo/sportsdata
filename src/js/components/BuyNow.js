@@ -29,12 +29,16 @@ export default class BuyNow extends React.Component {
     componentWillMount() {
     }
     componentDidMount() {
-        this.props.observer.subscribe('logged-in', (data)=> {
+/*        this.props.observer.subscribe('logged-in', (data)=> {
+            this.setState({modalIsOpen: false});
+        });*/
+        this.props.pubsub.subscribe('logged-in', (data)=> {
             this.setState({modalIsOpen: false});
         });
     }
     componentWillUnmount() {
-        this.props.observer.unsubscribe('logged-in');
+     //   this.props.observer.unsubscribe('logged-in');
+  //      this.props.pubsub.clearAllSubscriptions();
     }
 
     render() {
@@ -42,12 +46,13 @@ export default class BuyNow extends React.Component {
 
         const onClickLoggedIn = (event)=>{
             // alert ("Adds this pick to the cart");
-            this.props.observer.publish('add-pick', {pick: this.props.pick,
+            this.props.pubsub.publish('add-pick', {pick: this.props.pick,
                 isPAW: this.props.isPAW})
         };
         const onClickLoggedOut = (event)=>{
             this.setState({modalIsOpen: true});
-            this.props.observer.publish('add-pick', {pick: this.props.pick,
+            console.log("<BuyNow> Going to add pick", this.props.pick);
+            this.props.pubsub.publish('add-pick', {pick: this.props.pick,
                 isPAW: this.props.isPAW})
 
 
@@ -82,7 +87,7 @@ export default class BuyNow extends React.Component {
                         this.setState({modalIsOpen: false});
                     }}>close</button>
 
-                    <Login observer={this.props.observer}/>
+                    <Login observer={this.props.observer} pubsub={this.props.pubsub}/>
                 </Modal>
             </div>
         );

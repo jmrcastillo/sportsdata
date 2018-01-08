@@ -23,9 +23,9 @@ export default class Login extends React.Component {
 
     }
     componentDidMount() {
-        this.props.observer.subscribe('add-pick', (data)=> {
+        this.props.pubsub.subscribe('add-pick', (message, data)=> {
 
-            //            console.log('<Cart> received add-pick message. ', data, findIndex);
+                        console.log('<Cart> received add-pick message. ', message, data);
 
             const findIndex = this.state.picks.findIndex((pick)=>{
           //      console.log("findIndex: pick.pick_id, data.pick.pick_id", pick.pick_id, data.pick.pick_id);
@@ -40,7 +40,7 @@ export default class Login extends React.Component {
         });
     }
     componentWillUnmount() {
-        this.props.observer.unsubscribe('add-pick');
+    //    this.props.observer.unsubscribe('add-pick');
     }
 
 

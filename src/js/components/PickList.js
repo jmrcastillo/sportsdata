@@ -11,14 +11,16 @@ import Login from "../components/Login";
 
 import Cart from "../components/Cart";
 import ReactObserver from 'react-event-observer';
-//import BuyNow from "../components/BuyNow";
+import PubSub from 'pubsub-js';
 
 export default class PickList extends React.Component {
 
     constructor(props) {
         super(props);
-        this.observer = ReactObserver();
-
+     //   this.observer = ReactObserver();
+        this.pubsub = PubSub;
+        var token = PubSub.subscribe('MY TOPIC', (message, data)=>{console.log("<PickList> GOT TOPIC w/data", data)});
+console.log("<PickList> token", token);
         this.state = {
             picks: [],
             allPicks: [],
@@ -37,21 +39,21 @@ export default class PickList extends React.Component {
 
 
         // Messaging observer
-        this.observer.subscribe('logged-in', (data)=> {
+        this.pubsub.subscribe('logged-in', (data)=> {
             console.log('<PickList> received logged-in message. ');
             this.setState({logged_in: true});
         });
-        this.observer.subscribe('logged-out', (data)=> {
+        this.pubsub.subscribe('logged-out', (data)=> {
             console.log('<PickList> received logged-out message. ');
             this.setState({logged_in: false});
         });
 
-
+        PubSub.publish('MY TOPIC', 'hello world!');
     }
 
     componentWillUnmount() {
-        this.observer.unsubscribe('logged-in');
-        this.observer.unsubscribe('logged-out');
+    //    this.observer.unsubscribe('logged-in');
+    //    this.observer.unsubscribe('logged-out');
     }
 
 
@@ -247,7 +249,7 @@ window.location=(form.dest.options[myindex].value);
                                                                                          <td>
                                                                                          <Pick
                                                                                              pick={pick}
-                                                                                             observer={this.observer}
+                                                                                             pubsub={this.pubsub}
                                                                                              loggedIn={this.state.logged_in}
                                                                                          />
                                                                                          </td>
@@ -309,14 +311,15 @@ window.location=(form.dest.options[myindex].value);
                                                         <div className="inner2">
                                                             <Login
                                                                 freePick={this.featuredFreePick(this.state.freePicks)}
-                                                                observer={this.observer}
+                                                                pubsub={this.pubsub}
                                                             />
 
 
                                                             <br />
                                                            <br />
                                                             <Cart
-                                                                observer={this.observer}
+                                                                pubsub={this.pubsub}
+
                                                             />
                                                                     <br />
                                                                     <p style={{textAlign: 'center'}}><a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>

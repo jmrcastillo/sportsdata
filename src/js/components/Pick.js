@@ -100,7 +100,7 @@ export default class Pick extends React.Component {
                             <tr>
                                 <td width="85" valign="middle">
                                 <BuyNow
-                                    observer={this.props.observer}
+                                    pubsub={this.props.pubsub}
                                     loggedIn={this.props.loggedIn}
                                     pick={this.props.pick}
                                     isPAW={true}
@@ -118,7 +118,8 @@ export default class Pick extends React.Component {
                             <tr>
                                 <td>
                                     <BuyNow
-                                        observer={this.props.observer}
+                                        pubsub={this.props.pubsub}
+
                                         loggedIn={this.props.loggedIn}
                                         pick={this.props.pick}
                                         isPAW={false}

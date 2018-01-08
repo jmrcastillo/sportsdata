@@ -31,7 +31,7 @@ export default class Login extends React.Component {
                 if (result.success) {
                     this.setState({member: result.member});
                     console.log("Login PUBLISHING logged-in");
-                    this.props.observer.publish('logged-in');
+                    this.props.pubsub.publish('logged-in');
                 }
             });
 
@@ -42,22 +42,28 @@ export default class Login extends React.Component {
     }
 
     componentDidMount() {
-        this.props.observer.subscribe('logged-in', (data)=> {
+
+
+        this.props.pubsub.subscribe('logged-in', (data)=> {
             console.log('<Login> received logged-in message. ');
-        //    this.setState({logged_in: true});
+            //    this.setState({logged_in: true});
             this.logged_in = true;
 
         });
-        this.props.observer.subscribe('logged-out', (data)=> {
-          console.log('<Login> received logged-out message. ');
+        this.props.pubsub.subscribe('logged-out', (data)=> {
+            console.log('<Login> received logged-out message. ');
 
-         // this.setState({logged_in: false});
-          this.logged_in = false;
+            // this.setState({logged_in: false});
+            this.logged_in = false;
         });
+
+
+
+
     }
     componentWillUnmount() {
-        this.props.observer.unsubscribe('logged-in');
-        this.props.observer.unsubscribe('logged-out');
+        // this.props.observer.unsubscribe('logged-in');
+        // this.props.observer.unsubscribe('logged-out');
     }
 
     login(member_id, password) {
@@ -67,7 +73,7 @@ export default class Login extends React.Component {
                 this.setState({logged_in: true,
                             member: result.member});
                 new Cookies().set("pb-member", result.member.record_id, {path: "/"});
-                this.props.observer.publish('logged-in');
+                this.props.pubsub.publish('logged-in');
             }
         });
     }
@@ -85,7 +91,7 @@ export default class Login extends React.Component {
                             //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
                             alert("Logging out now.. ");
                             new Cookies().remove('pb-member');
-                            this.props.observer.publish('logged-out');
+                            this.props.pubsub.publish('logged-out');
 
                         }}>
 

@@ -21,6 +21,7 @@
     "moment": "^2.19.4",
     "money-formatter": "^0.1.4",
     "nuka-carousel": "^2.0.4",
+    "pubsub-js": "^1.5.8",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-event-observer": "^0.4.11",
