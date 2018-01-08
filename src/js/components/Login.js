@@ -34,8 +34,8 @@ export default class Login extends React.Component {
                     this.props.pubsub.publish('logged-in');
                 }
             });
-
         }
+        this._isMounted = false;
 
     }
     componentWillMount() {
@@ -46,23 +46,27 @@ export default class Login extends React.Component {
 
         this.props.pubsub.subscribe('logged-in', (message, data)=> {
             console.log('<Login> received logged-in message. ');
-            //    this.setState({logged_in: true});
+            if (this._isMounted) {
+                this.setState({logged_in: true});
+            }
+
             this.logged_in = true;
 
         });
         this.props.pubsub.subscribe('logged-out', (message, data)=> {
             console.log('<Login> received logged-out message. ');
-
-            // this.setState({logged_in: false});
+            if (this._isMounted) {
+                this.setState({logged_in: false});
+            }
             this.logged_in = false;
         });
 
-
+        this._isMounted = true;
 
 
     }
     componentWillUnmount() {
-
+        this._isMounted = false;
     }
 
     login(member_id, password) {
@@ -79,7 +83,7 @@ export default class Login extends React.Component {
 
     render() {
 
-   //     console.log('LOGIN (member_id), (logged_in):', this.state.member_id, this.state.logged_in);
+        console.log('<Login> render() [member], (logged_in):', this.state.member, this.state.logged_in);
 
      //   if (this.state.logged_in) {
             if (this.logged_in) {
