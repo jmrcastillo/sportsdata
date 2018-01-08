@@ -129,8 +129,6 @@ export default class Login extends React.Component {
                                         <td style={{textAlign: 'center', backgroundColor: '#000000'}}>
 
                                             <form onSubmit={(event)=> {
-                                                //    alert('Something was submitted' + this.state.member_id + this.state.password);
-
                                                 this.login(this.state.member_id, this.state.password);
                                                 event.preventDefault();
                                             }}>
@@ -142,9 +140,6 @@ export default class Login extends React.Component {
 
                                                             <span className="trebuchet14BW">Username:</span>&nbsp;
                                                             <input value={this.state.member_id} onChange={(event)=> {
-                                                                {/*                                            console.log('Member ID STATE WAS', this.state.member_id);
-                                                                 console.log('Member ID changes to', event.target.value);*/
-                                                                }
                                                                 this.setState({member_id: event.target.value});
                                                             }} name="MEMBER_ID" type="text" id="MEMBER_ID" size="16"
                                                                    maxLength="80"/>

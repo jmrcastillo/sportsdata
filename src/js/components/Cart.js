@@ -11,6 +11,7 @@ export default class Login extends React.Component {
         super(props);
         this.state = {
             picks: [],
+            logged_in: this.props.loggedIn,
         }
 
          const ta = [0,1,2];
@@ -32,12 +33,21 @@ export default class Login extends React.Component {
                 return pick.pick_id === data.pick.pick_id;
             });
 
-            if (findIndex === -1) {
+            if (findIndex === -1  ) {
                 this.setState({
                     picks: this.state.picks.concat([data.pick])
                 })
             }
         });
+
+        this.props.pubsub.subscribe('logged-in', (message, data)=> {
+            this.setState({logged_in: true});
+        });
+        this.props.pubsub.subscribe('logged-out', (message, data)=> {
+            this.setState({logged_in: false});
+        });
+
+
     }
     componentWillUnmount() {
     }

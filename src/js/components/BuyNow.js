@@ -29,7 +29,6 @@ export default class BuyNow extends React.Component {
     componentWillMount() {
     }
     componentDidMount() {
-
         this.props.pubsub.subscribe('logged-in', (message, data)=> {
             this.setState({modalIsOpen: false});
         });

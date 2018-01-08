@@ -304,6 +304,7 @@ window.location=(form.dest.options[myindex].value);
                                                            <br />
                                                             <Cart
                                                                 pubsub={this.pubsub}
+                                                                loggedIn={this.state.logged_in}
 
                                                             />
                                                                     <br />
