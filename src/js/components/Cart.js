@@ -40,7 +40,6 @@ export default class Login extends React.Component {
         });
     }
     componentWillUnmount() {
-    //    this.props.observer.unsubscribe('add-pick');
     }
 
 

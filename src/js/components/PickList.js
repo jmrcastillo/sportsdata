@@ -35,7 +35,7 @@ export default class PickList extends React.Component {
         setInterval(this.loadPicks, 60000, this);
 
 
-        // Messaging observer
+        // Messaging pubsub
         this.pubsub.subscribe('logged-in', (message, data)=> {
             console.log('<PickList> received logged-in message. ');
             this.setState({logged_in: true});
@@ -48,8 +48,7 @@ export default class PickList extends React.Component {
     }
 
     componentWillUnmount() {
-    //    this.observer.unsubscribe('logged-in');
-    //    this.observer.unsubscribe('logged-out');
+
     }
 
 
@@ -198,16 +197,6 @@ window.location=(form.dest.options[myindex].value);
 
                                                                             })
                                                                         }*/}
-
-                                            {/*                     {
-
-
-                                                                                <TestComponent
-                                                                                    observer={this.observer}
-                                                                                />
-
-                                                                        }**/}
-
 
 
 

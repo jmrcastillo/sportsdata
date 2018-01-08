@@ -62,8 +62,7 @@ export default class Login extends React.Component {
 
     }
     componentWillUnmount() {
-        // this.props.observer.unsubscribe('logged-in');
-        // this.props.observer.unsubscribe('logged-out');
+
     }
 
     login(member_id, password) {

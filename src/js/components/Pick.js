@@ -119,7 +119,6 @@ export default class Pick extends React.Component {
                                 <td>
                                     <BuyNow
                                         pubsub={this.props.pubsub}
-
                                         loggedIn={this.props.loggedIn}
                                         pick={this.props.pick}
                                         isPAW={false}
