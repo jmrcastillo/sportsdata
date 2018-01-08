@@ -22,7 +22,6 @@ export default class Login extends React.Component {
             logged_in: ! (typeof (memberIDCookie) === 'undefined'),
             member: null,
         }
-        this.logged_in = this.state.logged_in;
 
         // Auto-login member on record_id
         if (this.state.logged_in) {
@@ -50,7 +49,6 @@ export default class Login extends React.Component {
                 this.setState({logged_in: true});
             }
 
-            this.logged_in = true;
 
         });
         this.props.pubsub.subscribe('logged-out', (message, data)=> {
@@ -58,7 +56,6 @@ export default class Login extends React.Component {
             if (this._isMounted) {
                 this.setState({logged_in: false});
             }
-            this.logged_in = false;
         });
 
         this._isMounted = true;
@@ -83,10 +80,9 @@ export default class Login extends React.Component {
 
     render() {
 
-        console.log('<Login> render() [member], (logged_in):', this.state.member, this.state.logged_in);
+   //     console.log('<Login> render() [member], (logged_in):', this.state.member, this.state.logged_in);
 
-     //   if (this.state.logged_in) {
-            if (this.logged_in) {
+        if (this.state.logged_in) {
             return (
                 <div>
                     <span className="trebuchet14" style={{textAlign: 'center'}}

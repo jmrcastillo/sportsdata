@@ -44,7 +44,10 @@ export default class Login extends React.Component {
             this.setState({logged_in: true});
         });
         this.props.pubsub.subscribe('logged-out', (message, data)=> {
-            this.setState({logged_in: false});
+            this.setState({logged_in: false,
+                        picks: []});
+
+
         });
 
 
