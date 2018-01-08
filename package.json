@@ -24,7 +24,6 @@
     "pubsub-js": "^1.5.8",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
-    "react-event-observer": "^0.4.11",
     "react-global": "^0.1.8",
     "react-iframe": "0.0.4",
     "react-infinity-menu": "^3.0.2",

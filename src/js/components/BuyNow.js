@@ -32,7 +32,7 @@ export default class BuyNow extends React.Component {
 /*        this.props.observer.subscribe('logged-in', (data)=> {
             this.setState({modalIsOpen: false});
         });*/
-        this.props.pubsub.subscribe('logged-in', (data)=> {
+        this.props.pubsub.subscribe('logged-in', (message, data)=> {
             this.setState({modalIsOpen: false});
         });
     }

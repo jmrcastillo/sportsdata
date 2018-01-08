@@ -10,17 +10,14 @@ import SportsCodes from "../lib/SportsCodes"
 import Login from "../components/Login";
 
 import Cart from "../components/Cart";
-import ReactObserver from 'react-event-observer';
 import PubSub from 'pubsub-js';
 
 export default class PickList extends React.Component {
 
     constructor(props) {
         super(props);
-     //   this.observer = ReactObserver();
         this.pubsub = PubSub;
-        var token = PubSub.subscribe('MY TOPIC', (message, data)=>{console.log("<PickList> GOT TOPIC w/data", data)});
-console.log("<PickList> token", token);
+
         this.state = {
             picks: [],
             allPicks: [],
@@ -39,16 +36,15 @@ console.log("<PickList> token", token);
 
 
         // Messaging observer
-        this.pubsub.subscribe('logged-in', (data)=> {
+        this.pubsub.subscribe('logged-in', (message, data)=> {
             console.log('<PickList> received logged-in message. ');
             this.setState({logged_in: true});
         });
-        this.pubsub.subscribe('logged-out', (data)=> {
+        this.pubsub.subscribe('logged-out', (message, data)=> {
             console.log('<PickList> received logged-out message. ');
             this.setState({logged_in: false});
         });
 
-        PubSub.publish('MY TOPIC', 'hello world!');
     }
 
     componentWillUnmount() {
