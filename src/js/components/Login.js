@@ -35,7 +35,6 @@ export default class Login extends React.Component {
             });
         }
         this._isMounted = false;
-
     }
     componentWillMount() {
     }
@@ -44,9 +43,13 @@ export default class Login extends React.Component {
 
 
         this.props.pubsub.subscribe('logged-in', (message, data)=> {
-            console.log('<Login> received logged-in message. ');
+            console.log('<Login> received logged-in message. ', data);
             if (this._isMounted) {
                 this.setState({logged_in: true});
+                if (typeof (data) !== 'undefined') {
+                    this.setState({member: data});
+                }
+
             }
 
 
@@ -65,7 +68,10 @@ export default class Login extends React.Component {
     componentWillUnmount() {
         this._isMounted = false;
     }
+    shouldComponentUpdate() {
 
+        return true;
+    }
     login(member_id, password) {
         PicksAPI.login(member_id, password).done((result) => {
             console.log("Login results", result);
@@ -73,7 +79,7 @@ export default class Login extends React.Component {
                 this.setState({logged_in: true,
                             member: result.member});
                 new Cookies().set("pb-member", result.member.record_id, {path: "/"});
-                this.props.pubsub.publish('logged-in');
+                this.props.pubsub.publish('logged-in', result.member);
             }
         });
     }
@@ -95,7 +101,9 @@ export default class Login extends React.Component {
                         }}>
 
                     <span className="trebuchet14" style={{textAlign: 'center'}}>
-                        Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong></span><br/>
+                        Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong>
+                    </span>
+                    <br/>
                     </span>
 
                 <Freeplay freePick={this.props.freePick}/>
