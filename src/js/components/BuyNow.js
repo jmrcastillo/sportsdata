@@ -39,17 +39,23 @@ export default class BuyNow extends React.Component {
 
     render() {
 
-
         const onClickLoggedIn = (event)=>{
             // alert ("Adds this pick to the cart");
-            this.props.pubsub.publish('add-pick', {pick: this.props.pick,
-                isPAW: this.props.isPAW})
+            this.props.pubsub.publish('add-pick', {pick:
+                    {
+                        ...this.props.pick,
+                        isPAW: this.props.isPAW,
+                    }
+                })
         };
         const onClickLoggedOut = (event)=>{
             this.setState({modalIsOpen: true});
-       //     console.log("<BuyNow> Going to add pick", this.props.pick);
-            this.props.pubsub.publish('add-pick', {pick: this.props.pick,
-                isPAW: this.props.isPAW})
+            this.props.pubsub.publish('add-pick', {pick:
+                {
+                    ...this.props.pick,
+                    isPAW: this.props.isPAW,
+                }
+            })
 
 
         };

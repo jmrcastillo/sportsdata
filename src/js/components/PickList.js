@@ -37,11 +37,9 @@ export default class PickList extends React.Component {
 
         // Messaging pubsub
         this.pubsub.subscribe('logged-in', (message, data)=> {
-            console.log('<PickList> received logged-in message. ');
             this.setState({logged_in: true});
         });
         this.pubsub.subscribe('logged-out', (message, data)=> {
-            console.log('<PickList> received logged-out message. ');
             this.setState({logged_in: false});
         });
 
@@ -81,9 +79,14 @@ export default class PickList extends React.Component {
                     allPicks[sport] = [];
                 });
 
-                paidPicks.forEach(pick=>{
+ const maxPicks = 23;
+
+                paidPicks.forEach((pick, index)=>{
+                    if (index < maxPicks)
                     allPicks[pick.sport].push(pick);
                 });
+
+
 
                 self.setState({allPicks: allPicks});
 

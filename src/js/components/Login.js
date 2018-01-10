@@ -26,10 +26,9 @@ export default class Login extends React.Component {
         // Auto-login member on record_id
         if (this.state.logged_in) {
             PicksAPI.loginMember(this.state.record_id).done((result) => {
-                console.log("CONSTRUCTOR Login results", result);
                 if (result.success) {
                     this.setState({member: result.member});
-                    console.log("Login PUBLISHING logged-in");
+               //     console.log("Login PUBLISHING logged-in");
                     this.props.pubsub.publish('logged-in');
                 }
             });
@@ -43,7 +42,7 @@ export default class Login extends React.Component {
 
 
         this.props.pubsub.subscribe('logged-in', (message, data)=> {
-            console.log('<Login> received logged-in message. ', data);
+    //        console.log('<Login> received logged-in message. ', data);
             if (this._isMounted) {
                 this.setState({logged_in: true});
                 if (typeof (data) !== 'undefined') {
@@ -55,7 +54,7 @@ export default class Login extends React.Component {
 
         });
         this.props.pubsub.subscribe('logged-out', (message, data)=> {
-            console.log('<Login> received logged-out message. ');
+       //     console.log('<Login> received logged-out message. ');
             if (this._isMounted) {
                 this.setState({logged_in: false});
             }
@@ -74,7 +73,7 @@ export default class Login extends React.Component {
     }
     login(member_id, password) {
         PicksAPI.login(member_id, password).done((result) => {
-            console.log("Login results", result);
+        //    console.log("Login results", result);
             if (result.success) {
                 this.setState({logged_in: true,
                             member: result.member});
@@ -85,8 +84,6 @@ export default class Login extends React.Component {
     }
 
     render() {
-
-   //     console.log('<Login> render() [member], (logged_in):', this.state.member, this.state.logged_in);
 
         if (this.state.logged_in) {
             return (

@@ -8,7 +8,9 @@ class Utils  {
 		return false;
 	}*/
 
-
+    applyPrepaidDiscount(price) {
+        return Math.floor(0.8 * price);
+    }
 
 }
 export default (new Utils);

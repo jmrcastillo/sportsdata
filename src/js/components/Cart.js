@@ -3,6 +3,8 @@
  */
 
 import React from "react";
+import Money from "money-formatter";
+import Utils from "../lib/Utils";
 
 
 export default class Login extends React.Component {
@@ -21,7 +23,9 @@ export default class Login extends React.Component {
 
     }
     componentWillMount() {
-
+        // var arr1 = [0, 1, 2];
+        // var arr2 = [3, 4, 5];
+        // arr1 = [...arr1, ...arr2];
     }
     componentDidMount() {
         this.props.pubsub.subscribe('add-pick', (message, data)=> {
@@ -45,7 +49,7 @@ export default class Login extends React.Component {
         });
         this.props.pubsub.subscribe('logged-out', (message, data)=> {
             this.setState({logged_in: false,
-                        picks: []});
+                            picks: []});
 
 
         });
@@ -94,6 +98,8 @@ export default class Login extends React.Component {
                                     </tr>
 
                                     {this.state.picks.map((pick, i) => {
+                                  //      console.log("<Cart> displaying pick ", pick);
+                                        const price = pick.isPAW ? Money.format ('USD', pick.price) : Money.format ('USD', Utils.applyPrepaidDiscount(pick.price));
                                         return (
                                             <tr key={i}>
                                                 <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>
@@ -102,7 +108,9 @@ export default class Login extends React.Component {
                                                 <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
                                                     {pick.title}
                                                 </td>
-                                                <td style={{textAlign: 'center', backgroundColor: 'White'}}>{pick.price}</td>
+                                                <td style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                    {price}
+                                                </td>
                                             </tr>
                                         )})}
 

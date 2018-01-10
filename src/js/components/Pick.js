@@ -9,14 +9,12 @@ import Money from "money-formatter";
 import Moment from "moment";
 import SportsCodes from "../lib/SportsCodes"
 import BuyNow from "../components/BuyNow";
-
+import Utils from "../lib/Utils";
 
 export default class Pick extends React.Component {
 
     constructor(props) {
         super(props);
-       // console.log ("<Pick> logged in ", props.loggedIn);
-
     }
     componentWillMount() {
 
@@ -108,7 +106,10 @@ export default class Pick extends React.Component {
 
                                 </td>
 
-                                <td valign="middle" class="trebuchet13">Pay After Win: <span className="price-bold">{Money.format ('USD', this.props.pick.price)}</span>
+                                <td valign="middle" class="trebuchet13">Pay After Win:
+                                    <span className="price-bold">
+                                    {Money.format ('USD', this.props.pick.price)}
+                                </span>
                                 </td>
                             </tr>
                             <tr>
@@ -124,7 +125,11 @@ export default class Pick extends React.Component {
                                         isPAW={false}
                                     />
                                 </td>
-                                <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:  <span className="price-bold">{Money.format ('USD', (Math.floor(this.props.pick.price * .6)))}</span></td>
+                                <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:
+                                    <span className="price-bold">
+                                    {Money.format ('USD', Utils.applyPrepaidDiscount(this.props.pick.price))}
+                                    </span>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
