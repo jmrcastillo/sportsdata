@@ -42,12 +42,21 @@ export default class Login extends React.Component {
                     picks: this.state.picks.concat([data.pick])
                 })
             } else {
-                this.setState({
-                    picks: this.state.picks.splice(findIndex, 1)
-                })
-                this.setState({
-                    picks: this.state.picks.concat([data.pick])
-                })
+                if (this.state.picks[findIndex].isPAW === data.pick.isPAW) {
+                    alert ("Already added  " + data.pick.title + ' ' + (data.pick.isPAW ? "Pay after Win" : "Guaranteed Prepaid"));
+                } else {
+                    console.log("<Cart> findIndex is ", findIndex);
+
+                    let picks = this.state.picks;
+        //            console.log("<Cart> picks b4 splice/insert ", picks);
+                    picks.splice (findIndex, 1);
+                    picks.splice (findIndex, 0, data.pick);
+           //         console.log("<Cart> picks after splice/insert ", picks);
+                    this.setState({
+                        picks: picks
+                    })
+
+                }
             }
         });
 
@@ -114,12 +123,10 @@ export default class Login extends React.Component {
                                                     <img src="images/trash.png" width="25"
                                                     onClick={(event)=>{
                                                         console.log("Deleting pick", i, "from cart");
-                                                        let p = this.state.picks;
-                                                        console.log("Before delete", p);
-                                                        p.splice(i, 1);
-                                                        console.log("After delete", p);
+                                                        let picks = this.state.picks;
+                                                        picks.splice(i, 1);
                                                         this.setState({
-                                                            picks: p
+                                                            picks: picks
                                                         })
                                                     }}
                                                     />
