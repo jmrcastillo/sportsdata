@@ -89,7 +89,7 @@ export default class Login extends React.Component {
 
 
             {/*<!--Start Cart Box-->*/}
-            <table width="320" border="0" cellSpacing="0" cellPadding="0">
+            <table width="630" border="0" cellSpacing="0" cellPadding="0">
                 <tbody>
                 <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
                     <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
@@ -100,11 +100,11 @@ export default class Login extends React.Component {
                 </tr>
                 <tr>
                     <td style={{textAlign: 'center', backgroundColor: '#990000' }} >
-                        <table width="310" border="0" cellSpacing="0" cellPadding="0">
+                        <table width="620" border="0" cellSpacing="0" cellPadding="0">
                         <tbody>
                         <tr>
                             <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
-                                <table width="320" border="0" cellSpacing="2" cellPadding="2">
+                                <table width="630" border="0" cellSpacing="2" cellPadding="2">
                                     <tbody>
                                     <tr>
                                         <td colSpan="3" style={{textAlign: 'center', backgroundColor: 'White'}}>

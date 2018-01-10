@@ -245,10 +245,11 @@ input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;
 .topnav_trebuchet12Bnavy:hover   { color: navy; font-style: normal; font-size: 12px; font-family: trebuchet ms; font-weight: bold; text-decoration: underline; }
 
 
-.topnav_trebuchet14B   { color: #1d1d1d; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
-.topnav_trebuchet14B:active   { color: #1d1d1d; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
-.topnav_trebuchet14B:visited   { color: #1d1d1d; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
-.topnav_trebuchet14B:hover   { color: #1d1d1d; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: underline; }
+.topnav_trebuchet14   { color: black; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
+.topnav_trebuchet14:active   { color: black; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
+.topnav_trebuchet14:visited   { color: black; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
+.topnav_trebuchet14:hover   { color: black; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: normal; text-decoration: underline; }
+
 
 .topnav_trebuchet14Bnavy   { color: navy; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
 .topnav_trebuchet14Bnavy:active   { color: navy; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }

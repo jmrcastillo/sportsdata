@@ -134,9 +134,9 @@ const maxPicks = 23000;
                                                         <div className="inner2">
                                                             <br />
                                                             <h3>Guaranteed Experts Picks</h3>
-                                                            <h4>You Win Or You Don't Pay - It's That Simple</h4>
+                                                            <h4>Pay After You Win Picks -or- Prepaid Discount With "Your Choice" Guaranteed Makeup</h4>
                                                             <h5>Red Hot Experts Best Bets</h5>
-                                                            <h1>{this.state.logged_in ? '' : 'PLEASE LOGIN TO BUY PICKS'}</h1>
+
 
                                                             <div align="center">
                                                                 <table width="640" border="0" cellSpacing="0" cellPadding="0">
@@ -158,7 +158,7 @@ window.location=(form.dest.options[myindex].value);
                                                                             </script>
                                                                                 [Script for dropdown]*/}
 
-                                                                                <form name="myform1" id="myform1">
+                                                                               {/* <form name="myform1" id="myform1">
                                                                                     <select name="dest" size="1" onchange="leapto(document.myform1);">
                                                                                         <option value="">Sort By</option>
 
@@ -175,7 +175,7 @@ window.location=(form.dest.options[myindex].value);
                                                                                         <option value="../football/issue2/newsletter.pdf">Issue 2</option>
                                                                                         <option value="../football/pre/newsletter.pdf">Preseason</option>
                                                                                     </select>
-                                                                                </form>
+                                                                                </form>*/}
                                                                             </h4>
                                                                             </td>
                                                                             </tr>
@@ -313,7 +313,7 @@ window.location=(form.dest.options[myindex].value);
                                                                     <br />
                                                                     <p style={{textAlign: 'center'}}><a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
                                                                     <br />
-                                                                    <h11>&nbsp;Playbook Publications</h11>
+                                                                    {/*<h11>&nbsp;Playbook Publications</h11>
                                                                     <span className="list5">
                                                                        <br />
                                                                             <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" alt="NFL Totals Tip Sheet!" width="82" height="104" hspace="4" border="0" align="left" /><span className="topnav_trebuchet14Bred">2017 Playbook Football Handicapper's Yearbook Magazine</span><br />
@@ -328,7 +328,7 @@ window.location=(form.dest.options[myindex].value);
                                                                                 <h5><span className="topnav_trebuchet14Bred">2017 Weekly Playbook Football Newsletter</span></h5>
                                                                                 <span className="topnav_trebuchet12">Includes: Playbook Football Newsletter online weekly subscription The weekly Playbook Football Newsletter spans College and NFL Games throughout the 2017 season straight through the Super Bowl, featuring comprehensive write-ups on every College and NFL game along with star-rated Best Bets, Upset Specials, Awesome Angles, Top Trends, Incredible Stats, Wise Guy Contest Picks and a complete schedule with opening lines and projected margins for the entire week. Don't make a move without it!</span></a>
 
-                                                                    </span>
+                                                                    </span>*/}
                                                         </div><br /><br />
 
                                                     </div>
