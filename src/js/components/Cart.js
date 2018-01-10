@@ -37,7 +37,14 @@ export default class Login extends React.Component {
                 return pick.pick_id === data.pick.pick_id;
             });
 
-            if (findIndex === -1  ) {
+            if (findIndex === -1) {
+                this.setState({
+                    picks: this.state.picks.concat([data.pick])
+                })
+            } else {
+                this.setState({
+                    picks: this.state.picks.splice(findIndex, 1)
+                })
                 this.setState({
                     picks: this.state.picks.concat([data.pick])
                 })
@@ -103,7 +110,19 @@ export default class Login extends React.Component {
                                         return (
                                             <tr key={i}>
                                                 <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                                    <i className={'fa fa-trash'} ></i>
+
+                                                    <img src="images/trash.png" width="25"
+                                                    onClick={(event)=>{
+                                                        console.log("Deleting pick", i, "from cart");
+                                                        let p = this.state.picks;
+                                                        console.log("Before delete", p);
+                                                        p.splice(i, 1);
+                                                        console.log("After delete", p);
+                                                        this.setState({
+                                                            picks: p
+                                                        })
+                                                    }}
+                                                    />
                                                 </td>
                                                 <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
                                                     {pick.title}
@@ -144,7 +163,9 @@ export default class Login extends React.Component {
 }
 
 
-
+{/*
+ <i className={'fa fa-trash'} ></i>
+ */}
 
 
 
