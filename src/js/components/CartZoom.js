@@ -101,63 +101,55 @@ export default class Login extends React.Component {
                 <tr>
                     <td style={{textAlign: 'center', backgroundColor: '#990000' }} >
                         <table width="620" border="0" cellSpacing="0" cellPadding="0">
-                        <tbody>
-                        <tr>
-                            <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
-                                <table width="630" border="0" cellSpacing="2" cellPadding="2">
-                                    <tbody>
-                                    <tr>
-                                        <td colSpan="3" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                            <span className="trebuchet14B">{itemsTitle}</span>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            {/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
-                                    </tr>
+                            <tbody>
+                            <tr>
+                                <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
+                                    <table width="630" border="0" cellSpacing="2" cellPadding="2">
+                                        <tbody>
+                                        <tr>
+                                            <td colSpan="4" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                <span className="trebuchet14B">{itemsTitle}</span>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                {/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
+                                        </tr>
 
-                                    {this.state.picks.map((pick, i) => {
-                                  //      console.log("<Cart> displaying pick ", pick);
-                                        const price = pick.isPAW ? Money.format ('USD', pick.price) : Money.format ('USD', Utils.applyPrepaidDiscount(pick.price));
-                                        return (
-                                            <tr key={i}>
-                                                <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                        {this.state.picks.map((pick, i) => {
+                                            //      console.log("<Cart> displaying pick ", pick);
+                                            const price = pick.isPAW ? Money.format ('USD', pick.price) : Money.format ('USD', Utils.applyPrepaidDiscount(pick.price));
+                                            return (
+                                                <tr key={i}>
+                                                    <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>
 
-                                                    <img src="images/trash.png" width="25"
-                                                    onClick={(event)=>{
-                                                        console.log("Deleting pick", i, "from cart");
-                                                        let picks = this.state.picks;
-                                                        picks.splice(i, 1);
-                                                        this.setState({
-                                                            picks: picks
-                                                        })
-                                                    }}
-                                                    />
-                                                </td>
-                                                <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                                    <span className="trebuchet14B">{pick.title}</span>
-                                                </td>
-                                                <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                                    <span className="trebuchet14B">{price}</span>
-                                                </td>
-                                            </tr>
-                                        )})}
-
+                                                        <img src="images/trash.png" width="25"
+                                                             onClick={(event)=>{
+                                                                 console.log("Deleting pick", i, "from cart");
+                                                                 let picks = this.state.picks;
+                                                                 picks.splice(i, 1);
+                                                                 this.setState({
+                                                                     picks: picks
+                                                                 })
+                                                             }}
+                                                        />
+                                                    </td>
+                                                    <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                        <span className="trebuchet14B">{pick.title}</span>
+                                                    </td>
+                                                    <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>{price}</td>
+                                                    <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>Type:<br />{type-G-or-PP}</td>
+                                                </tr>
+                                            )})}
 
 
 
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table></td>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody><div float: right><span className="trebuchet14BW">Total:&nbsp;{TOTAL}</span></div>
+                        </table></td>
                 </tr>
-                <tr>
-                    <td style={{textAlign: 'center', backgroundColor: 'Maroon'}}>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style={{textAlign: 'center', backgroundColor: 'White'}}><img src="images/checkoutCC.png" width="211" height="50" /><br />
 
-                        <img src="images/checkoutT.png" width="211" height="50" /></td>
-                </tr>
                 </tbody>
             </table>
             {/*<!--end cartn box-->*/}
