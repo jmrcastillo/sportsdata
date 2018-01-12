@@ -59,6 +59,21 @@ class PicksAPI  {
 		})
 	}
 
+    loadPicksList(list) {
+        return this.loadServerTime().then((time) => {
+            var data = {time: time + 10};
+            var text = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping').toString();
+
+            text = URLSafeBase64.encode(text);
+
+            const url = `https://www.playbook.com/picks-api1/getpicks-list/${list}/${text}`;
+
+            return $.getJSON(url).then(function(picks) {
+                return picks;
+            }).fail(()=>console.log('GETPICKS FAIL.'))
+        })
+    }
+
 
 }
 export default (new PicksAPI);

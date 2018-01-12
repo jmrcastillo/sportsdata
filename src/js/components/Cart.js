@@ -5,6 +5,8 @@
 import React from "react";
 import Money from "money-formatter";
 import Utils from "../lib/Utils";
+import Cookies from "universal-cookie";
+import PicksAPI from "../lib/PicksAPI";
 
 
 export default class Login extends React.Component {
@@ -15,48 +17,67 @@ export default class Login extends React.Component {
             picks: [],
             logged_in: this.props.loggedIn,
         }
+        // Try re-load cart from cookies
+        const cookie =  new Cookies().get("pb-cart");
+        if (typeof (cookie) != 'undefined') {
+            const picks = cookie.split(',').map(pick=>{
+                const elements = pick.split('|');
+                return {pick_id: elements[0], isPAW: elements[1]}
+            });
+            const pickList = picks.reduce((prev, curr)=>{
+                return prev + curr.pick_id + ',';
+            },'').slice(0, -1);
+            PicksAPI.loadPicksList(pickList).done(picks=>{
+                console.log(picks.length + " picks re-loaded from server");
+                this.state.picks = picks;
+            });
+        }
 
-         const ta = [0,1,2];
-   /*     if (this.state.picks.contains(2)) {
-            console.log("The test array contains 2");
-        } */
+
+
 
     }
     componentWillMount() {
-        // var arr1 = [0, 1, 2];
-        // var arr2 = [3, 4, 5];
-        // arr1 = [...arr1, ...arr2];
+
     }
     componentDidMount() {
         this.props.pubsub.subscribe('add-pick', (message, data)=> {
 
-                        console.log('<Cart> received add-pick message. ', message, data);
+          //              console.log('<Cart> received add-pick message. ', message, data);
 
             const findIndex = this.state.picks.findIndex((pick)=>{
-          //      console.log("findIndex: pick.pick_id, data.pick.pick_id", pick.pick_id, data.pick.pick_id);
                 return pick.pick_id === data.pick.pick_id;
             });
 
+            let picks = [];
             if (findIndex === -1) {
-                this.setState({
-                    picks: this.state.picks.concat([data.pick])
-                })
+                picks = this.state.picks.concat([data.pick]);
             } else {
                 if (this.state.picks[findIndex].isPAW === data.pick.isPAW) {
                     alert ("Already added  " + data.pick.title + ' ' + (data.pick.isPAW ? "Pay after Win" : "Guaranteed Prepaid"));
                 } else {
-                    console.log("<Cart> findIndex is ", findIndex);
-
-                    let picks = this.state.picks;
-        //            console.log("<Cart> picks b4 splice/insert ", picks);
+                    picks = this.state.picks;
                     picks.splice (findIndex, 1);
                     picks.splice (findIndex, 0, data.pick);
-           //         console.log("<Cart> picks after splice/insert ", picks);
-                    this.setState({
-                        picks: picks
-                    })
-
                 }
+            }
+            if (picks.length > 0) {
+                this.setState({
+                    picks: picks
+                })
+                // Cookie save
+                const cookiePicks = picks.map(pick => {
+                    return {pick_id: pick.pick_id, isPAW: pick.isPAW};
+                }).reduce((prev, curr) => {
+                    return prev  + curr.pick_id + '|' + curr.isPAW + ',';
+                },'').slice(0, -1);
+
+                console.log("Custom cookie string", cookiePicks);
+
+                new Cookies().set("pb-cart", cookiePicks, {path: "/"});
+
+
+
             }
         });
 

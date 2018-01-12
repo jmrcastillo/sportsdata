@@ -79,7 +79,9 @@ export default class PickList extends React.Component {
                     allPicks[sport] = [];
                 });
 
-const maxPicks = 23000;
+//const maxPicks = 23000;
+const maxPicks = 20;
+
 
                 paidPicks.forEach((pick, index)=>{
                     if (index < maxPicks)
