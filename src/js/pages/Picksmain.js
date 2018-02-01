@@ -127,7 +127,8 @@ const maxPicks = 23000;
 
 						<td align="left" style={{verticalAlign: 'top' }}>
 							<PickList
-							pubsub={this.pubsub}
+								/*  Checkout - Replace by CartZoom  */
+								pubsub={this.pubsub}
 							allPicks={this.state.allPicks}
 							/>
 						</td>
@@ -148,6 +149,8 @@ const maxPicks = 23000;
 																<div className="left-bot-corner maxheight">
 																	<div className="inner2">
 																		{true ?
+
+																			/*  Checkout - Display Member Info from store fragment  */
 																			<Login
 																				freePick={this.featuredFreePick(this.state.freePicks)}
 																				pubsub={this.pubsub}
@@ -157,12 +160,15 @@ const maxPicks = 23000;
 																		<br />
 																		<br />
 																		<Cart
+																			/*  Checkout - Disappears vanishes */
+
 																			pubsub={this.pubsub}
 																			loggedIn={this.state.logged_in}
 
 																		/>
 																		<br />
-																		<p style={{textAlign: 'center'}}><a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
+																		<p style={{textAlign: 'center'}}>
+																			<a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
 																		<br />
                                                                         {/*<h11>&nbsp;Playbook Publications</h11>
 																		 <span className="list5">
