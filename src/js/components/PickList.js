@@ -99,177 +99,173 @@ const maxPicks = 20;
     featuredFreePick(self) {
         if (this.state.freePicks.length == 0) {
             return null;
-        }
-        return this.state.freePicks.reduce((prev, curr, index)=> {
+                    }
+                    return this.state.freePicks.reduce((prev, curr, index)=> {
 
- /*           if (Moment(curr.created_date) > Moment(prev.created_date)) {
-                return curr;
-            } else {
-                return prev;
-            }*/
-            return (Moment(curr.created_date) > Moment(prev.created_date)) ? curr : prev;
-        }, this.state.freePicks[0])
-    }
-
-
-    render() {
-
-        return (
+                    /*           if (Moment(curr.created_date) > Moment(prev.created_date)) {
+                     return curr;
+                     } else {
+                     return prev;
+                     }*/
+                    return (Moment(curr.created_date) > Moment(prev.created_date)) ? curr : prev;
+                }, this.state.freePicks[0])
+                    }
 
 
-                <table width="1000" border="0" cellSpacing="0" cellPadding="0">
-                <tbody>
-                <tr>
+                    render() {
 
-                <td align="left" style={{verticalAlign: 'top' }}>
-                  <div className="col-9a maxheight">
-                    {/*<!-- box begin -->*/}
-                    <div className="box maxheight">
-                        <div className="border-top maxheight">
-                            <div className="border-right maxheight">
-                                <div className="border-bot maxheight">
-                                    <div className="border-left maxheight">
-                                        <div className="left-top-corner maxheight">
-                                            <div className="right-top-corner maxheight">
-                                                <div className="right-bot-corner maxheight">
-                                                    <div className="left-bot-corner maxheight">
-                                                        <div className="inner2">
-                                                            <br />
-                                                            <h3>Guaranteed Experts Picks</h3>
-                                                            <h4>Pay After You Win Picks -or- Prepaid Discount With "Your Choice" Guaranteed Makeup</h4>
-                                                            <h5>Red Hot Experts Best Bets</h5>
+                    return (
 
-
-                                                            <div align="center">
-                                                                <table width="640" border="0" cellSpacing="0" cellPadding="0">
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td height="40"  style={{textAlign: 'center', backgroundColor: '#000000' }}>
-                                                                        <table width="630" border="0" cellSpacing="0" cellPadding="0">
-                                                                        <tbody>
-                                                                        <tr>
-                                                                        <td align="right">
-                                                                        <h4>
-{/*                                                                                <script type="text/javascript" language="javascript"><!--
-function leapto(form)  {
-var myindex=form.dest.selectedIndex
-window.location=(form.dest.options[myindex].value);
-
-}
-// -->
-                                                                            </script>
-                                                                                [Script for dropdown]*/}
-
-                                                                               {/* <form name="myform1" id="myform1">
-                                                                                    <select name="dest" size="1" onchange="leapto(document.myform1);">
-                                                                                        <option value="">Sort By</option>
-
-                                                                                        <option value="../football/issue12/newsletter.pdf">Issue 12</option>
-                                                                                        <option value="../football/issue11/newsletter.pdf">Issue 11</option>
-                                                                                        <option value="../football/issue10/newsletter.pdf">Issue 10</option>
-                                                                                        <option value="../football/issue9/newsletter.pdf">Issue 9</option>
-                                                                                        <option value="../football/issue8/newsletter.pdf">Issue 8</option>
-                                                                                        <option value="../football/issue7/newsletter.pdf">Issue 7</option>
-                                                                                        <option value="../football/issue6/newsletter.pdf">Issue 6</option>
-                                                                                        <option value="../football/issue5/newsletter.pdf">Issue 5</option>
-                                                                                        <option value="../football/issue4/newsletter.pdf">Issue 4</option>
-                                                                                        <option value="../football/issue3/newsletter.pdf">Issue 3</option>
-                                                                                        <option value="../football/issue2/newsletter.pdf">Issue 2</option>
-                                                                                        <option value="../football/pre/newsletter.pdf">Preseason</option>
-                                                                                    </select>
-                                                                                </form>*/}
-                                                                            </h4>
-                                                                            </td>
-                                                                            </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td style={{ backgroundColor: '#990000' }}>
+                        <div className="col-9a maxheight">
+                            {/*<!-- box begin -->*/}
+                            <div className="box maxheight">
+                                <div className="border-top maxheight">
+                                    <div className="border-right maxheight">
+                                        <div className="border-bot maxheight">
+                                            <div className="border-left maxheight">
+                                                <div className="left-top-corner maxheight">
+                                                    <div className="right-top-corner maxheight">
+                                                        <div className="right-bot-corner maxheight">
+                                                            <div className="left-bot-corner maxheight">
+                                                                <div className="inner2">
+                                                                    <br />
+                                                                    <h3>Guaranteed Experts Picks</h3>
+                                                                    <h4>Pay After You Win Picks -or- Prepaid Discount With "Your Choice" Guaranteed Makeup</h4>
+                                                                    <h5>Red Hot Experts Best Bets</h5>
 
 
-
-
-                                                                  {/*      {
-                                                                            //const a = [0,1];
-                                                                            [0].forEach((element, i)=>{
-                                                                                console.log ("Faking a pick with <TestComponent>", i);
-                                                                                <div key={i}>
-                                                                                <TestComponent
-                                                                                />
-                                                                                    </div>
-
-                                                                            })
-                                                                        }*/}
-
-
-
-
-                                                                    {/*  Picks grouped by sport */}
-                                                                    {SportsCodes.getSportsOrdered().map((sport, i) => {
-
-                                                                        const picks = this.state.allPicks[sport];
-                                                                        if (typeof (picks) != 'undefined' && picks.length > 0) {
-
-                                                                            return (
-                                                                                <div key={sport}>
-
-                                                                                    <table width="630" border="0"
-                                                                                           cellSpacing="0"
-                                                                                           cellPadding="0">
+                                                                    <div align="center">
+                                                                        <table width="640" border="0" cellSpacing="0" cellPadding="0">
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td height="40"  style={{textAlign: 'center', backgroundColor: '#000000' }}>
+                                                                                    <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                                         <tbody>
                                                                                         <tr>
-                                                                                            <td height="28" style={{ backgroundColor: '#990000' }}>&nbsp;&nbsp;
-                                                                                                <span
-                                                                                                    className="trebuchet14B"><font
-                                                                                                    color="white">{SportsCodes.getText(sport)}</font></span>
+                                                                                            <td align="right">
+                                                                                                <h4>
+                                                                                                    {/*                                                                                <script type="text/javascript" language="javascript"><!--
+                                                                                                     function leapto(form)  {
+                                                                                                     var myindex=form.dest.selectedIndex
+                                                                                                     window.location=(form.dest.options[myindex].value);
+
+                                                                                                     }
+                                                                                                     // -->
+                                                                                                     </script>
+                                                                                                     [Script for dropdown]*/}
+
+                                                                                                    {/* <form name="myform1" id="myform1">
+                                                                                                     <select name="dest" size="1" onchange="leapto(document.myform1);">
+                                                                                                     <option value="">Sort By</option>
+
+                                                                                                     <option value="../football/issue12/newsletter.pdf">Issue 12</option>
+                                                                                                     <option value="../football/issue11/newsletter.pdf">Issue 11</option>
+                                                                                                     <option value="../football/issue10/newsletter.pdf">Issue 10</option>
+                                                                                                     <option value="../football/issue9/newsletter.pdf">Issue 9</option>
+                                                                                                     <option value="../football/issue8/newsletter.pdf">Issue 8</option>
+                                                                                                     <option value="../football/issue7/newsletter.pdf">Issue 7</option>
+                                                                                                     <option value="../football/issue6/newsletter.pdf">Issue 6</option>
+                                                                                                     <option value="../football/issue5/newsletter.pdf">Issue 5</option>
+                                                                                                     <option value="../football/issue4/newsletter.pdf">Issue 4</option>
+                                                                                                     <option value="../football/issue3/newsletter.pdf">Issue 3</option>
+                                                                                                     <option value="../football/issue2/newsletter.pdf">Issue 2</option>
+                                                                                                     <option value="../football/pre/newsletter.pdf">Preseason</option>
+                                                                                                     </select>
+                                                                                                     </form>*/}
+                                                                                                </h4>
                                                                                             </td>
                                                                                         </tr>
                                                                                         </tbody>
                                                                                     </table>
-
-                                                                                    <table>
-                                                                                        <tbody>
-                                                                                        {/*  List of picks for this sport */}
-
-                                                                                        {picks.map((pick, i) => {
-                                                                                         return (
-                                                                                         <tr key={i} >
-                                                                                         <td>
-                                                                                         <Pick
-                                                                                             pick={pick}
-                                                                                             pubsub={this.pubsub}
-                                                                                             loggedIn={this.state.logged_in}
-                                                                                         />
-                                                                                         </td>
-                                                                                         </tr>
-                                                                                         )})}
-
-                                                                                        </tbody>
-                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style={{ backgroundColor: '#990000' }}>
 
 
-                                                                                </div>
 
-                                                                            )
-                                                                        }
-                                                                    })}
 
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td backgroundColor="black">&nbsp;</td>
-                                                                </tr>
-                                                                </tbody>
-                                                                </table>
-                                                                <img src="http://www.playbook.com/images/grey_line3.gif" alt="" width="550" height="12" />
+                                                                                    {/*      {
+                                                                                     //const a = [0,1];
+                                                                                     [0].forEach((element, i)=>{
+                                                                                     console.log ("Faking a pick with <TestComponent>", i);
+                                                                                     <div key={i}>
+                                                                                     <TestComponent
+                                                                                     />
+                                                                                     </div>
+
+                                                                                     })
+                                                                                     }*/}
+
+
+
+
+                                                                                    {/*  Picks grouped by sport */}
+                                                                                    {SportsCodes.getSportsOrdered().map((sport, i) => {
+
+                                                                                        const picks = this.state.allPicks[sport];
+                                                                                        if (typeof (picks) != 'undefined' && picks.length > 0) {
+
+                                                                                            return (
+                                                                                                <div key={sport}>
+
+                                                                                                    <table width="630" border="0"
+                                                                                                           cellSpacing="0"
+                                                                                                           cellPadding="0">
+                                                                                                        <tbody>
+                                                                                                        <tr>
+                                                                                                            <td height="28" style={{ backgroundColor: '#990000' }}>&nbsp;&nbsp;
+                                                                                                                <span
+                                                                                                                    className="trebuchet14B"><font
+                                                                                                                    color="white">{SportsCodes.getText(sport)}</font></span>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+
+                                                                                                    <table>
+                                                                                                        <tbody>
+                                                                                                        {/*  List of picks for this sport */}
+
+                                                                                                        {picks.map((pick, i) => {
+                                                                                                            return (
+                                                                                                                <tr key={i} >
+                                                                                                                    <td>
+                                                                                                                        <Pick
+                                                                                                                            pick={pick}
+                                                                                                                            pubsub={this.pubsub}
+                                                                                                                            loggedIn={this.state.logged_in}
+                                                                                                                        />
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            )})}
+
+                                                                                                        </tbody>
+                                                                                                    </table>
+
+
+                                                                                                </div>
+
+                                                                                            )
+                                                                                        }
+                                                                                    })}
+
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td backgroundColor="black">&nbsp;</td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                        <img src="http://www.playbook.com/images/grey_line3.gif" alt="" width="550" height="12" />
+                                                                    </div>
+                                                                    <br />
+                                                                    <br />
+                                                                    <br />
+                                                                </div>
+                                                                <br />
                                                             </div>
-                                                            <br />
-                                                            <br />
-                                                            <br />
                                                         </div>
-                                                        <br />
                                                     </div>
                                                 </div>
                                             </div>
@@ -277,92 +273,8 @@ window.location=(form.dest.options[myindex].value);
                                     </div>
                                 </div>
                             </div>
+                            {/*<!-- box end -->*/}
                         </div>
-                    </div>
-                    {/*<!-- box end -->*/}
-                </div>
-
-                    </td>
-                    <td style={{verticalAlign: 'top' }}>
-
-
-
-                <div className="col-5b maxheight">
-                    {/*<!-- box begin -->*/}
-                    <div className="box maxheight">
-                        <div className="border-top maxheight">
-                            <div className="border-right maxheight">
-                                <div className="border-bot maxheight">
-                                    <div className="border-left maxheight">
-                                        <div className="left-top-corner maxheight">
-                                            <div className="right-top-corner maxheight">
-                                                <div className="right-bot-corner maxheight">
-                                                    <div className="left-bot-corner maxheight">
-                                                        <div className="inner2">
-                                                            <Login
-                                                                freePick={this.featuredFreePick(this.state.freePicks)}
-                                                                pubsub={this.pubsub}
-                                                            />
-
-
-                                                            <br />
-                                                           <br />
-                                                            <Cart
-                                                                pubsub={this.pubsub}
-                                                                loggedIn={this.state.logged_in}
-
-                                                            />
-                                                                    <br />
-                                                                    <p style={{textAlign: 'center'}}><a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
-                                                                    <br />
-                                                                    {/*<h11>&nbsp;Playbook Publications</h11>
-                                                                    <span className="list5">
-                                                                       <br />
-                                                                            <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" alt="NFL Totals Tip Sheet!" width="82" height="104" hspace="4" border="0" align="left" /><span className="topnav_trebuchet14Bred">2017 Playbook Football Handicapper's Yearbook Magazine</span><br />
-                                                                                <span className="topnav_trebuchet12">Marc Lawrence's Playbook Football Preview Guide magazine is the nation's best-selling combination College and NFL Preview publication and is now available for sale and on the newsstands nationwide in mid-June. The 2017 magazine contains 248 pages of wall-to-wall information, jam packed with stats, logs, trends, winning systems, College and NFL previews, ATS Top 10 Teams, exclusive charts (Monday Night results, Coaches records, College Overtime games and many more.
-</span>
-                                                                            </a>
-
-
-                                                                            <br />
-                                                                            <br />
-                                                                            <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=300106&SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/fb.jpg" alt="" width="82" height="104" border="0" />
-                                                                                <h5><span className="topnav_trebuchet14Bred">2017 Weekly Playbook Football Newsletter</span></h5>
-                                                                                <span className="topnav_trebuchet12">Includes: Playbook Football Newsletter online weekly subscription The weekly Playbook Football Newsletter spans College and NFL Games throughout the 2017 season straight through the Super Bowl, featuring comprehensive write-ups on every College and NFL game along with star-rated Best Bets, Upset Specials, Awesome Angles, Top Trends, Incredible Stats, Wise Guy Contest Picks and a complete schedule with opening lines and projected margins for the entire week. Don't make a move without it!</span></a>
-
-                                                                    </span>*/}
-                                                        </div><br /><br />
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* <!-- box end -->*/}
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </div>
-
-            </td>
-            </tr>
-
-            </tbody>
-            </table>
 
 
 
