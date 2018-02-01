@@ -1,68 +1,114 @@
 /**
- * Created by me on 1/31/17.
+ * Created by me on 1/31/17.  Re-deployed 12-2017
  */
+
 import React from "react";
-//import Carousel from "nuka-carousel";
-
-//import Title from "./Header/Title";
-
-//import Base64 from "base-64";
-
 import PickList from "../components/PickList";
 import Login from "../components/Login";
+import PicksAPI from "../lib/PicksAPI";
+import SportsCodes from "../lib/SportsCodes"
 
 import Cart from "../components/Cart";
 import PubSub from 'pubsub-js';
+import Moment from "moment";
 
-//console.log ("PicksAPI test: ", PicksAPI.loadServerTime().done());
-
-var str = 'U2FsdGVkX18uvkm7rx2CrE4CYs/je0Z8ey67IijN3+cu2jRjrne1ilEnooFG5XW6';
-console.log(str, str.replace('/', '%2F'));
-
-
-
-
-
-
-
-// Experimental encryption stuff
-/*
-var time = 3200001
-var data = {time: time};
-console.log("data", JSON.stringify(data));
-
-// Encrypt
-var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping');
-console.log(ciphertext);
-
-console.log("Tostring", ciphertext.toString());*/
-
-//console.log (Base64.encode());
-/*
-// Decrypt
-var bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123');
-var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
-
-console.log(decryptedData);
- */
 
 export default class Picksmain extends React.Component {
 
 	constructor() {
 		super();
+		this.pubsub = PubSub;
 
 		this.state = {
-		//  was experimental  serverTime: 0,
+			picks: [],
+			allPicks: [],
+			freePicks: [],
+			logged_in: false,
 		};
 	}
 
+	componentWillMount() {
+
+	}
+	componentDidMount() {
+
+		this.loadPicks(this, true);
+		setInterval(this.loadPicks, 60000, this);
 
 
-/*	handleChange(e) {
-		const title = e.target.value;
-		this.props.changeTitle(title);
-	}*/
+		// Messaging pubsub
+		this.pubsub.subscribe('logged-in', (message, data)=> {
+			this.setState({logged_in: true});
+		});
+		this.pubsub.subscribe('logged-out', (message, data)=> {
+			this.setState({logged_in: false});
+		});
+
+	}
+
+	componentWillUnmount() {
+
+	}
+	loadPicks(self, firstLoad=false) {
+
+		//    var newPicks = [];
+
+		PicksAPI.loadPicks().done((picks) => {
+				/*            newPicks = picks.map(pick => {
+				 // Todo:  Any processing on load..
+				 return pick;
+				 });
+
+				 self.setState({picks:newPicks});*/
+
+				const freePicks = picks.filter(pick=>{
+					return parseInt(pick.price) === 0;
+				});
+				self.setState({freePicks: freePicks});
+
+
+				var paidPicks = picks.filter(pick=>{
+					return parseInt(pick.price) > 0;
+				});
+
+
+
+				var allPicks = {};
+				SportsCodes.getSportsOrdered().forEach (sport=>{
+					allPicks[sport] = [];
+				});
+
+const maxPicks = 23000;
+	///			const maxPicks = 20;
+
+
+				paidPicks.forEach((pick, index)=>{
+					if (index < maxPicks)
+						allPicks[pick.sport].push(pick);
+				});
+
+
+
+				self.setState({allPicks: allPicks});
+
+			}
+		);
+	}
+
+	featuredFreePick(self) {
+		if (this.state.freePicks.length == 0) {
+			return null;
+		}
+		return this.state.freePicks.reduce((prev, curr, index)=> {
+
+			/*           if (Moment(curr.created_date) > Moment(prev.created_date)) {
+			 return curr;
+			 } else {
+			 return prev;
+			 }*/
+			return (Moment(curr.created_date) > Moment(prev.created_date)) ? curr : prev;
+		}, this.state.freePicks[0])
+	}
 
 	render() {
 		return (
@@ -80,8 +126,10 @@ export default class Picksmain extends React.Component {
 					<tr>
 
 						<td align="left" style={{verticalAlign: 'top' }}>
-							<PickList/>
-
+							<PickList
+							pubsub={this.pubsub}
+							allPicks={this.state.allPicks}
+							/>
 						</td>
 						<td style={{verticalAlign: 'top' }}>
 
@@ -99,12 +147,13 @@ export default class Picksmain extends React.Component {
 															<div className="right-bot-corner maxheight">
 																<div className="left-bot-corner maxheight">
 																	<div className="inner2">
-																		<Login
-																			freePick={this.featuredFreePick(this.state.freePicks)}
-																			pubsub={this.pubsub}
-																		/>
-
-
+																		{true ?
+																			<Login
+																				freePick={this.featuredFreePick(this.state.freePicks)}
+																				pubsub={this.pubsub}
+																			/>
+																			: ''
+																		}
 																		<br />
 																		<br />
 																		<Cart
@@ -195,3 +244,42 @@ export default class Picksmain extends React.Component {
 		);
 	}
 }
+
+
+//console.log ("PicksAPI test: ", PicksAPI.loadServerTime().done());
+/*
+var str = 'U2FsdGVkX18uvkm7rx2CrE4CYs/je0Z8ey67IijN3+cu2jRjrne1ilEnooFG5XW6';
+console.log(str, str.replace('/', '%2F'));*/
+
+
+
+
+
+
+
+// Experimental encryption stuff
+/*
+ var time = 3200001
+ var data = {time: time};
+ console.log("data", JSON.stringify(data));
+
+ // Encrypt
+ var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping');
+ console.log(ciphertext);
+
+ console.log("Tostring", ciphertext.toString());*/
+
+//console.log (Base64.encode());
+/*
+ // Decrypt
+ var bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123');
+ var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+
+ console.log(decryptedData);
+ */
+
+/*	handleChange(e) {
+ const title = e.target.value;
+ this.props.changeTitle(title);
+ }*/
