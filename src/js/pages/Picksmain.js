@@ -24,7 +24,7 @@ export default class Picksmain extends React.Component {
 			allPicks: [],
 			freePicks: [],
 			logged_in: false,
-			checkout: false,
+			isCheckout: false,
 		};
 	}
 
@@ -45,8 +45,8 @@ export default class Picksmain extends React.Component {
 			this.setState({logged_in: false});
 		});
 		this.pubsub.subscribe('checkout', (message, data)=> {
-			this.setState({checkout: ! this.state.checkout});
-			console.log("CHECKOUT: ", this.state.checkout);
+			this.setState({isCheckout: ! this.state.isCheckout});
+			console.log("CHECKOUT: ", this.state.isCheckout);
 		});
 	}
 
@@ -130,11 +130,13 @@ const maxPicks = 23000;
 					<tr>
 
 						<td align="left" style={{verticalAlign: 'top' }}>
-							<PickList
-								/*  Checkout - Replace by CartZoom  */
-								pubsub={this.pubsub}
-							allPicks={this.state.allPicks}
-							/>
+							{	this.state.isCheckout ?
+								"ZoomCart" :
+								<PickList
+									pubsub={this.pubsub}
+									allPicks={this.state.allPicks}
+								/>
+							}
 						</td>
 						<td style={{verticalAlign: 'top' }}>
 
@@ -152,24 +154,28 @@ const maxPicks = 23000;
 															<div className="right-bot-corner maxheight">
 																<div className="left-bot-corner maxheight">
 																	<div className="inner2">
-																		{true ?
-
-																			/*  Checkout - Display Member Info from store fragment  */
+																		{this.state.isCheckout ?
+																			"--= MEMBER INFO ---" :
 																			<Login
 																				freePick={this.featuredFreePick(this.state.freePicks)}
 																				pubsub={this.pubsub}
 																			/>
-																			: ''
 																		}
+
+
 																		<br />
 																		<br />
-																		<Cart
-																			/*  Checkout - Disappears vanishes */
+																		{this.state.isCheckout ?
+																			'' :
 
-																			pubsub={this.pubsub}
-																			loggedIn={this.state.logged_in}
+																			<Cart
 
-																		/>
+																				pubsub={this.pubsub}
+																				loggedIn={this.state.logged_in}
+
+																			/>
+																		}
+
 																		<br />
 																		<p style={{textAlign: 'center'}}>
 																			<a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
