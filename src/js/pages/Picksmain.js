@@ -24,6 +24,7 @@ export default class Picksmain extends React.Component {
 			allPicks: [],
 			freePicks: [],
 			logged_in: false,
+			checkout: false,
 		};
 	}
 
@@ -43,7 +44,10 @@ export default class Picksmain extends React.Component {
 		this.pubsub.subscribe('logged-out', (message, data)=> {
 			this.setState({logged_in: false});
 		});
-
+		this.pubsub.subscribe('checkout', (message, data)=> {
+			this.setState({checkout: ! this.state.checkout});
+			console.log("CHECKOUT: ", this.state.checkout);
+		});
 	}
 
 	componentWillUnmount() {

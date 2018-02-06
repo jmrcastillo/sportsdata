@@ -7,7 +7,7 @@ import Money from "money-formatter";
 import Utils from "../lib/Utils";
 import Cookies from "universal-cookie";
 import PicksAPI from "../lib/PicksAPI";
-
+import CheckoutButton from "../components/CheckoutButton";
 
 export default class Login extends React.Component {
 
@@ -175,9 +175,19 @@ export default class Login extends React.Component {
                     <td style={{textAlign: 'center', backgroundColor: 'Maroon'}}>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td style={{textAlign: 'center', backgroundColor: 'White'}}><img src="images/checkoutCC.png" width="211" height="50" /><br />
-
-                        <img src="images/checkoutT.png" width="211" height="50" /></td>
+                    <td style={{textAlign: 'center', backgroundColor: 'White'}}>
+                        <CheckoutButton
+                            type="CC"
+                            pubsub={this.props.pubsub}
+                            enabled={this.state.picks.length > 0}
+                        />
+                    <br />
+                        <CheckoutButton
+                            type="TOKENS"
+                            pubsub={this.props.pubsub}
+                            enabled={this.state.picks.length > 0}
+                        />
+                    </td>
                 </tr>
                 </tbody>
             </table>
