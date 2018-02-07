@@ -19,6 +19,7 @@ export default class Login extends React.Component {
         }
         // Try re-load cart from cookies
         const cookie =  new Cookies().get("pb-cart");
+        console.log("*** Cart constructor: cookie", cookie);
         if (typeof (cookie) != 'undefined') {
             const picks = cookie.split(',').map(pick=>{
                 const elements = pick.split('|');
@@ -29,12 +30,9 @@ export default class Login extends React.Component {
             },'').slice(0, -1);
             PicksAPI.loadPicksList(pickList).done(picks=>{
                 console.log(picks.length + " picks re-loaded from server");
-                this.state.picks = picks;
+                this.setState({picks});
             });
         }
-
-
-
 
     }
     componentWillMount() {
@@ -91,7 +89,7 @@ export default class Login extends React.Component {
 
         });
 
-
+    console.log("***Cart: picks#", this.state.picks.length);
     }
     componentWillUnmount() {
     }
@@ -101,16 +99,18 @@ export default class Login extends React.Component {
 
         const itemsTitle = this.state.picks.length === 0 ? "Add picks to cart to purchase" : "Items In My Cart";
 
-  //      console.log("<Cart> # Picks ", this.state.picks.length);
+        if (this.props.isZoomed) {
+
+        }
+        const width10 = this.props.isZoomed ? 610 : 310;
+        const width20 = this.props.isZoomed ? 620 : 320;
+
+ //       console.log("<Cart> isZoomed ", this.props.isZoomed, width10, width20, this.props.dummy);
         return (
         <div>
 
-
-
-
-
             {/*<!--Start Cart Box-->*/}
-            <table width="320" border="0" cellSpacing="0" cellPadding="0">
+            <table width={width20} border="0" cellSpacing="0" cellPadding="0">
                 <tbody>
                 <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
                     <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
@@ -121,11 +121,11 @@ export default class Login extends React.Component {
                 </tr>
                 <tr>
                     <td style={{textAlign: 'center', backgroundColor: '#990000' }} >
-                        <table width="310" border="0" cellSpacing="0" cellPadding="0">
+                        <table width={width10} border="0" cellSpacing="0" cellPadding="0">
                         <tbody>
                         <tr>
                             <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
-                                <table width="320" border="0" cellSpacing="2" cellPadding="2">
+                                <table width={width20} border="0" cellSpacing="2" cellPadding="2">
                                     <tbody>
                                     <tr>
                                         <td colSpan="3" style={{textAlign: 'center', backgroundColor: 'White'}}>
@@ -135,7 +135,6 @@ export default class Login extends React.Component {
                                     </tr>
 
                                     {this.state.picks.map((pick, i) => {
-                                  //      console.log("<Cart> displaying pick ", pick);
                                         const price = pick.isPAW ? Money.format ('USD', pick.price) : Money.format ('USD', Utils.applyPrepaidDiscount(pick.price));
                                         return (
                                             <tr key={i}>

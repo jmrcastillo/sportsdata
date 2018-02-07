@@ -115,6 +115,21 @@ const maxPicks = 23000;
 	}
 
 	render() {
+
+		const cart=<Cart
+			pubsub={this.pubsub}
+			loggedIn={this.state.logged_in}
+			isZoomed={this.state.isCheckout}
+			dummy={"DUMMY"}
+
+		/>
+	/*	if (this.state.isCheckout) {
+			const zoomCart=React.cloneElement(cart)
+		}*/
+
+
+	//	{React.cloneElement(button, { onClick: handleClick })}
+
 		return (
 
 			<main className="main">
@@ -130,13 +145,13 @@ const maxPicks = 23000;
 					<tr>
 
 						<td align="left" style={{verticalAlign: 'top' }}>
-							{	this.state.isCheckout ?
-								"ZoomCart" :
-								<PickList
-									pubsub={this.pubsub}
-									allPicks={this.state.allPicks}
-								/>
-							}
+						{this.state.isCheckout ?
+							cart :
+							<PickList
+								pubsub={this.pubsub}
+								allPicks={this.state.allPicks}
+							/>
+						}
 						</td>
 						<td style={{verticalAlign: 'top' }}>
 
@@ -167,13 +182,7 @@ const maxPicks = 23000;
 																		<br />
 																		{this.state.isCheckout ?
 																			'' :
-
-																			<Cart
-
-																				pubsub={this.pubsub}
-																				loggedIn={this.state.logged_in}
-
-																			/>
+																			cart
 																		}
 
 																		<br />
@@ -262,40 +271,8 @@ const maxPicks = 23000;
 }
 
 
-//console.log ("PicksAPI test: ", PicksAPI.loadServerTime().done());
-/*
-var str = 'U2FsdGVkX18uvkm7rx2CrE4CYs/je0Z8ey67IijN3+cu2jRjrne1ilEnooFG5XW6';
-console.log(str, str.replace('/', '%2F'));*/
-
-
-
-
-
-
-
-// Experimental encryption stuff
-/*
- var time = 3200001
- var data = {time: time};
- console.log("data", JSON.stringify(data));
-
- // Encrypt
- var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping');
- console.log(ciphertext);
-
- console.log("Tostring", ciphertext.toString());*/
-
-//console.log (Base64.encode());
-/*
- // Decrypt
- var bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123');
- var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
-
- console.log(decryptedData);
- */
-
-/*	handleChange(e) {
- const title = e.target.value;
- this.props.changeTitle(title);
- }*/
+{/*							<Cart
+ pubsub={this.pubsub}
+ loggedIn={this.state.logged_in}
+ isZoomed={this.state.isCheckout}
+ />*/}
