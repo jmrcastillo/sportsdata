@@ -19,7 +19,6 @@ export default class Login extends React.Component {
         }
         // Try re-load cart from cookies
         const cookie =  new Cookies().get("pb-cart");
-        console.log("*** Cart constructor: cookie", cookie);
         if (typeof (cookie) != 'undefined') {
             const picks = cookie.split(',').map(pick=>{
                 const elements = pick.split('|');
@@ -89,7 +88,6 @@ export default class Login extends React.Component {
 
         });
 
-    console.log("***Cart: picks#", this.state.picks.length);
     }
     componentWillUnmount() {
     }
@@ -175,18 +173,28 @@ export default class Login extends React.Component {
                 </tr>
                 <tr>
                     <td style={{textAlign: 'center', backgroundColor: 'White'}}>
-                        <CheckoutButton
-                            type="CC"
-                            pubsub={this.props.pubsub}
-                            enabled={this.state.picks.length > 0}
-                        />
-                    <br />
-                        <CheckoutButton
-                            type="TOKENS"
-                            pubsub={this.props.pubsub}
-                            enabled={this.state.picks.length > 0}
-                        />
-                    </td>
+                        {this.props.isZoomed &&
+                            <a href="#" onClick={event=> {
+                                this.props.pubsub.publish('checkout');
+                                }
+                            }>Back to Guaranteed Experts Picks</a>
+                       }
+                       {! this.props.isZoomed &&
+                            <div>
+                            <CheckoutButton
+                                type="CC"
+                                pubsub={this.props.pubsub}
+                                enabled={this.state.picks.length > 0}
+                            />
+                            <br />
+                            <CheckoutButton
+                                type="TOKENS"
+                                pubsub={this.props.pubsub}
+                                enabled={this.state.picks.length > 0}
+                                />
+                            </div>
+                        }
+                        </td>
                 </tr>
                 </tbody>
             </table>

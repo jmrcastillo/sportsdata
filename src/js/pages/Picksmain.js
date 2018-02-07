@@ -120,15 +120,7 @@ const maxPicks = 23000;
 			pubsub={this.pubsub}
 			loggedIn={this.state.logged_in}
 			isZoomed={this.state.isCheckout}
-			dummy={"DUMMY"}
-
 		/>
-	/*	if (this.state.isCheckout) {
-			const zoomCart=React.cloneElement(cart)
-		}*/
-
-
-	//	{React.cloneElement(button, { onClick: handleClick })}
 
 		return (
 
