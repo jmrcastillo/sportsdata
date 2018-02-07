@@ -38,7 +38,6 @@ export default class Login extends React.Component {
                 }
             });
         }
-        this._isMounted = false;
     }
     componentWillMount() {
     }
@@ -46,27 +45,21 @@ export default class Login extends React.Component {
     componentDidMount() {
 
         this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data)=> {
-            if (this._isMounted) {
                 this.setState({logged_in: true});
                 if (typeof (data) !== 'undefined') {
                     this.setState({member: data});
                 }
-            }
         });
         this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
-            if (this._isMounted) {
                 this.setState({logged_in: false});
-            }
         });
 
-        this._isMounted = true;
 
     }
     componentWillUnmount() {
         this.props.pubsub.unsubscribe(this.subscribe_logged_in);
         this.props.pubsub.unsubscribe(this.subscribe_logged_out);
 
-        this._isMounted = false;
     }
     shouldComponentUpdate() {
         return true;
