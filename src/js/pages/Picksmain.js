@@ -36,23 +36,24 @@ export default class Picksmain extends React.Component {
 		this.loadPicks(this, true);
 		setInterval(this.loadPicks, 60000, this);
 
-
 		// Messaging pubsub
-		this.pubsub.subscribe('logged-in', (message, data)=> {
+		this.subscribe_logged_in = this.pubsub.subscribe('logged-in', (message, data)=> {
 			this.setState({logged_in: true});
 		});
-		this.pubsub.subscribe('logged-out', (message, data)=> {
+		this.subscribe_logged_out = this.pubsub.subscribe('logged-out', (message, data)=> {
 			this.setState({logged_in: false});
 		});
-		this.pubsub.subscribe('checkout', (message, data)=> {
+		this.subscribe_checkout = this.pubsub.subscribe('checkout', (message, data)=> {
 			this.setState({isCheckout: ! this.state.isCheckout});
-			console.log("CHECKOUT: ", this.state.isCheckout);
 		});
 	}
 
 	componentWillUnmount() {
-
+		this.pubsub.unsubscribe(this.subscribe_logged_in);
+		this.pubsub.unsubscribe(this.subscribe_logged_out);
+		this.pubsub.unsubscribe(this.subscribe_checkout);
 	}
+
 	loadPicks(self, firstLoad=false) {
 
 		//    var newPicks = [];
@@ -82,8 +83,8 @@ export default class Picksmain extends React.Component {
 					allPicks[sport] = [];
 				});
 
-const maxPicks = 23000;
-	///			const maxPicks = 20;
+ const maxPicks = 23000;
+	 //			const maxPicks = 5;
 
 
 				paidPicks.forEach((pick, index)=>{

@@ -6,9 +6,6 @@ import React from "react";
 import Pick from "../components/Pick";
 import SportsCodes from "../lib/SportsCodes"
 
-import Login from "../components/Login";
-import Cart from "../components/Cart";
-import PubSub from 'pubsub-js';
 
 export default class PickList extends React.Component {
 
@@ -21,29 +18,29 @@ export default class PickList extends React.Component {
             freePicks: [],*/
             logged_in: false,
         };
+
     }
     componentWillMount() {
 
     }
     componentDidMount() {
 
-/*
-        this.loadPicks(this, true);
-        setInterval(this.loadPicks, 60000, this);
-*/
-
 
         // Messaging pubsub
-        this.props.pubsub.subscribe('logged-in', (message, data)=> {
+        this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data)=> {
             this.setState({logged_in: true});
+
         });
-        this.props.pubsub.subscribe('logged-out', (message, data)=> {
+        this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
             this.setState({logged_in: false});
+
         });
 
     }
 
     componentWillUnmount() {
+        this.props.pubsub.unsubscribe(this.subscribe_logged_in);
+        this.props.pubsub.unsubscribe(this.subscribe_logged_in);
 
     }
 

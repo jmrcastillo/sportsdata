@@ -23,13 +23,18 @@ export default class Login extends React.Component {
             member: null,
         }
 
+
         // Auto-login member on record_id
         if (this.state.logged_in) {
+
             PicksAPI.loginMember(this.state.record_id).done((result) => {
+
                 if (result.success) {
-                    this.setState({member: result.member});
-               //     console.log("Login PUBLISHING logged-in");
+                    this.state.member = result.member;
                     this.props.pubsub.publish('logged-in');
+                } else {
+                    this.state.logged_in = false;
+                    this.props.pubsub.publish('logged-out');
                 }
             });
         }
@@ -40,21 +45,15 @@ export default class Login extends React.Component {
 
     componentDidMount() {
 
-
-        this.props.pubsub.subscribe('logged-in', (message, data)=> {
-    //        console.log('<Login> received logged-in message. ', data);
+        this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data)=> {
             if (this._isMounted) {
                 this.setState({logged_in: true});
                 if (typeof (data) !== 'undefined') {
                     this.setState({member: data});
                 }
-
             }
-
-
         });
-        this.props.pubsub.subscribe('logged-out', (message, data)=> {
-       //     console.log('<Login> received logged-out message. ');
+        this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
             if (this._isMounted) {
                 this.setState({logged_in: false});
             }
@@ -62,18 +61,19 @@ export default class Login extends React.Component {
 
         this._isMounted = true;
 
-
     }
     componentWillUnmount() {
+        this.props.pubsub.unsubscribe(this.subscribe_logged_in);
+        this.props.pubsub.unsubscribe(this.subscribe_logged_out);
+
         this._isMounted = false;
     }
     shouldComponentUpdate() {
-
         return true;
     }
     login(member_id, password) {
+
         PicksAPI.login(member_id, password).done((result) => {
-        //    console.log("Login results", result);
             if (result.success) {
                 this.setState({logged_in: true,
                             member: result.member});

@@ -28,7 +28,6 @@ export default class Login extends React.Component {
                 return prev + curr.pick_id + ',';
             },'').slice(0, -1);
             PicksAPI.loadPicksList(pickList).done(picks=>{
-                console.log(picks.length + " picks re-loaded from server");
                 this.setState({picks});
             });
         }
@@ -38,9 +37,7 @@ export default class Login extends React.Component {
 
     }
     componentDidMount() {
-        this.props.pubsub.subscribe('add-pick', (message, data)=> {
-
-          //              console.log('<Cart> received add-pick message. ', message, data);
+        this.subscribe_add_pick = this.props.pubsub.subscribe('add-pick', (message, data)=> {
 
             const findIndex = this.state.picks.findIndex((pick)=>{
                 return pick.pick_id === data.pick.pick_id;
@@ -69,27 +66,26 @@ export default class Login extends React.Component {
                     return prev  + curr.pick_id + '|' + curr.isPAW + ',';
                 },'').slice(0, -1);
 
-                console.log("Custom cookie string", cookiePicks);
-
                 new Cookies().set("pb-cart", cookiePicks, {path: "/"});
-
-
-
             }
+
         });
 
-        this.props.pubsub.subscribe('logged-in', (message, data)=> {
+        this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data)=> {
             this.setState({logged_in: true});
         });
-        this.props.pubsub.subscribe('logged-out', (message, data)=> {
-            this.setState({logged_in: false,
-                            picks: []});
-
-
+        this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
+            this.setState({
+                logged_in: false,
+                picks: []
+            });
         });
 
     }
     componentWillUnmount() {
+        this.props.pubsub.unsubscribe(this.subscribe_add_pick);
+        this.props.pubsub.unsubscribe(this.subscribe_logged_in);
+        this.props.pubsub.unsubscribe(this.subscribe_logged_out);
     }
 
 
@@ -103,7 +99,6 @@ export default class Login extends React.Component {
         const width10 = this.props.isZoomed ? 610 : 310;
         const width20 = this.props.isZoomed ? 620 : 320;
 
- //       console.log("<Cart> isZoomed ", this.props.isZoomed, width10, width20, this.props.dummy);
         return (
         <div>
 
