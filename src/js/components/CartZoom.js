@@ -94,7 +94,7 @@ export default class Login extends React.Component {
                 <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
                     <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
                         <div>
-                            <div> <span className="trebuchet14BW">My Cart</span> </div>
+                            <div> <span className="trebuchet14BW">My Cart 1</span> </div>
                         </div>
                     </div></td>
                 </tr>
@@ -107,7 +107,7 @@ export default class Login extends React.Component {
                                     <table width="630" border="0" cellSpacing="2" cellPadding="2">
                                         <tbody>
                                         <tr>
-                                            <td colSpan="4" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                            <td colSpan="5" style={{textAlign: 'center', backgroundColor: 'White'}}>
                                                 <span className="trebuchet14B">{itemsTitle}</span>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 {/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
@@ -118,7 +118,7 @@ export default class Login extends React.Component {
                                             const price = pick.isPAW ? Money.format ('USD', pick.price) : Money.format ('USD', Utils.applyPrepaidDiscount(pick.price));
                                             return (
                                                 <tr key={i}>
-                                                    <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                    <td width="28" style={{textAlign: 'center', backgroundColor: 'White'}}>
 
                                                         <img src="images/trash.png" width="25"
                                                              onClick={(event)=>{
@@ -135,7 +135,7 @@ export default class Login extends React.Component {
                                                         <span className="trebuchet14B">{pick.title}</span>
                                                     </td>
                                                     <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>{price}</td>
-                                                    <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>Type:<br />{type-G-or-PP}</td>
+                                                    <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}><span className="trebuchet14B">Type:<br />{type-G-or-PP}</span></td>
                                                 </tr>
                                             )})}
 
