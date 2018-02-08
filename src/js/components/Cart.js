@@ -133,7 +133,7 @@ export default class Login extends React.Component {
                                 <table width={width20} border="0" cellSpacing="2" cellPadding="2">
                                     <tbody>
                                     <tr>
-                                        <td colSpan="3" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                        <td colSpan="4" style={{textAlign: 'center', backgroundColor: 'White'}}>
                                             <span className="trebuchet14B">{itemsTitle}</span>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             {/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
@@ -144,7 +144,7 @@ export default class Login extends React.Component {
            //                             console.log ("Cart ", pick, price);
                                         return (
                                             <tr key={i}>
-                                                <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                <td width="28" style={{textAlign: 'center', backgroundColor: 'White'}}>
 
                                                     <img src="images/trash.png" width="25"
                                                     onClick={(event)=>{
@@ -167,7 +167,7 @@ export default class Login extends React.Component {
                                                 {this.props.isZoomed &&
                                                     <td width="50"
                                                         style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                                        Type:<br />{pick.isPAW ? 'G' : 'PP'}
+                                                        <span className="trebuchet14B">Type:<br />{pick.isPAW ? 'G' : 'PP'}</span>
                                                     </td>
                                                 }
                                             </tr>
@@ -188,14 +188,14 @@ export default class Login extends React.Component {
                 </tr>
 
                 <tr>
-                    <td style={{textAlign: 'center', backgroundColor: 'White'}}>
+                    <td style={{textAlign: 'center', backgroundColor: 'White'}}><br /><br />
 
                         {this.props.isZoomed &&
 
                             <a href="#" onClick={event=> {
                                 this.props.pubsub.publish('checkout');
                                 }
-                            }>Back to Guaranteed Experts Picks</a>
+                            }><img src="/images/return_catalog_btn.png" border="0" /></a>
                        }
                        {! this.props.isZoomed &&
                             <div>
