@@ -19,6 +19,7 @@ export default class Login extends React.Component {
         }
         // Try re-load cart from cookies
         const cookie =  new Cookies().get("pb-cart");
+        console.log("Cart cookie", cookie);
         if (typeof (cookie) != 'undefined') {
             const picks = cookie.split(',').map(pick=>{
                 const elements = pick.split('|');
@@ -27,8 +28,15 @@ export default class Login extends React.Component {
             const pickList = picks.reduce((prev, curr)=>{
                 return prev + curr.pick_id + ',';
             },'').slice(0, -1);
-            PicksAPI.loadPicksList(pickList).done(picks=>{
-                this.setState({picks});
+
+            PicksAPI.loadPicksList(pickList).done(loadedPicks=>{
+                const picksWithType=loadedPicks.map((pick, index)=>{
+                        pick.isPAW = (picks[index].isPAW === 'true');
+                        return pick;
+                    }
+                );
+
+                this.setState({picks: picksWithType});
             });
         }
 
@@ -58,15 +66,8 @@ export default class Login extends React.Component {
             if (picks.length > 0) {
                 this.setState({
                     picks: picks
-                })
-                // Cookie save
-                const cookiePicks = picks.map(pick => {
-                    return {pick_id: pick.pick_id, isPAW: pick.isPAW};
-                }).reduce((prev, curr) => {
-                    return prev  + curr.pick_id + '|' + curr.isPAW + ',';
-                },'').slice(0, -1);
-
-                new Cookies().set("pb-cart", cookiePicks, {path: "/"});
+                });
+                this.savePicksAsCookie(picks);
             }
 
         });
@@ -83,11 +84,22 @@ export default class Login extends React.Component {
 
     }
     componentWillUnmount() {
+        this.savePicksAsCookie(this.state.picks);
         this.props.pubsub.unsubscribe(this.subscribe_add_pick);
         this.props.pubsub.unsubscribe(this.subscribe_logged_in);
         this.props.pubsub.unsubscribe(this.subscribe_logged_out);
     }
 
+    savePicksAsCookie(picks) {
+        // Cookie save
+        const cookiePicks = picks.map(pick => {
+            return {pick_id: pick.pick_id, isPAW: pick.isPAW};
+        }).reduce((prev, curr) => {
+            return prev  + curr.pick_id + '|' + curr.isPAW + ',';
+        },'').slice(0, -1);
+
+        new Cookies().set("pb-cart", cookiePicks, {path: "/"});
+    }
 
     render() {
 
@@ -129,6 +141,7 @@ export default class Login extends React.Component {
 
                                     {this.state.picks.map((pick, i) => {
                                         const price = pick.isPAW ? Money.format ('USD', pick.price) : Money.format ('USD', Utils.applyPrepaidDiscount(pick.price));
+           //                             console.log ("Cart ", pick, price);
                                         return (
                                             <tr key={i}>
                                                 <td width="25" style={{textAlign: 'center', backgroundColor: 'White'}}>
@@ -141,6 +154,7 @@ export default class Login extends React.Component {
                                                         this.setState({
                                                             picks: picks
                                                         })
+                                                        this.savePicksAsCookie(picks);
                                                     }}
                                                     />
                                                 </td>
@@ -150,25 +164,34 @@ export default class Login extends React.Component {
                                                 <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>
                                                     <span className="trebuchet14B">{price}</span>
                                                 </td>
+                                                {this.props.isZoomed &&
+                                                    <td width="50"
+                                                        style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                        Type:<br />{pick.isPAW ? 'G' : 'PP'}
+                                                    </td>
+                                                }
                                             </tr>
                                         )})}
-
-
-
 
                                     </tbody>
                                 </table>
                             </td>
                         </tr>
                         </tbody>
-                    </table></td>
+{/*                            {this.props.isZoomed &&
+                                <div float: right><span className="trebuchet14BW">Total:&nbsp;{TOTAL}</span></div>
+                            }*/}
+                        </table></td>
                 </tr>
                 <tr>
                     <td style={{textAlign: 'center', backgroundColor: 'Maroon'}}>&nbsp;</td>
                 </tr>
+
                 <tr>
                     <td style={{textAlign: 'center', backgroundColor: 'White'}}>
+
                         {this.props.isZoomed &&
+
                             <a href="#" onClick={event=> {
                                 this.props.pubsub.publish('checkout');
                                 }

@@ -146,7 +146,8 @@ export default class Login extends React.Component {
                                     </table>
                                 </td>
                             </tr>
-                            </tbody><div float: right><span className="trebuchet14BW">Total:&nbsp;{TOTAL}</span></div>
+                            </tbody>
+                            <div float: right><span className="trebuchet14BW">Total:&nbsp;{TOTAL}</span></div>
                         </table></td>
                 </tr>
 
