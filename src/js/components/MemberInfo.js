@@ -56,6 +56,7 @@ export default class Login extends React.Component {
                 </tbody>
             </table>
             {/*<!--Start Member Box-->*/}
+
             <table width="492" cellPadding="0" cellSpacing="0" bgcolor="#d6d5d5">
 
                 <tbody id="EDITMEMBER" style="display:none" >
