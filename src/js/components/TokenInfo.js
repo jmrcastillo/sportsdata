@@ -34,6 +34,7 @@ export default class Login extends React.Component {
 
 
             <div align="center">
+
                 <!-- Start shopping_cart_main_purchase_tokens.html-->
                 <table width="600">
 

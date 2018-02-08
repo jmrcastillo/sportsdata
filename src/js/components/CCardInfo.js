@@ -32,6 +32,7 @@ export default class Login extends React.Component {
         return (
 
             <div align="center">
+                
                 <!-- Start shopping_cart_main_purchase_ccard.html-->
                 <table width="600" border="0" cellSpacing="0" cellPadding="0">
                     <tr>
