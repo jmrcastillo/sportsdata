@@ -1,5 +1,106 @@
 @charset "UTF-8";
 /* CSS Document */
+input[type=submit] {
+
+    background:url("https://ipsports.dtison.net/ecps/site_locals/store/0/cart_images/checkout_btn.png");
+
+}
+
+input.rounded {
+    border: 1px solid #ccc;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -moz-box-shadow: 1px 1px 2px #666;
+    -webkit-box-shadow: 1px 1px 2px #666;
+    box-shadow: 1px 1px 2px #666;
+    padding: 2px 3px;
+    font-size: 12px;
+    outline: 0;
+    -webkit-appearance: none;
+}
+input.rounded:focus {
+    border-color: #47b6f6;
+}
+
+input.required {
+    border: 1px solid #ccc;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -moz-box-shadow: 1px 1px 2px #666;
+    -webkit-box-shadow: 1px 1px 2px #666;
+    box-shadow: 1px 1px 2px #666;
+    padding: 2px 3px;
+    font-size: 12px;
+    outline: 0;
+    -webkit-appearance: none;
+}
+input.required:focus {
+    border-color: #47b6f6;
+}
+
+
+
+
+.confirmCheckbox {
+    width: 122px;
+    height: 26px;
+    background: #333;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.confirmCheckbox:after {
+    content: 'NO';
+    color: #e41212;
+
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.confirmCheckbox:before {
+    content: 'I AGREE';
+    color: #27ae60;
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+}
+.confirmCheckbox label {
+    display: block;
+    width: 58px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 150px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.confirmCheckbox input[type=checkbox] {
+    visibility: hidden;
+}
+.confirmCheckbox input[type=checkbox]:checked + label {
+    left: 62px;
+}
+
+
+
+
+
+
 body {background:url(http://www.playbook.com/images/header-bg.gif) left top repeat-x #fff;}
 * { margin:0; padding:0;}
 input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;}
