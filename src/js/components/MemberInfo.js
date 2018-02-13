@@ -3,6 +3,7 @@
  */
 
 import React from "react";
+import PicksAPI from "../lib/PicksAPI";
 
 
 
@@ -66,9 +67,7 @@ export default class Login extends React.Component {
                                 <td bgcolor="#FFFFFF" width="386" height="20">
                                     <div align="left">&nbsp;
 
-                                        <i>
-
-                                            Last Name:&nbsp;</i>
+                                        <i>Last Name:&nbsp;</i>
                                         <b>
                                             <input name="LAST_NAME" type="text" defaultValue={this.props.member.last_name}
                                                    onChange={event=>{
@@ -79,14 +78,15 @@ export default class Login extends React.Component {
                                 </td>
                             </tr>
 
-
-
-
-
                             <tr>
                                 <td>
                                     <input type="button" value="Save" onClick={e=>{
                                         console.log("Saving...", this.state.member);
+//                                        PicksAPI.saveMember(this.state.member);
+                                        PicksAPI.saveMember(this.state.member).done((res)=>{
+                                            console.log("SAVE done..", res);
+                                        });
+
                                     }}/>
 
                                 </td>
