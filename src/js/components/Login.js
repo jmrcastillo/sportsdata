@@ -31,7 +31,7 @@ export default class Login extends React.Component {
 
                 if (result.success) {
                     this.state.member = result.member;
-                    this.props.pubsub.publish('logged-in');
+                    this.props.pubsub.publish('logged-in', result.member);
                 } else {
                     this.state.logged_in = false;
                     this.props.pubsub.publish('logged-out');

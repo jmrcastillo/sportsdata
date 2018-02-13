@@ -9,6 +9,8 @@ import PicksAPI from "../lib/PicksAPI";
 import SportsCodes from "../lib/SportsCodes"
 
 import Cart from "../components/Cart";
+import MemberInfo from "../components/MemberInfo";
+
 import PubSub from 'pubsub-js';
 import Moment from "moment";
 
@@ -25,6 +27,7 @@ export default class Picksmain extends React.Component {
 			freePicks: [],
 			logged_in: false,
 			isCheckout: false,
+            member: {},
 		};
 	}
 
@@ -36,9 +39,11 @@ export default class Picksmain extends React.Component {
 		this.loadPicks(this, true);
 		setInterval(this.loadPicks, 60000, this);
 
-		// Messaging pubsub
+        // Messaging pubsub
 		this.subscribe_logged_in = this.pubsub.subscribe('logged-in', (message, data)=> {
-			this.setState({logged_in: true});
+     //       console.log ("PicksMain: got logged-in  ", message, data);
+			this.setState({logged_in: true,
+                        member: data});
 		});
 		this.subscribe_logged_out = this.pubsub.subscribe('logged-out', (message, data)=> {
 			this.setState({logged_in: false});
@@ -163,7 +168,9 @@ export default class Picksmain extends React.Component {
 																<div className="left-bot-corner maxheight">
 																	<div className="inner2">
 																		{this.state.isCheckout ?
-																			"--= MEMBER INFO ---" :
+																			<MemberInfo
+                                                                            member={this.state.member}
+                                                                            /> :
 																			<Login
 																				freePick={this.featuredFreePick(this.state.freePicks)}
 																				pubsub={this.pubsub}

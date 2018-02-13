@@ -16,9 +16,7 @@ export default class Login extends React.Component {
 			login_failed: false
 		}
 	}
-/*
- {"member_id":"five0","password":"johnny777"}
- */
+
 	tryLogin (successCallback, failCallback) {
 		let url =  `https://www.playbook.com/cube-api4/login/key/0`;
 			console.log ("Faking load url", url);
@@ -45,7 +43,7 @@ export default class Login extends React.Component {
 
 	render() {
 
-		console.log ("AUTH: ", window.cubedata.IS_AUTHENTICATED, " DEST ROUTE: ", window.cubedata.DESTINATION_ROUTE );
+	//	console.log ("AUTH: ", window.cubedata.IS_AUTHENTICATED, " DEST ROUTE: ", window.cubedata.DESTINATION_ROUTE );
 		return (
 			<form name="login"
 				onSubmit={(event) => {
@@ -142,4 +140,8 @@ export default class NameForm extends React.Component {
 
 
 
+ */
+
+/*
+ {"member_id":"five0","password":"johnny777"}
  */
