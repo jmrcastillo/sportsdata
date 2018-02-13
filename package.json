@@ -28,6 +28,7 @@
     "react-iframe": "0.0.4",
     "react-infinity-menu": "^3.0.2",
     "react-modal": "^3.1.10",
+    "react-notifications": "^1.4.3",
     "react-responsive-modal": "^2.0.0",
     "react-router": "^3.0.2",
     "react-ux-password-field": "^0.9.12",

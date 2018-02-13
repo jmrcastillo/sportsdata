@@ -5,6 +5,9 @@
 import React from "react";
 import PicksAPI from "../lib/PicksAPI";
 
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+//import 'react-notifications/lib/notifications.css';
+
 
 
 export default class Login extends React.Component {
@@ -14,6 +17,7 @@ export default class Login extends React.Component {
         this.state = {
             member: props.member,
         }
+        this.NotificationManager = NotificationManager;
     }
     componentWillMount() {
 
@@ -54,7 +58,7 @@ export default class Login extends React.Component {
                                     <b>
                                     <input name="FIRST_NAME" type="text" defaultValue={this.props.member.first_name}
                                     onChange={event=>{
-                                        console.log("MemberInfo updating state.member was", this.state.member);
+                                    //    console.log("MemberInfo updating state.member was", this.state.member);
                                         this.updateMemberInfo('first_name', event.target.value);
                                     }}
                                     size="20" maxLength="50"/>
@@ -81,14 +85,14 @@ export default class Login extends React.Component {
                             <tr>
                                 <td>
                                     <input type="button" value="Save" onClick={e=>{
-                                        console.log("Saving...", this.state.member);
-//                                        PicksAPI.saveMember(this.state.member);
                                         PicksAPI.saveMember(this.state.member).done((res)=>{
-                                            console.log("SAVE done..", res);
+                                         //   console.log("SAVE done..", res);
+                                            this.NotificationManager.info('Changes saved.');
+
                                         });
 
                                     }}/>
-
+                                    <NotificationContainer/>
                                 </td>
                             </tr>
 

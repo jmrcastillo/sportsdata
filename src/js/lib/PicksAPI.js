@@ -75,36 +75,12 @@ class PicksAPI  {
     }
 
 	saveMember(member) {
-/*		$.post("https://www.playbook.com/picks-api1/save-member",
-			member,
-			function(data, status){
-		//		alert("Data: " + data + "\nStatus: " + status);
-			});*/
-//console.log("Saving Member", member);
-
-
 
         return $.post("https://www.playbook.com/picks-api1/save-member",
             member,
            ).then(function(res) {
             return res;
         }).fail(()=>console.log('SAVEMEMBER FAIL.'));
-
-/*
- console.log("Saving Member", member);
-
-        return $.ajax({
-                url: "https://www.playbook.com/picks-api1/save-member",
-                data: JSON.stringify(member),
-                processData: false,
-                type: 'POST',
-                contentType: 'application/json'
-            }).then(function(res) {
-            return res;
-        }).fail(()=>console.log('SAVEMEMBER FAIL.'));
-
-*/
-
 
 	}
 
