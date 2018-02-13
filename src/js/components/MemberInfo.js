@@ -219,7 +219,7 @@ export default class Login extends React.Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="button" value="Save" onClick={e=>{
+                                    <input type="button" value="Update" onClick={e=>{
                                         PicksAPI.saveMember(this.state.member).done((res)=>{
                                             this.NotificationManager.info('Your changes saved.');
 
