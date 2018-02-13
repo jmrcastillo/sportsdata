@@ -39,17 +39,17 @@ export default class Login extends React.Component {
 
         return (
 
-             <table width="492" cellPadding="0" cellSpacing="0" bgcolor="#d6d5d5">
+             <table width="342" cellPadding="0" cellSpacing="0" bgcolor="#d6d5d5">
 
                 <tbody id="EDITMEMBER"  >
                 <tr>
                     <td>
 
-                        <table width="492" border="0" cellSpacing="1" cellPadding="1">
+                        <table width="342" border="0" cellSpacing="1" cellPadding="1">
                             <tbody>
                             <tr>
                                 <td bgcolor="#f5f5f5" height="30"><div align="center"><span className="verdana12b">Customer Information</span><br />
-                                    <span className="verdanal10">The Info Below Needs To Match Your Credit Card Billing Statement. </span></div></td>
+                                    <span className="verdanal10">The Info Below Needs To Match Your <br />Credit Card Billing Statement. </span></div></td>
                             </tr>
                             <tr height="20">
                             <td bgcolor="#FFFFFF" width="386" height="20">
@@ -221,7 +221,7 @@ export default class Login extends React.Component {
                                 <td>
                                     <input type="button" value="Update" onClick={e=>{
                                         PicksAPI.saveMember(this.state.member).done((res)=>{
-                                            this.NotificationManager.info('Your changes saved.');
+                                            this.NotificationManager.success('Your changes saved.');
 
                                         });
 
