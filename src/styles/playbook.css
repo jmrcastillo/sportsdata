@@ -1,5 +1,11 @@
 @charset "UTF-8";
 /* CSS Document */
+
+.input{
+    font-size:12px;
+    font-family:'Verdana';
+}
+
 input[type=submit] {
 
     background:url("https://ipsports.dtison.net/ecps/site_locals/store/0/cart_images/checkout_btn.png");
@@ -15,9 +21,10 @@ input.rounded {
     -webkit-box-shadow: 1px 1px 2px #666;
     box-shadow: 1px 1px 2px #666;
     padding: 2px 3px;
-    font-size: 12px;
+    font-size: 10px;
     outline: 0;
     -webkit-appearance: none;
+    font: 12px/12px Arial, sans-serif;
 }
 input.rounded:focus {
     border-color: #47b6f6;
@@ -32,7 +39,7 @@ input.required {
     -webkit-box-shadow: 1px 1px 2px #666;
     box-shadow: 1px 1px 2px #666;
     padding: 2px 3px;
-    font-size: 12px;
+    font-size: 10px;
     outline: 0;
     -webkit-appearance: none;
 }
@@ -236,6 +243,8 @@ input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;
 .verdana18 { font-weight: normal; font-size: 18px; font-family: Verdana }
 .verdana18b { font-weight: bold; font-size: 18px; font-family: Verdana }
 .verdana22b { font-weight: bold; font-size: 22px; font-family: Verdana }
+.verdana12b { font-weight: bold; font-size: 12px; font-family: Verdana }
+.verdana12 { font-weight: normal; font-size: 12px; font-family: Verdana }
 .verdana18brd { font-weight: bold; color: #880000; font-size: 18px; font-family: Verdana }
 .verdana18bnavy { font-weight: bold; color: navy; font-size: 18px; font-family: Verdana }
 .verdana24 { font-weight: normal; font-size: 24px; font-family: Verdana }
