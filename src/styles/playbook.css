@@ -4,6 +4,16 @@
 .input{
     font-size:12px;
     font-family:'Verdana';
+    border: 1px solid #ccc;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -moz-box-shadow: 1px 1px 1px #666;
+    -webkit-box-shadow: 1px 1px 1px #666;
+    box-shadow: 1px 1px 1px #666;
+    padding: 2px 3px;
+    outline: 0;
+    -webkit-appearance: none;
 }
 
 input[type=submit] {
