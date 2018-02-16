@@ -41,7 +41,6 @@ export default class Picksmain extends React.Component {
 
         // Messaging pubsub
 		this.subscribe_logged_in = this.pubsub.subscribe('logged-in', (message, data)=> {
-     //       console.log ("PicksMain: got logged-in  ", message, data);
 			this.setState({logged_in: true,
                         member: data});
 		});
@@ -51,13 +50,21 @@ export default class Picksmain extends React.Component {
 		this.subscribe_checkout = this.pubsub.subscribe('checkout', (message, data)=> {
 			this.setState({isCheckout: ! this.state.isCheckout});
 		});
+
+        this.subscribe_member_info = this.pubsub.subscribe('member-info', (message, data)=> {
+         //   console.log("Picksmain member info",  data);
+            this.setState({member: data});
+        });
+
 	}
 
 	componentWillUnmount() {
 		this.pubsub.unsubscribe(this.subscribe_logged_in);
 		this.pubsub.unsubscribe(this.subscribe_logged_out);
 		this.pubsub.unsubscribe(this.subscribe_checkout);
-	}
+        this.pubsub.unsubscribe(this.subscribe_member_info);
+
+    }
 
 	loadPicks(self, firstLoad=false) {
 
@@ -170,6 +177,7 @@ export default class Picksmain extends React.Component {
 																		{this.state.isCheckout ?
 																			<MemberInfo
                                                                             member={this.state.member}
+                                                                            pubsub={this.pubsub}
                                                                             /> :
 																			<Login
 																				freePick={this.featuredFreePick(this.state.freePicks)}

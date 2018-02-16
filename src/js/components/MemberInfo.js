@@ -222,7 +222,7 @@ export default class Login extends React.Component {
                                     <input type="button" value="Update" onClick={e=>{
                                         PicksAPI.saveMember(this.state.member).done((res)=>{
                                             this.NotificationManager.success('Your changes saved.');
-
+                                            this.props.pubsub.publish('member-info', this.state.member);
                                         });
 
                                     }}/>
