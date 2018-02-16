@@ -75,14 +75,21 @@ class PicksAPI  {
     }
 
 	saveMember(member) {
-
         return $.post("https://www.playbook.com/picks-api1/save-member",
             member,
            ).then(function(res) {
             return res;
         }).fail(()=>console.log('SAVEMEMBER FAIL.'));
-
 	}
+
+    purchaseCCard(purchaseData) {
+        return $.post("https://www.playbook.com/picks-api1/purchase-ccard",
+            purchaseData,
+        ).then(function(res) {
+            return res;
+        }).fail(()=>console.log('PURCHASECCARD FAIL.'));
+    }
+
 
 }
 export default (new PicksAPI);

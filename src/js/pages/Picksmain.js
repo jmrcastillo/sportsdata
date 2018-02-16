@@ -56,7 +56,18 @@ export default class Picksmain extends React.Component {
         });
         this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
             this.setState({ccard: data});
-            console.log("Picksmain purchase-ccard (next will be put member and ccard data in object, POST to server",  data);
+
+            //Object.assign(secondObject, firstObject);
+            let purchaseData = {};
+            Object.assign(purchaseData, data);
+            Object.assign(purchaseData, this.state.member);
+
+            console.log("Picksmain purchase-ccard (next will be put member and ccard data in object, POST to server",  purchaseData);
+            PicksAPI.purchaseCCard(purchaseData).done((result) => {
+                console.log ("AFTER purchaseCCard(), got result back", result);
+            });
+
+
         });
 	}
 
@@ -66,7 +77,6 @@ export default class Picksmain extends React.Component {
 		this.pubsub.unsubscribe(this.subscribe_checkout);
         this.pubsub.unsubscribe(this.subscribe_member_info);
         this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
-
     }
 
 	loadPicks(self, firstLoad=false) {
