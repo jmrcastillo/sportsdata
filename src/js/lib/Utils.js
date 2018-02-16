@@ -11,6 +11,8 @@ class Utils  {
     applyPrepaidDiscount(price) {
         return Math.floor(0.8 * price);
     }
-
+	isNumeric(n) {
+		return !isNaN(parseFloat(n)) && isFinite(n);
+	}
 }
 export default (new Utils);

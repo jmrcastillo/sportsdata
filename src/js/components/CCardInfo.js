@@ -4,6 +4,7 @@
 
 import React from "react";
 import PicksAPI from "../lib/PicksAPI";
+import Utils from "../lib/Utils";
 
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
@@ -63,7 +64,15 @@ export default class Login extends React.Component {
 
         return type;
     }
+
+    cardInfoEntered() {
+        const ccard = this.state.ccard;
+        return ccard.number && ccard.expMonth && ccard.expYear && ccard.cvv;
+    }
+
     render() {
+
+        const purchaseButtonOpacity =  this.cardInfoEntered() ? 1.0 : 0.1;
 
         return (
 
@@ -83,12 +92,9 @@ export default class Login extends React.Component {
                                    if (event.ctrlKey || event.shiftKey || event.keyCode === 8 || event.keyCode === 46) {
                                        return true;
                                    }
-                                   function isNumeric(n) {
-                                       return !isNaN(parseFloat(n)) && isFinite(n);
-                                   }
-                                   if (! isNumeric(event.key)) {
+
+                                   if (! Utils.isNumeric(event.key)) {
                                        event.preventDefault();
-                                       return true;
                                    }
                                    return true;
                                 }}
@@ -105,11 +111,26 @@ export default class Login extends React.Component {
                     <tr>
                         <td height="40" colSpan="2" align="center">
                             <span className="verdana14">Exp. Date:&nbsp;Month</span>&nbsp;
-                            <input name="CC_EXPIRE_MONTH" id="CC_EXPIRE_MONTH" type="text" defaultValue="" size="2" maxLength="2"  className="required" title="Enter expiration month" tabIndex="6"/>&nbsp;&nbsp;
+                            <input name="CC_EXPIRE_MONTH" id="CC_EXPIRE_MONTH"
+                                onChange={event=>{
+                                    this.updateCcardInfo('expMonth', event.target.value);
+                                }}
+                                type="text" defaultValue="" size="2" maxLength="2"  className="required" title="Enter expiration month" tabIndex="6"
+                            />&nbsp;&nbsp;
                             <span className="linkv14">Year</span>&nbsp;
-                            <input name="CC_EXPIRE_YEAR" id="CC_EXPIRE_YEAR" type="text" defaultValue="" size="4" maxLength="4"  className="required" title="Enter credit expiration year" tabIndex="7"/>&nbsp;&nbsp;
+                            <input name="CC_EXPIRE_YEAR" id="CC_EXPIRE_YEAR"
+                                onChange={event=>{
+                                   this.updateCcardInfo('expYear', event.target.value);
+                                }}
+                                type="text" defaultValue="" size="4" maxLength="4"  className="required" title="Enter credit expiration year" tabIndex="7"
+                            />&nbsp;&nbsp;
                             <span className="verdana14">CVV2</span>&nbsp;
-                            <input name="CC_PIN" id="CC_PIN" type="text" defaultValue={" "} size="4" maxLength="4"   className="required" title="Enter credit card Verification Number (CVV2)" tabIndex="8"/>&nbsp;&nbsp;
+                            <input name="CC_PIN" id="CC_PIN"
+                               onChange={event=>{
+                                   this.updateCcardInfo('cvv', event.target.value);
+                               }}
+                               type="text" defaultValue={" "} size="4" maxLength="4"   className="required" title="Enter credit card Verification Number (CVV2)" tabIndex="8"
+                            />&nbsp;&nbsp;
                             <a title="Credit Card Verification Numbers" href="JavaScript:openWinD('https://www.ipsports.net/ecps/pages/cvv2/cvv2_1.html',420,450)"><img src="images/mini_cvv2.gif" alt="Credit Card Verification Number"  border="0" align="absmiddle"/> </a>
                         </td>
                     </tr>
@@ -133,7 +154,17 @@ export default class Login extends React.Component {
                                     </div>
                                 </div></td>
                                 <td width="280" align="center">
-                                <input type="image" name="PURCHASE_SUBMITTED" id="PURCHASE_SUBMITTED" src="images/purchase-button.png"  width="200" height="45" alt="purchase" value="submit"   />
+                                <input type="image" name="PURCHASE_SUBMITTED" id="PURCHASE_SUBMITTED"
+                                       src="images/purchase-button.png"  width="200" height="45" alt="purchase" value="submit"
+                                       style={{opacity: purchaseButtonOpacity}}
+                                       onClick={event=>{
+                                           if (! this.cardInfoEntered()) {
+                                               event.preventDefault();
+                                               return true;
+                                           }
+                                            console.log("Purchase taking place..");
+                                       }}
+                                />
                                 </td>
                             </tr>
                                 </tbody>
