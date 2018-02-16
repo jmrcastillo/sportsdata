@@ -209,6 +209,7 @@ export default class Login extends React.Component {
                             </a>
                             <CCardInfo
                                 cartTotal={this.state.cartTotal}
+                                pubsub={this.props.pubsub}
                             />
 
                             </div>

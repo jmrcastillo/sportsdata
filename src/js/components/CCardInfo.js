@@ -162,7 +162,9 @@ export default class Login extends React.Component {
                                                event.preventDefault();
                                                return true;
                                            }
-                                            console.log("Purchase taking place..");
+                                           console.log("Purchase taking place..");
+                                           this.props.pubsub.publish('purchase-ccard', this.state.ccard);
+
                                        }}
                                 />
                                 </td>

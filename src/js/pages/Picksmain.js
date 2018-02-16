@@ -28,6 +28,7 @@ export default class Picksmain extends React.Component {
 			logged_in: false,
 			isCheckout: false,
             member: {},
+            ccard: {}
 		};
 	}
 
@@ -50,12 +51,13 @@ export default class Picksmain extends React.Component {
 		this.subscribe_checkout = this.pubsub.subscribe('checkout', (message, data)=> {
 			this.setState({isCheckout: ! this.state.isCheckout});
 		});
-
         this.subscribe_member_info = this.pubsub.subscribe('member-info', (message, data)=> {
-         //   console.log("Picksmain member info",  data);
             this.setState({member: data});
         });
-
+        this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
+            this.setState({ccard: data});
+            console.log("Picksmain purchase-ccard (next will be put member and ccard data in object, POST to server",  data);
+        });
 	}
 
 	componentWillUnmount() {
@@ -63,6 +65,7 @@ export default class Picksmain extends React.Component {
 		this.pubsub.unsubscribe(this.subscribe_logged_out);
 		this.pubsub.unsubscribe(this.subscribe_checkout);
         this.pubsub.unsubscribe(this.subscribe_member_info);
+        this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
 
     }
 
