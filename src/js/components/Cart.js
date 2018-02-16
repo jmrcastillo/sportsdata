@@ -8,6 +8,7 @@ import Utils from "../lib/Utils";
 import Cookies from "universal-cookie";
 import PicksAPI from "../lib/PicksAPI";
 import CheckoutButton from "../components/CheckoutButton";
+import CCardInfo from "../components/CCardInfo";
 
 export default class Login extends React.Component {
 
@@ -15,6 +16,7 @@ export default class Login extends React.Component {
         super(props);
         this.state = {
             picks: [],
+            cartTotal: 0,
             logged_in: this.props.loggedIn,
         }
         // Try re-load cart from cookies
@@ -36,7 +38,8 @@ export default class Login extends React.Component {
                     }
                 );
 
-                this.setState({picks: picksWithType});
+                this.setState({picks: picksWithType,
+                                cartTotal: this.cartTotal(picksWithType)});
             });
         }
 
@@ -65,7 +68,8 @@ export default class Login extends React.Component {
             }
             if (picks.length > 0) {
                 this.setState({
-                    picks: picks
+                    picks: picks,
+                    cartTotal: this.cartTotal(picks)
                 });
                 this.savePicksAsCookie(picks);
             }
@@ -91,7 +95,7 @@ export default class Login extends React.Component {
     }
 
     savePicksAsCookie(picks) {
-        // Cookie save
+        // Cookie save - make a saveable string of form: 'pick_id|isPAW'
         const cookiePicks = picks.map(pick => {
             return {pick_id: pick.pick_id, isPAW: pick.isPAW};
         }).reduce((prev, curr) => {
@@ -99,6 +103,12 @@ export default class Login extends React.Component {
         },'').slice(0, -1);
 
         new Cookies().set("pb-cart", cookiePicks, {path: "/"});
+    }
+
+    cartTotal(picks) {
+        return picks.reduce((accumulator, pick)=>{
+            return accumulator + pick.isPAW  ? pick.price : Utils.applyPrepaidDiscount(pick.price);
+        }, 0);
     }
 
     render() {
@@ -191,11 +201,17 @@ export default class Login extends React.Component {
                     <td style={{textAlign: 'center', backgroundColor: 'White'}}><br /><br />
 
                         {this.props.isZoomed &&
-
+                            <div>
                             <a href="#" onClick={event=> {
                                 this.props.pubsub.publish('checkout');
                                 }
-                            }><img src="/images/return_catalog_btn.png" border="0" /></a>
+                            }><img src="/images/return_catalog_btn.png" border="0" />
+                            </a>
+                            <CCardInfo
+                                cartTotal={this.state.cartTotal}
+                            />
+
+                            </div>
                        }
                        {! this.props.isZoomed &&
                             <div>
