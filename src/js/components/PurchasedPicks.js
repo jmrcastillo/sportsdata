@@ -94,7 +94,7 @@ export default class Login extends React.Component {
                 <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
                     <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
                         <div>
-                            <div> <span className="trebuchet14BW">My Cart 1</span> </div>
+                            <div> <span className="trebuchet14BW">Your Picks</span> </div>
                         </div>
                     </div></td>
                 </tr>
@@ -109,21 +109,26 @@ export default class Login extends React.Component {
                                         <tr>
                                             <td colSpan="5" style={{textAlign: 'center', backgroundColor: 'White'}}>
                                                 <span className="trebuchet14B">{PickTitle}</span><br />
-                                                <span className="trebuchet14B">{PickBody}</span><br /><br />
+                                                <span className="trebuchet14">{PickBody}</span><br /><br />
                                             </td>
                                         </tr>
 
 
+{/*  LOOP HERE  */}
                                         <tr>
                                             <td width="28" style={{textAlign: 'center', backgroundColor: 'White'}}>
 
 
                                             </td>
-
                                         </tr>
 
 
-
+         <tr>
+                                            <td colSpan="5" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                <span className="trebuchet14B">{PickTitle}</span><br />
+                                                <span className="trebuchet14B">{PickBody}</span><br /><br />
+                                            </td>
+                                        </tr>
 
 
                                         </tbody>
