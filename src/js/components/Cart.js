@@ -21,7 +21,7 @@ export default class Login extends React.Component {
         }
         // Try re-load cart from cookies
         const cookie =  new Cookies().get("pb-cart");
-        console.log("Cart cookie", cookie);
+   //     console.log("Cart cookie", cookie);
         if (typeof (cookie) != 'undefined') {
             const picks = cookie.split(',').map(pick=>{
                 const elements = pick.split('|');
@@ -95,14 +95,9 @@ export default class Login extends React.Component {
     }
 
     savePicksAsCookie(picks) {
-        // Cookie save - make a saveable string of form: 'pick_id|isPAW'
-        const cookiePicks = picks.map(pick => {
-            return {pick_id: pick.pick_id, isPAW: pick.isPAW};
-        }).reduce((prev, curr) => {
-            return prev  + curr.pick_id + '|' + curr.isPAW + ',';
-        },'').slice(0, -1);
-
+        const cookiePicks = Utils.stringifyPicks(picks);
         new Cookies().set("pb-cart", cookiePicks, {path: "/"});
+        this.props.pubsub.publish('selected-picks', cookiePicks);
     }
 
     cartTotal(picks) {

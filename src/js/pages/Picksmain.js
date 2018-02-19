@@ -7,7 +7,7 @@ import PickList from "../components/PickList";
 import Login from "../components/Login";
 import PicksAPI from "../lib/PicksAPI";
 import SportsCodes from "../lib/SportsCodes"
-
+import Utils from "../lib/Utils";
 import Cart from "../components/Cart";
 import MemberInfo from "../components/MemberInfo";
 
@@ -25,6 +25,7 @@ export default class Picksmain extends React.Component {
 			picks: [],
 			allPicks: [],
 			freePicks: [],
+            selectedPicks: '',
 			logged_in: false,
 			isCheckout: false,
             member: {},
@@ -49,19 +50,26 @@ export default class Picksmain extends React.Component {
 			this.setState({logged_in: false});
 		});
 		this.subscribe_checkout = this.pubsub.subscribe('checkout', (message, data)=> {
-			this.setState({isCheckout: ! this.state.isCheckout});
+			this.setState({isCheckout: ! this.state.isCheckout},);
 		});
         this.subscribe_member_info = this.pubsub.subscribe('member-info', (message, data)=> {
             this.setState({member: data});
         });
+        this.subscribe_selected_picks = this.pubsub.subscribe('selected-picks', (message, data)=> {
+            this.setState({selectedPicks: data});
+        });
+
         this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
             this.setState({ccard: data});
+
+
+
 
             //Object.assign(secondObject, firstObject);
             let purchaseData = {};
             Object.assign(purchaseData, data);
             Object.assign(purchaseData, this.state.member);
-
+			purchaseData.selectedPicks = this.state.selectedPicks;
             console.log("Picksmain purchase-ccard (next will be put member and ccard data in object, POST to server",  purchaseData);
             PicksAPI.purchaseCCard(purchaseData).done((result) => {
                 console.log ("AFTER purchaseCCard(), got result back", result);
@@ -76,6 +84,7 @@ export default class Picksmain extends React.Component {
 		this.pubsub.unsubscribe(this.subscribe_logged_out);
 		this.pubsub.unsubscribe(this.subscribe_checkout);
         this.pubsub.unsubscribe(this.subscribe_member_info);
+        this.pubsub.unsubscribe(this.subscribe_selected_picks);
         this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
     }
 
