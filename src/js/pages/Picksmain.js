@@ -10,10 +10,16 @@ import SportsCodes from "../lib/SportsCodes"
 import Utils from "../lib/Utils";
 import Cart from "../components/Cart";
 import MemberInfo from "../components/MemberInfo";
+import PurchasedPicks from "../components/PurchasedPicks";
 
 import PubSub from 'pubsub-js';
 import Moment from "moment";
 
+const MODES = {
+    normal: {value: 0, name: "Normal", code: "N"},
+    checkout: {value: 1, name: "Checkout", code: "C"},
+    showPicks: {value: 2, name: "Show Picks", code: "S"},
+};
 
 export default class Picksmain extends React.Component {
 
@@ -26,8 +32,9 @@ export default class Picksmain extends React.Component {
 			allPicks: [],
 			freePicks: [],
             selectedPicks: '',
+            purchasedPicks: [],
 			logged_in: false,
-			isCheckout: false,
+            displayMode: MODES.normal,
             member: {},
             ccard: {}
 		};
@@ -49,9 +56,15 @@ export default class Picksmain extends React.Component {
 		this.subscribe_logged_out = this.pubsub.subscribe('logged-out', (message, data)=> {
 			this.setState({logged_in: false});
 		});
-		this.subscribe_checkout = this.pubsub.subscribe('checkout', (message, data)=> {
-			this.setState({isCheckout: ! this.state.isCheckout},);
+		this.subscribe_mode_normal = this.pubsub.subscribe('mode-normal', (message, data)=> {
+			this.setState({displayMode: MODES.normal},);
 		});
+        this.subscribe_mode_checkout = this.pubsub.subscribe('mode-checkout', (message, data)=> {
+            this.setState({displayMode: MODES.checkout},);
+        });
+        this.subscribe_mode_showpicks = this.pubsub.subscribe('mode-showpicks', (message, data)=> {
+            this.setState({displayMode: MODES.showpicks},);
+        });
         this.subscribe_member_info = this.pubsub.subscribe('member-info', (message, data)=> {
             this.setState({member: data});
         });
@@ -70,6 +83,7 @@ export default class Picksmain extends React.Component {
             PicksAPI.purchaseCCard(purchaseData).done((result) => {
                 console.log ("AFTER purchaseCCard(), got result back", result);
                 //  TODO:  Update purchasedPicks array from result..
+                this.pubsub.publish('mode-showpicks')
             });
 
 
@@ -79,7 +93,9 @@ export default class Picksmain extends React.Component {
 	componentWillUnmount() {
 		this.pubsub.unsubscribe(this.subscribe_logged_in);
 		this.pubsub.unsubscribe(this.subscribe_logged_out);
-		this.pubsub.unsubscribe(this.subscribe_checkout);
+        this.pubsub.unsubscribe(this.subscribe_mode_normal);
+        this.pubsub.unsubscribe(this.subscribe_mode_checkout);
+        this.pubsub.unsubscribe(this.subscribe_mode_showpicks);
         this.pubsub.unsubscribe(this.subscribe_member_info);
         this.pubsub.unsubscribe(this.subscribe_selected_picks);
         this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
@@ -151,7 +167,7 @@ export default class Picksmain extends React.Component {
 		const cart=<Cart
 			pubsub={this.pubsub}
 			loggedIn={this.state.logged_in}
-			isZoomed={this.state.isCheckout}
+			isZoomed={this.state.displayMode === MODES.checkout}
 		/>
 
 		return (
@@ -169,16 +185,23 @@ export default class Picksmain extends React.Component {
 					<tr>
 
 						<td align="left" style={{verticalAlign: 'top' }}>
-						{this.state.isCheckout ?
-							cart :
-							<PickList
-								pubsub={this.pubsub}
-								allPicks={this.state.allPicks}
-							/>
-						}
+                        {(this.state.displayMode === MODES.normal) &&
+                            <PickList
+                                pubsub={this.pubsub}
+                                allPicks={this.state.allPicks}
+                            />
+                        }
+                        {(this.state.displayMode === MODES.checkout) &&
+                            cart
+                        }
+                        {(this.state.displayMode === MODES.showpicks) &&
+                            <PurchasedPicks
+                                purchasedPicks={this.state.purchasedPicks}
+                                pubsub={this.pubsub}
+                            />
+                        }
 						</td>
 						<td style={{verticalAlign: 'top' }}>
-
 
 
 							<div className="col-5b maxheight">
@@ -193,45 +216,48 @@ export default class Picksmain extends React.Component {
 															<div className="right-bot-corner maxheight">
 																<div className="left-bot-corner maxheight">
 																	<div className="inner2">
-																		{this.state.isCheckout ?
-																			<MemberInfo
+                                                                    {(this.state.displayMode === MODES.normal) &&
+                                                                        <Login
+                                                                            freePick={this.featuredFreePick(this.state.freePicks)}
+                                                                            pubsub={this.pubsub}
+                                                                        />
+                                                                    }
+                                                                    {(this.state.displayMode === MODES.checkout) &&
+                                                                        <MemberInfo
                                                                             member={this.state.member}
                                                                             pubsub={this.pubsub}
-                                                                            /> :
-																			<Login
-																				freePick={this.featuredFreePick(this.state.freePicks)}
-																				pubsub={this.pubsub}
-																			/>
-																		}
+                                                                        />
+                                                                    }
 
 
-																		<br />
-																		<br />
-																		{this.state.isCheckout ?
-																			'' :
-																			cart
-																		}
 
-																		<br />
-																		<p style={{textAlign: 'center'}}>
-																			<a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
-																		<br />
-                                                                        {/*<h11>&nbsp;Playbook Publications</h11>
-																		 <span className="list5">
-																		 <br />
-																		 <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" alt="NFL Totals Tip Sheet!" width="82" height="104" hspace="4" border="0" align="left" /><span className="topnav_trebuchet14Bred">2017 Playbook Football Handicapper's Yearbook Magazine</span><br />
-																		 <span className="topnav_trebuchet12">Marc Lawrence's Playbook Football Preview Guide magazine is the nation's best-selling combination College and NFL Preview publication and is now available for sale and on the newsstands nationwide in mid-June. The 2017 magazine contains 248 pages of wall-to-wall information, jam packed with stats, logs, trends, winning systems, College and NFL previews, ATS Top 10 Teams, exclusive charts (Monday Night results, Coaches records, College Overtime games and many more.
-																		 </span>
-																		 </a>
+																	<br />
+                                                                    <br />
+
+                                                                    {(this.state.displayMode === MODES.normal ) &&
+                                                                        cart
+                                                                    }
+
+                                                                    <br />
+                                                                    <p style={{textAlign: 'center'}}>
+                                                                        <a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
+                                                                    <br />
+                                                                    {/*<h11>&nbsp;Playbook Publications</h11>
+                                                                     <span className="list5">
+                                                                     <br />
+                                                                     <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" alt="NFL Totals Tip Sheet!" width="82" height="104" hspace="4" border="0" align="left" /><span className="topnav_trebuchet14Bred">2017 Playbook Football Handicapper's Yearbook Magazine</span><br />
+                                                                     <span className="topnav_trebuchet12">Marc Lawrence's Playbook Football Preview Guide magazine is the nation's best-selling combination College and NFL Preview publication and is now available for sale and on the newsstands nationwide in mid-June. The 2017 magazine contains 248 pages of wall-to-wall information, jam packed with stats, logs, trends, winning systems, College and NFL previews, ATS Top 10 Teams, exclusive charts (Monday Night results, Coaches records, College Overtime games and many more.
+                                                                     </span>
+                                                                     </a>
 
 
-																		 <br />
-																		 <br />
-																		 <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=300106&SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/fb.jpg" alt="" width="82" height="104" border="0" />
-																		 <h5><span className="topnav_trebuchet14Bred">2017 Weekly Playbook Football Newsletter</span></h5>
-																		 <span className="topnav_trebuchet12">Includes: Playbook Football Newsletter online weekly subscription The weekly Playbook Football Newsletter spans College and NFL Games throughout the 2017 season straight through the Super Bowl, featuring comprehensive write-ups on every College and NFL game along with star-rated Best Bets, Upset Specials, Awesome Angles, Top Trends, Incredible Stats, Wise Guy Contest Picks and a complete schedule with opening lines and projected margins for the entire week. Don't make a move without it!</span></a>
+                                                                     <br />
+                                                                     <br />
+                                                                     <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=300106&SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/fb.jpg" alt="" width="82" height="104" border="0" />
+                                                                     <h5><span className="topnav_trebuchet14Bred">2017 Weekly Playbook Football Newsletter</span></h5>
+                                                                     <span className="topnav_trebuchet12">Includes: Playbook Football Newsletter online weekly subscription The weekly Playbook Football Newsletter spans College and NFL Games throughout the 2017 season straight through the Super Bowl, featuring comprehensive write-ups on every College and NFL game along with star-rated Best Bets, Upset Specials, Awesome Angles, Top Trends, Incredible Stats, Wise Guy Contest Picks and a complete schedule with opening lines and projected margins for the entire week. Don't make a move without it!</span></a>
 
-																		 </span>*/}
+                                                                     </span>*/}
 																	</div><br /><br />
 
 																</div>

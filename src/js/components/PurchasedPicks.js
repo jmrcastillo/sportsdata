@@ -7,7 +7,7 @@ import Money from "money-formatter";
 import Utils from "../lib/Utils";
 
 
-export default class Login extends React.Component {
+export default class PurchasedPicks extends React.Component {
 
     constructor(props) {
         super(props);

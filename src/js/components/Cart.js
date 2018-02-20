@@ -198,7 +198,7 @@ export default class Login extends React.Component {
                         {this.props.isZoomed &&
                             <div>
                             <a href="#" onClick={event=> {
-                                this.props.pubsub.publish('checkout');
+                                this.props.pubsub.publish('mode-normal');
                                 }
                             }><img src="/images/return_catalog_btn.png" border="0" />
                             </a>

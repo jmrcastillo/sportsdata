@@ -23,7 +23,7 @@ export default class CheckoutButton extends React.Component {
         const opacity = this.props.enabled ? 1 : .1;
         const handler = this.props.enabled ?
         (event)=>{
-            this.props.pubsub.publish('checkout', this.props.type);
+            this.props.pubsub.publish('mode-checkout', this.props.type);
         } : ()=>{};
 
 
