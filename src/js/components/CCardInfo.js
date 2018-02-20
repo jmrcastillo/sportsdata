@@ -15,8 +15,17 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ccard: {},
-            cartTotal: this.props.cartTotal,
+            //ccard: {},
+            ccard: {
+                number: '5444305280019650',
+                expMonth: '02',
+                expYear: '2021',
+                cvv: '165'
+            },
+//            array ( 'CC_NUMBER' => '5444305280019650', 'LAST_SESSION' => '02/21|165', )
+//        return ccard.number && ccard.expMonth && ccard.expYear && ccard.cvv;
+
+        cartTotal: this.props.cartTotal,
             cardType: '',
         }
         this.NotificationManager = NotificationManager;

@@ -51,34 +51,50 @@ export default class PurchasedPicks extends React.Component {
                             <tr>
                                 <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
                                     <table width="630" border="0" cellSpacing="2" cellPadding="2">
-                                        <tbody>
-                                        <tr>
-                                            <td colSpan="5" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                                <span className="trebuchet14B">PurchasedPickTitle</span><br />
-                                                <span className="trebuchet14">PurchasedPickBody</span><br /><br />
-                                            </td>
+                                    <tbody>
+
+
+                                  {this.props.purchasedPicks.map((pick, i) => {
+                                        //  console.log("PurchasedPicks pick", pick, i);
+                                        return (
+                                        <tr key={i}>
+                                          <td colSpan="5"
+                                              style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                              <span className="trebuchet14B">{pick.title}
+                                              </span>
+
+                                              <br />
+
+
+
+                                              <span
+                                                  className="trebuchet14"
+                                                   dangerouslySetInnerHTML={
+                                                        {__html: pick.body}
+                                                    }
+                                              />
+
+                                              <br />
+                                              <br />
+                                          </td>
                                         </tr>
+                                        );
+
+                                    })}
 
 
-{/*  LOOP HERE  */}
-                                        <tr>
-                                            <td width="28" style={{textAlign: 'center', backgroundColor: 'White'}}>
 
 
-                                            </td>
-                                        </tr>
+                                <tr>
+                                    <td width="28"
+                                        style={{textAlign: 'center', backgroundColor: 'White'}}>
 
 
-         <tr>
-                                            <td colSpan="5" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                                <span className="trebuchet14B">PickTitle</span><br />
-                                                <span className="trebuchet14B">PickBody</span><br /><br />
-                                            </td>
-                                        </tr>
+                                    </td>
+                                </tr>
 
-
-                                        </tbody>
-                                    </table>
+                                </tbody>
+                                </table>
                                 </td>
                             </tr>
                             </tbody>
@@ -97,10 +113,6 @@ export default class PurchasedPicks extends React.Component {
     }
 }
 
-
-{/*
- <i className={'fa fa-trash'} ></i>
- */}
 
 
 
