@@ -90,12 +90,12 @@ export default class Login extends React.Component {
                 <table width="600" border="0" cellSpacing="0" cellPadding="0">
                     <tbody>
                     <tr>
-                        <td colSpan="2" align="center"><span className="verdana14"><b>Credit Card Information</b></span></td>
+                        <td colSpan="2" align="center"><span className="trebuchet14"><b>Credit Card Information</b></span></td>
                     </tr>
 
                     <tr>
-                        <td height="32" align="right"><span className="verdana14">Card Number:</span>&nbsp;</td>
-                        <td><label for="CC_NUMBER"></label>
+                        <td height="32" style={{textAlign: 'right', backgroundColor: 'White'}}><span className="trebuchet14">Card Number:</span>&nbsp;</td>
+                        <td style={{textAlign: 'left', backgroundColor: 'White'}}><label for="CC_NUMBER"></label>
                             <input name="CC_NUMBER"
                                 onKeyDown={event=>{
                                    if (event.ctrlKey || event.shiftKey || event.keyCode === 8 || event.keyCode === 46) {
@@ -119,21 +119,21 @@ export default class Login extends React.Component {
                     </tr>
                     <tr>
                         <td height="40" colSpan="2" align="center">
-                            <span className="verdana14">Exp. Date:&nbsp;Month</span>&nbsp;
+                            <span className="trebuchet14">Exp. Date:&nbsp;Month</span>&nbsp;
                             <input name="CC_EXPIRE_MONTH" id="CC_EXPIRE_MONTH"
                                 onChange={event=>{
                                     this.updateCcardInfo('expMonth', event.target.value);
                                 }}
                                 type="text" defaultValue="" size="2" maxLength="2"  className="required" title="Enter expiration month" tabIndex="6"
                             />&nbsp;&nbsp;
-                            <span className="linkv14">Year</span>&nbsp;
+                            <span className="trebuchet14">Year</span>&nbsp;
                             <input name="CC_EXPIRE_YEAR" id="CC_EXPIRE_YEAR"
                                 onChange={event=>{
                                    this.updateCcardInfo('expYear', event.target.value);
                                 }}
                                 type="text" defaultValue="" size="4" maxLength="4"  className="required" title="Enter credit expiration year" tabIndex="7"
                             />&nbsp;&nbsp;
-                            <span className="verdana14">CVV2</span>&nbsp;
+                            <span className="trebuchet14">CVV2</span>&nbsp;
                             <input name="CC_PIN" id="CC_PIN"
                                onChange={event=>{
                                    this.updateCcardInfo('cvv', event.target.value);
@@ -151,14 +151,14 @@ export default class Login extends React.Component {
                                 <td><div title="Page 1">
                                     <div>
                                         <div>
-                                            <p className="verdana14">Your Credit Card will be charged $
+                                            <span className="trebuchet14">Your Credit Card will be charged $
                                                 <label for="CCARD_TOTAL"></label>
 {/*
                                                 <input name="CCARD_TOTAL" type="text" id="CCARD_TOTAL" defaultValue={total} size="6" disabled/>
 */}
                                                 {this.props.cartTotal}
                                                 <br />
-                                                to complete this purchase.</p>
+                                                to complete this purchase.</span>
                                         </div>
                                     </div>
                                 </div></td>
