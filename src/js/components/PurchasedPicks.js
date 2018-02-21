@@ -59,20 +59,25 @@ export default class PurchasedPicks extends React.Component {
                                         return (
                                         <tr key={i}>
                                           <td colSpan="5"
-                                              style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                              <span className="trebuchet14B">{pick.title}
+                                              style={{textAlign: 'left', backgroundColor: 'White'}}>
+                                              <span className="trebuchet14B" style={{float:'left'}}>{pick.title}
                                               </span>
 
                                               <br />
 
 
-
                                               <span
-                                                  className="trebuchet14"
+                                                  className="trebuchet14" style={{float:'left'}}
                                                    dangerouslySetInnerHTML={
                                                         {__html: pick.body}
                                                     }
                                               />
+
+
+
+
+
+
 
                                               <br />
                                               <br />

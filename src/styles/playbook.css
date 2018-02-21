@@ -413,6 +413,11 @@ input, select, textarea { font-family:Tahoma, Geneva, sans-serif; font-size:1em;
 .trebuchet14B:visited   { color: #1d1d1d; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
 .trebuchet14B:hover   { color: #1d1d1d; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: underline; }
 
+.trebuchet14   { color: black; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
+.trebuchet14:active   { color: black; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
+.trebuchet14:visited   { color: black; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
+.trebuchet14:hover   { color: black; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: normal; text-decoration: none; }
+
 .trebuchet14Bred   { color: maroon; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
 .trebuchet14Bred:active   { color: maroon; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
 .trebuchet14Bred:visited   { color: maroon; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
