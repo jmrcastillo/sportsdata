@@ -55,10 +55,17 @@ export default class BuyNow extends React.Component {
                     isPAW: this.props.isPAW,
                 }
             })
-
-
         };
-        const onClick = this.props.loggedIn ? onClickLoggedIn : onClickLoggedOut;
+    //    const onClickMemberSuspended =
+        var x = ()=>{
+            alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
+        };
+
+        const onClick = this.props.memberSuspended ?
+            ()=>{
+                alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
+            } : this.props.loggedIn ? onClickLoggedIn : onClickLoggedOut;
+
         const buynowClass = 'buynow-enabled';
 
         return (

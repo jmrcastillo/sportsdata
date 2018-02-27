@@ -47,7 +47,6 @@ export default class PickList extends React.Component {
 
 
     render() {
-
         return (
 
             <div className="col-9a maxheight">
@@ -169,6 +168,7 @@ export default class PickList extends React.Component {
                                                                                                                 pick={pick}
                                                                                                                 pubsub={this.props.pubsub}
                                                                                                                 loggedIn={this.state.logged_in}
+                                                                                                                memberSuspended={this.props.memberSuspended}
                                                                                                             />
                                                                                                         </td>
                                                                                                     </tr>
