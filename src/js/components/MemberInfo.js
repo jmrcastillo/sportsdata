@@ -5,19 +5,16 @@
 import React from "react";
 import PicksAPI from "../lib/PicksAPI";
 
-import {NotificationContainer, NotificationManager} from 'react-notifications';
-//import 'react-notifications/lib/notifications.css';
-
 
 
 export default class Login extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             member: props.member,
         }
-        this.NotificationManager = NotificationManager;
     }
     componentWillMount() {
 
@@ -38,7 +35,6 @@ export default class Login extends React.Component {
     render() {
 
         return (
-
              <table width="342" cellPadding="0" cellSpacing="0" bgcolor="#d6d5d5">
 
                 <tbody id="EDITMEMBER"  >
@@ -221,7 +217,7 @@ export default class Login extends React.Component {
                                 <td style={{textAlign: "center"}}>
                                     <input type="button" value="Update" onClick={e=>{
                                         PicksAPI.saveMember(this.state.member).done((res)=>{
-                                            this.NotificationManager.success('Your changes saved.');
+                                            this.props.notificationManager.success('Your changes saved.');
                                             this.props.pubsub.publish('member-info', this.state.member);
                                         });
 
@@ -229,14 +225,6 @@ export default class Login extends React.Component {
                                 </td>
                             </tr>
 
-
-
-
-                            <tr>
-                                <td>
-                                <NotificationContainer/>
-</td>
-                            </tr>
 
                             </tbody>
                         </table>

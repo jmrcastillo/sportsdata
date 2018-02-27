@@ -14,6 +14,7 @@ import PurchasedPicks from "../components/PurchasedPicks";
 
 import PubSub from 'pubsub-js';
 import Moment from "moment";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const MODES = {
     normal: {value: 0, name: "Normal", code: "N"},
@@ -26,6 +27,8 @@ export default class Picksmain extends React.Component {
 	constructor() {
 		super();
 		this.pubsub = PubSub;
+        this.notificationManager = NotificationManager,
+
 
 		this.state = {
 			picks: [],
@@ -38,7 +41,7 @@ export default class Picksmain extends React.Component {
             member: {},
             ccard: {}
 		};
-	}
+    }
 
 	componentWillMount() {
 
@@ -232,6 +235,7 @@ export default class Picksmain extends React.Component {
                                                                         <MemberInfo
                                                                             member={this.state.member}
                                                                             pubsub={this.pubsub}
+                                                                            notificationManager={this.notificationManager}
                                                                         />
                                                                     }
 
@@ -322,6 +326,7 @@ export default class Picksmain extends React.Component {
 					</tr>
 					</tbody>
 				</table>*/}
+                <NotificationContainer/>
 			</div>
 			</main>
 
