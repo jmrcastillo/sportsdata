@@ -21,26 +21,39 @@ export default class Login extends React.Component {
         }
         // Try re-load cart from cookies
         const cookie =  new Cookies().get("pb-cart");
-   //     console.log("Cart cookie", cookie);
         if (typeof (cookie) != 'undefined') {
             const picks = cookie.split(',').map(pick=>{
                 const elements = pick.split('|');
                 return {pick_id: elements[0], isPAW: elements[1]}
             });
+
+            console.log("Cart: picks", picks);
+
+
+
             const pickList = picks.reduce((prev, curr)=>{
                 return prev + curr.pick_id + ',';
             },'').slice(0, -1);
+            console.log("Cart: pickList", pickList, pickList.length);
 
-            PicksAPI.loadPicksList(pickList).done(loadedPicks=>{
-                const picksWithType=loadedPicks.map((pick, index)=>{
-                        pick.isPAW = (picks[index].isPAW === 'true');
-                        return pick;
-                    }
-                );
+   //        if (pickList.length > 0) {
 
-                this.setState({picks: picksWithType,
-                                cartTotal: this.cartTotal(picksWithType)});
-            });
+            (pickList.length) > 0 && PicksAPI.loadPicksList(pickList).done(loadedPicks => {
+                   const picksWithType = loadedPicks.map((pick, index) => {
+                           pick.isPAW = (picks[index].isPAW === 'true');
+                           return pick;
+                       }
+                   );
+
+
+                   this.setState({
+                       picks: picksWithType,
+                       cartTotal: this.cartTotal(picksWithType)
+                   });
+               });
+
+    //       }
+
         }
 
     }
@@ -85,13 +98,20 @@ export default class Login extends React.Component {
                 picks: []
             });
         });
-
+        this.subscribe_purchase_completed = this.props.pubsub.subscribe('purchase-completed', (message, data)=> {
+            console.log("Cart: purchase-completed message received, nulling cookie");
+            this.setState({
+                picks: []
+            });
+            this.savePicksAsCookie([]);
+        });
     }
     componentWillUnmount() {
         this.savePicksAsCookie(this.state.picks);
         this.props.pubsub.unsubscribe(this.subscribe_add_pick);
         this.props.pubsub.unsubscribe(this.subscribe_logged_in);
         this.props.pubsub.unsubscribe(this.subscribe_logged_out);
+        this.props.pubsub.unsubscribe(this.subscribe_purchase_completed);
     }
 
     savePicksAsCookie(picks) {

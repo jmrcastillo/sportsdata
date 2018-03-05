@@ -78,6 +78,7 @@ export default class Picksmain extends React.Component {
             this.setState({member: data});
         });
         this.subscribe_selected_picks = this.pubsub.subscribe('selected-picks', (message, data)=> {
+//            console.log("Picksmain: selected-picks", data);
             this.setState({selectedPicks: data});
         });
 
@@ -92,13 +93,13 @@ export default class Picksmain extends React.Component {
        //     console.log("Picksmain purchase-ccard (next will be put member and ccard data in object, POST to server",  purchaseData);
             PicksAPI.purchaseCCard(purchaseData).done((result) => {
                 console.log ("AFTER purchaseCCard(), got result status, picks", result.status, result.picks);
-                console.log ("Setting state purchasedPicks ");
+           //     console.log ("Setting state purchasedPicks ");
 
                 if (result.status) {
                     this.setState({purchasedPicks: result.picks});
                 }
-                //  TODO:  Update purchasedPicks array from result..
-                this.pubsub.publish('mode-showpicks')
+                this.pubsub.publish('purchase-completed');
+                this.pubsub.publish('mode-showpicks');
             });
 
 
