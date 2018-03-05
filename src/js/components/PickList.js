@@ -63,7 +63,7 @@ export default class PickList extends React.Component {
                                                     <div className="inner2">
                                                         <br />
                                                         <h3>Guaranteed Experts Picks</h3>
-                                                        <h4>Pay After You Win Picks -or- Prepaid Discount With "Your Choice" Guaranteed Makeup</h4>
+                                                        <h4>Pay After You Win Picks -or- Prepaid Discount Picks</h4>
                                                         <h5>Red Hot Experts Best Bets</h5>
 
 

@@ -55,7 +55,7 @@ export default class Picksmain extends React.Component {
 		this.subscribe_logged_in = this.pubsub.subscribe('logged-in', (message, data)=> {
 			this.setState({logged_in: true,
                         member: data});
-            if (data.is_suspended.toUpperCase() === 'Y') {
+            if (data.is_suspended && data.is_suspended.toUpperCase() === 'Y') {
                 this.notificationManager.error('Your account is suspended', 'Learn more...', 120000, ()=>{
                     alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
                 });
