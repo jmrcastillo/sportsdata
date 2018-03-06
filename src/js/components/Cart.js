@@ -27,18 +27,13 @@ export default class Login extends React.Component {
                 return {pick_id: elements[0], isPAW: elements[1]}
             });
 
-            console.log("Cart: picks", picks);
-
-
+      //      console.log("Cart: picks", picks);
 
             const pickList = picks.reduce((prev, curr)=>{
                 return prev + curr.pick_id + ',';
             },'').slice(0, -1);
-            console.log("Cart: pickList", pickList, pickList.length);
 
-   //        if (pickList.length > 0) {
-
-            (pickList.length) > 0 && PicksAPI.loadPicksList(pickList).done(loadedPicks => {
+            (pickList.length > 0) && PicksAPI.loadPicksList(pickList).done(loadedPicks => {
                    const picksWithType = loadedPicks.map((pick, index) => {
                            pick.isPAW = (picks[index].isPAW === 'true');
                            return pick;
@@ -51,8 +46,6 @@ export default class Login extends React.Component {
                        cartTotal: this.cartTotal(picksWithType)
                    });
                });
-
-    //       }
 
         }
 
@@ -99,7 +92,7 @@ export default class Login extends React.Component {
             });
         });
         this.subscribe_purchase_completed = this.props.pubsub.subscribe('purchase-completed', (message, data)=> {
-            console.log("Cart: purchase-completed message received, nulling cookie");
+       //     console.log("Cart: purchase-completed message received, nulling cookie");
             this.setState({
                 picks: []
             });
