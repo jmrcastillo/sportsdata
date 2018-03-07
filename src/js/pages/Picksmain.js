@@ -185,6 +185,7 @@ export default class Picksmain extends React.Component {
 			loggedIn={this.state.logged_in}
 			isZoomed={this.state.displayMode === MODES.checkout}
 		/>
+        const levelFlagged = Utils.checkFlaggedMemberLevel(this.state.member);
 
 		return (
 
@@ -206,6 +207,7 @@ export default class Picksmain extends React.Component {
                                 pubsub={this.pubsub}
                                 allPicks={this.state.allPicks}
                                 memberSuspended={this.state.member.is_suspended && this.state.member.is_suspended.toUpperCase() === 'Y'}
+								memberLevelFlagged={ Utils.checkFlaggedMemberLevel(this.state.member)}
                             />
                         }
                         {(this.state.displayMode === MODES.checkout) &&

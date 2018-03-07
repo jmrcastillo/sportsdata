@@ -103,6 +103,7 @@ export default class Pick extends React.Component {
                                     pick={this.props.pick}
                                     isPAW={true}
                                     memberSuspended={this.props.memberSuspended}
+                                    memberLevelFlagged={this.props.memberLevelFlagged}
                                 />
 
                                 </td>
@@ -125,6 +126,7 @@ export default class Pick extends React.Component {
                                         pick={this.props.pick}
                                         isPAW={false}
                                         memberSuspended={this.props.memberSuspended}
+                                        memberLevelFlagged={this.props.memberLevelFlagged}
                                     />
                                 </td>
                                 <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:

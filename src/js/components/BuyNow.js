@@ -56,15 +56,30 @@ export default class BuyNow extends React.Component {
                 }
             })
         };
-    //    const onClickMemberSuspended =
-        var x = ()=>{
-            alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
-        };
 
+        
+        console.log("BuyNow - ", this.props.memberLevelFlagged);
+        let onClick = {};
+        if (this.props.memberSuspended) {
+            onClick = ()=>{
+                alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
+            }
+        } else if (this.props.memberLevelFlagged) {   // member level issue returns true;
+            onClick = ()=>{
+                alert("For your protection there is a purchase limit associated with your account. Please call 1-800-643-4700 to have your limit changed. Thank You -- The Staff at Ecapper LLC");
+            }
+        } else if (this.props.loggedIn) {
+            onClick = onClickLoggedIn;
+        } else {
+            onClick = onClickLoggedOut;
+        }
+
+/*
         const onClick = this.props.memberSuspended ?
             ()=>{
                 alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
             } : this.props.loggedIn ? onClickLoggedIn : onClickLoggedOut;
+*/
 
         const buynowClass = 'buynow-enabled';
 

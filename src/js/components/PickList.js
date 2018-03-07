@@ -169,6 +169,7 @@ export default class PickList extends React.Component {
                                                                                                                 pubsub={this.props.pubsub}
                                                                                                                 loggedIn={this.state.logged_in}
                                                                                                                 memberSuspended={this.props.memberSuspended}
+                                                                                                                memberLevelFlagged={this.props.memberLevelFlagged}
                                                                                                             />
                                                                                                         </td>
                                                                                                     </tr>

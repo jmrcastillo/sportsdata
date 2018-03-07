@@ -21,7 +21,32 @@ class Utils  {
 		}).reduce((prev, curr) => {
 			return prev  + curr.pick_id + '|' + curr.isPAW + ',';
 		},'').slice(0, -1);
+	}
+	checkFlaggedMemberLevel(member) {
+    	/*
+    	      if ($member->level == 1) {
+            ShowError ($level_error);
+
+        } elseif ($member->level == 2 && $member->current_purchases >= 7) {
+            ShowError ($level_error);
+
+        } elseif ($member->level == 3 && $member->current_purchases >= 14) {
+            ShowError ($level_error);
+
+        } elseif ($member->level == 4 && $member->current_purchases >= 21) {
+            ShowError ($level_error);
+
+        }
+    	 */
+    	if (member.level === 1) {
+            console.log("cf returning true ", member.level);
+            return true;
+		}
+        return false;
 
 	}
+
+
+
 }
 export default (new Utils);
