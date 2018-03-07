@@ -22,28 +22,35 @@ class Utils  {
 			return prev  + curr.pick_id + '|' + curr.isPAW + ',';
 		},'').slice(0, -1);
 	}
+
+    /*
+          if ($member->level == 1) {
+        ShowError ($level_error);
+
+    } elseif ($member->level == 2 && $member->current_purchases >= 7) {
+        ShowError ($level_error);
+
+    } elseif ($member->level == 3 && $member->current_purchases >= 14) {
+        ShowError ($level_error);
+
+    } elseif ($member->level == 4 && $member->current_purchases >= 21) {
+        ShowError ($level_error);
+
+    }
+     */
 	checkFlaggedMemberLevel(member) {
-    	/*
-    	      if ($member->level == 1) {
-            ShowError ($level_error);
-
-        } elseif ($member->level == 2 && $member->current_purchases >= 7) {
-            ShowError ($level_error);
-
-        } elseif ($member->level == 3 && $member->current_purchases >= 14) {
-            ShowError ($level_error);
-
-        } elseif ($member->level == 4 && $member->current_purchases >= 21) {
-            ShowError ($level_error);
-
-        }
-    	 */
+    	let retValue = false;
     	if (member.level === 1) {
-            console.log("cf returning true ", member.level);
-            return true;
-		}
-        return false;
-
+            retValue = true;
+		} else if (member.level === 2 && member.current_purchases >= 7) {
+            retValue = true;
+        } else if (member.level === 3 && member.current_purchases >= 14) {
+            retValue = true;
+        } else if (member.level === 4 && member.current_purchases >= 21) {
+            retValue = true;
+        }
+//            console.log("cf level is 3, cp >= 14, returning true ", member.level);
+        return retValue;
 	}
 
 
