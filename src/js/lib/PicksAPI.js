@@ -90,6 +90,15 @@ class PicksAPI  {
         }).fail(()=>console.log('PURCHASECCARD FAIL.'));
     }
 
+    tokensQuery(member, amount) {
+        const url = `https://www.playbook.com/picks-api1/tokens-query/${member.member_id}/${amount}`;
+        console.log("PicksAPI ", url);
+        return $.getJSON(url).then(function(result) {
+            return result;
+        });
+    }
+
+
 
 }
 export default (new PicksAPI);

@@ -182,6 +182,7 @@ export default class Picksmain extends React.Component {
 			loggedIn={this.state.logged_in}
 			isZoomed={this.state.displayMode === MODES.checkout}
             isTokens={this.state.isTokens}
+            member={this.state.member}
 		/>
 //console.log("Picksmain displayMode is now ", this.state.displayMode);
 		return (

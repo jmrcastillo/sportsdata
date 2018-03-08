@@ -50,8 +50,8 @@ export default class Login extends React.Component {
                });
 
         }
-
     }
+
     componentWillMount() {
 
     }
@@ -130,6 +130,9 @@ export default class Login extends React.Component {
         }
         const width10 = this.props.isZoomed ? 610 : 310;
         const width20 = this.props.isZoomed ? 620 : 320;
+
+ //       console.log("Cart cartTotal",  this.state.cartTotal);
+
 
         return (
         <div>
@@ -227,8 +230,13 @@ export default class Login extends React.Component {
                                 <TokensInfo
                                     cartTotal={this.state.cartTotal}
                                     pubsub={this.props.pubsub}
+                                    member={this.props.member}
                                 />
                             }
+
+
+
+
                             </div>
                        }
                        {! this.props.isZoomed &&

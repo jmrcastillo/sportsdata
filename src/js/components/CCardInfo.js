@@ -8,7 +8,7 @@ import Utils from "../lib/Utils";
 
 
 
-export default class Login extends React.Component {
+export default class CCardInfo extends React.Component {
 
     constructor(props) {
         super(props);
@@ -23,7 +23,7 @@ export default class Login extends React.Component {
 //            array ( 'CC_NUMBER' => '5444305280019650', 'LAST_SESSION' => '02/21|165', )
 //        return ccard.number && ccard.expMonth && ccard.expYear && ccard.cvv;
 
-        cartTotal: this.props.cartTotal,
+            cartTotal: this.props.cartTotal,
             cardType: '',
         }
     }
