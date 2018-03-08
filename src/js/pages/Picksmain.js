@@ -60,25 +60,23 @@ export default class Picksmain extends React.Component {
                     alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
                 });
             }
-
         });
 		this.subscribe_logged_out = this.pubsub.subscribe('logged-out', (message, data)=> {
 			this.setState({logged_in: false});
 		});
 		this.subscribe_mode_normal = this.pubsub.subscribe('mode-normal', (message, data)=> {
-			this.setState({displayMode: MODES.normal},);
+			this.setState({displayMode: MODES.normal});
 		});
         this.subscribe_mode_checkout = this.pubsub.subscribe('mode-checkout', (message, data)=> {
-            this.setState({displayMode: MODES.checkout},);
+            this.setState({displayMode: MODES.checkout});
         });
         this.subscribe_mode_showpicks = this.pubsub.subscribe('mode-showpicks', (message, data)=> {
-            this.setState({displayMode: MODES.showpicks},);
+            this.setState({displayMode: MODES.showPicks});
         });
         this.subscribe_member_info = this.pubsub.subscribe('member-info', (message, data)=> {
             this.setState({member: data});
         });
         this.subscribe_selected_picks = this.pubsub.subscribe('selected-picks', (message, data)=> {
-//            console.log("Picksmain: selected-picks", data);
             this.setState({selectedPicks: data});
         });
 
@@ -87,13 +85,10 @@ export default class Picksmain extends React.Component {
 
             let purchaseData = {};
             Object.assign(purchaseData, data);
-            //Object.assign(purchaseData, this.state.member);
             purchaseData.member_id = this.state.member.member_id;
 			purchaseData.selectedPicks = this.state.selectedPicks;
-       //     console.log("Picksmain purchase-ccard (next will be put member and ccard data in object, POST to server",  purchaseData);
             PicksAPI.purchaseCCard(purchaseData).done((result) => {
-                console.log ("AFTER purchaseCCard(), got result status, picks", result.status, result.picks);
-           //     console.log ("Setting state purchasedPicks ");
+           //     console.log ("AFTER purchaseCCard(), got result status, picks", result.status, result.picks);
 
                 if (result.status) {
                     this.setState({purchasedPicks: result.picks});
@@ -185,7 +180,7 @@ export default class Picksmain extends React.Component {
 			loggedIn={this.state.logged_in}
 			isZoomed={this.state.displayMode === MODES.checkout}
 		/>
-
+//console.log("Picksmain displayMode is now ", this.state.displayMode);
 		return (
 
 			<main className="main">
@@ -212,7 +207,7 @@ export default class Picksmain extends React.Component {
                         {(this.state.displayMode === MODES.checkout) &&
                             cart
                         }
-                        {(this.state.displayMode === MODES.showpicks) &&
+                        {(this.state.displayMode === MODES.showPicks) &&
                             <PurchasedPicks
                                 purchasedPicks={this.state.purchasedPicks}
                                 pubsub={this.pubsub}
@@ -240,7 +235,8 @@ export default class Picksmain extends React.Component {
                                                                             pubsub={this.pubsub}
                                                                         />
                                                                     }
-                                                                    {(this.state.displayMode === MODES.checkout) &&
+                                                                    {(this.state.displayMode === MODES.checkout ||
+                                                                        this.state.displayMode === MODES.showPicks) &&
                                                                         <MemberInfo
                                                                             member={this.state.member}
                                                                             pubsub={this.pubsub}

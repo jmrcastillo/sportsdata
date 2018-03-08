@@ -58,7 +58,7 @@ export default class BuyNow extends React.Component {
         };
 
         
-        console.log("BuyNow - ", this.props.memberLevelFlagged);
+   //     console.log("BuyNow - ", this.props.memberLevelFlagged);
         let onClick = {};
         if (this.props.memberSuspended) {
             onClick = ()=>{
@@ -73,14 +73,7 @@ export default class BuyNow extends React.Component {
         } else {
             onClick = onClickLoggedOut;
         }
-
-/*
-        const onClick = this.props.memberSuspended ?
-            ()=>{
-                alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
-            } : this.props.loggedIn ? onClickLoggedIn : onClickLoggedOut;
-*/
-
+ 
         const buynowClass = 'buynow-enabled';
 
         return (
