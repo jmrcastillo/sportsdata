@@ -9,6 +9,8 @@ import Cookies from "universal-cookie";
 import PicksAPI from "../lib/PicksAPI";
 import CheckoutButton from "../components/CheckoutButton";
 import CCardInfo from "../components/CCardInfo";
+import TokensInfo from "../components/TokensInfo";
+
 
 export default class Login extends React.Component {
 
@@ -215,11 +217,18 @@ export default class Login extends React.Component {
                                 }
                             }><img src="/images/return_catalog_btn.png" border="0" />
                             </a>
-                            <CCardInfo
+                            {! this.props.isTokens &&
+                                <CCardInfo
                                 cartTotal={this.state.cartTotal}
                                 pubsub={this.props.pubsub}
-                            />
-
+                                />
+                            }
+                            {this.props.isTokens &&
+                                <TokensInfo
+                                    cartTotal={this.state.cartTotal}
+                                    pubsub={this.props.pubsub}
+                                />
+                            }
                             </div>
                        }
                        {! this.props.isZoomed &&

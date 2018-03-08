@@ -38,6 +38,7 @@ export default class Picksmain extends React.Component {
             purchasedPicks: [],
 			logged_in: false,
             displayMode: MODES.normal,
+            isTokens: false,
             member: {},
             ccard: {}
 		};
@@ -68,7 +69,8 @@ export default class Picksmain extends React.Component {
 			this.setState({displayMode: MODES.normal});
 		});
         this.subscribe_mode_checkout = this.pubsub.subscribe('mode-checkout', (message, data)=> {
-            this.setState({displayMode: MODES.checkout});
+        	this.setState({displayMode: MODES.checkout,
+                            isTokens: data === 'TOKENS'});
         });
         this.subscribe_mode_showpicks = this.pubsub.subscribe('mode-showpicks', (message, data)=> {
             this.setState({displayMode: MODES.showPicks});
@@ -174,11 +176,12 @@ export default class Picksmain extends React.Component {
 	}
 
 	render() {
-
+ //       console.log("Picksmain isTokens:", this.state.isTokens);
 		const cart=<Cart
 			pubsub={this.pubsub}
 			loggedIn={this.state.logged_in}
 			isZoomed={this.state.displayMode === MODES.checkout}
+            isTokens={this.state.isTokens}
 		/>
 //console.log("Picksmain displayMode is now ", this.state.displayMode);
 		return (

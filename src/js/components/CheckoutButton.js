@@ -19,7 +19,7 @@ export default class CheckoutButton extends React.Component {
 
     render() {
 
-        const src = this.props.type == 'CC' ? 'images/checkoutCC.png' : 'images/checkoutT.png';
+        const src = this.props.type === 'CC' ? 'images/checkoutCC.png' : 'images/checkoutT.png';
         const opacity = this.props.enabled ? 1 : .1;
         const handler = this.props.enabled ?
         (event)=>{
