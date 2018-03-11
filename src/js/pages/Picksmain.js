@@ -40,7 +40,7 @@ export default class Picksmain extends React.Component {
             displayMode: MODES.normal,
             isTokens: false,
             member: {},
-            ccard: {}
+  //          ccard: {}
 		};
     }
 
@@ -83,25 +83,38 @@ export default class Picksmain extends React.Component {
         });
 
         this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
-            this.setState({ccard: data});
+            console.log("Picksmain - purchase-ccard [data]", data);
+
+            this.sendPurchase(false, data, null);
+        });
+
+        this.subscribe_purchase_tokens = this.pubsub.subscribe('purchase-tokens', (message, data)=> {
+
+            console.log("Picksmain - purchase-tokens [data]", data);
+
+            this.sendPurchase(true, data.ccard ? data.ccard : null, data.tokens);
+
+
+
+            /*            this.setState({ccard: data});
 
             let purchaseData = {};
             Object.assign(purchaseData, data);
             purchaseData.member_id = this.state.member.member_id;
-			purchaseData.selectedPicks = this.state.selectedPicks;
-            PicksAPI.purchaseCCard(purchaseData).done((result) => {
-           //     console.log ("AFTER purchaseCCard(), got result status, picks", result.status, result.picks);
+            purchaseData.selectedPicks = this.state.selectedPicks;
 
+            PicksAPI.purchaseCCard(purchaseData).done((result) => {
                 if (result.status) {
                     this.setState({purchasedPicks: result.picks});
                 }
                 this.pubsub.publish('purchase-completed');
                 this.pubsub.publish('mode-showpicks');
-            });
-
+            });*/
 
         });
+
 	}
+
 
 	componentWillUnmount() {
 		this.pubsub.unsubscribe(this.subscribe_logged_in);
@@ -112,6 +125,8 @@ export default class Picksmain extends React.Component {
         this.pubsub.unsubscribe(this.subscribe_member_info);
         this.pubsub.unsubscribe(this.subscribe_selected_picks);
         this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
+        this.pubsub.unsubscribe(this.subscribe_purchase_tokens);
+
     }
 
 	loadPicks(self, firstLoad=false) {
@@ -135,8 +150,6 @@ export default class Picksmain extends React.Component {
 				var paidPicks = picks.filter(pick=>{
 					return parseInt(pick.price) > 0;
 				});
-
-
 
 				var allPicks = {};
 				SportsCodes.getSportsOrdered().forEach (sport=>{
@@ -175,7 +188,34 @@ export default class Picksmain extends React.Component {
 		}, this.state.freePicks[0])
 	}
 
-	render() {
+    sendPurchase(isTokens, ccard, tokens)  {
+
+        let purchaseData = {isTokens: isTokens};
+
+        (ccard && Object.assign(purchaseData, ccard));
+        (tokens && Object.assign(purchaseData, tokens));
+
+        purchaseData.member_id = this.state.member.member_id;
+        purchaseData.selectedPicks = this.state.selectedPicks;
+
+
+console.log("sendPurchase: ", purchaseData);
+
+return;
+        PicksAPI.purchaseCCard(purchaseData).done((result) => {
+            //     console.log ("AFTER purchaseCCard(), got result status, picks", result.status, result.picks);
+
+            if (result.status) {
+                this.setState({purchasedPicks: result.picks});
+            }
+            this.pubsub.publish('purchase-completed');
+            this.pubsub.publish('mode-showpicks');
+        });
+    }
+
+
+
+    render() {
  //       console.log("Picksmain isTokens:", this.state.isTokens);
 		const cart=<Cart
 			pubsub={this.pubsub}

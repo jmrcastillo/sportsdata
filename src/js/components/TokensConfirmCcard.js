@@ -88,7 +88,7 @@ export default class TokensConfirmCcard extends React.Component {
                     <br />
                     <input type="image" name="PURCHASE_SUBMITTED_TOKENS" id="PURCHASE_SUBMITTED_TOKENS"
                            src="images/purchase-button.png"
-                        width="200" height="45" alt="update_cart"  style={purchaseButtonStyle}
+                        width="200" height="45" alt="update_cart"  style={purchaseButtonStyle} value="submit"
                         onClick={event=>{
                             if (this.state.isChargeAuthorized) {
                                 alert("Clicked tokens purchase!");

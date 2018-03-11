@@ -3,15 +3,13 @@
  */
 
 import React from "react";
-
+import Money from "money-formatter";
 
 export default class TokensOnlyPurchase extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-//            isChargeAuthorized: false,
-        }
+
     }
 
     componentWillMount() {
@@ -31,7 +29,7 @@ export default class TokensOnlyPurchase extends React.Component {
 
     render() {
 
-  //      console.log("TokensOnlyPurchase.. render()")
+//    console.log("TokensOnlyPurchase.. render()", this.props.cartTotal);
 
         return (
 
@@ -51,8 +49,9 @@ export default class TokensOnlyPurchase extends React.Component {
             <td style={{textAlign: 'center' }}><div title="Page 1">
             <div>
             <div>
-            <p>Current Token Balance [TOKENS_REAL] <br />
-                Current Purchase Total [PURCHASE_TOTAL] </p>
+            <p>
+                Current Token Balance {Money.format ('USD', parseInt(this.props.tokens.awardTokens) + parseInt(this.props.tokens.realTokens))} <br />
+                Current Purchase Total {Money.format ('USD', this.props.cartTotal)} </p>
             </div>
             </div>
             </div>
@@ -60,11 +59,20 @@ export default class TokensOnlyPurchase extends React.Component {
             </tr>
             <tr>
             <td colSpan="2" style={{textAlign: 'center' }}>
-             <form name="form1" method="post" action="">Total Amount of Tokens deducted from your available balance for this sale:&nbsp;
-                <input name="token_quantity" type="text" id="token_quantity" defaultValue={0} size="5" maxLength="5"  readOnly />
-                <input type="hidden" name="IS_TOKENS_PURCHASE"  id="IS_TOKENS_PURCHASE" value="YES"/>
-                <br />
-                <input type="image" name="PURCHASE_SUBMITTED" id="PURCHASE_SUBMITTED" src="/images/purchase-button.png"  width="200" alt="update_cart" value="submit" />
+            <form name="form1" method="post" action="">Total Amount of Tokens deducted from your available balance for this purchase:&nbsp;
+            <input name="token_quantity" type="text" id="token_quantity"
+                   value={Money.format ('USD', this.props.cartTotal)} size="5" maxLength="5"  readOnly
+            />
+            <input type="hidden" name="IS_TOKENS_PURCHASE"  id="IS_TOKENS_PURCHASE" value="YES"/>
+            <br />
+            <input type="image" name="PURCHASE_SUBMITTED" id="PURCHASE_SUBMITTED" src="/images/purchase-button.png"
+                   width="200" alt="update_cart"
+                   onClick={event=>{
+                       event.preventDefault();
+                       alert("Clicked tokens purchase!");
+                       this.props.pubsub.publish('purchase-tokens', {tokens: this.props.tokens});
+                   }}
+            />
             </form>
             </td>
             </tr>

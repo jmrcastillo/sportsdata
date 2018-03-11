@@ -14,9 +14,10 @@ export default class TokensInfo extends React.Component {
         super(props);
         this.state = {
             isChargeAuthorized: false,
-            realTokensApplied: 0,
-            awardTokensApplied: 0,
-            realTokensNeeded: 0,
+            tokens: {realTokensApplied: 0,
+                awardTokensApplied: 0,
+                realTokensNeeded: 0
+            },
         }
     }
 
@@ -28,16 +29,19 @@ export default class TokensInfo extends React.Component {
 
     }
     componentWillReceiveProps(nextProps) {
-        console.log("**TokensInfo4 cartTotal",  nextProps.cartTotal);
+  //      console.log("**TokensInfo4 cartTotal",  nextProps.cartTotal);
         if (nextProps.cartTotal === 0 || nextProps.cartTotal === this.props.cartTotal) {
             return;
         }
         PicksAPI.tokensQuery(nextProps.member, nextProps.cartTotal).done((result) => {
-            this.setState({
+            const tokens = {
                 realTokensApplied: result.real_tokens_applied,
                 awardTokensApplied: result.award_tokens_applied,
-                realTokensNeeded: result.real_tokens_needed
-            })
+                realTokensNeeded: result.real_tokens_needed,
+                realTokens: result.real_tokens,
+                awardTokens: result.award_tokens,
+            };
+            this.setState({tokens});
         });
     }
 
@@ -56,25 +60,27 @@ export default class TokensInfo extends React.Component {
         return (
 
             <div align="center">
-            {this.state.realTokensNeeded > 0 &&
+            {this.state.tokens.realTokensNeeded > 0 &&
                 <CCardInfo
                     cartTotal={this.props.cartTotal}
                     pubsub={this.props.pubsub}
                 />
             }
-            {this.state.realTokensNeeded > 0 &&
+            {this.state.tokens.realTokensNeeded > 0 &&
                 <TokensConfirmCcard
                     cartTotal={this.props.cartTotal}
                     pubsub={this.props.pubsub}
                     member={this.props.member}
+                    tokens={this.state.tokens}
                 />
             }
             {/*Have to use == instead of === for TokensOnlyPurchase to display correctly */}
-            {this.state.realTokensNeeded == 0  &&
+            {this.state.tokens.realTokensNeeded == 0  &&
                 <TokensOnlyPurchase
                     cartTotal={this.props.cartTotal}
                     pubsub={this.props.pubsub}
                     member={this.props.member}
+                    tokens={this.state.tokens}
                 />
             }
 
