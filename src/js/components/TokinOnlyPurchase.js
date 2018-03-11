@@ -56,9 +56,6 @@ export default class Freeplay extends React.Component {
                                         <input name="PURCHASE_SUBMITTED" type="submit" id="PURCHASE_SUBMITTED" value="Purchase">
                                 -->
                                 <input type="image" name="PURCHASE_SUBMITTED" id="PURCHASE_SUBMITTED" src="/images/purchase-button.png"  width="200" alt="update_cart" value="submit" />
-
-
-
                     </form>
                 </td>
                 </tr>
