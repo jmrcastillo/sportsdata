@@ -61,7 +61,7 @@ export default class TokensOnlyPurchase extends React.Component {
             <td colSpan="2" style={{textAlign: 'center' }}>
             <form name="form1" method="post" action="">Total Amount of Tokens deducted from your available balance for this purchase:&nbsp;
             <input name="token_quantity" type="text" id="token_quantity"
-                   value={Money.format ('USD', this.props.cartTotal)} size="5" maxLength="5"  readOnly
+                   value={Money.format ('USD', parseInt(this.props.tokens.realTokensApplied) + parseInt(this.props.tokens.realTokensApplied))} size="5" maxLength="5"  readOnly
             />
             <input type="hidden" name="IS_TOKENS_PURCHASE"  id="IS_TOKENS_PURCHASE" value="YES"/>
             <br />

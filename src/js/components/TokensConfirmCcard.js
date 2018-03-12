@@ -3,8 +3,7 @@
  */
 
 import React from "react";
-import PicksAPI from "../lib/PicksAPI";
-
+import Money  from "money-formatter";
 
 export default class TokensConfirmCcard extends React.Component {
 
@@ -33,7 +32,7 @@ export default class TokensConfirmCcard extends React.Component {
     render() {
 
 
-       console.log("TokensInfo isChargeAuthorized cartTotal", this.state.isChargeAuthorized);
+       //console.log("TokensInfo isChargeAuthorized cartTotal", this.state.isChargeAuthorized);
 
         const purchaseButtonStyle = this.state.isChargeAuthorized ?  {opacity: 1.0} : {opacity: 0.2};
         return (
@@ -64,7 +63,7 @@ export default class TokensConfirmCcard extends React.Component {
                         </td>
                         <td align="center" className="verdana14">
                             <strong>I Authorize Playbook To Charge My Credit Card<br />
-                                $[CCARD_TOTAL] in order To Complete This Purchase.<br />
+                                {Money.format ('USD', this.props.tokens.realTokensNeeded)} in order To Complete This Purchase.<br />
                                 My Playbucks Tokens Will Be Combined with<br />
                                 this Credit Card Charge.
                             </strong>
@@ -73,16 +72,19 @@ export default class TokensConfirmCcard extends React.Component {
 
                     <tr>
                         <td width="150" align="center"><img src="images/token_green.png" width="100"/></td>
-                        <td align="center" className="verdana14">Your Current Token Balance $[REAL_TOKENS_AVAILABLE] <br />
+                        <td align="center" className="verdana14">Your Current Token Balance {Money.format ('USD', parseInt(this.props.tokens.realTokensApplied) + parseInt(this.props.tokens.awardTokensApplied))} <br />
                             <strong>
-                                <font color="navy">Current Purchase Total $[PURCHASE_TOTAL]</font></strong></td>
+                                <font color="navy">Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</font></strong></td>
                     </tr>
 
 
                     <tr>
                         <td colSpan="2" align="center">
                     <span className="verdana14">Total Amount of Tokens deducted from your available balance for this sale:&nbsp;
-                        <input name="token_quantity" type="text" id="token_quantity" defaultValue="[REAL_TOKENS_APPLIED]" size="5" maxLength="5"  readOnly/>
+                        <input name="token_quantity" type="text" id="token_quantity"
+                               value={Money.format ('USD', parseInt(this.props.tokens.realTokensApplied) + parseInt(this.props.tokens.awardTokensApplied))}
+                               size="5" maxLength="5"  readOnly
+                        />
                     </span>
 
                     <br />
@@ -90,15 +92,10 @@ export default class TokensConfirmCcard extends React.Component {
                            src="images/purchase-button.png"
                         width="200" height="45" alt="update_cart"  style={purchaseButtonStyle} value="submit"
                         onClick={event=>{
+                            event.preventDefault();
                             if (this.state.isChargeAuthorized) {
-                                alert("Clicked tokens purchase!");
-                                // TODO:  Send pubsub message that indicates tokens purchase..  figure out ccard info, tokens info etc..
-                                /*
-                                   console.log("Purchase taking place.");
-                                   this.props.pubsub.publish('purchase-ccard', this.state.ccard);
-                                 */
+                                this.props.pubsub.publish('purchase-tokens', {tokens: this.props.tokens});
                             }
-
                         }}
 
 
@@ -115,7 +112,9 @@ export default class TokensConfirmCcard extends React.Component {
         );
     }
 }
-
+/*
+{Money.format ('USD', parseInt(this.props.tokens.awardTokens) + parseInt(this.props.tokens.realTokens))}
+*/
 
 /*<script>
 

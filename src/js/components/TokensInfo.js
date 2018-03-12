@@ -62,7 +62,8 @@ export default class TokensInfo extends React.Component {
             <div align="center">
             {this.state.tokens.realTokensNeeded > 0 &&
                 <CCardInfo
-                    cartTotal={this.props.cartTotal}
+                    chargeTotal={this.state.tokens.realTokensNeeded}
+                    isTokens={true}
                     pubsub={this.props.pubsub}
                 />
             }

@@ -116,8 +116,17 @@ export default class Login extends React.Component {
     }
 
     cartTotal(picks) {
+
+ /*      const cartTotal = picks.reduce((accumulator, pick)=>{
+           const temp = accumulator + parseInt ((pick.isPAW  ? pick.price : Utils.applyPrepaidDiscount(pick.price)));
+           console.log("Cart - calculating cart total ", accumulator, temp);
+
+           return temp;
+       }, 0);
+       console.log("Cart - total is now ", cartTotal, picks.length);
+*/
         return picks.reduce((accumulator, pick)=>{
-            return accumulator + pick.isPAW  ? pick.price : Utils.applyPrepaidDiscount(pick.price);
+            return accumulator + parseInt(pick.isPAW  ? pick.price : Utils.applyPrepaidDiscount(pick.price));
         }, 0);
     }
 
@@ -222,7 +231,7 @@ export default class Login extends React.Component {
                             </a>
                             {! this.props.isTokens &&
                                 <CCardInfo
-                                cartTotal={this.state.cartTotal}
+                                chargeTotal={this.state.cartTotal}
                                 pubsub={this.props.pubsub}
                                 />
                             }

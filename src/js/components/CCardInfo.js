@@ -20,10 +20,8 @@ export default class CCardInfo extends React.Component {
                 expYear: '2021',
                 cvv: '165'
             },
-//            array ( 'CC_NUMBER' => '5444305280019650', 'LAST_SESSION' => '02/21|165', )
-//        return ccard.number && ccard.expMonth && ccard.expYear && ccard.cvv;
 
-            cartTotal: this.props.cartTotal,
+ //           cartTotal: this.props.cartTotal,
             cardType: '',
         }
     }
@@ -153,26 +151,29 @@ export default class CCardInfo extends React.Component {
 {/*
                                                 <input name="CCARD_TOTAL" type="text" id="CCARD_TOTAL" defaultValue={total} size="6" disabled/>
 */}
-                                                {this.props.cartTotal}
+                                                {this.props.chargeTotal}
                                                 <br />
                                                 to complete this purchase.</span>
                                         </div>
                                     </div>
                                 </div></td>
                                 <td width="280" align="center">
-                                <input type="image" name="PURCHASE_SUBMITTED" id="PURCHASE_SUBMITTED"
-                                       src="images/purchase-button.png"  width="200" height="45" alt="purchase" value="submit"
-                                       style={{opacity: purchaseButtonOpacity}}
-                                       onClick={event=>{
-                                           if (! this.cardInfoEntered()) {
-                                               event.preventDefault();
-                                               return true;
-                                           }
-                                           console.log("Purchase taking place..");
-                                           this.props.pubsub.publish('purchase-ccard', this.state.ccard);
+                                {! this.props.isTokens &&
+                                    <input type="image" name="PURCHASE_SUBMITTED" id="PURCHASE_SUBMITTED"
+                                           src="images/purchase-button.png"  width="200" height="45" alt="purchase" value="submit"
+                                           style={{opacity: purchaseButtonOpacity}}
+                                           onClick={event=>{
+                                               if (! this.cardInfoEntered()) {
+                                                   event.preventDefault();
+                                                   return true;
+                                               }
+                                               //    console.log("Purchase taking place..");
+                                               this.props.pubsub.publish('purchase-ccard', this.state.ccard);
 
-                                       }}
-                                />
+                                           }}
+                                    />
+                                }
+
                                 </td>
                             </tr>
                                 </tbody>
@@ -181,70 +182,6 @@ export default class CCardInfo extends React.Component {
                     </tbody>
                 </table>
 
-                {/*<script>
-                 document.getElementById("PURCHASE_SUBMITTED").addEventListener("click", function(event){
-                 if (! FIC_checkForm(document.forms['FORM_1'])) {
-                 event.preventDefault();
-                 }
-                 });
-
-                 // Displays edit customer info - shopping_cart_main_purchase_editmember.html
-                 document.getElementById("EDIT_CUSTOMER_INFO").addEventListener("click", function(event){
-                 document.getElementById("EDITMEMBER").style.display = "block";
-                 event.preventDefault();
-
-                 });
-
-                 document.getElementById("CC_NUMBER").addEventListener("keydown", function(event){
-                 if (event.ctrlKey || event.shiftKey || event.keyCode === 8 || event.keyCode === 46) {
-                 return true;
-                 }
-
-                 function isNumeric(n) {
-                 return !isNaN(parseFloat(n)) && isFinite(n);
-                 }
-
-                 if (! isNumeric(event.key)) {
-                 //   console.log("NOT NUMERIC Key is ", event);
-                 event.preventDefault();
-                 return true;
-                 }
-                 return true;
-                 });
-
-                 document.getElementById("CC_NUMBER").addEventListener("keyup", function(event){
-
-                 if (event.target.value.length === 0) {
-                 return true;
-                 }
-                 var first = event.target.value.substring(0, 1);
-
-                 var type = '';
-                 switch (first) {
-                 case '2':
-                 case '5':
-                 type = 'Mastercard';
-                 break;
-                 case '3':
-                 type = 'American Express';
-                 break;
-                 case '4':
-                 type = 'VISA';
-                 break;
-                 case '6':
-                 type = 'Discover';
-                 break;
-                 default:
-                 type = 'Invalid card number';
-                 break;
-                 }
-                 //   console.log("KeyUP is ", event.key, event.target.value, type);
-                 //  debugger;
-                 document.getElementById("CC_TYPE").innerHTML = type;
-                 return true;
-                 });
-
-                 </script>*/}
             </div>
 
 
@@ -252,3 +189,6 @@ export default class CCardInfo extends React.Component {
         );
     }
 }
+
+//            array ( 'CC_NUMBER' => '5444305280019650', 'LAST_SESSION' => '02/21|165', )
+//        return ccard.number && ccard.expMonth && ccard.expYear && ccard.cvv;
