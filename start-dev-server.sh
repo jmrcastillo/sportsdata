@@ -1,3 +1,3 @@
 #!/bin/bash
 
-screen -dmS PICKS npm run picks-app
+npm install && screen -dmS PICKS npm run picks-app

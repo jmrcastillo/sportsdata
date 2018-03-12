@@ -10,20 +10,20 @@ const CompressionPlugin = require("compression-webpack-plugin");
 module.exports = merge(common, {
     plugins: [
         new UglifyJSPlugin(),
-        new CompressionPlugin({
+////        new CompressionPlugin({
         //    asset: "[path].gz[query]",
        //     algorithm: "gzip",
-            test: /\.js$|\.css$|\.html$/,
+   ////         test: /\.js$|\.css$|\.html$/,
 
-            filename (asset) {
-                asset = 'client.min.js.gz'
-                return asset
-            },
+     ////       filename (asset) {
+     ////           asset = 'client.min.js.gz'
+      ////          return asset
+      ////      },
 
 
        //     threshold: 10240,
        //     minRatio: 0
-        })
+        ////})
     ]
 });
 
