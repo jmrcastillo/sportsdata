@@ -69,7 +69,6 @@ export default class TokensOnlyPurchase extends React.Component {
                    width="200" alt="update_cart"
                    onClick={event=>{
                        event.preventDefault();
-                       alert("Clicked tokens purchase!");
                        this.props.pubsub.publish('purchase-tokens', {tokens: this.props.tokens});
                    }}
             />

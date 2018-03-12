@@ -83,34 +83,13 @@ export default class Picksmain extends React.Component {
         });
 
         this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
-            console.log("Picksmain - purchase-ccard [data]", data);
-
+      //      console.log("Picksmain - purchase-ccard [data]", data);
             this.sendPurchase(false, data, null);
         });
 
         this.subscribe_purchase_tokens = this.pubsub.subscribe('purchase-tokens', (message, data)=> {
-
-            console.log("Picksmain - purchase-tokens [data]", data);
-
+      //      console.log("Picksmain - purchase-tokens [data]", data);
             this.sendPurchase(true, data.ccard ? data.ccard : null, data.tokens);
-
-
-
-            /*            this.setState({ccard: data});
-
-            let purchaseData = {};
-            Object.assign(purchaseData, data);
-            purchaseData.member_id = this.state.member.member_id;
-            purchaseData.selectedPicks = this.state.selectedPicks;
-
-            PicksAPI.purchaseCCard(purchaseData).done((result) => {
-                if (result.status) {
-                    this.setState({purchasedPicks: result.picks});
-                }
-                this.pubsub.publish('purchase-completed');
-                this.pubsub.publish('mode-showpicks');
-            });*/
-
         });
 
 	}
@@ -193,6 +172,7 @@ export default class Picksmain extends React.Component {
         let purchaseData = {isTokens: isTokens};
 
         (ccard && Object.assign(purchaseData, ccard));
+        // TODO:  Could rewrite as assigning only realTokensNeeded, awardTokensApplied, realTokensApplied ?
         (tokens && Object.assign(purchaseData, tokens));
 
         purchaseData.member_id = this.state.member.member_id;
@@ -201,7 +181,7 @@ export default class Picksmain extends React.Component {
 
 console.log("sendPurchase: ", purchaseData);
 
-return;
+
         PicksAPI.purchaseCCard(purchaseData).done((result) => {
             //     console.log ("AFTER purchaseCCard(), got result status, picks", result.status, result.picks);
 
