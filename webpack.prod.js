@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const common = require('./webpack.common.js');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 
 // Others:
@@ -9,6 +10,20 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
     plugins: [
         new UglifyJSPlugin(),
+        new CompressionPlugin({
+        //    asset: "[path].gz[query]",
+       //     algorithm: "gzip",
+            test: /\.js$|\.css$|\.html$/,
+
+            filename (asset) {
+                asset = 'client.min.js.gz'
+                return asset
+            },
+
+
+       //     threshold: 10240,
+       //     minRatio: 0
+        })
     ]
 });
 
