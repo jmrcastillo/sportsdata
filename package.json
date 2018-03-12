@@ -33,16 +33,20 @@
     "react-router": "^3.0.2",
     "react-ux-password-field": "^0.9.12",
     "striptags": "^3.1.1",
+    "uglifyjs-webpack-plugin": "^1.2.3",
     "universal-cookie": "^2.1.2",
     "urlsafe-base64": "^1.0.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^4.1.2",
     "webpack-serve": "^0.2.0"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "webpack-dev-server --host=localhost --port=1039  --content-base src --inline --hot",
+    "start": "webpack-dev-server --host=localhost --port=1039  --content-base src --inline --hot --config webpack.dev.js",
+    "start-prod": "webpack-dev-server --host=localhost --port=1039  --content-base src --inline --hot --config webpack.prod.js",
     "dev": "webpack-dev-server --host=cubepwa.dtison.net --port=1035  --content-base src --inline --hot",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
