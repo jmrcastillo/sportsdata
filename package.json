@@ -46,6 +46,7 @@
   "scripts": {
     "start": "webpack-dev-server --host=localhost --port=1039  --progress --content-base src --inline --hot --config webpack.dev.js",
     "start-prod": "webpack-dev-server --host=localhost --port=1039 --progress  --content-base src --inline --hot --config webpack.prod.js",
+    "start-picks": "webpack-dev-server --host=cubepwa.dtison.net --port=1035--progress  --content-base src --inline --hot --config webpack.prod.js",
     "dev": "webpack-dev-server --host=cubepwa.dtison.net --port=1035  --content-base src --inline --hot",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
