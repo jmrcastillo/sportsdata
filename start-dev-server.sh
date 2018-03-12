@@ -1,3 +1,3 @@
 #!/bin/bash
 
-screen -dmS PICKS npm start
+screen -dmS PICKS npm run picks-app
