@@ -3,8 +3,8 @@
  */
 
 import React from "react";
-import PicksAPI from "../lib/PicksAPI";
 import Utils from "../lib/Utils";
+import PurchaseButton  from "../components/PurchaseButton";
 
 
 
@@ -39,6 +39,7 @@ export default class CCardInfo extends React.Component {
         let ccard = this.state.ccard;
         ccard[property] = value;
         this.setState(ccard);
+        this.props.pubsub.publish('ccard', ccard);
     }
 
     determineCardType(cardNumber) {
@@ -158,7 +159,7 @@ export default class CCardInfo extends React.Component {
                                     </div>
                                 </div></td>
                                 <td width="280" align="center">
-                                {! this.props.isTokens &&
+  {/*                              {! this.props.isTokens &&
                                     <input type="image" name="PURCHASE_SUBMITTED" id="PURCHASE_SUBMITTED"
                                            src="images/purchase-button.png"  width="200" height="45" alt="purchase" value="submit"
                                            style={{opacity: purchaseButtonOpacity}}
@@ -172,7 +173,15 @@ export default class CCardInfo extends React.Component {
 
                                            }}
                                     />
-                                }
+                                }*/}
+
+                                    {! this.props.isTokens &&
+                                    <PurchaseButton
+                                        pubsub={this.props.pubsub}
+                                        isTokens={false}
+                                    />
+
+                                    }
 
                                 </td>
                             </tr>

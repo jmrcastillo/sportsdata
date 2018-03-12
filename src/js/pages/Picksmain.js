@@ -91,7 +91,10 @@ export default class Picksmain extends React.Component {
       //      console.log("Picksmain - purchase-tokens [data]", data);
             this.sendPurchase(true, data.ccard ? data.ccard : null, data.tokens);
         });
-
+        this.subscribe_purchase = this.pubsub.subscribe('purchase', (message, data)=> {
+            //  console.log("Picksmain - purchase [data]", data);
+			this.sendPurchase(data.isTokens, data.ccard, data.tokens);
+        });
 	}
 
 
@@ -105,6 +108,8 @@ export default class Picksmain extends React.Component {
         this.pubsub.unsubscribe(this.subscribe_selected_picks);
         this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
         this.pubsub.unsubscribe(this.subscribe_purchase_tokens);
+        this.pubsub.unsubscribe(this.subscribe_purchase);
+
 
     }
 
@@ -179,7 +184,7 @@ export default class Picksmain extends React.Component {
         purchaseData.selectedPicks = this.state.selectedPicks;
 
 
-console.log("sendPurchase: ", purchaseData);
+console.log("** sendPurchase: ", purchaseData);
 
 
         PicksAPI.purchaseCCard(purchaseData).done((result) => {

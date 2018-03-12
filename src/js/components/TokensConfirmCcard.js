@@ -4,14 +4,13 @@
 
 import React from "react";
 import Money  from "money-formatter";
+import PurchaseButton  from "../components/PurchaseButton";
 
 export default class TokensConfirmCcard extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            isChargeAuthorized: false,
-        }
+
     }
 
     componentWillMount() {
@@ -34,7 +33,6 @@ export default class TokensConfirmCcard extends React.Component {
 
        //console.log("TokensInfo isChargeAuthorized cartTotal", this.state.isChargeAuthorized);
 
-        const purchaseButtonStyle = this.state.isChargeAuthorized ?  {opacity: 1.0} : {opacity: 0.2};
         return (
 
             <div align="center">
@@ -54,7 +52,8 @@ export default class TokensConfirmCcard extends React.Component {
                             <div className="confirmCheckbox">
                                 <input type="checkbox" defaultValue={false} id="CONFIRM_PURCHASE"  name="CONFIRM_PURCHASE"
                                        onChange={(event)=>{
-                                           this.setState({isChargeAuthorized: ! this.state.isChargeAuthorized});
+                                          // this.setState({isChargeAuthorized: ! this.state.isChargeAuthorized});
+                                           this.props.pubsub.publish('toggle-charge-authorized');
                                        }}
                                 />
                                 <label for="CONFIRM_PURCHASE"></label>
@@ -88,17 +87,10 @@ export default class TokensConfirmCcard extends React.Component {
                     </span>
 
                     <br />
-                    <input type="image" name="PURCHASE_SUBMITTED_TOKENS" id="PURCHASE_SUBMITTED_TOKENS"
-                           src="images/purchase-button.png"
-                        width="200" height="45" alt="update_cart"  style={purchaseButtonStyle} value="submit"
-                        onClick={event=>{
-                            event.preventDefault();
-                            if (this.state.isChargeAuthorized) {
-                                this.props.pubsub.publish('purchase-tokens', {tokens: this.props.tokens});
-                            }
-                        }}
-
-
+                    <PurchaseButton
+                        pubsub={this.props.pubsub}
+                        isTokens={true}
+                        tokens={this.props.tokens}
                     />
                     </td>
                     </tr>
