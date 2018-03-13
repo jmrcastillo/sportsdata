@@ -86,7 +86,7 @@ export default class CCardInfo extends React.Component {
                 <table width="600" border="0" cellSpacing="0" cellPadding="0">
                     <tbody>
                     <tr>
-                        <td colSpan="2" align="center"><span className="trebuchet14"><b>Credit Card Information</b></span></td>
+                        <td colSpan="2" height="32" style={{textAlign: 'center', backgroundColor: '#CCCCCC'}}><span className="trebuchet14"><b>Credit Card Information</b></span></td>
                     </tr>
 
                     <tr>

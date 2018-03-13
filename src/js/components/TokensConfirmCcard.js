@@ -41,14 +41,14 @@ export default class TokensConfirmCcard extends React.Component {
                 <table width="600">
                     <tbody>
                     <tr>
-                        <td height="32" colSpan="2" align="center" bgcolor="#CCCCCC"><strong>Playbucks Information</strong></td>
+                        <td height="32" colSpan="2" style={{textAlign: 'center', backgroundColor: '#CCCCCC'}}><span className="trebuchet14B"><strong>Playbucks Information</strong></span></td>
                     </tr>
 
                     <tr>
                         <td align="right">
-                    <span className="verdana14">
-                    <strong><font color="maroon">Click&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></strong>
-                    </span>
+
+                    <span className="trebuchet14Bred">Click&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
                             <div className="confirmCheckbox">
                                 <input type="checkbox" defaultValue={false} id="CONFIRM_PURCHASE"  name="CONFIRM_PURCHASE"
                                        onChange={(event)=>{
@@ -61,25 +61,25 @@ export default class TokensConfirmCcard extends React.Component {
 
                         </td>
                         <td align="center" className="verdana14">
-                            <strong>I Authorize Playbook To Charge My Credit Card<br />
+                            <span className="trebuchet14B">I Authorize Playbook To Charge My Credit Card<br />
                                 {Money.format ('USD', this.props.tokens.realTokensNeeded)} in order To Complete This Purchase.<br />
                                 My Playbucks Tokens Will Be Combined with<br />
                                 this Credit Card Charge.
-                            </strong>
+                            </span>
                         </td>
                     </tr>
 
                     <tr>
                         <td width="150" align="center"><img src="images/token_green.png" width="100"/></td>
-                        <td align="center" className="verdana14">Your Current Token Balance {Money.format ('USD', parseInt(this.props.tokens.realTokensApplied) + parseInt(this.props.tokens.awardTokensApplied))} <br />
+                        <td align="center"><span className="trebuchet14">Your Current Token Balance {Money.format ('USD', parseInt(this.props.tokens.realTokensApplied) + parseInt(this.props.tokens.awardTokensApplied))} <br />
                             <strong>
-                                <font color="navy">Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</font></strong></td>
+                                <font color="navy">Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</font></strong></span></td>
                     </tr>
 
 
                     <tr>
                         <td colSpan="2" align="center">
-                    <span className="verdana14">Total Amount of Tokens deducted from your available balance for this sale:&nbsp;
+                    <span className="trebuchet14">Total Amount of Tokens deducted from your available balance for this sale:&nbsp;
                         <input name="token_quantity" type="text" id="token_quantity"
                                value={Money.format ('USD', parseInt(this.props.tokens.realTokensApplied) + parseInt(this.props.tokens.awardTokensApplied))}
                                size="5" maxLength="5"  readOnly
