@@ -118,7 +118,7 @@ export default class Picksmain extends React.Component {
 		//    var newPicks = [];
 
 
-        const ecapper_id = this.props.router.location.query.ECAPPER_ID ?
+        const ecapper_id = (this.props && this.props.router.location.query.ECAPPER_ID) ?
             this.props.router.location.query.ECAPPER_ID : '';
 
   //      console.log("Picksmain params:",  ecapper_id);
