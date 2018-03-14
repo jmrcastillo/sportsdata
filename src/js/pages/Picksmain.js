@@ -117,7 +117,14 @@ export default class Picksmain extends React.Component {
 
 		//    var newPicks = [];
 
-		PicksAPI.loadPicks().done((picks) => {
+
+        const ecapper_id = this.props.router.location.query.ECAPPER_ID ?
+            this.props.router.location.query.ECAPPER_ID : '';
+
+  //      console.log("Picksmain params:",  ecapper_id);
+
+
+        PicksAPI.loadPicks(ecapper_id).done((picks) => {
 				/*            newPicks = picks.map(pick => {
 				 // Todo:  Any processing on load..
 				 return pick;
@@ -149,7 +156,7 @@ export default class Picksmain extends React.Component {
 						allPicks[pick.sport].push(pick);
 				});
 
-
+//console.log ("allPicks: ", allPicks);
 
 				self.setState({allPicks: allPicks});
 
@@ -201,6 +208,7 @@ console.log("** sendPurchase: ", purchaseData);
 
 
     render() {
+
  //       console.log("Picksmain isTokens:", this.state.isTokens);
 		const cart=<Cart
 			pubsub={this.pubsub}

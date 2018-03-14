@@ -22,7 +22,7 @@ class PicksAPI  {
 		});
 	}
 
-	loadPicks() {
+	loadPicks(ecapper_id) {
 		return this.loadServerTime().then((time) => {
 			var data = {time: time + 10};
 			//console.log("data", JSON.stringify(data));
@@ -32,13 +32,23 @@ class PicksAPI  {
 			text = URLSafeBase64.encode(text);
 
 //console.log ("ID is " + text)
+            let url = `https://www.playbook.com/picks-api1/getpicks/${text}`;
 
-			return $.getJSON(`https://www.playbook.com/picks-api1/getpicks/${text}`).then(function(picks) {
-				return picks;
+            if (ecapper_id && ecapper_id.length > 0) {
+                url = `https://www.playbook.com/picks-api1/get-ecapper-picks/${ecapper_id}/${text}`;
+            }
+
+			return $.getJSON(url).then(function(picks) {
+                return picks;
 			}).fail(()=>console.log('GETPICKS FAIL.'))
 		})
 	}
+/*
 
+			let url = `https://www.playbook.com/picks-api1/getpicks/${text}`;
+console.log ("url is " + url);
+
+ */
 
 	login(member_id, password) {
 		return $.getJSON(`https://www.playbook.com/picks-api1/login/${member_id}/${password}`).then(function(result) {
