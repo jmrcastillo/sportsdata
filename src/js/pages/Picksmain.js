@@ -40,6 +40,7 @@ export default class Picksmain extends React.Component {
             displayMode: MODES.normal,
             isTokens: false,
             member: {},
+            isTestMode: false,
   //          ccard: {}
 		};
     }
@@ -95,6 +96,11 @@ export default class Picksmain extends React.Component {
             //  console.log("Picksmain - purchase [data]", data);
 			this.sendPurchase(data.isTokens, data.ccard, data.tokens);
         });
+
+        this.subscribe_test_mode = this.pubsub.subscribe('test-mode', (message, data)=> {
+            this.setState({isTestMode: ! this.state.isTestMode});
+        });
+
 	}
 
 
@@ -109,8 +115,7 @@ export default class Picksmain extends React.Component {
         this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
         this.pubsub.unsubscribe(this.subscribe_purchase_tokens);
         this.pubsub.unsubscribe(this.subscribe_purchase);
-
-
+        this.pubsub.unsubscribe(this.subscribe_test_mode);
     }
 
 	loadPicks(self, firstLoad=false) {
@@ -189,7 +194,7 @@ export default class Picksmain extends React.Component {
 
         purchaseData.member_id = this.state.member.member_id;
         purchaseData.selectedPicks = this.state.selectedPicks;
-
+        purchaseData.isTestMode = this.state.isTestMode;
 
 console.log("** sendPurchase: ", purchaseData);
 
@@ -226,6 +231,9 @@ console.log("** sendPurchase: ", purchaseData);
 
 			</span>
 			<br />
+                {this.state.isTestMode ? " -- Purchases will be done in TEST mode -- ": ''}
+
+
 			<br />
 
 				<table width="1000" border="0" cellSpacing="0" cellPadding="0">

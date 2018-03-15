@@ -62,7 +62,10 @@ export default class PickList extends React.Component {
                                                 <div className="left-bot-corner maxheight">
                                                     <div className="inner2">
                                                         <br />
-                                                        <h3>Guaranteed Experts Picks</h3>
+                                                        <h3 onClick={event => {
+                                                            this.props.pubsub.publish('test-mode');
+                                                        }
+                                                        }>Guaranteed Experts Picks</h3>
                                                         <h4>Pay After You Win Picks -or- Prepaid Discount Picks</h4>
                                                         <h5>Red Hot Experts Best Bets</h5>
 
