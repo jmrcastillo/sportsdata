@@ -5,6 +5,7 @@
 import React from "react";
 import Money  from "money-formatter";
 import PurchaseButton  from "../components/PurchaseButton";
+import Utils from "../lib/Utils";
 
 export default class TokensConfirmCcard extends React.Component {
 
@@ -71,7 +72,7 @@ export default class TokensConfirmCcard extends React.Component {
 
                     <tr>
                         <td width="150" align="center"><img src="images/token_green.png" width="100"/></td>
-                        <td align="center"><span className="trebuchet14">Your Current Token Balance {Money.format ('USD', parseInt(this.props.tokens.realTokensApplied) + parseInt(this.props.tokens.awardTokensApplied))} <br />
+                        <td align="center"><span className="trebuchet14">Your Current Token Balance {Utils.getTokenBalance(this.props.tokens)} <br />
                             <strong>
                                 <font color="navy">Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</font></strong></span></td>
                     </tr>
@@ -81,7 +82,7 @@ export default class TokensConfirmCcard extends React.Component {
                         <td colSpan="2" align="center">
                     <span className="trebuchet14">Total Amount of Tokens deducted from your available balance for this sale:&nbsp;
                         <input name="token_quantity" type="text" id="token_quantity"
-                               value={Money.format ('USD', parseInt(this.props.tokens.realTokensApplied) + parseInt(this.props.tokens.awardTokensApplied))}
+                               value={Money.format ('USD', Utils.getTokensApplied(this.props.tokens))}
                                size="5" maxLength="5"  readOnly
                         />
                     </span>

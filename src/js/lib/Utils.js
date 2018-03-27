@@ -1,3 +1,4 @@
+import Money from "money-formatter";
 
 class Utils  {
 
@@ -53,7 +54,12 @@ class Utils  {
         return retValue;
 	}
 
-
+	getTokenBalance(tokens) {
+       return Money.format ('USD', parseInt(tokens.realTokens) + parseInt(tokens.awardTokens) + parseInt(tokens.makeupTokens));
+	}
+	getTokensApplied(tokens) {
+        return parseInt(tokens.realTokensApplied) + parseInt(tokens.awardTokensApplied)  + parseInt(tokens.makeupTokensApplied)
+    }
 
 }
 export default (new Utils);

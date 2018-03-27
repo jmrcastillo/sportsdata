@@ -4,6 +4,7 @@
 
 import React from "react";
 import Money from "money-formatter";
+import Utils from "../lib/Utils";
 
 export default class TokensOnlyPurchase extends React.Component {
 
@@ -50,7 +51,7 @@ export default class TokensOnlyPurchase extends React.Component {
             <div>
             <div>
             <p><span className="trebuchet14">
-                Current Token Balance {Money.format ('USD', parseInt(this.props.tokens.awardTokens) + parseInt(this.props.tokens.realTokens))} <br />
+                Current Token Balance {Utils.getTokenBalance(tokens)} <br />
                 Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</span></p>
             </div>
             </div>
@@ -61,7 +62,7 @@ export default class TokensOnlyPurchase extends React.Component {
             <td colSpan="2" style={{textAlign: 'center' }}>
                 <form name="form1" method="post" action=""><span className="trebuchet14">Total Amount of Tokens deducted from your available balance for this purchase:</span>
                     <span className="trebuchet14"><input name="token_quantity" type="text" id="token_quantity"
-                   value={Money.format ('USD', parseInt(this.props.tokens.realTokensApplied) + parseInt(this.props.tokens.awardTokensApplied))} size="5" maxLength="5"  readOnly
+                   value={Utils.getTokensApplied(this.props.tokens)} size="5" maxLength="5"  readOnly
                     /></span>
             <input type="hidden" name="IS_TOKENS_PURCHASE"  id="IS_TOKENS_PURCHASE" value="YES"/>
             <br />

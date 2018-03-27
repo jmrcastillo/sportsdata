@@ -37,9 +37,11 @@ export default class TokensInfo extends React.Component {
             const tokens = {
                 realTokensApplied: result.real_tokens_applied,
                 awardTokensApplied: result.award_tokens_applied,
+                makeupTokensApplied: result.makeup_tokens_applied,
                 realTokensNeeded: result.real_tokens_needed,
                 realTokens: result.real_tokens,
                 awardTokens: result.award_tokens,
+                makeupTokens: result.makeup_tokens,
             };
             this.setState({tokens});
         });
