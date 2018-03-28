@@ -51,7 +51,7 @@ export default class TokensOnlyPurchase extends React.Component {
             <div>
             <div>
             <p><span className="trebuchet14">
-                Current Token Balance {Utils.getTokenBalance(tokens)} <br />
+                Current Token Balance {Utils.getTokenBalance(this.props.tokens)} <br />
                 Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</span></p>
             </div>
             </div>
