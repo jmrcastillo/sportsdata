@@ -44,13 +44,23 @@ export default class PickList extends React.Component {
 
     }
 
-
+    // Returns inCart: Whether the pick is in selectedPicks isPAW: Whether that pick is added as PAW or PPD
+    pickIsInCart(pick) {
+        const selectedPicks = this.props.selectedPicks.split(',');
+        const selectedPickIDs =  selectedPicks.map(pick=>{return pick.split('|')[0]});
+        const selectedIsPAWs  =  selectedPicks.map(pick=>{return pick.split('|')[1]});
+        const cartIndex = selectedPickIDs.indexOf(pick.pick_id);
+/*        const inCart = cartIndex !== -1;
+        const isPAW = selectedIsPAWs[cartIndex];*/
+        return {inCart: cartIndex !== -1, isPAW:  selectedIsPAWs[cartIndex]}
+    }
 
     render() {
 
 
-        return (
 
+
+        return (
             <div className="col-9a maxheight">
                 {/*<!-- box begin -->*/}
                 <div className="box maxheight">
@@ -121,8 +131,6 @@ export default class PickList extends React.Component {
                                                                     <td style={{ backgroundColor: '#990000' }}>
 
 
-
-
                                                                         {/*      {
                                                                          //const a = [0,1];
                                                                          [0].forEach((element, i)=>{
@@ -167,15 +175,7 @@ export default class PickList extends React.Component {
 
                                                                                             {picks.map((pick, i) => {
 
-                                                                                                //
-                                                                                                const selectedPicks = this.props.selectedPicks.split(',');
-                                                                                                const selectedPickIDs =  selectedPicks.map(pick=>{return pick.split('|')[0]});
-                                                                                                const selectedIsPAWs  =  selectedPicks.map(pick=>{return pick.split('|')[1]});
-
-                                                                                                const cartIndex = selectedPickIDs.indexOf(pick.pick_id);
-
-                                                                                                const inCart = cartIndex !== -1;
-                                                                                                const isPAW = selectedIsPAWs[cartIndex];
+                                                                                                const {inCart, isPAW} = this.pickIsInCart(pick);
                                                                                                 return (
                                                                                                     <tr key={i} >
                                                                                                         <td>
