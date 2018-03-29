@@ -80,6 +80,7 @@ export default class Picksmain extends React.Component {
             this.setState({member: data});
         });
         this.subscribe_selected_picks = this.pubsub.subscribe('selected-picks', (message, data)=> {
+         //   console.log("selected-picks", data);
             this.setState({selectedPicks: data});
         });
 
@@ -247,6 +248,7 @@ console.log("** sendPurchase: ", purchaseData);
                                 allPicks={this.state.allPicks}
                                 memberSuspended={this.state.member.is_suspended && this.state.member.is_suspended.toUpperCase() === 'Y'}
 								memberLevelFlagged={Utils.checkFlaggedMemberLevel(this.state.member)}
+								selectedPicks={this.state.selectedPicks}
                             />
                         }
                         {(this.state.displayMode === MODES.checkout) &&

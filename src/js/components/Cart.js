@@ -42,11 +42,12 @@ export default class Login extends React.Component {
                        }
                    );
 
-
                    this.setState({
                        picks: picksWithType,
                        cartTotal: this.cartTotal(picksWithType)
                    });
+                   // To notify parent of selected picks on initial load
+                   this.props.pubsub.publish('selected-picks',  Utils.stringifyPicks(picksWithType));
                });
 
         }
@@ -131,6 +132,8 @@ export default class Login extends React.Component {
     }
 
     render() {
+
+
 
         const itemsTitle = this.state.picks.length === 0 ? "Add picks to cart to purchase" : "Items In My Cart";
 

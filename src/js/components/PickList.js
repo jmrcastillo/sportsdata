@@ -47,6 +47,8 @@ export default class PickList extends React.Component {
 
 
     render() {
+
+
         return (
 
             <div className="col-9a maxheight">
@@ -164,6 +166,16 @@ export default class PickList extends React.Component {
                                                                                             {/*  List of picks for this sport */}
 
                                                                                             {picks.map((pick, i) => {
+
+                                                                                                //
+                                                                                                const selectedPicks = this.props.selectedPicks.split(',');
+                                                                                                const selectedPickIDs =  selectedPicks.map(pick=>{return pick.split('|')[0]});
+                                                                                                const selectedIsPAWs  =  selectedPicks.map(pick=>{return pick.split('|')[1]});
+
+                                                                                                const cartIndex = selectedPickIDs.indexOf(pick.pick_id);
+
+                                                                                                const inCart = cartIndex !== -1;
+                                                                                                const isPAW = selectedIsPAWs[cartIndex];
                                                                                                 return (
                                                                                                     <tr key={i} >
                                                                                                         <td>
@@ -173,6 +185,8 @@ export default class PickList extends React.Component {
                                                                                                                 loggedIn={this.state.logged_in}
                                                                                                                 memberSuspended={this.props.memberSuspended}
                                                                                                                 memberLevelFlagged={this.props.memberLevelFlagged}
+                                                                                                                inCart={inCart}
+                                                                                                                isPAW={isPAW}
                                                                                                             />
                                                                                                         </td>
                                                                                                     </tr>

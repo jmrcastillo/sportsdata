@@ -38,6 +38,11 @@ export default class Pick extends React.Component {
 
         };
 
+        if (this.props.inCart) {
+            console.log("<Pick> pick id  in cart /  isPAW",  this.props.pick.pick_id, this.props.isPAW);
+        }
+
+
         // TODO:  Need checkbox on pick input form to implement time notices
 /*        const pickExpirationUTC = Moment(this.props.pick.expiration_date);
         const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
@@ -153,6 +158,15 @@ export default class Pick extends React.Component {
                         </table>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+
+                        {this.props.inCart && "Selection added to cart as "}
+                        {this.props.inCart && (this.props.isPAW === 'true' ?  "PAY AFTER YOU WIN" : "GUARANTEED PREPAID")}
+
+                    </td>
+
+                </tr>
                 </tbody>
             </table>
 
@@ -161,8 +175,6 @@ export default class Pick extends React.Component {
         );
     }
 }
-
-
 
 
 
