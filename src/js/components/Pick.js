@@ -38,9 +38,6 @@ export default class Pick extends React.Component {
 
         };
 
-        if (this.props.inCart) {
-            console.log("<Pick> pick id  in cart /  isPAW",  this.props.pick.pick_id, this.props.isPAW);
-        }
 
 
         // TODO:  Need checkbox on pick input form to implement time notices

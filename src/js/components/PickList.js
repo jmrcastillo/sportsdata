@@ -50,8 +50,6 @@ export default class PickList extends React.Component {
         const selectedPickIDs =  selectedPicks.map(pick=>{return pick.split('|')[0]});
         const selectedIsPAWs  =  selectedPicks.map(pick=>{return pick.split('|')[1]});
         const cartIndex = selectedPickIDs.indexOf(pick.pick_id);
-/*        const inCart = cartIndex !== -1;
-        const isPAW = selectedIsPAWs[cartIndex];*/
         return {inCart: cartIndex !== -1, isPAW:  selectedIsPAWs[cartIndex]}
     }
 
