@@ -43,30 +43,22 @@ export default class CheckoutButton extends React.Component {
             );
         }
 
-        // Kludge TODO:  FIX THIS..
         return (
-            <table>
-            <tbody>
-            <tr>
-            <td>
+            <span>
             <img src={src} width={width} height={height}
                onClick={handler}
                style={{opacity: opacity}}
             />
-            </td>
-                <td>
-            {this.props.minified && this.props.type === 'CC' &&
-                <img src={"images/creditcard-logos.jpg"} height={height} />
+
+            {this.props.enabled && this.props.minified && this.props.type === 'CC' &&
+                <img src={"images/creditcard-logos.jpg"} height={height} style={{display: 'inline-block'}}  />
 
             }
-            {this.props.minified && this.props.type === 'TOKENS' &&
-                 <img src={"images/token_green.png"} height={height} />
+            {this.props.enabled && this.props.minified && this.props.type === 'TOKENS' &&
+                 <img src={"images/token_green.png"} height={height}   style={{display: 'inline-block'}}  />
             }
-            </td>
-            </tr>
+            </span>
 
-            </tbody>
-            </table>
         );
     }
 }

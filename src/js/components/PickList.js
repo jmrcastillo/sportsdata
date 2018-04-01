@@ -185,6 +185,7 @@ export default class PickList extends React.Component {
                                                                                                                 memberLevelFlagged={this.props.memberLevelFlagged}
                                                                                                                 inCart={inCart}
                                                                                                                 isPAW={isPAW}
+                                                                                                                isCartEmpty={this.props.selectedPicks.length === 0}
                                                                                                             />
                                                                                                         </td>
                                                                                                     </tr>

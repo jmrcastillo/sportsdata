@@ -85,30 +85,36 @@ export default class Pick extends React.Component {
                                     />
 
                                 </b>
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <CheckoutButton
-                                                type="CC"
-                                                pubsub={this.props.pubsub}
-                                                enabled={true}
-                                                minified={true}
-                                            />
-                                        </td>
-                                        <td>
-                                            <CheckoutButton
-                                                type="TOKENS"
-                                                pubsub={this.props.pubsub}
-                                                enabled={true}
-                                                minified={true}
-                                            />
-                                        </td>
+                                    {/* Begin experimental checkout buttons on picks */}
 
-                                    </tr>
 
-                                    </tbody>
-                                </table>
+                                    {! this.props.isCartEmpty &&
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <CheckoutButton
+                                                        type="CC"
+                                                        pubsub={this.props.pubsub}
+                                                        enabled={true}
+                                                        minified={true}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <CheckoutButton
+                                                        type="TOKENS"
+                                                        pubsub={this.props.pubsub}
+                                                        enabled={true}
+                                                        minified={true}
+                                                    />
+                                                </td>
+
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    }
+                                    {/*  End experimental checkout button on picks */}
 
 
 
