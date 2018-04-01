@@ -101,6 +101,12 @@ export default class Login extends React.Component {
             });
             this.savePicksAsCookie([]);
         });
+
+        // For all checkout, scroll to top
+        if (this.props.isZoomed) {
+            window.scrollTo(0, 0);
+
+        }
     }
     componentWillUnmount() {
         this.savePicksAsCookie(this.state.picks);

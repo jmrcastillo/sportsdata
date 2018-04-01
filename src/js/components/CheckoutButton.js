@@ -26,12 +26,47 @@ export default class CheckoutButton extends React.Component {
             this.props.pubsub.publish('mode-checkout', this.props.type);
         } : ()=>{};
 
+        let width = 211;
+        let height = 50;
+        if (this.props.minified) {
+            width = 105;
+            height = 25;
+        }
 
+        if (! this.props.minified) {
+            return (
+                <img src={src} width={width} height={height}
+                     onClick={handler}
+                     style={{opacity: opacity}}
+                />
+
+            );
+        }
+
+        // Kludge TODO:  FIX THIS..
         return (
-          <img src={src} width="211" height="50"
+            <table>
+            <tbody>
+            <tr>
+            <td>
+            <img src={src} width={width} height={height}
                onClick={handler}
                style={{opacity: opacity}}
-          />
+            />
+            </td>
+                <td>
+            {this.props.minified && this.props.type === 'CC' &&
+                <img src={"images/creditcard-logos.jpg"} height={height} />
+
+            }
+            {this.props.minified && this.props.type === 'TOKENS' &&
+                 <img src={"images/token_green.png"} height={height} />
+            }
+            </td>
+            </tr>
+
+            </tbody>
+            </table>
         );
     }
 }

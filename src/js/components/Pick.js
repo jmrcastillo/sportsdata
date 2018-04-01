@@ -4,6 +4,7 @@
 
 import React from "react";
 import Money from "money-formatter";
+import CheckoutButton from "../components/CheckoutButton";
 
 // Temporarily disabled for pick expiration soon notices
 import Moment from "moment";
@@ -69,7 +70,8 @@ export default class Pick extends React.Component {
                                 <td style={pickBoxStyle}>&nbsp; <i className="faa-ring animated " /></td>
                             </tr>
                             <tr>
-                                <td style={pickBoxStyle}><div align="left" class="trebuchet13"><b>{this.props.pick.title}<br />
+                                <td style={pickBoxStyle}>
+                                <div align="left" class="trebuchet13"><b>{this.props.pick.title}<br />
 
                                    <font color="maroon">{this.props.inCart && "Selection added as "}
                                     {this.props.inCart && (this.props.isPAW === 'true' ?  "PAY AFTER YOU WIN" : "GUARANTEED PREPAID")}
@@ -81,7 +83,35 @@ export default class Pick extends React.Component {
                                         { __html: expiresIn}
                                         }
                                     />
+
                                 </b>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <CheckoutButton
+                                                type="CC"
+                                                pubsub={this.props.pubsub}
+                                                enabled={true}
+                                                minified={true}
+                                            />
+                                        </td>
+                                        <td>
+                                            <CheckoutButton
+                                                type="TOKENS"
+                                                pubsub={this.props.pubsub}
+                                                enabled={true}
+                                                minified={true}
+                                            />
+                                        </td>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+
+
                                 </div>
                                 </td>
                             </tr>
@@ -153,15 +183,29 @@ export default class Pick extends React.Component {
                         </table>
                     </td>
                 </tr>
-  {/*              <tr>
+                {/*Begin experimental checkout button on picks */}
+{/*                <tr>
                     <td>
-
-                        {this.props.inCart && "Selection added to cart as "}
-                        {this.props.inCart && (this.props.isPAW === 'true' ?  "PAY AFTER YOU WIN" : "GUARANTEED PREPAID")}
-
+                        <CheckoutButton
+                            type="CC"
+                            pubsub={this.props.pubsub}
+                            enabled={true}
+                            minified={true}
+                        />
+                    </td>
+                    <td>
+                        <CheckoutButton
+                            type="TOKENS"
+                            pubsub={this.props.pubsub}
+                            enabled={true}
+                            minified={true}
+                        />
                     </td>
 
                 </tr>*/}
+                {/*End */}
+
+
                 </tbody>
             </table>
 
