@@ -57,11 +57,7 @@ export default class Pick extends React.Component {
         const expireIcon = '';
         const expiresIn = '';
 
-
-
-
         return (
-
 
             <table width="640" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
                 <tbody>
