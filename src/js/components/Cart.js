@@ -187,8 +187,10 @@ export default class Login extends React.Component {
                                                         let picks = this.state.picks;
                                                         picks.splice(i, 1);
                                                         this.setState({
-                                                            picks: picks
+                                                            picks: picks,
+                                                            cartTotal: this.cartTotal(picks)
                                                         })
+
                                                         this.savePicksAsCookie(picks);
                                                     }}
                                                     />

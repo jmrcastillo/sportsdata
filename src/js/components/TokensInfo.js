@@ -29,10 +29,12 @@ export default class TokensInfo extends React.Component {
 
     }
     componentWillReceiveProps(nextProps) {
-  //      console.log("**TokensInfo4 cartTotal",  nextProps.cartTotal);
+    // console.log("**TokensInfo tokensQuery..",  nextProps.cartTotal);
         if (nextProps.cartTotal === 0 || nextProps.cartTotal === this.props.cartTotal) {
             return;
         }
+       // console.log("**tokensQuery..",  nextProps.cartTotal);
+
         PicksAPI.tokensQuery(nextProps.member, nextProps.cartTotal).done((result) => {
             const tokens = {
                 realTokensApplied: result.real_tokens_applied,
