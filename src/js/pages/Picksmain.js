@@ -158,8 +158,10 @@ export default class Picksmain extends React.Component {
 
 
 				paidPicks.forEach((pick, index)=>{
-					if (index < maxPicks)
-						allPicks[pick.sport].push(pick);
+					if (index < maxPicks) {
+			//			console.log("PICK ", pick.pick_id, pick.sport);
+                        allPicks[pick.sport].push(pick);
+                    }
 				});
 
 //console.log ("allPicks: ", allPicks);

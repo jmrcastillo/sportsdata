@@ -10,17 +10,20 @@ class SportsCodes  {
 			13: 'NCAA Football',
 			10: 'NBA Basketball',
 			11: 'NCAA Basketball',
-			1: 'MLB Baseball',
-			6: 'Hockey',
-			8: 'Soccer',
-			7: 'Horse Racing',
+            14: 'CFL Football',
+            15: 'WNBA Basketball',
+            16: 'Soccer',
+            1: 'MLB Baseball',
+            5: 'Golf',
+            3: 'Boxing',
+            6: 'Hockey',
+            7: 'Horse Racing',
+			8: 'Other',
 			9: 'Auto Racing',
-			5: 'Golf',
-			3: 'Boxing',
 		};
 
 		this.sportsOrdered = [
-			12,13,10,11,1,6,8,7,9,5,3
+			12,13,14,10,11,15,1,6,5,16,3,8,7,9,8
 		]
 
 
