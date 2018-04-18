@@ -88,7 +88,7 @@ export default class Pick extends React.Component {
                                     {/* Begin experimental checkout buttons on picks */}
 
 
-                                    {! this.props.isCartEmpty &&
+                        {/*            {! this.props.isCartEmpty &&
                                         <table>
                                             <tbody>
                                             <tr>
@@ -113,7 +113,7 @@ export default class Pick extends React.Component {
 
                                             </tbody>
                                         </table>
-                                    }
+                                    }*/}
                                     {/*  End experimental checkout button on picks */}
 
 

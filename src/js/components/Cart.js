@@ -153,7 +153,12 @@ export default class Login extends React.Component {
 
 
         return (
-        <div>
+            this.state.logged_in &&
+        <div style={{
+            position: 'fixed',
+            top: '20%',
+            opacity: '.9'
+        }}>
 
             {/*<!--Start Cart Box-->*/}
             <table width={width20} border="0" cellSpacing="0" cellPadding="0">
