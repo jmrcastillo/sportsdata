@@ -49,6 +49,7 @@ export default class BuyNow extends React.Component {
         this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data)=> {
             this.setState({modalIsOpen: false});
         });
+
     }
     componentWillUnmount() {
         this.props.pubsub.unsubscribe(this.subscribe_logged_in);
@@ -103,6 +104,12 @@ export default class BuyNow extends React.Component {
                     isOpen={this.state.modalIsOpen}
                     onAfterOpen={(event)=>{
                         // references are now sync'd and can be accessed.
+
+
+                    //console.log ("Scrolling to 0");
+                    // Workaround for being iframe'd (auto scroll to top)
+                    window.scrollTo(0, 0);
+
                         this.subtitle.style.color = '#00f';
                     }}
                     onRequestClose={(event)=>{
