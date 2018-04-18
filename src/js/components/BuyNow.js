@@ -17,7 +17,7 @@ export default class BuyNow extends React.Component {
 
         this.customStyles = {
             content : {
-                top                   : '50%',
+                top                   : '10%',
                 left                  : '50%',
                 right                 : 'auto',
                 bottom                : 'auto',
