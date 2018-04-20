@@ -156,8 +156,8 @@ export default class Login extends React.Component {
             this.state.logged_in &&
         <div style={{
             position: 'fixed',
-            top: '20%',
-            opacity: '.9'
+            top: '25%',
+            opacity: '.8'
         }}>
 
             {/*<!--Start Cart Box-->*/}

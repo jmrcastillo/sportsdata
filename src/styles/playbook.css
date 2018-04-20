@@ -520,7 +520,66 @@ h16 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:16px; 
 .box1 .right-top-corner {background:url(http://www.playbook.com/images/right-top-corner2.gif) no-repeat right top;}
 .box1 .left-bot-corner {background:url(http://www.playbook.com/images/left-bot-corner2.gif) no-repeat left bottom; width:100%;}
 .box1 .right-bot-corner {background:url(http://www.playbook.com/images/right-bot-corner2.gif) no-repeat right bottom; }
+
+.main-banner-small-picks { background:url(http://www.playbook.com/images/main-banner-small_picks.jpg) no-repeat left top; width:1000px; height:163px; margin-bottom:20px;}
+.main-banner-small-picks .inner { padding:47px 0 0 52px;}
+.main-banner-small-picks h1 { font-size:30px; width:350px;}
+
+
 .box1 .inner { padding:27px 35px 30px 34px;}
+
+#header .row-1 { height:137px; }
+
+#header .logo { float:left; padding:22px 0 0 10px;}
+#header .top-links { float:right; padding:45px 35px 0 0;}
+#header .top-links li { float:left; margin-left:8px;}
+
+#header .nav-box { background:url(http://www.playbook.com/images/nav-box-bg.gif) left top repeat-x; width:100%;}
+#header .nav-box .left { background:url(http://www.playbook.com/images/nav-box-left.gif) no-repeat left top;}
+#header .nav-box .right { background:url(http://www.playbook.com/images/nav-box-right.gif) no-repeat right top; height:47px;}
+
+#header {height:134px; background:url(http://www.playbook.com/images/header-bg.gif) left top repeat-x #fff; }
+#header, #content, #extra-content, #footer { font-size:0.75em;}
+
+
+/*-- header navigation --*/
+#header .nav-box ul { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; }
+#header .nav-box ul li { display:inline; }
+#header .nav-box ul li a { display:block; float:left; color:#fff; text-decoration:none; font-size:12px; }
+#header .nav-box ul li a em { display:block; float:left; font-style:normal; background:url(http://www.playbook.com/images/divider-left.gif) no-repeat left 12px;}
+#header .nav-box ul li a em b { display:block; float:left; height:47px; line-height:47px; width:130px; text-align:center; background:url(http://www.playbook.com/images/divider-right.gif) no-repeat right 10px; cursor:pointer; }
+
+#header .nav-box ul li a:hover { background:url(http://www.playbook.com/images/nav-act.gif) left top repeat-x;}
+#header .nav-box ul li a:hover em { background:url(http://www.playbook.com/images/divider-left-act.gif) no-repeat left 12px;}
+#header .nav-box ul li a:hover b { background:url(http://www.playbook.com/images/divider-right-act.gif) no-repeat right 12px;}
+#header .nav-box ul li a.current { background:url(http://www.playbook.com/images/nav-act.gif) left top repeat-x;}
+#header .nav-box ul li a.current em { background:url(http://www.playbook.com/images/divider-left-act.gif) no-repeat left 12px;}
+#header .nav-box ul li a.current b { background:url(http://www.playbook.com/images/divider-right-act.gif) no-repeat right 12px;}
+
+#header .nav-box ul li a.first em { background:none;}
+#header .nav-box ul li a.first:hover em { background:url(http://www.playbook.com/images/nav-left-act.gif) no-repeat left top;}
+#header .nav-box ul li a.first-current { background:url(http://www.playbook.com/images/nav-act.gif) left top repeat-x;}
+#header .nav-box ul li a.first-current em { background:url(http://www.playbook.com/images/nav-left-act.gif) no-repeat left top !important;}
+#header .nav-box ul li a.first-current b { background:url(http://www.playbook.com/images/divider-right-act.gif) no-repeat right 12px;}
+
+#header .nav-box ul li a.last b { background:none; width:160px;}
+#header .nav-box ul li a.last:hover b { background:url(http://www.playbook.com/images/nav-right-act.gif) no-repeat right top;}
+
+#header .nav-box ul li a.last-current { background:url(http://www.playbook.com/images/nav-act.gif) left top repeat-x; }
+#header .nav-box ul li a.last-current em { background:url(http://www.playbook.com/images/divider-left-act.gif) no-repeat left 12px;}
+#header .nav-box ul li a.last-current b { background:url(http://www.playbook.com/images/nav-right-act.gif) no-repeat right top !important; width:160px;}
+
+
+#footer {background:url(http://www.playbook.com/images/footer-bg.gif) left top repeat-x #717171;}
+
+#footer { color:#fff; padding:7px 0 10px 0;}
+
+#footer .nav { text-align:center; padding-bottom:10px;}
+#footer .nav li { display:inline;}
+#footer .nav li a { color:#fff; padding:0 5px 0 9px;}
+
+#footer .fleft { padding:0 0 0 44px;}
+#footer .fright { padding:0 44px 0 0;}
 
 .dept-list { float:left;}
 .dept-list dd { clear:both; text-align:right;}

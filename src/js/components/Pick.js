@@ -71,7 +71,7 @@ export default class Pick extends React.Component {
                             </tr>
                             <tr>
                                 <td style={pickBoxStyle}>
-                                <div align="left" class="trebuchet13"><b>{this.props.pick.title}<br />
+                                <div align="left" class="trebuchet18B"><b>{this.props.pick.title}<br />
 
                                    <font color="maroon">{this.props.inCart && "Selection added as "}
                                     {this.props.inCart && (this.props.isPAW === 'true' ?  "PAY AFTER YOU WIN" : "GUARANTEED PREPAID")}
