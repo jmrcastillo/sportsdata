@@ -301,8 +301,8 @@ console.log("** sendPurchase: ", purchaseData);
                                                                     }
 
                                                                     <br />
-                                                                    <p style={{textAlign: 'center'}}>
-                                                                        <a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
+                                                                    {/*<p style={{textAlign: 'center'}}>
+                                                                        <a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>*/}
                                                                     <br />
                                                                     {/*<h11>&nbsp;Playbook Publications</h11>
                                                                      <span className="list5">
