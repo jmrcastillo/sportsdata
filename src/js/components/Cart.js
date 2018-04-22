@@ -266,17 +266,24 @@ export default class Login extends React.Component {
                        }
                        {! this.props.isZoomed &&
                             <div>
-                            <CheckoutButton
-                                type="CC"
-                                pubsub={this.props.pubsub}
-                                enabled={this.state.picks.length > 0}
-                            />
-                            <br />
-                            <CheckoutButton
-                                type="TOKENS"
-                                pubsub={this.props.pubsub}
-                                enabled={this.state.picks.length > 0}
+                                <CheckoutButton
+                                    type="CC"
+                                    pubsub={this.props.pubsub}
+                                    enabled={this.state.picks.length > 0}
                                 />
+                                <br />
+                                <CheckoutButton
+                                    type="TOKENS"
+                                    pubsub={this.props.pubsub}
+                                    enabled={this.state.picks.length > 0}
+                                />
+
+                                <br />
+                                Real tokens {Money.format ('USD', this.props.member.tokens_real)}
+                                <br />
+                                Award {Money.format ('USD', this.props.member.tokens_award)}
+                                <br />
+                                Makeup {Money.format ('USD', this.props.member.tokens_makeup)}
                             </div>
                         }
                         </td>
