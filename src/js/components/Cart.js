@@ -259,9 +259,6 @@ export default class Login extends React.Component {
                                 />
                             }
 
-
-
-
                             </div>
                        }
                        {! this.props.isZoomed &&
