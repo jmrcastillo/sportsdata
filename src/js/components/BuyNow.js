@@ -56,7 +56,7 @@ export default class BuyNow extends React.Component {
     }
 
     doClose() {
-        console.log ("Buynow doing Close()");
+  //      console.log ("Buynow doing Close()");
         this.props.pubsub.publish('empty-cart');
         this.setState({modalIsOpen: false});
     }
@@ -64,7 +64,6 @@ export default class BuyNow extends React.Component {
     render() {
 
         const onClickLoggedIn = (event)=>{
-            console.log ("Buynow addAsPAW", this.props.addAsPAW);
             this.props.pubsub.publish('add-pick', {pick:
                 {
                     ...this.props.pick,
@@ -100,18 +99,12 @@ export default class BuyNow extends React.Component {
  
         const buynowClass = 'buynow-enabled';
 
-       if (this.props.inCart) {
+/*       if (this.props.inCart) {
             console.log ("BuyNow pick in cart ", this.props.pick.pick_id);
             console.log ("addAsPAW: ", this.props.addAsPAW);
             console.log ("inCartAsPAW: ", this.props.inCartAsPAW);
-
        }
-
-        //<h5 style={{'color': 'maroon'}}>PAY after WIN selection.</h5>
-
-//        const isAdded = this.props.inCart && (this.props.addAsPAW === this.props.inCartAsPAW);
-
-
+       */
 
         const alreadyInCartAsPAW =  this.props.inCart && this.props.addAsPAW && this.props.inCartAsPAW;
         const alreadyInCartAsPPD =  this.props.inCart &&  (! this.props.addAsPAW) && (! this.props.inCartAsPAW);
