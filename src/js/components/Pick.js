@@ -42,51 +42,23 @@ export default class Pick extends React.Component {
 
 
         // TODO:  Need checkbox on pick input form to implement time notices
-/*        const pickExpirationUTC = Moment(this.props.pick.expiration_date);
-        const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
+        /*        const pickExpirationUTC = Moment(this.props.pick.expiration_date);
+                const currentDateUTC = Moment().add(-(Moment().utcOffset()), 'm');
 
-        var minutes = pickExpirationUTC.diff(currentDateUTC, 'minutes');
-        const soon = 60;
-        const verySoon = 10;
+                var minutes = pickExpirationUTC.diff(currentDateUTC, 'minutes');
+                const soon = 60;
+                const verySoon = 10;
 
-        const expireStyle = minutes <= verySoon ? 'expiresin10' : minutes <= soon ? 'expiresin120' : 'expiresinLongtime';
-        const expireIcon = minutes <= verySoon ? 'fa fa-bell faa-ring animated' : minutes <= soon ? 'fa  fa-spinner fa-spin ' : '';
-        const expiresIn = `  ${SportsCodes.getGameStart(this.props.pick.sport, minutes)} in ${minutes} minutes. `;
-        */
+                const expireStyle = minutes <= verySoon ? 'expiresin10' : minutes <= soon ? 'expiresin120' : 'expiresinLongtime';
+                const expireIcon = minutes <= verySoon ? 'fa fa-bell faa-ring animated' : minutes <= soon ? 'fa  fa-spinner fa-spin ' : '';
+                const expiresIn = `  ${SportsCodes.getGameStart(this.props.pick.sport, minutes)} in ${minutes} minutes. `;
+                */
         // TODO:  Replaces with this for now 2018-01-01
         const  expireStyle = 'expiresinLongtime';
         const expireIcon = '';
         const expiresIn = '';
 
 
-
-/*
-        if (this.props.inCart) {
-            console.log("Pick inCart=true, isPAW is", this.props.isPAW);
-        }
-*/
-
-
-        //  BuyNow buttons depend on whether in cart
-        const buyNowPAW = (this.props.inCart && this.props.isPAW === 'true') ?  <h5 style={{'color': 'maroon'}}>PAY after WIN selection.</h5>:
-            <BuyNow
-                pubsub={this.props.pubsub}
-                loggedIn={this.props.loggedIn}
-                pick={this.props.pick}
-                isPAW={true}
-                memberSuspended={this.props.memberSuspended}
-                memberLevelFlagged={this.props.memberLevelFlagged}
-            />;
-
-        const buyNowPPD= (this.props.inCart && this.props.isPAW !== 'true') ?  <h5 style={{'color': 'maroon'}}>PREPAID selection.</h5> :
-            <BuyNow
-                pubsub={this.props.pubsub}
-                loggedIn={this.props.loggedIn}
-                pick={this.props.pick}
-                isPAW={false}
-                memberSuspended={this.props.memberSuspended}
-                memberLevelFlagged={this.props.memberLevelFlagged}
-            />;
 
 
         return (
@@ -102,25 +74,22 @@ export default class Pick extends React.Component {
                             </tr>
                             <tr>
                                 <td style={pickBoxStyle}>
-                                <div align="left" class="trebuchet18B"><b>{this.props.pick.title}<br />
+                                    <div align="left" class="trebuchet18B"><b>{this.props.pick.title}<br />
 
-  {/*
-                                   Stuff for Selection added as
-                                   <font color="maroon">{this.props.inCart && "Selection added as "}
-                                    {this.props.inCart && (this.props.isPAW === 'true' ?  "PAY AFTER YOU WIN" : "GUARANTEED PREPAID")}
-                                    </font>
-*/}
-                                    <i className={expireIcon} ></i>
-                                    <span className={expireStyle}
-                                        dangerouslySetInnerHTML={
-                                        { __html: expiresIn}
-                                        }
-                                    />
 
-                                </b>
-                                {/* Begin experimental checkout buttons on picks */}
 
-                                {/*            {! this.props.isCartEmpty &&
+                                        <i className={expireIcon} ></i>
+                                        <span className={expireStyle}
+                                              dangerouslySetInnerHTML={
+                                                  { __html: expiresIn}
+                                              }
+                                        />
+
+                                    </b>
+                                        {/* Begin experimental checkout buttons on picks */}
+
+
+                                        {/*            {! this.props.isCartEmpty &&
                                         <table>
                                             <tbody>
                                             <tr>
@@ -146,11 +115,11 @@ export default class Pick extends React.Component {
                                             </tbody>
                                         </table>
                                     }*/}
-                                    {/*  End experimental checkout button on picks */}
+                                        {/*  End experimental checkout button on picks */}
 
 
 
-                                </div>
+                                    </div>
                                 </td>
                             </tr>
                             </tbody>
@@ -165,7 +134,16 @@ export default class Pick extends React.Component {
                             <tbody>
                             <tr>
                                 <td width="85" valign="middle">
-                                    {buyNowPAW}
+                                <BuyNow
+                                    pubsub={this.props.pubsub}
+                                    loggedIn={this.props.loggedIn}
+                                    pick={this.props.pick}
+                                    addAsPAW={true}
+                                    inCart={this.props.inCart}
+                                    inCartAsPAW={this.props.inCartAsPAW}
+                                    memberSuspended={this.props.memberSuspended}
+                                    memberLevelFlagged={this.props.memberLevelFlagged}
+                                />
                                 </td>
 
                                 <td valign="middle" class="trebuchet13">Pay After Win:
@@ -180,7 +158,16 @@ export default class Pick extends React.Component {
                             </tr>
                             <tr>
                                 <td>
-                                    {buyNowPPD}
+                                    <BuyNow
+                                        pubsub={this.props.pubsub}
+                                        loggedIn={this.props.loggedIn}
+                                        pick={this.props.pick}
+                                        addAsPAW={false}
+                                        inCart={this.props.inCart}
+                                        inCartAsPAW={this.props.inCartAsPAW}
+                                        memberSuspended={this.props.memberSuspended}
+                                        memberLevelFlagged={this.props.memberLevelFlagged}
+                                    />
                                 </td>
                                 <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:
                                     <span className="price-bold">
@@ -198,7 +185,7 @@ export default class Pick extends React.Component {
                             <tr>
                                 <td style={pickBoxStyle} class="trebuchet13">
                                     <div align="left" dangerouslySetInnerHTML={
-                                    { __html: this.props.pick.teaser }
+                                        { __html: this.props.pick.teaser }
                                     } />
                                 </td>
                             </tr>
@@ -207,7 +194,7 @@ export default class Pick extends React.Component {
                     </td>
                 </tr>
                 {/*Begin experimental checkout button on picks */}
-{/*                <tr>
+                {/*                <tr>
                     <td>
                         <CheckoutButton
                             type="CC"

@@ -58,25 +58,25 @@ export default class BuyNow extends React.Component {
     render() {
 
         const onClickLoggedIn = (event)=>{
+            console.log ("Buynow addAsPAW", this.props.addAsPAW);
             this.props.pubsub.publish('add-pick', {pick:
-                    {
-                        ...this.props.pick,
-                        isPAW: this.props.isPAW,
-                    }
-                })
+                {
+                    ...this.props.pick,
+                    isPAW: this.props.addAsPAW,
+                }
+            })
         };
         const onClickLoggedOut = (event)=>{
             this.setState({modalIsOpen: true});
             this.props.pubsub.publish('add-pick', {pick:
                 {
                     ...this.props.pick,
-                    isPAW: this.props.isPAW,
+                    isPAW: this.props.addAsPAW,
                 }
             })
         };
 
         
-   //     console.log("BuyNow - ", this.props.memberLevelFlagged);
         let onClick = {};
         if (this.props.memberSuspended) {
             onClick = ()=>{
@@ -94,21 +94,48 @@ export default class BuyNow extends React.Component {
  
         const buynowClass = 'buynow-enabled';
 
+       if (this.props.inCart) {
+            console.log ("BuyNow pick in cart ", this.props.pick.pick_id);
+            console.log ("addAsPAW: ", this.props.addAsPAW);
+            console.log ("inCartAsPAW: ", this.props.inCartAsPAW);
+
+       }
+
+        //<h5 style={{'color': 'maroon'}}>PAY after WIN selection.</h5>
+
+//        const isAdded = this.props.inCart && (this.props.addAsPAW === this.props.inCartAsPAW);
+
+
+
+        const alreadyInCartAsPAW =  this.props.inCart && this.props.addAsPAW && this.props.inCartAsPAW;
+        const alreadyInCartAsPPD =  this.props.inCart &&  (! this.props.addAsPAW) && (! this.props.inCartAsPAW);
+
         return (
 
             <div>
-                <img src="images/buynow.png"  className={buynowClass}
-                     onClick={onClick} width="85"  border="0" align="left"/>
 
+                {alreadyInCartAsPAW &&
+                <h5 style={{'color': 'maroon'}}>PAY after WIN selection.</h5>
+                }
+                {alreadyInCartAsPPD &&
+                <h5 style={{'color': 'maroon'}}>GUARANTEED selection.</h5>
+                }
+
+
+                {! alreadyInCartAsPAW && ! alreadyInCartAsPPD &&
+                    <img src="images/buynow.png" className={buynowClass}
+                         onClick={onClick} width="85" border="0" align="left"
+                    />
+                }
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onAfterOpen={(event)=>{
                         // references are now sync'd and can be accessed.
 
 
-                    //console.log ("Scrolling to 0");
-                    // Workaround for being iframe'd (auto scroll to top)
-                    window.scrollTo(0, 0);
+                        console.log ("BuyNow onAfterOpen()", this.state.modalIsOpen);
+                        // Workaround for being iframe'd (auto scroll to top)
+                        //window.scrollTo(0, 0);
 
                         this.subtitle.style.color = '#00f';
                     }}

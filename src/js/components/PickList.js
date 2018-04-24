@@ -48,7 +48,7 @@ export default class PickList extends React.Component {
     pickIsInCart(pick) {
         const selectedPicks = this.props.selectedPicks.split(',');
         const selectedPickIDs =  selectedPicks.map(pick=>{return pick.split('|')[0]});
-        const selectedIsPAWs  =  selectedPicks.map(pick=>{return pick.split('|')[1]});
+        const selectedIsPAWs  =  selectedPicks.map(pick=>{return (pick.split('|')[1] === 'true')});
         const cartIndex = selectedPickIDs.indexOf(pick.pick_id);
         return {inCart: cartIndex !== -1, isPAW:  selectedIsPAWs[cartIndex]}
     }
@@ -184,7 +184,7 @@ export default class PickList extends React.Component {
                                                                                                                 memberSuspended={this.props.memberSuspended}
                                                                                                                 memberLevelFlagged={this.props.memberLevelFlagged}
                                                                                                                 inCart={inCart}
-                                                                                                                isPAW={isPAW}
+                                                                                                                inCartAsPAW={isPAW}
                                                                                                                 isCartEmpty={this.props.selectedPicks.length === 0}
                                                                                                             />
                                                                                                         </td>

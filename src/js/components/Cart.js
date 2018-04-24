@@ -93,9 +93,9 @@ export default class Login extends React.Component {
                 logged_in: false,
                 picks: []
             });
+            this.savePicksAsCookie([]);
         });
         this.subscribe_purchase_completed = this.props.pubsub.subscribe('purchase-completed', (message, data)=> {
-       //     console.log("Cart: purchase-completed message received, nulling cookie");
             this.setState({
                 picks: []
             });
@@ -108,6 +108,15 @@ export default class Login extends React.Component {
 
         }
     }
+
+/*    componentWillReceiveProps(nextProps) {
+        console.log("**Cart WillReceiveProps..");
+
+
+
+    }*/
+
+
     componentWillUnmount() {
         this.savePicksAsCookie(this.state.picks);
         this.props.pubsub.unsubscribe(this.subscribe_add_pick);
@@ -138,7 +147,6 @@ export default class Login extends React.Component {
     }
 
     render() {
-
 
 
         const itemsTitle = this.state.picks.length === 0 ? "Add picks to cart to purchase" : "Items In My Cart";
