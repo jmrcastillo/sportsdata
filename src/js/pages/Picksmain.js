@@ -208,7 +208,7 @@ console.log("** sendPurchase: ", purchaseData);
             if (result.status) {
                 this.setState({purchasedPicks: result.picks});
             }
-            this.pubsub.publish('purchase-completed');
+            this.pubsub.publish('empty-cart');
             this.pubsub.publish('mode-showpicks');
         });
     }

@@ -95,7 +95,7 @@ export default class Login extends React.Component {
             });
             this.savePicksAsCookie([]);
         });
-        this.subscribe_purchase_completed = this.props.pubsub.subscribe('purchase-completed', (message, data)=> {
+        this.subscribe_empty_cart = this.props.pubsub.subscribe('empty-cart', (message, data)=> {
             this.setState({
                 picks: []
             });
@@ -122,7 +122,7 @@ export default class Login extends React.Component {
         this.props.pubsub.unsubscribe(this.subscribe_add_pick);
         this.props.pubsub.unsubscribe(this.subscribe_logged_in);
         this.props.pubsub.unsubscribe(this.subscribe_logged_out);
-        this.props.pubsub.unsubscribe(this.subscribe_purchase_completed);
+        this.props.pubsub.unsubscribe(this.subscribe_empty_cart);
     }
 
     savePicksAsCookie(picks) {

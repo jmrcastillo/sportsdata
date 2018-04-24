@@ -55,6 +55,12 @@ export default class BuyNow extends React.Component {
         this.props.pubsub.unsubscribe(this.subscribe_logged_in);
     }
 
+    doClose() {
+        console.log ("Buynow doing Close()");
+        this.props.pubsub.publish('empty-cart');
+        this.setState({modalIsOpen: false});
+    }
+
     render() {
 
         const onClickLoggedIn = (event)=>{
@@ -64,7 +70,7 @@ export default class BuyNow extends React.Component {
                     ...this.props.pick,
                     isPAW: this.props.addAsPAW,
                 }
-            })
+            });
         };
         const onClickLoggedOut = (event)=>{
             this.setState({modalIsOpen: true});
@@ -73,7 +79,7 @@ export default class BuyNow extends React.Component {
                     ...this.props.pick,
                     isPAW: this.props.addAsPAW,
                 }
-            })
+            });
         };
 
         
@@ -133,14 +139,14 @@ export default class BuyNow extends React.Component {
                         // references are now sync'd and can be accessed.
 
 
-                        console.log ("BuyNow onAfterOpen()", this.state.modalIsOpen);
+                        //    console.log ("BuyNow onAfterOpen()", this.state.modalIsOpen);
                         // Workaround for being iframe'd (auto scroll to top)
                         //window.scrollTo(0, 0);
 
                         this.subtitle.style.color = '#00f';
                     }}
                     onRequestClose={(event)=>{
-                        this.setState({modalIsOpen: false});
+                        this.doClose();
                     }}
                     style={this.customStyles}
                     contentLabel="Example Modal"
@@ -149,7 +155,7 @@ export default class BuyNow extends React.Component {
 
                     <h2 ref={subtitle => this.subtitle = subtitle}>LOGIN</h2>
                     <button onClick={(event)=>{
-                        this.setState({modalIsOpen: false});
+                        this.doClose();
                     }}>close</button>
 
                     <Login pubsub={this.props.pubsub}/>
