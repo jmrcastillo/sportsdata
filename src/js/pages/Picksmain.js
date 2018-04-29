@@ -233,11 +233,10 @@ console.log("** sendPurchase: ", purchaseData);
 			<span className="item active">
 
 			</span>
-			<br />
+
                 {this.state.isTestMode ? " -- Purchases will be done in TEST mode -- ": ''}
 
 
-			<br />
 
 				<table width="1000" border="0" cellSpacing="0" cellPadding="0">
 					<tbody>
