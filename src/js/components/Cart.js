@@ -164,7 +164,7 @@ export default class Login extends React.Component {
             this.state.logged_in &&
         <div style={{
             position: 'fixed',
-            top: '65%',
+            top: '15%',
             opacity: '.8'
         }}>
 
