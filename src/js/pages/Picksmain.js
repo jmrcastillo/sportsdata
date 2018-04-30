@@ -80,21 +80,18 @@ export default class Picksmain extends React.Component {
             this.setState({member: data});
         });
         this.subscribe_selected_picks = this.pubsub.subscribe('selected-picks', (message, data)=> {
-         //   console.log("selected-picks", data);
+            console.log("selected-picks", data);
             this.setState({selectedPicks: data});
         });
 
         this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
-      //      console.log("Picksmain - purchase-ccard [data]", data);
             this.sendPurchase(false, data, null);
         });
 
         this.subscribe_purchase_tokens = this.pubsub.subscribe('purchase-tokens', (message, data)=> {
-      //      console.log("Picksmain - purchase-tokens [data]", data);
             this.sendPurchase(true, data.ccard ? data.ccard : null, data.tokens);
         });
         this.subscribe_purchase = this.pubsub.subscribe('purchase', (message, data)=> {
-            //  console.log("Picksmain - purchase [data]", data);
 			this.sendPurchase(data.isTokens, data.ccard, data.tokens);
         });
 
@@ -281,6 +278,7 @@ console.log("** sendPurchase: ", purchaseData);
                                                                         <Login
                                                                             freePick={this.featuredFreePick(this.state.freePicks)}
                                                                             pubsub={this.pubsub}
+																			showFreePlay={this.state.selectedPicks.length === 0}
                                                                         />
                                                                     }
                                                                     {(this.state.displayMode === MODES.checkout ||
@@ -295,7 +293,7 @@ console.log("** sendPurchase: ", purchaseData);
 																	<br />
                                                                     <br />
 
-                                                                    {(this.state.displayMode === MODES.normal ) &&
+                                                                    {(this.state.displayMode === MODES.normal) &&
                                                                         cart
                                                                     }
 

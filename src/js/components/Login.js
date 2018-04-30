@@ -95,8 +95,9 @@ export default class Login extends React.Component {
                     </span>
                     <br/>
                     </span>
-
-                <Freeplay freePick={this.props.freePick}/>
+                    {this.props.showFreePlay &&
+                        <Freeplay freePick={this.props.freePick}/>
+                    }
                 </div>
             )
         }
