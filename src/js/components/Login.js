@@ -104,13 +104,13 @@ export default class Login extends React.Component {
                     </span>
                     <span className="trebuchet14" style={{textAlign: 'center'}}>
                         Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span onClick={(event)=>{
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {/*    <span onClick={(event)=>{
                             console.log ("Trying freeplay", this.props.freePick.body);
                             this.setState({freePickIsOpen: true});
 
                         }}>Get Today's Free Pick
-                        </span>
+                        </span>*/}
                     </span>
                     <br/>
                     <Modal
