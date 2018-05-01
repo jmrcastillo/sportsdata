@@ -148,35 +148,27 @@ export default class Login extends React.Component {
 
     render() {
 
-
         const itemsTitle = this.state.picks.length === 0 ? "Add picks to cart to purchase" : "Items In My Cart";
 
-        if (this.props.isZoomed) {
-
-        }
         const width10 = this.props.isZoomed ? 610 : 310;
         const width20 = this.props.isZoomed ? 620 : 320;
 
  //       console.log("Cart cartTotal",  this.state.cartTotal);
 
-
-     /*   if (this.state.picks.length === 0) {
-            return <table width={width20} border="0" cellSpacing="0" cellPadding="0" />;
-        } else
-*/
-      let cartStyle = {
+      const cartStyle = {
           position: 'fixed',
-          top: '17%',
-          opacity: '.8'
-      }
-      if (this.state.picks.length === 0) {
-      //    cartStyle.display = 'none';
-          cartStyle.visibility = 'hidden';
-      }
+          top: '20%',
+          opacity: '.8',
+          visibility: this.state.picks.length > 0  ? 'visible' : 'hidden'
+        }
+        const cartStyleCheckout = {
+            opacity: '.8',
+        }
+
 
         return (
             this.state.logged_in &&
-        <div style={cartStyle}>
+        <div style={this.props.isZoomed ? cartStyleCheckout : cartStyle}>
 
             {/*<!--Start Cart Box-->*/}
             <table width={width20} border="0" cellSpacing="0" cellPadding="0">
@@ -294,11 +286,7 @@ export default class Login extends React.Component {
                                 />
 
                                 <br />
-                                Real tokens {Money.format ('USD', this.props.member.tokens_real)}
-                                <br />
-                                Award {Money.format ('USD', this.props.member.tokens_award)}
-                                <br />
-                                Makeup {Money.format ('USD', this.props.member.tokens_makeup)}
+                                Your tokens <strong> {Utils.getMemberTokenBalance(this.props.member)}</strong>
                             </div>
                         }
                         </td>

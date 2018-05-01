@@ -60,6 +60,9 @@ class Utils  {
 	getTokensApplied(tokens) {
         return parseInt(tokens.realTokensApplied) + parseInt(tokens.awardTokensApplied)  + parseInt(tokens.makeupTokensApplied)
     }
+    getMemberTokenBalance(member) {
+        return Money.format ('USD', parseInt(member.tokens_real) + parseInt(member.tokens_award) + parseInt(member.tokens_makeup));
+    }
 
 }
 export default (new Utils);

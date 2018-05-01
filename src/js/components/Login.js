@@ -89,12 +89,20 @@ export default class Login extends React.Component {
                             this.props.pubsub.publish('logged-out');
 
                         }}>
-
+                    </span>
                     <span className="trebuchet14" style={{textAlign: 'center'}}>
-                        Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get Today's Free Pick</strong>
+                        Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span onClick={(event)=>{
+                            console.log ("Trying freeplay");
+                            <Freeplay freePick={this.props.freePick}/>
+
+//                            alert (this.props.freePick.body);
+  //                          event.preventDefault();
+                        }}>Get Today's Free Pick</span>
                     </span>
                     <br/>
-                    </span>
+
                     {this.props.showFreePlay &&
                         <Freeplay freePick={this.props.freePick}/>
                     }
