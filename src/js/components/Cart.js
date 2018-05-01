@@ -166,11 +166,12 @@ export default class Login extends React.Component {
 */
       let cartStyle = {
           position: 'fixed',
-          top: '15%',
+          top: '17%',
           opacity: '.8'
       }
       if (this.state.picks.length === 0) {
-          cartStyle.display = 'none';
+      //    cartStyle.display = 'none';
+          cartStyle.visibility = 'hidden';
       }
 
         return (

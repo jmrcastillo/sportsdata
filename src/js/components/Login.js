@@ -91,7 +91,7 @@ export default class Login extends React.Component {
                         }}>
 
                     <span className="trebuchet14" style={{textAlign: 'center'}}>
-                        Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong>
+                        Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get Today's Free Pick</strong>
                     </span>
                     <br/>
                     </span>
