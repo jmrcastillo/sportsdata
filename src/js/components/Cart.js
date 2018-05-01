@@ -160,17 +160,22 @@ export default class Login extends React.Component {
  //       console.log("Cart cartTotal",  this.state.cartTotal);
 
 
-        if (this.state.picks.length === 0) {
+     /*   if (this.state.picks.length === 0) {
             return <table width={width20} border="0" cellSpacing="0" cellPadding="0" />;
         } else
+*/
+      let cartStyle = {
+          position: 'fixed',
+          top: '15%',
+          opacity: '.8'
+      }
+      if (this.state.picks.length === 0) {
+          cartStyle.display = 'none';
+      }
 
         return (
             this.state.logged_in &&
-        <div style={{
-            position: 'fixed',
-            top: '15%',
-            opacity: '.8'
-        }}>
+        <div style={cartStyle}>
 
             {/*<!--Start Cart Box-->*/}
             <table width={width20} border="0" cellSpacing="0" cellPadding="0">
