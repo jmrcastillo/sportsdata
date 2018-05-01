@@ -6,6 +6,7 @@ import React from "react";
 import PicksAPI from "../lib/PicksAPI";
 import Freeplay from "../components/Freeplay";
 import Cookies from "universal-cookie";
+import Modal from 'react-modal';
 
 
 export default class Login extends React.Component {
@@ -21,6 +22,7 @@ export default class Login extends React.Component {
             password: '',
             logged_in: ! (typeof (memberIDCookie) === 'undefined'),
             member: null,
+            freePickIsOpen: false,
         }
 
 
@@ -78,6 +80,16 @@ export default class Login extends React.Component {
 
     render() {
 
+        // Free pick popup support
+        const modalStyle = {
+                left                  : '40%',
+                width                 : '350',
+                height                : '300',
+                top                   : '10px',
+                //backgroundColor       : '#ff8'
+            };
+
+
         if (this.state.logged_in) {
             return (
                 <div>
@@ -94,14 +106,33 @@ export default class Login extends React.Component {
                         Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span onClick={(event)=>{
-                            console.log ("Trying freeplay");
-                            <Freeplay freePick={this.props.freePick}/>
+                            console.log ("Trying freeplay", this.props.freePick.body);
+                            this.setState({freePickIsOpen: true});
 
-//                            alert (this.props.freePick.body);
-  //                          event.preventDefault();
-                        }}>Get Today's Free Pick</span>
+                        }}>Get Today's Free Pick
+                        </span>
                     </span>
                     <br/>
+                    <Modal
+                        isOpen={this.state.freePickIsOpen}
+                        onAfterOpen={(event)=>{
+                         //   this.subtitle.style.color = '#00f';
+                        }}
+                        onRequestClose={(event)=>{
+                            this.setState({freePickIsOpen: false});
+                        }}
+                        style={modalStyle}
+                        contentLabel="Example Modal"
+                        ariaHideApp={false}
+
+                    >
+
+                        <Freeplay freePick={this.props.freePick}/>
+                    <button onClick={(event)=>{
+                        this.setState({freePickIsOpen: false});
+                    }}>close</button>
+
+                    </Modal>
 
                     {this.props.showFreePlay &&
                         <Freeplay freePick={this.props.freePick}/>
