@@ -8,7 +8,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 
 // Others:
 // ignore-plugin
-//
+// Source for IgnorePlugin: https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
 module.exports = merge(common, {
     plugins: [
         new UglifyJSPlugin(),
