@@ -279,6 +279,7 @@ console.log("** sendPurchase: ", purchaseData);
                                                                             freePick={this.featuredFreePick(this.state.freePicks)}
                                                                             pubsub={this.pubsub}
 																			showFreePlay={this.state.selectedPicks.length === 0}
+                                                                            notificationManager={this.notificationManager}
                                                                         />
                                                                     }
                                                                     {(this.state.displayMode === MODES.checkout ||

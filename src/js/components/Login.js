@@ -68,7 +68,7 @@ export default class Login extends React.Component {
     }
     login(member_id, password) {
 
-        PicksAPI.login(member_id, password).done((result) => {
+        PicksAPI.login(member_id, password, this.props.notificationManager).done((result) => {
             if (result.success) {
                 this.setState({logged_in: true,
                             member: result.member});
@@ -93,18 +93,20 @@ export default class Login extends React.Component {
         if (this.state.logged_in) {
             return (
                 <div>
-                    <span className="trebuchet14" style={{textAlign: 'center'}}
-                        onClick={(event)=>{
-                            //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
-                            alert("Logging out now.. ");
-                            new Cookies().remove('pb-member');
-                            this.props.pubsub.publish('logged-out');
 
-                        }}>
-                    </span>
                     <span className="trebuchet14" style={{textAlign: 'center'}}>
                         Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span
+                            onClick={(event)=>{
+                                //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
+                                alert("Logging out now.. ");
+                                new Cookies().remove('pb-member');
+                                this.props.pubsub.publish('logged-out');
+
+                            }}
+
+                        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     {/*    <span onClick={(event)=>{
                             console.log ("Trying freeplay", this.props.freePick.body);
                             this.setState({freePickIsOpen: true});
@@ -127,7 +129,7 @@ export default class Login extends React.Component {
 
                     >
 
-                        <Freeplay freePick={this.props.freePick}/>
+                    <Freeplay freePick={this.props.freePick}/>
                     <button onClick={(event)=>{
                         this.setState({freePickIsOpen: false});
                     }}>close</button>
