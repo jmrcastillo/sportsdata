@@ -76,7 +76,7 @@ export default class PickList extends React.Component {
                                                             this.props.pubsub.publish('test-mode');
                                                         }
                                                         }>Guaranteed Experts Picks</h3>
-                                                        <h4>Pay After You Win Picks -or- Prepaid Discount Picks</h4>
+                                                        <h4>Pay After You Win Picks -or- Discount Pre-Paid</h4>
                                                         <h5>Red Hot Experts Best Bets</h5>
 
 
