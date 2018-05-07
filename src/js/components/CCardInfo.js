@@ -115,14 +115,14 @@ export default class CCardInfo extends React.Component {
                     </tr>
                     <tr>
                         <td height="40" colSpan="2" align="center">
-                            <span className="trebuchet14">Exp. Date:&nbsp;Month</span>&nbsp;
+                            <span className="trebuchet14">Exp. Date:&nbsp;Month (MM)</span>&nbsp;
                             <input name="CC_EXPIRE_MONTH" id="CC_EXPIRE_MONTH"
                                 onChange={event=>{
                                     this.updateCcardInfo('expMonth', event.target.value);
                                 }}
                                 type="text" defaultValue="" size="2" maxLength="2"  className="required" title="Enter expiration month" tabIndex="6"
                             />&nbsp;&nbsp;
-                            <span className="trebuchet14">Year</span>&nbsp;
+                            <span className="trebuchet14">Year (YYYY)</span>&nbsp;
                             <input name="CC_EXPIRE_YEAR" id="CC_EXPIRE_YEAR"
                                 onChange={event=>{
                                    this.updateCcardInfo('expYear', event.target.value);
