@@ -217,7 +217,7 @@ export default class Login extends React.Component {
                                                     />
                                                 </td>
                                                 <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                                    <span className="trebuchet14B">{pick.title}</span>
+                                                    <span className="trebuchet12B">{pick.title}</span>
                                                 </td>
                                                 <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>
                                                     <span className="trebuchet14B">{price}</span>

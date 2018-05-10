@@ -146,7 +146,7 @@ export default class Pick extends React.Component {
                                 />
                                 </td>
 
-                                <td valign="middle" class="trebuchet13">Pay After Win:
+                                <td valign="middle" class="trebuchet13">&nbsp;Pay After Win:
                                     <span className="price-bold">
                                     {Money.format ('USD', this.props.pick.price)}
                                 </span>
@@ -169,7 +169,7 @@ export default class Pick extends React.Component {
                                         memberLevelFlagged={this.props.memberLevelFlagged}
                                     />
                                 </td>
-                                <td valign="middle" class="trebuchet13">Guaranteed Pre-Paid:
+                                <td valign="middle" class="trebuchet13">&nbsp;Discount Pre-Paid:
                                     <span className="price-bold">
                                     {Money.format ('USD', Utils.applyPrepaidDiscount(this.props.pick.price))}
                                     </span>
