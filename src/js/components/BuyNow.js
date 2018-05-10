@@ -117,7 +117,7 @@ export default class BuyNow extends React.Component {
                 <h5 style={{'color': 'maroon'}}>PAY after WIN selection.</h5>
                 }
                 {alreadyInCartAsPPD &&
-                <h5 style={{'color': 'maroon'}}>GUARANTEED selection.</h5>
+                <h5 style={{'color': 'maroon'}}>DISCOUNT applied.</h5>
                 }
 
 
