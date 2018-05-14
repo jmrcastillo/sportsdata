@@ -10,7 +10,7 @@ class Utils  {
 	}*/
 
     applyPrepaidDiscount(price) {
-        return Math.floor(0.8 * price);
+        return Math.floor(0.7 * price);
     }
 	isNumeric(n) {
 		return !isNaN(parseFloat(n)) && isFinite(n);
