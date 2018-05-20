@@ -38,10 +38,20 @@ const Holder = () => {
 
  const About = ()=>(
     <div>
-        <h1>React App version {React.version} Running..</h1>
-        <h1>Webpack build system 4.8.3.</h1>
+      <h1>ABOUT</h1>
+
+      <h3>React App version {React.version} Running..</h3>
+        <h3>Webpack build system 4.8.3.</h3>
     </div>
  )
+
+const University = ()=>(
+  <div>
+    <h1>Playbook University</h1>
+
+  </div>
+)
+
 
 
 // Global Provider
@@ -84,8 +94,12 @@ class App extends Component {
       <AppProvider>
         <Router>
           <React.Fragment>
-          <p>App router here.</p>
-            <ul>
+          <p>Supported App URLS:<br />
+            / <br />
+            /about <br />
+            /university.
+          </p>
+           {/* <ul>
               <li>
                 <Link to="/">Home</Link>
               </li>
@@ -95,12 +109,14 @@ class App extends Component {
               <li>
                 <Link to="/topics">Topics</Link>
               </li>
-            </ul>
+            </ul>*/}
 
             <hr />
 
           <Route exact path="/" component={Holder} />
           <Route path="/about" component={About} />
+          <Route path="/university" component={University} />
+
 
           </React.Fragment>
         </Router>
@@ -124,3 +140,17 @@ render(
         <h1>Webpack build system 4.8.3.</h1>
     </div>
 }*/
+
+/*  LINKS
+
+
+1.  React Router helper site:
+https://reacttraining.com/react-router/web/example/b
+
+
+2. Fix for getting route directly entered into URL bar to work:
+https://tylermcginnis.com/react-router-cannot-get-url-refresh/
+
+
+
+ */
