@@ -1,13 +1,13 @@
 // inside src/index.js
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {render} from 'react-dom'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const AppContext = React.createContext();
 
 
 
-// Dummy test component for context api
-
+// Dummy test components for context api
 class Person extends Component {
   render() {
     return (
@@ -28,7 +28,6 @@ class Person extends Component {
     )
   }
 }
-
 const Holder = () => {
   return (
     <React.Fragment>
@@ -37,16 +36,23 @@ const Holder = () => {
   )
 }
 
+ const About = ()=>(
+    <div>
+        <h1>React App version {React.version} Running..</h1>
+        <h1>Webpack build system 4.8.3.</h1>
+    </div>
+ )
+
+
 // Global Provider
 class AppProvider extends Component {
 
   state = {
-    name: 'Wes',
-    age: 100,
+    name: 'Playbook test',
+    age: 10,
     cool: true,
     picks: [],
   }
-
 
   render() {
     return (
@@ -71,23 +77,33 @@ class AppProvider extends Component {
 }
 
 
-/*const App = () => {
-    return <div>
-        <h1>React App version {React.version} Running..</h1>
-        <h1>Webpack build system 4.8.3.</h1>
-    </div>
-}*/
 
 class App extends Component {
   render() {
     return (
       <AppProvider>
+        <Router>
+          <React.Fragment>
+          <p>App router here.</p>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/topics">Topics</Link>
+              </li>
+            </ul>
 
-        <div>
-          <p>App Root is here.</p>
-      <Holder/>
+            <hr />
 
-        </div>
+          <Route exact path="/" component={Holder} />
+          <Route path="/about" component={About} />
+
+          </React.Fragment>
+        </Router>
       </AppProvider>
     );
   }
@@ -98,3 +114,13 @@ render(
   <App/>,
   document.getElementById('root')
 )
+
+
+//       <Holder/>
+
+/*const App = () => {
+    return <div>
+        <h1>React App version {React.version} Running..</h1>
+        <h1>Webpack build system 4.8.3.</h1>
+    </div>
+}*/
