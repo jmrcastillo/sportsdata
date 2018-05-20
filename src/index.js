@@ -15,6 +15,7 @@ class Person extends Component {
         <AppContext.Consumer>
           {(context) => (
             <React.Fragment>
+              Dummy Content
               <p>Age: {context.state.age}</p>
               <p>Name: {context.state.name}</p>
               <button onClick={e =>{
@@ -52,6 +53,20 @@ const University = ()=>(
   </div>
 )
 
+const Picks = ()=>(
+  <div>
+    <h2>Current Picks App should go here (PicksMain)</h2>
+
+  </div>
+)
+
+
+const MemberCenter = ()=>(
+  <div>
+    <h2>Placeholder for future Member Center / Member Profile / Preferences UI</h2>
+
+  </div>
+)
 
 
 // Global Provider
@@ -95,9 +110,15 @@ class App extends Component {
         <Router>
           <React.Fragment>
           <p>Supported App URLS:<br />
-            / <br />
-            /about <br />
-            /university.
+            <Link to="/">Home</Link>
+            <br />
+            <Link to="/about">About</Link>
+            <br />
+            <Link to="/picks">Picks</Link>
+            <br />
+            <Link to="/member-center">Member Center</Link>
+            <br />
+            <Link to="/university">University</Link>
           </p>
            {/* <ul>
               <li>
@@ -115,6 +136,8 @@ class App extends Component {
 
           <Route exact path="/" component={Holder} />
           <Route path="/about" component={About} />
+          <Route path="/picks" component={Picks} />
+          <Route path="/member-center" component={MemberCenter} />
           <Route path="/university" component={University} />
 
 
