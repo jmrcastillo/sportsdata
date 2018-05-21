@@ -4,6 +4,7 @@ import {render} from 'react-dom'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const AppContext = React.createContext();
+import Picksmain from "./pages/Picksmain";
 
 
 
@@ -118,6 +119,10 @@ class App extends Component {
             <br />
             <Link to="/member-center">Member Center</Link>
             <br />
+
+            <Link to="/test">Test</Link>
+
+            <br />
             <Link to="/university">University</Link>
           </p>
            {/* <ul>
@@ -136,7 +141,7 @@ class App extends Component {
 
           <Route exact path="/" component={Holder} />
           <Route path="/about" component={About} />
-          <Route path="/picks" component={Picks} />
+          <Route path="/picks" component={Picksmain} />
           <Route path="/member-center" component={MemberCenter} />
           <Route path="/university" component={University} />
 

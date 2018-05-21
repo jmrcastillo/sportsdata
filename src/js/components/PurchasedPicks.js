@@ -37,19 +37,19 @@ export default class PurchasedPicks extends React.Component {
             {/*<!--Start Cart Box-->*/}
             <table width="630" border="0" cellSpacing="0" cellPadding="0">
                 <tbody>
-                <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
-                    <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
+                <tr style={{textAlign: 'center', backgroundcolor: '#990000'}}>
+                    <td height="40" style={{textAlign: 'center', backgroundcolor: '#990000'}}><div title="Page 1">
                         <div>
                             <div> <span className="trebuchet14BW">Your Picks</span> </div>
                         </div>
                     </div></td>
                 </tr>
                 <tr>
-                    <td style={{textAlign: 'center', backgroundColor: '#990000' }} >
+                    <td style={{textAlign: 'center', backgroundcolor: '#990000' }} >
                         <table width="620" border="0" cellSpacing="0" cellPadding="0">
                             <tbody>
                             <tr>
-                                <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
+                                <td style={{textAlign: 'center', backgroundcolor: '#990000' }}>
                                     <table width="630" border="0" cellSpacing="2" cellPadding="2">
                                     <tbody>
 
@@ -59,7 +59,7 @@ export default class PurchasedPicks extends React.Component {
                                         return (
                                         <tr key={i}>
                                           <td colSpan="5"
-                                              style={{textAlign: 'left', backgroundColor: 'White'}}>
+                                              style={{textAlign: 'left', backgroundcolor: 'White'}}>
                                               <span className="trebuchet14B" style={{float:'left'}}>{pick.title}
                                               </span>
 
@@ -86,7 +86,7 @@ export default class PurchasedPicks extends React.Component {
 
                                 <tr>
                                     <td width="28"
-                                        style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                        style={{textAlign: 'center', backgroundcolor: 'White'}}>
 
 
                                     </td>

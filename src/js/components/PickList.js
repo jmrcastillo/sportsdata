@@ -84,7 +84,7 @@ export default class PickList extends React.Component {
                                                             <table width="640" border="0" cellSpacing="0" cellPadding="0">
                                                                 <tbody>
                                                                 <tr>
-                                                                    <td height="40"  style={{textAlign: 'center', backgroundColor: '#000000' }}>
+                                                                    <td height="40"  style={{textAlign: 'center', backgroundcolor: '#000000' }}>
                                                                         <table width="630" border="0" cellSpacing="0" cellPadding="0">
                                                                             <tbody>
                                                                             <tr>
@@ -126,7 +126,7 @@ export default class PickList extends React.Component {
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style={{ backgroundColor: '#990000' }}>
+                                                                    <td style={{ backgroundcolor: '#990000' }}>
 
 
                                                                         {/*      {
@@ -158,7 +158,7 @@ export default class PickList extends React.Component {
                                                                                                cellPadding="0">
                                                                                             <tbody>
                                                                                             <tr>
-                                                                                                <td height="28" style={{ backgroundColor: '#990000' }}>&nbsp;&nbsp;
+                                                                                                <td height="28" style={{ backgroundcolor: '#990000' }}>&nbsp;&nbsp;
                                                                                                     <span
                                                                                                         className="trebuchet14B"><font
                                                                                                         color="white">{SportsCodes.getText(sport)}</font></span>
@@ -204,7 +204,7 @@ export default class PickList extends React.Component {
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td backgroundColor="black">&nbsp;</td>
+                                                                    <td backgroundcolor="black">&nbsp;</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>

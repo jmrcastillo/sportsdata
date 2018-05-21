@@ -86,7 +86,7 @@ export default class Login extends React.Component {
                 width                 : '350',
                 height                : '300',
                 top                   : '10px',
-                //backgroundColor       : '#ff8'
+                //backgroundcolor       : '#ff8'
             };
 
 
@@ -115,7 +115,8 @@ export default class Login extends React.Component {
                         </span>*/}
                     </span>
                     <br/>
-                    <Modal
+                 {/* TODO:  Modal */}
+{/*                    <Modal
                         isOpen={this.state.freePickIsOpen}
                         onAfterOpen={(event)=>{
                          //   this.subtitle.style.color = '#00f';
@@ -134,7 +135,7 @@ export default class Login extends React.Component {
                         this.setState({freePickIsOpen: false});
                     }}>close</button>
 
-                    </Modal>
+                    </Modal>*/}
 
                     {this.props.showFreePlay &&
                         <Freeplay freePick={this.props.freePick}/>
@@ -151,7 +152,7 @@ export default class Login extends React.Component {
                     <table width="320" border="0" cellSpacing="0" cellPadding="0">
                         <tbody>
                         <tr style={{verticalAlign: 'top'}}>
-                            <td height="40" style={{textAlign: 'center', backgroundColor: '#000000'}}>
+                            <td height="40" style={{textAlign: 'center', backgroundcolor: '#000000'}}>
                                 <div>
                                     <div>
                                         <h3><span
@@ -162,11 +163,11 @@ export default class Login extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td width="4" style={{textAlign: "center", backgroundColor: '#000000'}}>
+                            <td width="4" style={{textAlign: "center", backgroundcolor: '#000000'}}>
                                 <table width="310" border="0" cellSpacing="0" cellPadding="0">
                                     <tbody>
                                     <tr>
-                                        <td style={{textAlign: 'center', backgroundColor: '#000000'}}>
+                                        <td style={{textAlign: 'center', backgroundcolor: '#000000'}}>
 
                                             <form onSubmit={(event)=> {
                                                 this.login(this.state.member_id, this.state.password);
@@ -212,7 +213,7 @@ export default class Login extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td style={{textAlign: 'center', backgroundColor: '#000000'}}>&nbsp;</td>
+                            <td style={{textAlign: 'center', backgroundcolor: '#000000'}}>&nbsp;</td>
                         </tr>
                         </tbody>
                     </table>

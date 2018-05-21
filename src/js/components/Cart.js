@@ -173,23 +173,23 @@ export default class Login extends React.Component {
             {/*<!--Start Cart Box-->*/}
             <table width={width20} border="0" cellSpacing="0" cellPadding="0">
                 <tbody>
-                <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
-                    <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
+                <tr style={{textAlign: 'center', backgroundcolor: '#990000'}}>
+                    <td height="40" style={{textAlign: 'center', backgroundcolor: '#990000'}}><div title="Page 1">
                         <div>
                             <div> <span className="trebuchet14BW">My Cart</span> </div>
                         </div>
                     </div></td>
                 </tr>
                 <tr>
-                    <td style={{textAlign: 'center', backgroundColor: '#990000' }} >
+                    <td style={{textAlign: 'center', backgroundcolor: '#990000' }} >
                         <table width={width10} border="0" cellSpacing="0" cellPadding="0">
                         <tbody>
                         <tr>
-                            <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
+                            <td style={{textAlign: 'center', backgroundcolor: '#990000' }}>
                                 <table width={width20} border="0" cellSpacing="2" cellPadding="2">
                                     <tbody>
                                     <tr>
-                                        <td colSpan="4" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                        <td colSpan="4" style={{textAlign: 'center', backgroundcolor: 'White'}}>
                                             <span className="trebuchet14B">{itemsTitle}</span>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             {/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
@@ -200,7 +200,7 @@ export default class Login extends React.Component {
            //                             console.log ("Cart ", pick, price);
                                         return (
                                             <tr key={i}>
-                                                <td width="28" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                <td width="28" style={{textAlign: 'center', backgroundcolor: 'White'}}>
 
                                                     <img src="images/trash.png" width="25"
                                                     onClick={(event)=>{
@@ -216,15 +216,15 @@ export default class Login extends React.Component {
                                                     }}
                                                     />
                                                 </td>
-                                                <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                <td height="44" style={{textAlign: 'center', backgroundcolor: 'White'}}>
                                                     <span className="trebuchet12B">{pick.title}</span>
                                                 </td>
-                                                <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                <td width="50" style={{textAlign: 'center', backgroundcolor: 'White'}}>
                                                     <span className="trebuchet14B">{price}</span>
                                                 </td>
                                                 {this.props.isZoomed &&
                                                     <td width="50"
-                                                        style={{textAlign: 'center', backgroundColor: 'White'}}>
+                                                        style={{textAlign: 'center', backgroundcolor: 'White'}}>
                                                         <span className="trebuchet14B">Type:<br />{pick.isPAW ? 'G' : 'PP'}</span>
                                                     </td>
                                                 }
@@ -242,11 +242,11 @@ export default class Login extends React.Component {
                         </table></td>
                 </tr>
                 <tr>
-                    <td style={{textAlign: 'center', backgroundColor: 'Maroon'}}>&nbsp;</td>
+                    <td style={{textAlign: 'center', backgroundcolor: 'Maroon'}}>&nbsp;</td>
                 </tr>
 
                 <tr>
-                    <td style={{textAlign: 'center', backgroundColor: 'White'}}><br /><br />
+                    <td style={{textAlign: 'center', backgroundcolor: 'White'}}><br /><br />
 
                         {this.props.isZoomed &&
                             <div>

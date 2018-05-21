@@ -86,12 +86,12 @@ export default class CCardInfo extends React.Component {
                 <table width="600" border="0" cellSpacing="0" cellPadding="0">
                     <tbody>
                     <tr>
-                        <td colSpan="2" height="32" style={{textAlign: 'center', backgroundColor: '#CCCCCC'}}><span className="trebuchet14"><b>Credit Card Information</b></span></td>
+                        <td colSpan="2" height="32" style={{textAlign: 'center', backgroundcolor: '#CCCCCC'}}><span className="trebuchet14"><b>Credit Card Information</b></span></td>
                     </tr>
 
                     <tr>
-                        <td height="32" style={{textAlign: 'right', backgroundColor: 'White'}}><span className="trebuchet14">Card Number:</span>&nbsp;</td>
-                        <td style={{textAlign: 'left', backgroundColor: 'White'}}><label for="CC_NUMBER"></label>
+                        <td height="32" style={{textAlign: 'right', backgroundcolor: 'White'}}><span className="trebuchet14">Card Number:</span>&nbsp;</td>
+                        <td style={{textAlign: 'left', backgroundcolor: 'White'}}><label for="CC_NUMBER"></label>
                             <input name="CC_NUMBER"
                                 onKeyDown={event=>{
                                    if (event.ctrlKey || event.shiftKey || event.keyCode === 8 || event.keyCode === 46) {

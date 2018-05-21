@@ -32,10 +32,10 @@ export default class Pick extends React.Component {
     render() {
 
         const sportBoxStyle = {
-            backgroundColor:'#990000',
+            backgroundcolor:'#990000',
         };
         const pickBoxStyle = {
-            backgroundColor:'#ffffff',
+            backgroundcolor:'#ffffff',
 
         };
 
@@ -74,7 +74,7 @@ export default class Pick extends React.Component {
                             </tr>
                             <tr>
                                 <td style={pickBoxStyle}>
-                                    <div align="left" class="trebuchet18B"><b>{this.props.pick.title}<br />
+                                    <div align="left" className="trebuchet18B"><b>{this.props.pick.title}<br />
 
 
 
@@ -146,7 +146,7 @@ export default class Pick extends React.Component {
                                 />
                                 </td>
 
-                                <td valign="middle" class="trebuchet13">&nbsp;Pay After Win:
+                                <td valign="middle" className="trebuchet13">&nbsp;Pay After Win:
                                     <span className="price-bold">
                                     {Money.format ('USD', this.props.pick.price)}
                                 </span>
@@ -169,7 +169,7 @@ export default class Pick extends React.Component {
                                         memberLevelFlagged={this.props.memberLevelFlagged}
                                     />
                                 </td>
-                                <td valign="middle" class="trebuchet13">&nbsp;Discount Pre-Paid:
+                                <td valign="middle" className="trebuchet13">&nbsp;Discount Pre-Paid:
                                     <span className="price-bold">
                                     {Money.format ('USD', Utils.applyPrepaidDiscount(this.props.pick.price))}
                                     </span>
@@ -183,7 +183,7 @@ export default class Pick extends React.Component {
                         <table width="100%" border="0" cellPadding="0" cellSpacing="0">
                             <tbody>
                             <tr>
-                                <td style={pickBoxStyle} class="trebuchet13">
+                                <td style={pickBoxStyle} className="trebuchet13">
                                     <div align="left" dangerouslySetInnerHTML={
                                         { __html: this.props.pick.teaser }
                                     } />
