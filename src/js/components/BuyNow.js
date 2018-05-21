@@ -132,36 +132,34 @@ export default class BuyNow extends React.Component {
         />
         }
 
-{/*
-        TODO:  MODAL for react 16
-*/}
-        {/*           <Modal
-                    isOpen={this.state.modalIsOpen}
-                    onAfterOpen={(event)=>{
-                        // references are now sync'd and can be accessed.
+
+           <Modal
+              isOpen={this.state.modalIsOpen}
+              onAfterOpen={(event)=>{
+                  // references are now sync'd and can be accessed.
 
 
-                        //    console.log ("BuyNow onAfterOpen()", this.state.modalIsOpen);
-                        // Workaround for being iframe'd (auto scroll to top)
-                        //window.scrollTo(0, 0);
+                  //    console.log ("BuyNow onAfterOpen()", this.state.modalIsOpen);
+                  // Workaround for being iframe'd (auto scroll to top)
+                  //window.scrollTo(0, 0);
 
-                        this.subtitle.style.color = '#00f';
-                    }}
-                    onRequestClose={(event)=>{
-                        this.doClose();
-                    }}
-                    style={this.customStyles}
-                    contentLabel="Example Modal"
-                    ariaHideApp={false}
-                >
+                  this.subtitle.style.color = '#00f';
+              }}
+              onRequestClose={(event)=>{
+                  this.doClose();
+              }}
+              style={this.customStyles}
+              contentLabel="Example Modal"
+              ariaHideApp={false}
+          >
 
-                    <h2 ref={subtitle => this.subtitle = subtitle}>LOGIN</h2>
-                    <button onClick={(event)=>{
-                        this.doClose();
-                    }}>close</button>
+              <h2 ref={subtitle => this.subtitle = subtitle}>LOGIN</h2>
+              <button onClick={(event)=>{
+                  this.doClose();
+              }}>close</button>
 
-                    <Login pubsub={this.props.pubsub}/>
-                </Modal>*/}
+              <Login pubsub={this.props.pubsub}/>
+          </Modal>
       </div>
     );
 

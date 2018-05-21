@@ -120,27 +120,27 @@ export default class Login extends React.Component {
               </span>*/}
           </span>
           <br/>
-          {/* TODO:  Modal */}
-          {/*                    <Modal
-                        isOpen={this.state.freePickIsOpen}
-                        onAfterOpen={(event)=>{
-                         //   this.subtitle.style.color = '#00f';
-                        }}
-                        onRequestClose={(event)=>{
-                            this.setState({freePickIsOpen: false});
-                        }}
-                        style={modalStyle}
-                        contentLabel="Example Modal"
-                        ariaHideApp={false}
 
-                    >
+          <Modal
+                isOpen={this.state.freePickIsOpen}
+                onAfterOpen={(event)=>{
+                 //   this.subtitle.style.color = '#00f';
+                }}
+                onRequestClose={(event)=>{
+                    this.setState({freePickIsOpen: false});
+                }}
+                style={modalStyle}
+                contentLabel="Example Modal"
+                ariaHideApp={false}
 
-                    <Freeplay freePick={this.props.freePick}/>
-                    <button onClick={(event)=>{
-                        this.setState({freePickIsOpen: false});
-                    }}>close</button>
+            >
 
-                    </Modal>*/}
+            <Freeplay freePick={this.props.freePick}/>
+            <button onClick={(event)=>{
+                this.setState({freePickIsOpen: false});
+            }}>close</button>
+
+          </Modal>
 
           {this.props.showFreePlay &&
           <Freeplay freePick={this.props.freePick}/>
