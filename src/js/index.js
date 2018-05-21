@@ -152,11 +152,12 @@ class App extends Component {
     );
   }
 }
-
+console.log("HELLO");
 
 render(
   <App/>,
-  document.getElementById('root')
+  document.getElementById('picksapp')
+
 )
 
 
