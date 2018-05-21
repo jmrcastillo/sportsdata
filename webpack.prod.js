@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const CompressionPlugin = require("compression-webpack-plugin");
 
 
+
 // Others:
 // ignore-plugin
 // Source for IgnorePlugin: https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
@@ -29,7 +30,9 @@ module.exports = merge(common, {
        //     threshold: 10240,
        //     minRatio: 0
         ////})
-    ]
+    ],
+    mode: 'production',
+
 });
 
 /*
