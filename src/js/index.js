@@ -110,7 +110,7 @@ class App extends Component {
       <AppProvider>
         <Router>
           <React.Fragment>
-          <p>Supported App URLS:<br />
+{/*          <p>Supported App URLS:<br />
             <Link to="/">Home</Link>
             <br />
             <Link to="/about">About</Link>
@@ -124,7 +124,9 @@ class App extends Component {
 
             <br />
             <Link to="/university">University</Link>
-          </p>
+          </p>*/}
+
+
            {/* <ul>
               <li>
                 <Link to="/">Home</Link>
