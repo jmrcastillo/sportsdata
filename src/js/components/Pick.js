@@ -32,10 +32,10 @@ export default class Pick extends React.Component {
     render() {
 
         const sportBoxStyle = {
-            backgroundcolor:'#990000',
+            backgroundcColor:'#990000',
         };
         const pickBoxStyle = {
-            backgroundcolor:'#ffffff',
+            backgroundColor:'#ffffff',
 
         };
 
