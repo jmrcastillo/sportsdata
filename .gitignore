@@ -161,4 +161,5 @@ jims
 build/index.bundle.js
 yarn.lock
 src/index.bundle.js
+package-lock.json
 
