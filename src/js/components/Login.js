@@ -157,7 +157,7 @@ export default class Login extends React.Component {
           <table width="320" border="0" cellSpacing="0" cellPadding="0">
             <tbody>
             <tr style={{verticalAlign: 'top'}}>
-              <td height="40" style={{textAlign: 'center', backgroundcolor: '#000000'}}>
+              <td height="40" style={{textAlign: 'center', backgroundColor: '#000000'}}>
                 <div>
                   <div>
                     <h3><span
@@ -168,11 +168,11 @@ export default class Login extends React.Component {
               </td>
             </tr>
             <tr>
-              <td width="4" style={{textAlign: "center", backgroundcolor: '#000000'}}>
+              <td width="4" style={{textAlign: "center", backgroundColor: '#000000'}}>
                 <table width="310" border="0" cellSpacing="0" cellPadding="0">
                   <tbody>
                   <tr>
-                    <td style={{textAlign: 'center', backgroundcolor: '#000000'}}>
+                    <td style={{textAlign: 'center', backgroundColor: '#000000'}}>
 
                       <form onSubmit={(event) => {
                         this.login(this.state.member_id, this.state.password);
@@ -218,7 +218,7 @@ export default class Login extends React.Component {
               </td>
             </tr>
             <tr>
-              <td style={{textAlign: 'center', backgroundcolor: '#000000'}}>&nbsp;</td>
+              <td style={{textAlign: 'center', backgroundColor: '#000000'}}>&nbsp;</td>
             </tr>
             </tbody>
           </table>
