@@ -228,7 +228,8 @@ console.log("** sendPurchase: ", purchaseData);
             isTokens={this.state.isTokens}
             member={this.state.member}
 		/>
-console.log ("Picksmain - ", this.props.location.pathname);
+
+    // TODO:  Should pass this as prop instead
     if (this.props.location.pathname === '/picks-mobile') {
       return this.renderMobile(cart);
     }
