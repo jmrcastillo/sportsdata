@@ -55,9 +55,9 @@ const Top = (props) => {
     return (
         <React.Fragment>
 
-            <div class="container4">
+            <div className="container4">
 
-                <div class="logo"><a href="http://www.playbook.com"><img alt="Playbook.com" src="http://www.playbook.com/playbook_logo6.png" width="239" /></a>
+                <div className="logo"><a href="http://www.playbook.com"><img alt="Playbook.com" src="http://www.playbook.com/playbook_logo6.png" width="239" /></a>
 
                 </div>
 
@@ -65,36 +65,36 @@ const Top = (props) => {
             </div>
 
 
-            <div id="content">  <div class="container4a"><div class="megamenu_wrapper megamenu_light_theme">
+            <div id="content">  <div className="container4a"><div className="megamenu_wrapper megamenu_light_theme">
 
 
 
-                <div class="megamenu_container megamenu_black">
+                <div className="megamenu_container megamenu_black">
 
 
 
-                   <ul class="megamenu">
-
-
-
-
-
-
-                        <li class="menuitem_nodrop"><a href="http://www.playbook.com"><span class="topnav_trebuchet16Bwhite">Home</span></a></li>
+                   <ul className="megamenu">
 
 
 
 
-                        <li><a href="#_" class="menuitem_drop"><span class="topnav_trebuchet16Bwhite">Shop</span></a>
 
 
-                            <div class="dropdown_4columns">
+                        <li className="menuitem_nodrop"><a href="http://www.playbook.com"><span className="topnav_trebuchet16Bwhite">Home</span></a></li>
 
-                                <div class="col_full firstcolumn">
+
+
+
+                        <li><a href="#_" className="menuitem_drop"><span className="topnav_trebuchet16Bwhite">Shop</span></a>
+
+
+                            <div className="dropdown_4columns">
+
+                                <div className="col_full firstcolumn">
 
                                     <h2>Current Featured Products</h2>
 
-                                    <div class="col_one_quarter firstcolumn" align="center"> <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=6000106&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/fb.jpg" width="82" border="0"  alt="" />
+                                    <div className="col_one_quarter firstcolumn" align="center"> <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=6000106&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/fb.jpg" width="82" border="0"  alt="" />
 
                                         <p>Playbook Football Newsletter online weekly subscription thru the Super Bow...</p></a>
 
@@ -102,7 +102,7 @@ const Top = (props) => {
 
 
 
-                                    <div class="col_one_quarter" align="center"> <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" width="82"  border="0"  alt="" />
+                                    <div className="col_one_quarter" align="center"> <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" width="82"  border="0"  alt="" />
                                         <p>Marc Lawrence's Playbook Football Preview Guide magazine is the nation's best-selling football publication...</p></a>
 
                                     </div>
@@ -111,10 +111,10 @@ const Top = (props) => {
 
                                 </div>
 
-                                <div class="fullwidth">
+                                <div className="fullwidth">
 
                                     <h2>Products And Services</h2>
-                                    <div class="col_full">
+                                    <div className="col_full">
 
                                         <h3>Online Publications</h3>
                                         <p><a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&amp;CATEGORY_ID=1">Newsletters, Digital Magazines and more.</a><br /><a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&amp;CATEGORY_ID=1">Read more...</a></p>
@@ -160,19 +160,19 @@ const Top = (props) => {
 
 
 
-                        <li><a href="#_" class="menuitem_drop"><span class="topnav_trebuchet16Bwhite">Experts</span></a>
+                        <li><a href="#_" className="menuitem_drop"><span className="topnav_trebuchet16Bwhite">Experts</span></a>
 
 
-                            <div class="dropdown_1column dropdown_flyout">
+                            <div className="dropdown_1column dropdown_flyout">
 
 
-                                <ul class="levels">
+                                <ul className="levels">
 
                                     <li><a href="http://www.playbook.com/Playbook-Sports-Picks">Today's Picks</a></li>
-                                    <li><a href="https://www.ipsports.net/ecps/default/gpicks_4sale_x.php?SITE_ID=0&GROUP_BY_SPORT=YES" onclick="NewWindow(this.href,'name','750','550','yes');return false;">Today's Picks By Sport</a></li>
+                                    <li><a href="https://www.ipsports.net/ecps/default/gpicks_4sale_x.php?SITE_ID=0&GROUP_BY_SPORT=YES" onClick="NewWindow(this.href,'name','750','550','yes');return false;">Today's Picks By Sport</a></li>
                                     <li><a href="http://www.playbook.com/Playbook-Handicappers/">Today's One-Day-Pass</a></li>
                                     <li><a href="http://www.playbook.com/Playbook-Sports-Picks#freepicks">Today's Free Picks</a></li>
-                                    <li><a href="http://www.playbook.com/capper_ypicks2.php" class='iframe'>Yesterday's Picks</a></li>
+                                    <li><a href="http://www.playbook.com/capper_ypicks2.php" className='iframe'>Yesterday's Picks</a></li>
                                     <li><a href="http://www.playbook.com/Playbook-Handicappers/">Experts Home Page</a></li>
                                     <li><a href="http://www.playbook.com/Handicapper-Report-Card">Experts Report Card</a></li>
                                     <li><a href="http://www.playbook.com/Playbook-Handicappers/">Meet The Experts</a></li>
@@ -188,29 +188,29 @@ const Top = (props) => {
 
 
 
-                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/Playbook-Lines-Scores/"><span class="topnav_trebuchet16Bwhite">Lines/Scores</span></a></li>
+                    <li className="menuitem_nodrop"><a href="http://www.playbook.com/Playbook-Lines-Scores/"><span className="topnav_trebuchet16Bwhite">Lines/Scores</span></a></li>
 
 
 
 
-                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/Playbook-Basketball/"><span class="topnav_trebuchet16Bwhite">Basketball</span></a></li>
+                    <li className="menuitem_nodrop"><a href="http://www.playbook.com/Playbook-Basketball/"><span className="topnav_trebuchet16Bwhite">Basketball</span></a></li>
 
 
 
 
-                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/Playbook-Football/"><span class="topnav_trebuchet16Bwhite">Football</span></a></li>
-                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/TokenRewards/"><span class="topnav_trebuchet16Bwhite">Get Tokens</span></a></li>
+                    <li className="menuitem_nodrop"><a href="http://www.playbook.com/Playbook-Football/"><span className="topnav_trebuchet16Bwhite">Football</span></a></li>
+                    <li className="menuitem_nodrop"><a href="http://www.playbook.com/TokenRewards/"><span className="topnav_trebuchet16Bwhite">Get Tokens</span></a></li>
 
 
 
 
-                    <li><a href="http://www.playbook.com/Playbook-Betting-Tools/" class="menuitem_drop"><span class="topnav_trebuchet16Bwhite">Betting Tools</span></a>
+                    <li><a href="http://www.playbook.com/Playbook-Betting-Tools/" className="menuitem_drop"><span className="topnav_trebuchet16Bwhite">Betting Tools</span></a>
 
 
-                        <div class="dropdown_1column dropdown_flyout">
+                        <div className="dropdown_1column dropdown_flyout">
 
 
-                            <ul class="levels">
+                            <ul className="levels">
 
 
                                 <li><a href="http://www.playbook.com/Playbook-Stats-Center">Stats Center</a></li>
@@ -232,7 +232,7 @@ const Top = (props) => {
 
                     </li>
 
-                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/ecps/default/member_login.php"><span class="topnav_trebuchet16Bwhite">Member Center</span></a></li>
+                    <li className="menuitem_nodrop"><a href="http://www.playbook.com/ecps/default/member_login.php"><span className="topnav_trebuchet16Bwhite">Member Center</span></a></li>
 
 
 
