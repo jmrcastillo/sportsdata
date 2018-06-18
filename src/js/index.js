@@ -30,13 +30,307 @@ class Person extends Component {
     )
   }
 }
-const Holder = () => {
-  return (
+const Holder = (props) => {
+    //this.props.router.location.query.ECAPPER_ID)
+    console.log("HOLDER");
+   console.log(props.location.pathname);
+
+
+    return (
     <React.Fragment>
       <Person/>
     </React.Fragment>
   )
 }
+
+
+
+
+const Top = (props) => {
+
+    if (props.location.pathname == '/' || props.location.pathname == '/picks-mobile') {
+        return ('')
+    }
+
+    return (
+        <React.Fragment>
+
+            <div class="container4">
+
+                <div class="logo"><a href="http://www.playbook.com"><img alt="Playbook.com" src="http://www.playbook.com/playbook_logo6.png" width="239" /></a>
+
+                </div>
+
+
+            </div>
+
+
+            <div id="content">  <div class="container4a"><div class="megamenu_wrapper megamenu_light_theme">
+
+
+
+                <div class="megamenu_container megamenu_black">
+
+
+
+{/*                    <ul class="megamenu">
+
+
+
+
+
+
+                        <li class="menuitem_nodrop"><a href="http://www.playbook.com"><span class="topnav_trebuchet16Bwhite">Home</span></a></li>
+
+
+
+
+                        <li><a href="#_" class="menuitem_drop"><span class="topnav_trebuchet16Bwhite">Shop</span></a>
+
+
+                            <div class="dropdown_4columns">
+
+                                <div class="col_full firstcolumn">
+
+                                    <h2>Current Featured Products</h2>
+
+                                    <div class="col_one_quarter firstcolumn" align="center"> <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=6000106&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/fb.jpg" width="82" border="0"  alt="" />
+
+                                        <p>Playbook Football Newsletter online weekly subscription thru the Super Bow...</p></a>
+
+                                    </div>
+
+
+
+                                    <div class="col_one_quarter" align="center"> <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" width="82"  border="0"  alt="" />
+                                        <p>Marc Lawrence's Playbook Football Preview Guide magazine is the nation's best-selling football publication...</p></a>
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="fullwidth">
+
+                                    <h2>Products And Services</h2>
+                                    <div class="col_full">
+
+                                        <h3>Online Publications</h3>
+                                        <p><a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&amp;CATEGORY_ID=1">Newsletters, Digital Magazines and more.</a><br /><a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&amp;CATEGORY_ID=1">Read more...</a></p>
+
+
+
+
+                                        <h3>Print Publications</h3>
+                                        <p><a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&amp;CATEGORY_ID=2">Magazines, Black Book
+                                            Stat & Log Book
+                                            Printed and Shipped.</a><br /><a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&CATEGORY_ID=2">Read more...</a></p>
+
+
+
+
+
+                                        <h3>Services</h3>
+                                        <p>  <a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&amp;CATEGORY_ID=3">Marc Lawrence's
+                                            Late Phone Service,
+                                            All Sports, Internet Picks
+                                            Packages</a><br /><a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&CATEGORY_ID=3">Read more...</a></p>
+
+
+
+                                        <h3>Memberships</h3>
+                                        <p>  <a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&CATEGORY_ID=ALL">VIP All Access Membership, Members Save 20% All The Time Everytime!</a><br /><a href="https://www.ipsports.net/ecps/ecapper_store/index.php?SITE_ID=0&CATEGORY_ID=ALL">Read more...</a></p>
+
+
+
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </li>
+
+
+
+
+                        <li><a href="#_" class="menuitem_drop"><span class="topnav_trebuchet16Bwhite">Experts</span></a>
+
+
+                            <div class="dropdown_1column dropdown_flyout">
+
+
+                                <ul class="levels">
+
+                                    <li><a href="http://www.playbook.com/Playbook-Sports-Picks">Today's Picks</a></li>
+                                    <li><a href="https://www.ipsports.net/ecps/default/gpicks_4sale_x.php?SITE_ID=0&GROUP_BY_SPORT=YES" onclick="NewWindow(this.href,'name','750','550','yes');return false;">Today's Picks By Sport</a></li>
+                                    <li><a href="http://www.playbook.com/Playbook-Handicappers/">Today's One-Day-Pass</a></li>
+                                    <li><a href="http://www.playbook.com/Playbook-Sports-Picks#freepicks">Today's Free Picks</a></li>
+                                    <li><a href="http://www.playbook.com/capper_ypicks2.php" class='iframe'>Yesterday's Picks</a></li>
+                                    <li><a href="http://www.playbook.com/Playbook-Handicappers/">Experts Home Page</a></li>
+                                    <li><a href="http://www.playbook.com/Handicapper-Report-Card">Experts Report Card</a></li>
+                                    <li><a href="http://www.playbook.com/Playbook-Handicappers/">Meet The Experts</a></li>
+                                    <li><a href="http://www.playbook.com/Playbook-Picks-Policy">Playbook Picks Policy</a></li>
+                                </ul>
+
+
+                            </div>
+
+
+                        </li><
+
+
+
+
+                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/Playbook-Lines-Scores/"><span class="topnav_trebuchet16Bwhite">Lines/Scores</span></a></li>
+
+
+
+
+                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/Playbook-Basketball/"><span class="topnav_trebuchet16Bwhite">Basketball</span></a></li>
+
+
+
+
+                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/Playbook-Football/"><span class="topnav_trebuchet16Bwhite">Football</span></a></li>
+                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/TokenRewards/"><span class="topnav_trebuchet16Bwhite">Get Tokens</span></a></li>
+
+
+
+
+                    <li><a href="http://www.playbook.com/Playbook-Betting-Tools/" class="menuitem_drop"><span class="topnav_trebuchet16Bwhite">Betting Tools</span></a>
+
+
+                        <div class="dropdown_1column dropdown_flyout">
+
+
+                            <ul class="levels">
+
+
+                                <li><a href="http://www.playbook.com/Playbook-Stats-Center">Stats Center</a></li>
+                                <li><a href="http://www.playbook.com/Playbook-Betting-Tools#capperslounge">Cappers Lounge</a></li>
+                                <li><a href="http://www.playbook.com/Playbook-Betting-Tools/vids_audio.php">Videos / Podcast</a></li>
+                                <li><a href="http://www.playbook.com/Playbook-Advantage">Playbook Advantage</a></li>
+                                <li><a href="http://www.playbook.com/angles_systems_trends.html">Systems, Angles & Trends</a></li>
+                                <li><a href="http://www.playbook.com/blackbook_systems.html">Black Book Systems</a></li>
+                                <li><a href="http://www.sportsbookreview.com/betting-sites/" target="_blank">Sportsbook Rankings</a></li>
+
+                                <li><a href="http://www.playbook.com/pages/sports_pages2012.html">Sports Pages</a></li>
+
+
+                            </ul>
+
+
+                        </div>
+
+
+                    </li>
+
+                    <li class="menuitem_nodrop"><a href="http://www.playbook.com/ecps/default/member_login.php"><span class="topnav_trebuchet16Bwhite">Member Center</span></a></li>
+
+
+
+
+
+                    </ul>*/}
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+            </div>
+            </div>
+
+        </React.Fragment>
+
+
+    )
+
+}
+
+
+
+const Footer = (props) => {
+    //console.log ("FOOTER (path)", props.location.pathname);
+
+    if (props.location.pathname == '/' || props.location.pathname == '/picks-mobile') {
+        return ('')
+    }
+
+    return (
+        <div id="footer">
+            <div className="container">
+                <ul className="nav">
+                    <li><a href="http://www.playbook.com/Playbook-About-Us" className="topnav_trebuchet12">About
+                        Us</a>|
+                    </li>
+                    <li><a href="http://www.playbook.com/ecps/default/member_login.php"
+                           className="topnav_trebuchet12">Contact Us</a>|
+                    </li>
+                    <li><a href="http://www.playbook.com/ecps/default/member_login.php"
+                           className="topnav_trebuchet12">Log In</a>|
+                    </li>
+                    <li><a href="http://www.playbook.com/ecps/default/member_login.php"
+                           className="topnav_trebuchet12">Member Center</a>|
+                    </li>
+                    <li><a href="http://www.playbook.com/member/register?PLAYBOOK=YES" className='iframe'><span
+                        className="topnav_trebuchet12w">Register</span></a>|
+                    </li>
+                    <li><a href="http://www.playbook.com/Playbook-Privacy-Policy" className="topnav_trebuchet12">Privacy
+                        Policy</a>|
+                    </li>
+                    <li><a href="http://www.playbook.com/index_store.php" className="topnav_trebuchet12">Store</a>
+                    </li>
+                </ul>
+            </div>
+            <div className="wrapper">
+                <div className="fleft"><span className="trebuchet13">Copyright &copy; 2018&nbsp;Playbook&reg;
+                    Enterprises Inc.<i>&nbsp;&nbsp;<br />
+        </i>Toll Free Support:&nbsp;1-800-643-4700&nbsp;&nbsp;All Logos &copy; to their&nbsp;respective organizations. This website does not endorse or encourage illegal gambling. All information contained herein is for amusement purposes only. Any contrary of such information is specifically prohibited.</span>
+                </div>
+
+            </div>
+        </div>
+    )
+
+}
+
+
+
+
+
+
+
+/*
+
+
+
+const PageLayout = (props) => {
+
+//    console.log(props.location.pathname);
+
+
+    return (
+        <React.Fragment>
+            <Footer/>
+        </React.Fragment>
+    )
+}
+*/
+
+
+
 
  const About = ()=>(
     <div>
@@ -106,7 +400,8 @@ class AppProvider extends Component {
 
 class App extends Component {
   render() {
-    return (
+
+      return (
       <AppProvider>
         <Router>
           <React.Fragment>
@@ -138,14 +433,14 @@ class App extends Component {
                 <Link to="/topics">Topics</Link>
               </li>
             </ul>*/}
-
-            <hr />
+          <Route component={Top}/>
 
           <Route exact path="/" component={Holder} />
           <Route path="/about" component={About} />
           <Route path="/picks" component={Picksmain} />
           <Route path="/member-center" component={MemberCenter} />
           <Route path="/university" component={University} />
+          <Route component={Footer}/>
 
 
           </React.Fragment>
@@ -154,7 +449,7 @@ class App extends Component {
     );
   }
 }
-console.log("HELLO");
+//console.log("HELLO");
 
 render(
   <App/>,
