@@ -168,14 +168,10 @@ const Top = (props) => {
 
                                 <ul className="levels">
 
-                                    <li><a href="http://www.playbook.com/Playbook-Sports-Picks">Today's Picks</a></li>
-                                    <li><a href="https://www.ipsports.net/ecps/default/gpicks_4sale_x.php?SITE_ID=0&GROUP_BY_SPORT=YES" onClick="NewWindow(this.href,'name','750','550','yes');return false;">Today's Picks By Sport</a></li>
-                                    <li><a href="http://www.playbook.com/Playbook-Handicappers/">Today's One-Day-Pass</a></li>
+                                    <li><a href="http://198.15.73.20:1039/#/">Today's Guaranteed Picks</a></li>
                                     <li><a href="http://www.playbook.com/Playbook-Sports-Picks#freepicks">Today's Free Picks</a></li>
-                                    <li><a href="http://www.playbook.com/capper_ypicks2.php" className='iframe'>Yesterday's Picks</a></li>
                                     <li><a href="http://www.playbook.com/Playbook-Handicappers/">Experts Home Page</a></li>
                                     <li><a href="http://www.playbook.com/Handicapper-Report-Card">Experts Report Card</a></li>
-                                    <li><a href="http://www.playbook.com/Playbook-Handicappers/">Meet The Experts</a></li>
                                     <li><a href="http://www.playbook.com/Playbook-Picks-Policy">Playbook Picks Policy</a></li>
                                 </ul>
 
