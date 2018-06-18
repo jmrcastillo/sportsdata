@@ -215,9 +215,12 @@ console.log("** sendPurchase: ", purchaseData);
 
 
 
-    render() {
+//  if (props.location.pathname == '/picks-mobile') {
 
- //       console.log("Picksmain isTokens:", this.state.isTokens);
+
+
+  render() {
+
 		const cart=<Cart
 			pubsub={this.pubsub}
 			loggedIn={this.state.logged_in}
@@ -225,87 +228,95 @@ console.log("** sendPurchase: ", purchaseData);
             isTokens={this.state.isTokens}
             member={this.state.member}
 		/>
-//console.log("Picksmain displayMode is now ", this.state.displayMode);
-		return (
+console.log ("Picksmain - ", this.props.location.pathname);
+    if (this.props.location.pathname === '/picks-mobile') {
+      return this.renderMobile(cart);
+    }
+    return this.renderNormal(cart);
 
-			<main className="main">
-			<div className="container">
+	}
+
+	renderNormal(cart) {
+    return (
+
+      <main className="main">
+      <div className="container">
 			<span className="item active">
 
 			</span>
 
-                {this.state.isTestMode ? " -- Purchases will be done in TEST mode -- ": ''}
+          {this.state.isTestMode ? " -- Purchases will be done in TEST mode -- ": ''}
 
 
 
-				<table width="1000" border="0" cellSpacing="0" cellPadding="0">
-					<tbody>
-					<tr>
+          <table width="1000" border="0" cellSpacing="0" cellPadding="0">
+            <tbody>
+            <tr>
 
-						<td align="left" style={{verticalAlign: 'top' }}>
-                        {(this.state.displayMode === MODES.normal) &&
-                            <PickList
-                                pubsub={this.pubsub}
-                                allPicks={this.state.allPicks}
-                                memberSuspended={this.state.member.is_suspended && this.state.member.is_suspended.toUpperCase() === 'Y'}
-								memberLevelFlagged={Utils.checkFlaggedMemberLevel(this.state.member)}
-								selectedPicks={this.state.selectedPicks}
-                            />
-                        }
-                        {(this.state.displayMode === MODES.checkout) &&
-                            cart
-                        }
-                        {(this.state.displayMode === MODES.showPicks) &&
-                            <PurchasedPicks
-                                purchasedPicks={this.state.purchasedPicks}
-                                pubsub={this.pubsub}
-                            />
-                        }
-						</td>
-						<td style={{verticalAlign: 'top' }}>
+              <td align="left" style={{verticalAlign: 'top' }}>
+                {(this.state.displayMode === MODES.normal) &&
+                <PickList
+                  pubsub={this.pubsub}
+                  allPicks={this.state.allPicks}
+                  memberSuspended={this.state.member.is_suspended && this.state.member.is_suspended.toUpperCase() === 'Y'}
+                  memberLevelFlagged={Utils.checkFlaggedMemberLevel(this.state.member)}
+                  selectedPicks={this.state.selectedPicks}
+                />
+                }
+                {(this.state.displayMode === MODES.checkout) &&
+                cart
+                }
+                {(this.state.displayMode === MODES.showPicks) &&
+                <PurchasedPicks
+                  purchasedPicks={this.state.purchasedPicks}
+                  pubsub={this.pubsub}
+                />
+                }
+              </td>
+              <td style={{verticalAlign: 'top' }}>
 
 
-							<div className="col-5b maxheight">
-                                {/*<!-- box begin -->*/}
-								<div className="box maxheight">
-									<div className="border-top maxheight">
-										<div className="border-right maxheight">
-											<div className="border-bot maxheight">
-												<div className="border-left maxheight">
-													<div className="left-top-corner maxheight">
-														<div className="right-top-corner maxheight">
-															<div className="right-bot-corner maxheight">
-																<div className="left-bot-corner maxheight">
-																	<div className="inner2">
-                                                                    {(this.state.displayMode === MODES.normal) &&
-                                                                        <Login
-                                                                            freePick={this.featuredFreePick(this.state.freePicks)}
-                                                                            pubsub={this.pubsub}
-																			showFreePlay={this.state.selectedPicks.length === 0}
-                                                                            notificationManager={this.notificationManager}
-                                                                        />
-                                                                    }
-                                                                    {(this.state.displayMode === MODES.checkout ||
-                                                                        this.state.displayMode === MODES.showPicks) &&
-                                                                        <MemberInfo
-                                                                            member={this.state.member}
-                                                                            pubsub={this.pubsub}
-                                                                            notificationManager={this.notificationManager}
-                                                                        />
-                                                                    }
+                <div className="col-5b maxheight">
+                  {/*<!-- box begin -->*/}
+                  <div className="box maxheight">
+                    <div className="border-top maxheight">
+                      <div className="border-right maxheight">
+                        <div className="border-bot maxheight">
+                          <div className="border-left maxheight">
+                            <div className="left-top-corner maxheight">
+                              <div className="right-top-corner maxheight">
+                                <div className="right-bot-corner maxheight">
+                                  <div className="left-bot-corner maxheight">
+                                    <div className="inner2">
+                                      {(this.state.displayMode === MODES.normal) &&
+                                      <Login
+                                        freePick={this.featuredFreePick(this.state.freePicks)}
+                                        pubsub={this.pubsub}
+                                        showFreePlay={this.state.selectedPicks.length === 0}
+                                        notificationManager={this.notificationManager}
+                                      />
+                                      }
+                                      {(this.state.displayMode === MODES.checkout ||
+                                        this.state.displayMode === MODES.showPicks) &&
+                                      <MemberInfo
+                                        member={this.state.member}
+                                        pubsub={this.pubsub}
+                                        notificationManager={this.notificationManager}
+                                      />
+                                      }
 
-																	<br />
-                                                                    <br />
+                                      <br />
+                                      <br />
 
-                                                                    {(this.state.displayMode === MODES.normal) &&
-                                                                        cart
-                                                                    }
+                                      {(this.state.displayMode === MODES.normal) &&
+                                      cart
+                                      }
 
-                                                                    <br />
-                                                                    {/*<p style={{textAlign: 'center'}}>
+                                      <br />
+                                      {/*<p style={{textAlign: 'center'}}>
                                                                         <a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>*/}
-                                                                    <br />
-                                                                    {/*<h11>&nbsp;Playbook Publications</h11>
+                                      <br />
+                                      {/*<h11>&nbsp;Playbook Publications</h11>
                                                                      <span className="list5">
                                                                      <br />
                                                                      <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" alt="NFL Totals Tip Sheet!" width="82" height="104" hspace="4" border="0" align="left" /><span className="topnav_trebuchet14Bred">2017 Playbook Football Handicapper's Yearbook Magazine</span><br />
@@ -321,42 +332,31 @@ console.log("** sendPurchase: ", purchaseData);
                                                                      <span className="topnav_trebuchet12">Includes: Playbook Football Newsletter online weekly subscription The weekly Playbook Football Newsletter spans College and NFL Games throughout the 2017 season straight through the Super Bowl, featuring comprehensive write-ups on every College and NFL game along with star-rated Best Bets, Upset Specials, Awesome Angles, Top Trends, Incredible Stats, Wise Guy Contest Picks and a complete schedule with opening lines and projected margins for the entire week. Don't make a move without it!</span></a>
 
                                                                      </span>*/}
-																	</div><br /><br />
+                                    </div><br /><br />
 
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-                                {/* <!-- box end -->*/}
-
-
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* <!-- box end -->*/}
 
 
+                </div>
 
+              </td>
+            </tr>
 
-
-
-
-
-
-
-
-							</div>
-
-						</td>
-					</tr>
-
-					</tbody>
-				</table>
+            </tbody>
+          </table>
 
 
 
-{/*
+          {/*
 				<table width="100%" border="0">
 					<tbody>
 					<tr>
@@ -379,17 +379,171 @@ console.log("** sendPurchase: ", purchaseData);
 					</tr>
 					</tbody>
 				</table>*/}
-                <NotificationContainer/>
-			</div>
-			</main>
+          <NotificationContainer/>
+        </div>
+      </main>
 
-		);
-	}
+    );
+
+
+  }
+
+  renderMobile(cart) {
+    return (
+
+      <main className="main">
+        <div className="container">
+			<span className="item active">
+
+			</span>
+
+          {this.state.isTestMode ? " -- Purchases will be done in TEST mode -- ": ''}
+
+
+
+          <table width="1000" border="0" cellSpacing="0" cellPadding="0">
+            <tbody>
+            <tr>
+
+              <td align="left" style={{verticalAlign: 'top' }}>
+                {(this.state.displayMode === MODES.normal) &&
+                <PickList
+                  pubsub={this.pubsub}
+                  allPicks={this.state.allPicks}
+                  memberSuspended={this.state.member.is_suspended && this.state.member.is_suspended.toUpperCase() === 'Y'}
+                  memberLevelFlagged={Utils.checkFlaggedMemberLevel(this.state.member)}
+                  selectedPicks={this.state.selectedPicks}
+                />
+
+                }
+                {(this.state.displayMode === MODES.checkout) &&
+                cart
+                }
+                {(this.state.displayMode === MODES.showPicks) &&
+                <PurchasedPicks
+                  purchasedPicks={this.state.purchasedPicks}
+                  pubsub={this.pubsub}
+                />
+                }
+                MOBILE SITE
+              </td>
+              <td style={{verticalAlign: 'top' }}>
+
+
+                <div className="col-5b maxheight">
+                  {/*<!-- box begin -->*/}
+                  <div className="box maxheight">
+                    <div className="border-top maxheight">
+                      <div className="border-right maxheight">
+                        <div className="border-bot maxheight">
+                          <div className="border-left maxheight">
+                            <div className="left-top-corner maxheight">
+                              <div className="right-top-corner maxheight">
+                                <div className="right-bot-corner maxheight">
+                                  <div className="left-bot-corner maxheight">
+                                    <div className="inner2">
+                                      {(this.state.displayMode === MODES.normal) &&
+                                      <Login
+                                        freePick={this.featuredFreePick(this.state.freePicks)}
+                                        pubsub={this.pubsub}
+                                        showFreePlay={this.state.selectedPicks.length === 0}
+                                        notificationManager={this.notificationManager}
+                                      />
+                                      }
+                                      {(this.state.displayMode === MODES.checkout ||
+                                        this.state.displayMode === MODES.showPicks) &&
+                                      <MemberInfo
+                                        member={this.state.member}
+                                        pubsub={this.pubsub}
+                                        notificationManager={this.notificationManager}
+                                      />
+                                      }
+
+                                      <br />
+                                      <br />
+
+                                      {(this.state.displayMode === MODES.normal) &&
+                                      cart
+                                      }
+
+                                      <br />
+                                      {/*<p style={{textAlign: 'center'}}>
+                                                                        <a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>*/}
+                                      <br />
+                                      {/*<h11>&nbsp;Playbook Publications</h11>
+                                                                     <span className="list5">
+                                                                     <br />
+                                                                     <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=1190&amp;SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/2014yb.jpg" alt="NFL Totals Tip Sheet!" width="82" height="104" hspace="4" border="0" align="left" /><span className="topnav_trebuchet14Bred">2017 Playbook Football Handicapper's Yearbook Magazine</span><br />
+                                                                     <span className="topnav_trebuchet12">Marc Lawrence's Playbook Football Preview Guide magazine is the nation's best-selling combination College and NFL Preview publication and is now available for sale and on the newsstands nationwide in mid-June. The 2017 magazine contains 248 pages of wall-to-wall information, jam packed with stats, logs, trends, winning systems, College and NFL previews, ATS Top 10 Teams, exclusive charts (Monday Night results, Coaches records, College Overtime games and many more.
+                                                                     </span>
+                                                                     </a>
+
+
+                                                                     <br />
+                                                                     <br />
+                                                                     <a href="https://www.ipsports.net/ecps/ecapper_store/product_info.php?PRODUCT_ID=300106&SITE_ID=0"><img src="https://www.ipsports.net/ecps/site_locals/store/0/product_images/fb.jpg" alt="" width="82" height="104" border="0" />
+                                                                     <h5><span className="topnav_trebuchet14Bred">2017 Weekly Playbook Football Newsletter</span></h5>
+                                                                     <span className="topnav_trebuchet12">Includes: Playbook Football Newsletter online weekly subscription The weekly Playbook Football Newsletter spans College and NFL Games throughout the 2017 season straight through the Super Bowl, featuring comprehensive write-ups on every College and NFL game along with star-rated Best Bets, Upset Specials, Awesome Angles, Top Trends, Incredible Stats, Wise Guy Contest Picks and a complete schedule with opening lines and projected margins for the entire week. Don't make a move without it!</span></a>
+
+                                                                     </span>*/}
+                                    </div><br /><br />
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* <!-- box end -->*/}
+
+
+                </div>
+
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+
+
+
+          {/*
+				<table width="100%" border="0">
+					<tbody>
+					<tr>
+						<td><div align="center"><a href="/#/expert-picks"><img src="/images/nav_tiles/tile01.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/publications"><img src="/images/nav_tiles/tile02.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/scores-lines"><img src="/images/nav_tiles/tile03.png" width="100%"/></a></div></td>
+					</tr>
+					<tr>
+						<td><div align="center"><a href="/#/wagertalk"><img src="/images/nav_tiles/tile04.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/line-moves"><img src="/images/nav_tiles/tile05.png" width="100%"/></a></div></td>
+						/!*<td><div align="center"><a href="/#/trends-matchups"><img src="/images/nav_tiles/tile06.png" width="100%"/></a></div></td>*!/
+                        <td><div align="center"><a href="http://cube.statfox.com"><img src="/images/nav_tiles/tile06.png" width="100%"/></a></div></td>
+
+
+					</tr>
+					<tr>
+						<td><div align="center"><a href="/#/steam-alerts"><img src="/images/nav_tiles/tile07.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/videos-podcastsq"><img src="/images/nav_tiles/tile08.png" width="100%"/></a></div></td>
+						<td><div align="center"><a href="/#/betting-tools"><img src="/images/nav_tiles/tile09.png" width="100%"/></a></div></td>
+					</tr>
+					</tbody>
+				</table>*/}
+          <NotificationContainer/>
+        </div>
+      </main>
+
+    );
+
+
+  }
+
+
+
+
 }
 
-
-{/*							<Cart
- pubsub={this.pubsub}
- loggedIn={this.state.logged_in}
- isZoomed={this.state.isCheckout}
- />*/}

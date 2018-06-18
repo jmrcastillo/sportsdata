@@ -438,6 +438,7 @@ class App extends Component {
           <Route exact path="/" component={Holder} />
           <Route path="/about" component={About} />
           <Route path="/picks" component={Picksmain} />
+          <Route path="/picks-mobile" component={Picksmain} />
           <Route path="/member-center" component={MemberCenter} />
           <Route path="/university" component={University} />
           <Route component={Footer}/>
