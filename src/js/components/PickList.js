@@ -59,18 +59,18 @@ export default class PickList extends React.Component {
 
 
         return (
-            <div className="col-9a maxheight">
+            <div>
                 {/*<!-- box begin -->*/}
-                <div className="box maxheight">
-                    <div className="border-top maxheight">
-                        <div className="border-right maxheight">
-                            <div className="border-bot maxheight">
-                                <div className="border-left maxheight">
-                                    <div className="left-top-corner maxheight">
-                                        <div className="right-top-corner maxheight">
-                                            <div className="right-bot-corner maxheight">
-                                                <div className="left-bot-corner maxheight">
-                                                    <div className="inner2">
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <div>
+                                                <div>
+                                                    <div>
                                                         <br />
                                                         <h3 onClick={event => {
                                                             this.props.pubsub.publish('test-mode');
