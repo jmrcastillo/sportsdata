@@ -432,6 +432,12 @@ input.required:focus {
 .trebuchet14Bnavy:active   { color: navy; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
 .trebuchet14Bnavy:visited   { color: navy; font-style: normal; font-size: 14px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
 
+.trebuchet16   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
+.trebuchet16:active   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
+.trebuchet16:visited   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
+.trebuchet16:hover   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: normal; text-decoration: none; }
+
+
 
 .trebuchet18B   { color: #1d1d1d; font-style: normal; font-size: 18px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
 .trebuchet18B:active   { color: #1d1d1d; font-style: normal; font-size: 18px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }

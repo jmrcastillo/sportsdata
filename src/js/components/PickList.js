@@ -72,17 +72,20 @@ export default class PickList extends React.Component {
                                                 <div>
                                                     <div>
                                                         <br />
-                                                        <h3 onClick={event => {
+                                                        {/*<h3 onClick={event => {
                                                             this.props.pubsub.publish('test-mode');
                                                         }
                                                         }>Guaranteed Experts Picks</h3>
                                                         <h4>Pay After You Win Picks -or- Discount Pre-Paid</h4>
-                                                        <h5>Red Hot Experts Best Bets</h5>
+                                                        <h5>Red Hot Experts Best Bets</h5>*/}
 
 
                                                         <div align="center">
                                                             <table width="640" border="0" cellSpacing="0" cellPadding="0">
                                                                 <tbody>
+                                                                <tr><td><h3>Guaranteed Experts Picks</h3>
+                                                                    <h4>Pay After You Win Picks -or- Discount Pre-Paid</h4>
+                                                                    <h5>Red Hot Experts Best Bets</h5></td></tr>
                                                                 <tr>
                                                                     <td height="40"  style={{textAlign: 'center', backgroundColor: '#000000' }}>
                                                                         <table width="630" border="0" cellSpacing="0" cellPadding="0">
@@ -208,11 +211,9 @@ export default class PickList extends React.Component {
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
-                                                            <img src="http://www.playbook.com/images/grey_line3.gif" alt="" width="550" height="12" />
+                                                            {/*<img src="http://www.playbook.com/images/grey_line3.gif" alt="" width="550" height="12" />*/}
                                                         </div>
-                                                        <br />
-                                                        <br />
-                                                        <br />
+
                                                     </div>
                                                     <br />
                                                 </div>

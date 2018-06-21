@@ -402,7 +402,7 @@ console.log("** sendPurchase: ", purchaseData);
 
 
 
-          <table width="1000" border="0" cellSpacing="0" cellPadding="0">
+          <table width="96%" border="0" cellSpacing="0" cellPadding="0">
             <tbody>
             <tr>
 

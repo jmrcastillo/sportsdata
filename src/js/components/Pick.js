@@ -183,7 +183,7 @@ export default class Pick extends React.Component {
                         <table width="100%" border="0" cellPadding="0" cellSpacing="0">
                             <tbody>
                             <tr>
-                                <td style={pickBoxStyle} className="trebuchet13">
+                                <td style={pickBoxStyle} className="trebuchet16">
                                     <div align="left" dangerouslySetInnerHTML={
                                         { __html: this.props.pick.teaser }
                                     } />
