@@ -128,7 +128,7 @@ export default class BuyNow extends React.Component {
 
         {!alreadyInCartAsPAW && !alreadyInCartAsPPD &&
         <img src="images/buynow.png" className={buynowClass}
-             onClick={onClick} width="85" border="0" align="left"
+             onClick={onClick} width="125" border="0" align="left"
         />
         }
 
