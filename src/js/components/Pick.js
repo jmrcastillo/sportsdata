@@ -184,9 +184,12 @@ export default class Pick extends React.Component {
                             <tbody>
                             <tr>
                                 <td style={pickBoxStyle} className="trebuchet16">
+                                  {this.props.inCart ?
+                                    <div>CHECKOUT BUTTONS HERE </div> :
                                     <div align="left" dangerouslySetInnerHTML={
-                                        { __html: this.props.pick.teaser }
-                                    } />
+                                      {__html: this.props.pick.teaser}
+                                    }/>
+                                  }
                                 </td>
                             </tr>
                             </tbody>
