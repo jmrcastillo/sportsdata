@@ -3,7 +3,10 @@ import React, {Component, Fragment} from 'react'
 import {render} from 'react-dom'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const AppContext = React.createContext();
+import {AppProvider} from "./lib/ContextAPI";
+// TODO:  Can be combined into line above?
+import  Consumer from "./lib/ContextAPI";
+
 import Picksmain from "./pages/Picksmain";
 
 
@@ -12,6 +15,7 @@ class BaseInitializer extends React.Component {
   componentDidMount() {
     console.log("BaseInitializer ", this.props.context, this.props.pathname);
     if (this.props.pathname === '/picks-mobile') {
+      console.log ("Setting isMobile true");
       this.props.context.setIsMobile(true);
     }
   }
@@ -22,119 +26,17 @@ class BaseInitializer extends React.Component {
 }
 
 const Initializer = (props) => (
-  <AppContext.Consumer>
+  <Consumer>
     {context =>
       <BaseInitializer context={context} pathname={props.location.pathname} />
     }
-  </AppContext.Consumer>
+  </Consumer>
 )
 
 
-
-
-// Global (Context) Provider
-class AppProvider extends Component {
-
-  state = {
-    name: 'Playbook test',
-    age: 10,
-    cool: true,
-    picks: [],
-    // Start real data
-    isMobile: false,
-  }
-
-  render() {
-  //  console.log ("Provider: ", this.state.isMobile, this.props);
-    return (
-      <AppContext.Provider value={{
-        state: this.state,
-        growAYearOlder: () => this.setState({
-          age: this.state.age + 1
-        }),
-        dummy: 100,
-        /*      loadPicks: ()=> {
-                  console.log("Picks loaded");
-                  PicksAPI.loadPicks().done((picks) => {
-                      this.setState({picks: picks});
-                  });
-              }*/
-        setIsMobile: (isMobile) => this.setState({isMobile: isMobile})
-
-      }}>
-      {this.props.children}
-      </AppContext.Provider>
-    )
-  }
-}
-
-
-
-class App extends Component {
-
-  render() {
-
-      return (
-      <AppProvider>
-        <Router>
-          <React.Fragment>
-{/*          <p>Supported App URLS:<br />
-            <Link to="/">Home</Link>
-            <br />
-            <Link to="/about">About</Link>
-            <br />
-            <Link to="/picks">Picks</Link>
-            <br />
-            <Link to="/member-center">Member Center</Link>
-            <br />
-
-            <Link to="/test">Test</Link>
-
-            <br />
-            <Link to="/university">University</Link>
-          </p>*/}
-
-
-           {/* <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/topics">Topics</Link>
-              </li>
-            </ul>*/}
-            <Route component={Initializer}/>
-
-            <Route component={Top}/>
-
-          <Route exact path="/" component={Holder} />
-          <Route path="/about" component={About} />
-          <Route path="/picks" component={Picksmain} />
-          <Route path="/picks-mobile" component={Picksmain} />
-          <Route path="/member-center" component={MemberCenter} />
-          <Route path="/university" component={University} />
-          <Route component={Footer}/>
-
-
-          </React.Fragment>
-        </Router>
-      </AppProvider>
-    );
-  }
-}
-
-render(
-  <App/>,
-  document.getElementById('picksapp')
-
-)
 
 // Top, Footer helper components
 const Top = (props) => {
-
   if (props.location.pathname == '/' || props.location.pathname == '/picks-mobile') {
     return ('')
   }
@@ -432,7 +334,7 @@ class Person extends Component {
   render() {
     return (
       <div className="person">
-        <AppContext.Consumer>
+        <Consumer>
           {(context) => (
             <React.Fragment>
               Dummy Content
@@ -444,7 +346,7 @@ class Person extends Component {
               }}>Add a Year</button>
             </React.Fragment>
           )}
-        </AppContext.Consumer>
+        </Consumer>
       </div>
     )
   }
@@ -463,7 +365,69 @@ const Holder = (props) => {
 }
 
 
+class App extends Component {
 
+  render() {
+
+    return (
+      <AppProvider>
+        <Router>
+          <React.Fragment>
+            {/*          <p>Supported App URLS:<br />
+            <Link to="/">Home</Link>
+            <br />
+            <Link to="/about">About</Link>
+            <br />
+            <Link to="/picks">Picks</Link>
+            <br />
+            <Link to="/member-center">Member Center</Link>
+            <br />
+
+            <Link to="/test">Test</Link>
+
+            <br />
+            <Link to="/university">University</Link>
+          </p>*/}
+
+
+            {/* <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/topics">Topics</Link>
+              </li>
+            </ul>*/}
+
+            <Route component={Initializer}/>
+
+
+            <Route component={Top}/>
+
+            <Route exact path="/" component={Holder} />
+            <Route path="/about" component={About} />
+            <Route path="/picks" component={Picksmain} />
+            <Route path="/picks-mobile" component={Picksmain} />
+            <Route path="/member-center" component={MemberCenter} />
+            <Route path="/university" component={University} />
+            <Route component={Footer}/>
+
+
+          </React.Fragment>
+        </Router>
+      </AppProvider>
+    );
+  }
+}
+
+render(
+  <App/>,
+  document.getElementById('picksapp')
+
+)
 
 /*const App = () => {
     return <div>
@@ -485,3 +449,42 @@ https://tylermcginnis.com/react-router-cannot-get-url-refresh/
 
 
  */
+
+
+
+
+// Global (Context) Provider
+/*class AppProvider extends Component {
+
+  state = {
+    name: 'Playbook test',
+    age: 10,
+    cool: true,
+    picks: [],
+    // Start real data
+    isMobile: false,
+  }
+
+  render() {
+  //  console.log ("Provider: ", this.state.isMobile, this.props);
+    return (
+      <AppContext.Provider value={{
+        state: this.state,
+        growAYearOlder: () => this.setState({
+          age: this.state.age + 1
+        }),
+        dummy: 100,
+        /!*      loadPicks: ()=> {
+                  console.log("Picks loaded");
+                  PicksAPI.loadPicks().done((picks) => {
+                      this.setState({picks: picks});
+                  });
+              }*!/
+        setIsMobile: (isMobile) => this.setState({isMobile: isMobile})
+
+      }}>
+      {this.props.children}
+      </AppContext.Provider>
+    )
+  }
+}*/

@@ -11,6 +11,9 @@ import Moment from "moment";
 import SportsCodes from "../lib/SportsCodes"
 import BuyNow from "../components/BuyNow";
 import Utils from "../lib/Utils";
+import Consumer from "../lib/ContextAPI";
+
+
 
 export default class Pick extends React.Component {
 
@@ -60,9 +63,9 @@ export default class Pick extends React.Component {
 
 
 
-
         return (
-
+          <Consumer>
+            {(context) => (
             <table width="640" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
                 <tbody>
                 <tr>
@@ -75,7 +78,6 @@ export default class Pick extends React.Component {
                             <tr>
                                 <td style={pickBoxStyle}>
                                     <div align="left" className="trebuchet18B"><b>{this.props.pick.title}<br />
-
 
 
                                         <i className={expireIcon} ></i>
@@ -185,7 +187,7 @@ export default class Pick extends React.Component {
                             <tr>
                                 <td style={pickBoxStyle} className="trebuchet16">
                                   {this.props.inCart ?
-                                    <div>CHECKOUT BUTTONS HERE </div> :
+                                    <div>CHECKOUT BUTTONS HERE {context.state.isMobile ? "MOBILE" : "NOT mobile"}</div> :
                                     <div align="left" dangerouslySetInnerHTML={
                                       {__html: this.props.pick.teaser}
                                     }/>
@@ -221,6 +223,8 @@ export default class Pick extends React.Component {
 
                 </tbody>
             </table>
+          )}
+          </Consumer>
 
 
 
