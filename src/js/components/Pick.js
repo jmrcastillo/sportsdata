@@ -11,6 +11,7 @@ import Moment from "moment";
 import SportsCodes from "../lib/SportsCodes"
 import BuyNow from "../components/BuyNow";
 import Utils from "../lib/Utils";
+
 import Consumer from "../lib/ContextAPI";
 
 
@@ -186,8 +187,21 @@ export default class Pick extends React.Component {
                             <tbody>
                             <tr>
                                 <td style={pickBoxStyle} className="trebuchet16">
-                                  {this.props.inCart ?
-                                    <div>CHECKOUT BUTTONS HERE {context.state.isMobile ? "MOBILE" : "NOT mobile"}</div> :
+                                  {(this.props.inCart && context.state.isMobile)  ?
+                                    <React.Fragment>
+                                      <CheckoutButton
+                                        type="CC"
+                                        pubsub={this.props.pubsub}
+                                        enabled={true}
+                                      />
+
+                                      <CheckoutButton
+                                        type="TOKENS"
+                                        pubsub={this.props.pubsub}
+                                        enabled={true}
+                                      />
+                                    </React.Fragment>
+                                    :
                                     <div align="left" dangerouslySetInnerHTML={
                                       {__html: this.props.pick.teaser}
                                     }/>
