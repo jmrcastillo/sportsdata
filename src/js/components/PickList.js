@@ -81,14 +81,14 @@ export default class PickList extends React.Component {
 
 
                                                         <div align="center">
-                                                            <table width="640" border="0" cellSpacing="0" cellPadding="0">
+                                                            <table width="90%" border="0" cellSpacing="0" cellPadding="0">
                                                                 <tbody>
                                                                 <tr><td><h3>Guaranteed Experts Picks</h3>
                                                                     <h4>Pay After You Win Picks -or- Discount Pre-Paid</h4>
                                                                     <h5>Red Hot Experts Best Bets</h5></td></tr>
                                                                 <tr>
                                                                     <td height="40"  style={{textAlign: 'center', backgroundColor: '#000000' }}>
-                                                                        <table width="630" border="0" cellSpacing="0" cellPadding="0">
+                                                                        <table width="90%" border="0" cellSpacing="0" cellPadding="0">
                                                                             <tbody>
                                                                             <tr>
                                                                                 <td align="right">
@@ -156,7 +156,7 @@ export default class PickList extends React.Component {
                                                                                 return (
                                                                                     <div key={sport}>
 
-                                                                                        <table width="630" border="0"
+                                                                                        <table width="90%" border="0"
                                                                                                cellSpacing="0"
                                                                                                cellPadding="0">
                                                                                             <tbody>

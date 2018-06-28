@@ -67,7 +67,7 @@ export default class Pick extends React.Component {
         return (
           <Consumer>
             {(context) => (
-            <table width="640" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
+            <table width="100%" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
                 <tbody>
                 <tr>
                     <td colSpan="3">
@@ -129,11 +129,11 @@ export default class Pick extends React.Component {
                         </table></td>
                 </tr>
                 <tr>
-                    <td colSpan="3" align="center"><img src="images/dot_h.png" width="626" height="7"></img></td>
+                    <td colSpan="3" align="center"><img src="images/dot_h.png" ></img></td>
                 </tr>
                 <tr>
-                    <td width="262" align="left">
-                        <table width="96%" border="0" cellSpacing="0" cellPadding="0">
+                    <td width="100%" align="left">
+                        <table width="100%" border="0" cellSpacing="0" cellPadding="0">
                             <tbody>
                             <tr>
                                 <td width="85" valign="middle">
@@ -182,7 +182,7 @@ export default class Pick extends React.Component {
                         </table>
                     </td>
                     <td width="3"><img src="images/dots_v.png" width="7" height="92"></img></td>
-                    <td width="345">
+                    <td width="100%">
                         <table width="100%" border="0" cellPadding="0" cellSpacing="0">
                             <tbody>
                             <tr>
