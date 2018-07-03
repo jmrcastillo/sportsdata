@@ -15,6 +15,7 @@ import PurchasedPicks from "../components/PurchasedPicks";
 import PubSub from 'pubsub-js';
 import Moment from "moment";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import Consumer from "../lib/ContextAPI";
 
 const MODES = {
     normal: {value: 0, name: "Normal", code: "N"},
@@ -229,11 +230,23 @@ console.log("** sendPurchase: ", purchaseData);
             member={this.state.member}
 		/>
 
+      return (
+      <Consumer>
+      {(context) => (
+        context.state.isMobile ? this.renderMobile(cart) : this.renderNormal(cart)
+      )}
+      </Consumer>
+      )
+
+
+/*
+
     // TODO:  Should pass this as prop instead
     if (this.props.location.pathname === '/picks-mobile') {
       return this.renderMobile(cart);
     }
     return this.renderNormal(cart);
+*/
 
 	}
 
