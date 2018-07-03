@@ -437,6 +437,10 @@ input.required:focus {
 .trebuchet16:visited   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: normal; text-decoration: none  }
 .trebuchet16:hover   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: normal; text-decoration: none; }
 
+.trebuchet16B   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
+.trebuchet16B:active   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
+.trebuchet16B:visited   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
+.trebuchet16B:hover   { color: black; font-style: normal; font-size: 16px; font-family: trebuchet ms; font-weight: bold; text-decoration: none; }
 
 
 .trebuchet18B   { color: #1d1d1d; font-style: normal; font-size: 18px; font-family: trebuchet ms; font-weight: bold; text-decoration: none  }
