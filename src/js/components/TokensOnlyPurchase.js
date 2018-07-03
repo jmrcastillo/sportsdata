@@ -34,14 +34,14 @@ export default class TokensOnlyPurchase extends React.Component {
 
         return (
 
-            <div align="center">
+            <div style={{textAlign: 'center' }}>
 
 
-            <table>
+            <table style={{textAlign: 'center' }}>
             <tbody>
 
             <tr>
-                <td height="32" colSpan="2" style={{textAlign: 'center', backgroundColor: '#CCCCCC'}}><span className="trebuchet14B">Playbucks Information</span></td>
+                <td height="32" colSpan="2" style={{textAlign: 'center', backgroundColor: '#CCCCCC'}}><span className="trebuchet16B">Playbucks Information</span></td>
             </tr>
             <tr>
             <td style={{textAlign: 'center' }}>
@@ -50,7 +50,7 @@ export default class TokensOnlyPurchase extends React.Component {
             <td style={{textAlign: 'center' }}><div title="Page 1">
             <div>
             <div>
-            <p><span className="trebuchet14">
+            <p><span className="trebuchet16B">
                 Current Token Balance {Utils.getTokenBalance(this.props.tokens)} <br />
                 Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</span></p>
             </div>
@@ -60,8 +60,8 @@ export default class TokensOnlyPurchase extends React.Component {
             </tr>
             <tr>
             <td colSpan="2" style={{textAlign: 'center' }}>
-                <form name="form1" method="post" action=""><span className="trebuchet14">Total Amount of Tokens deducted from your available balance for this purchase:</span>
-                    <span className="trebuchet14"><input name="token_quantity" type="text" id="token_quantity"
+                <form name="form1" method="post" action=""><span className="trebuchet16B">Total Amount of Tokens deducted from your available balance for this purchase:</span>
+                    <span className="trebuchet16B"><input name="token_quantity" type="text" id="token_quantity"
                    value={Utils.getTokensApplied(this.props.tokens)} size="5" maxLength="5"  readOnly
                     /></span>
             <input type="hidden" name="IS_TOKENS_PURCHASE"  id="IS_TOKENS_PURCHASE" value="YES"/>

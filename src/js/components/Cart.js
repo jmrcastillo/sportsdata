@@ -163,15 +163,18 @@ export default class Login extends React.Component {
         }
         const cartStyleCheckout = {
             opacity: '.8',
+
         }
 
 
         return (
+
             this.state.logged_in &&
-        <div style={this.props.isZoomed ? cartStyleCheckout : cartStyle}>
+
+        <div style={this.props.isZoomed ? cartStyleCheckout : cartStyle }>
 
             {/*<!--Start Cart Box-->*/}
-            <table width={width20} border="0" cellSpacing="0" cellPadding="0">
+            <table width={width20} border="0" cellSpacing="0" cellPadding="0" align="center">
                 <tbody>
                 <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
                     <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
@@ -295,6 +298,7 @@ export default class Login extends React.Component {
             </table>
             {/*<!--end cartn box-->*/}
         </div>
+
 
 
 
