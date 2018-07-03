@@ -216,10 +216,6 @@ console.log("** sendPurchase: ", purchaseData);
 
 
 
-//  if (props.location.pathname == '/picks-mobile') {
-
-
-
   render() {
 
 		const cart=<Cart
@@ -230,23 +226,14 @@ console.log("** sendPurchase: ", purchaseData);
             member={this.state.member}
 		/>
 
-      return (
+    // Mobile rendering support via Context API
+    return (
       <Consumer>
       {(context) => (
         context.state.isMobile ? this.renderMobile(cart) : this.renderNormal(cart)
       )}
       </Consumer>
-      )
-
-
-/*
-
-    // TODO:  Should pass this as prop instead
-    if (this.props.location.pathname === '/picks-mobile') {
-      return this.renderMobile(cart);
-    }
-    return this.renderNormal(cart);
-*/
+    )
 
 	}
 

@@ -62,37 +62,64 @@ export default class Pick extends React.Component {
         const expireIcon = '';
         const expiresIn = '';
 
+      // Mobile rendering support via Context API
+      return (
+        <Consumer>
+          {(context) => (
+            context.state.isMobile ?
+              this.renderMobile(
+                context,
+                sportBoxStyle,
+                pickBoxStyle,
+                expireStyle,
+                expireIcon,
+                expiresIn) :
+              this.renderNormal(
+                context,
+                sportBoxStyle,
+                pickBoxStyle,
+                expireStyle,
+                expireIcon,
+                expiresIn
+              )
+          )}
+        </Consumer>
+      );
+    }
+
+    renderNormal(context,
+                  sportBoxStyle,
+                  pickBoxStyle,
+                  expireStyle,
+                  expireIcon,
+                  expiresIn) {
+      return (
+      <table width="640" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
+        <tbody>
+        <tr>
+          <td colSpan="3">
+            <table width="100%" border="0" cellPadding="0" cellSpacing="0">
+              <tbody>
+              <tr>
+                <td style={pickBoxStyle}>&nbsp; <i className="faa-ring animated " /></td>
+              </tr>
+              <tr>
+                <td style={pickBoxStyle}>
+                  <div align="left" className="trebuchet18B"><b>{this.props.pick.title}<br />
 
 
-        return (
-          <Consumer>
-            {(context) => (
-            <table width="100%" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
-                <tbody>
-                <tr>
-                    <td colSpan="3">
-                        <table width="100%" border="0" cellPadding="0" cellSpacing="0">
-                            <tbody>
-                            <tr>
-                                <td style={pickBoxStyle}>&nbsp; <i className="faa-ring animated " /></td>
-                            </tr>
-                            <tr>
-                                <td style={pickBoxStyle}>
-                                    <div align="left" className="trebuchet18B"><b>{this.props.pick.title}<br />
+                    <i className={expireIcon} ></i>
+                    <span className={expireStyle}
+                          dangerouslySetInnerHTML={
+                            { __html: expiresIn}
+                          }
+                    />
+
+                  </b>
+                    {/* Begin experimental checkout buttons on picks */}
 
 
-                                        <i className={expireIcon} ></i>
-                                        <span className={expireStyle}
-                                              dangerouslySetInnerHTML={
-                                                  { __html: expiresIn}
-                                              }
-                                        />
-
-                                    </b>
-                                        {/* Begin experimental checkout buttons on picks */}
-
-
-                                        {/*            {! this.props.isCartEmpty &&
+                    {/*            {! this.props.isCartEmpty &&
                                         <table>
                                             <tbody>
                                             <tr>
@@ -118,102 +145,102 @@ export default class Pick extends React.Component {
                                             </tbody>
                                         </table>
                                     }*/}
-                                        {/*  End experimental checkout button on picks */}
+                    {/*  End experimental checkout button on picks */}
 
 
 
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table></td>
-                </tr>
-                <tr>
-                    <td colSpan="3" align="center"><img src="images/dot_h.png" ></img></td>
-                </tr>
-                <tr>
-                    <td width="100%" align="left">
-                        <table width="100%" border="0" cellSpacing="0" cellPadding="0">
-                            <tbody>
-                            <tr>
-                                <td width="85" valign="middle">
-                                <BuyNow
-                                    pubsub={this.props.pubsub}
-                                    loggedIn={this.props.loggedIn}
-                                    pick={this.props.pick}
-                                    addAsPAW={true}
-                                    inCart={this.props.inCart}
-                                    inCartAsPAW={this.props.inCartAsPAW}
-                                    memberSuspended={this.props.memberSuspended}
-                                    memberLevelFlagged={this.props.memberLevelFlagged}
-                                />
-                                </td>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table></td>
+        </tr>
+        <tr>
+          <td colSpan="3" align="center"><img src="images/dot_h.png" width="626" height="7"></img></td>
+        </tr>
+        <tr>
+          <td width="262" align="left">
+            <table width="96%" border="0" cellSpacing="0" cellPadding="0">
+              <tbody>
+              <tr>
+                <td width="85" valign="middle">
+                  <BuyNow
+                    pubsub={this.props.pubsub}
+                    loggedIn={this.props.loggedIn}
+                    pick={this.props.pick}
+                    addAsPAW={true}
+                    inCart={this.props.inCart}
+                    inCartAsPAW={this.props.inCartAsPAW}
+                    memberSuspended={this.props.memberSuspended}
+                    memberLevelFlagged={this.props.memberLevelFlagged}
+                  />
+                </td>
 
-                                <td valign="middle" className="trebuchet13">&nbsp;Pay After Win:
-                                    <span className="price-bold">
+                <td valign="middle" className="trebuchet13">&nbsp;Pay After Win:
+                  <span className="price-bold">
                                     {Money.format ('USD', this.props.pick.price)}
                                 </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <BuyNow
-                                        pubsub={this.props.pubsub}
-                                        loggedIn={this.props.loggedIn}
-                                        pick={this.props.pick}
-                                        addAsPAW={false}
-                                        inCart={this.props.inCart}
-                                        inCartAsPAW={this.props.inCartAsPAW}
-                                        memberSuspended={this.props.memberSuspended}
-                                        memberLevelFlagged={this.props.memberLevelFlagged}
-                                    />
-                                </td>
-                                <td valign="middle" className="trebuchet13">&nbsp;Discount Pre-Paid:
-                                    <span className="price-bold">
+                </td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>
+                  <BuyNow
+                    pubsub={this.props.pubsub}
+                    loggedIn={this.props.loggedIn}
+                    pick={this.props.pick}
+                    addAsPAW={false}
+                    inCart={this.props.inCart}
+                    inCartAsPAW={this.props.inCartAsPAW}
+                    memberSuspended={this.props.memberSuspended}
+                    memberLevelFlagged={this.props.memberLevelFlagged}
+                  />
+                </td>
+                <td valign="middle" className="trebuchet13">&nbsp;Discount Pre-Paid:
+                  <span className="price-bold">
                                     {Money.format ('USD', Utils.applyPrepaidDiscount(this.props.pick.price))}
                                     </span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td width="3"><img src="images/dots_v.png" width="7" height="92"></img></td>
-                    <td width="100%">
-                        <table width="100%" border="0" cellPadding="0" cellSpacing="0">
-                            <tbody>
-                            <tr>
-                                <td style={pickBoxStyle} className="trebuchet16">
-                                  {(this.props.inCart && context.state.isMobile)  ?
-                                    <React.Fragment>
-                                      <CheckoutButton
-                                        type="CC"
-                                        pubsub={this.props.pubsub}
-                                        enabled={true}
-                                      />
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+          <td width="3"><img src="images/dots_v.png" width="7" height="92"></img></td>
+          <td width="345">
+            <table width="100%" border="0" cellPadding="0" cellSpacing="0">
+              <tbody>
+              <tr>
+                <td style={pickBoxStyle} className="trebuchet16">
+                  {(this.props.inCart && context.state.isMobile)  ?
+                    <React.Fragment>
+                      <CheckoutButton
+                        type="CC"
+                        pubsub={this.props.pubsub}
+                        enabled={true}
+                      />
 
-                                      <CheckoutButton
-                                        type="TOKENS"
-                                        pubsub={this.props.pubsub}
-                                        enabled={true}
-                                      />
-                                    </React.Fragment>
-                                    :
-                                    <div align="left" dangerouslySetInnerHTML={
-                                      {__html: this.props.pick.teaser}
-                                    }/>
-                                  }
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                {/*Begin experimental checkout button on picks */}
-                {/*                <tr>
+                      <CheckoutButton
+                        type="TOKENS"
+                        pubsub={this.props.pubsub}
+                        enabled={true}
+                      />
+                    </React.Fragment>
+                    :
+                    <div align="left" dangerouslySetInnerHTML={
+                      {__html: this.props.pick.teaser}
+                    }/>
+                  }
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        {/*Begin experimental checkout button on picks */}
+        {/*                <tr>
                     <td>
                         <CheckoutButton
                             type="CC"
@@ -232,20 +259,201 @@ export default class Pick extends React.Component {
                     </td>
 
                 </tr>*/}
-                {/*End */}
+        {/*End */}
 
 
-                </tbody>
-            </table>
-          )}
-          </Consumer>
-
-
-
-        );
+        </tbody>
+      </table>
+    )
     }
-}
 
+
+
+  renderMobile(context,
+               sportBoxStyle,
+               pickBoxStyle,
+               expireStyle,
+               expireIcon,
+               expiresIn) {
+    return (
+      <table width="100%" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
+        <tbody>
+        <tr>
+          <td colSpan="3">
+            <table width="100%" border="0" cellPadding="0" cellSpacing="0">
+              <tbody>
+              <tr>
+                <td style={pickBoxStyle}>&nbsp; <i className="faa-ring animated " /></td>
+              </tr>
+              <tr>
+                <td style={pickBoxStyle}>
+                  <div align="left" className="trebuchet18B"><b>{this.props.pick.title}<br />
+
+
+                    <i className={expireIcon} ></i>
+                    <span className={expireStyle}
+                          dangerouslySetInnerHTML={
+                            { __html: expiresIn}
+                          }
+                    />
+
+                  </b>
+                    {/* Begin experimental checkout buttons on picks */}
+
+
+                    {/*            {! this.props.isCartEmpty &&
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <CheckoutButton
+                                                        type="CC"
+                                                        pubsub={this.props.pubsub}
+                                                        enabled={true}
+                                                        minified={true}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <CheckoutButton
+                                                        type="TOKENS"
+                                                        pubsub={this.props.pubsub}
+                                                        enabled={true}
+                                                        minified={true}
+                                                    />
+                                                </td>
+
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    }*/}
+                    {/*  End experimental checkout button on picks */}
+
+
+
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table></td>
+        </tr>
+        <tr>
+          <td colSpan="3" align="center"><img src="images/dot_h.png" ></img></td>
+        </tr>
+        <tr>
+          <td width="100%" align="left">
+            <table width="100%" border="0" cellSpacing="0" cellPadding="0">
+              <tbody>
+              <tr>
+                <td width="85" valign="middle">
+                  <BuyNow
+                    pubsub={this.props.pubsub}
+                    loggedIn={this.props.loggedIn}
+                    pick={this.props.pick}
+                    addAsPAW={true}
+                    inCart={this.props.inCart}
+                    inCartAsPAW={this.props.inCartAsPAW}
+                    memberSuspended={this.props.memberSuspended}
+                    memberLevelFlagged={this.props.memberLevelFlagged}
+                  />
+                </td>
+
+                <td valign="middle" className="trebuchet13">&nbsp;Pay After Win:
+                  <span className="price-bold">
+                                    {Money.format ('USD', this.props.pick.price)}
+                                </span>
+                </td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>
+                  <BuyNow
+                    pubsub={this.props.pubsub}
+                    loggedIn={this.props.loggedIn}
+                    pick={this.props.pick}
+                    addAsPAW={false}
+                    inCart={this.props.inCart}
+                    inCartAsPAW={this.props.inCartAsPAW}
+                    memberSuspended={this.props.memberSuspended}
+                    memberLevelFlagged={this.props.memberLevelFlagged}
+                  />
+                </td>
+                <td valign="middle" className="trebuchet13">&nbsp;Discount Pre-Paid:
+                  <span className="price-bold">
+                                    {Money.format ('USD', Utils.applyPrepaidDiscount(this.props.pick.price))}
+                                    </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+          <td width="3"><img src="images/dots_v.png" width="7" height="92"></img></td>
+          <td width="100%">
+            <table width="100%" border="0" cellPadding="0" cellSpacing="0">
+              <tbody>
+              <tr>
+                <td style={pickBoxStyle} className="trebuchet16">
+                  {(this.props.inCart && context.state.isMobile)  ?
+                    <React.Fragment>
+                      <CheckoutButton
+                        type="CC"
+                        pubsub={this.props.pubsub}
+                        enabled={true}
+                      />
+
+                      <CheckoutButton
+                        type="TOKENS"
+                        pubsub={this.props.pubsub}
+                        enabled={true}
+                      />
+                    </React.Fragment>
+                    :
+                    <div align="left" dangerouslySetInnerHTML={
+                      {__html: this.props.pick.teaser}
+                    }/>
+                  }
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        {/*Begin experimental checkout button on picks */}
+        {/*                <tr>
+                    <td>
+                        <CheckoutButton
+                            type="CC"
+                            pubsub={this.props.pubsub}
+                            enabled={true}
+                            minified={true}
+                        />
+                    </td>
+                    <td>
+                        <CheckoutButton
+                            type="TOKENS"
+                            pubsub={this.props.pubsub}
+                            enabled={true}
+                            minified={true}
+                        />
+                    </td>
+
+                </tr>*/}
+        {/*End */}
+
+
+        </tbody>
+      </table>
+    )
+  }
+
+
+
+
+
+}
 
 
 
