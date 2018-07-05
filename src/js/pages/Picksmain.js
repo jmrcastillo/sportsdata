@@ -314,7 +314,7 @@ console.log("** sendPurchase: ", purchaseData);
                                       }
 
                                       <br />
-                                      <p style={{textAlign: 'center'}}>
+                                      {/*<p style={{textAlign: 'center'}}>
                                                                         <a href="http://record.webpartners.co/_urEveSwgFbXpoAg-rElY5NKIKMO3cZ1b/4/" target="blank" title="%DESCRIPTION%%" ><img src="http://media.webpartners.co/uploads/MB-GenSports-PromCodePLAYBOOK-280x280.gif" width="280" height="280" alt="Bet on Sports-Join MyBookie.ag today!" /></a></p>
                                       <br />
                                       <h11>&nbsp;Playbook Publications</h11>
@@ -332,7 +332,7 @@ console.log("** sendPurchase: ", purchaseData);
                                                                      <h5><span className="topnav_trebuchet14Bred">2017 Weekly Playbook Football Newsletter</span></h5>
                                                                      <span className="topnav_trebuchet12">Includes: Playbook Football Newsletter online weekly subscription The weekly Playbook Football Newsletter spans College and NFL Games throughout the 2017 season straight through the Super Bowl, featuring comprehensive write-ups on every College and NFL game along with star-rated Best Bets, Upset Specials, Awesome Angles, Top Trends, Incredible Stats, Wise Guy Contest Picks and a complete schedule with opening lines and projected margins for the entire week. Don't make a move without it!</span></a>
 
-                                                                     </span>
+                                                                     </span>*/}
                                     </div><br /><br />
 
                                   </div>
