@@ -105,7 +105,7 @@ export default class CCardInfo extends React.Component {
 
         <div align="center">
 
-          <table width="600" border="0" cellSpacing="0" cellPadding="0">
+          <table width="96%" border="0" cellSpacing="0" cellPadding="0">
             <tbody>
             <tr>
               <td colSpan="2" height="32" style={{textAlign: 'center', backgroundcolor: '#CCCCCC'}}><span className="trebuchet14"><b>Credit Card Information</b></span></td>
@@ -228,7 +228,7 @@ export default class CCardInfo extends React.Component {
 
       <div align="center">
 
-        <table width="600" border="0" cellSpacing="0" cellPadding="0">
+        <table width="96%" border="0" cellSpacing="0" cellPadding="0">
           <tbody>
           <tr>
             <td colSpan="2" height="32" style={{textAlign: 'center', backgroundcolor: '#CCCCCC'}}><span className="trebuchet14"><b>Credit Card Information</b></span></td>
@@ -266,14 +266,14 @@ export default class CCardInfo extends React.Component {
                        this.updateCcardInfo('expMonth', event.target.value);
                      }}
                      type="text" defaultValue="" size="2" maxLength="2"  className="required" title="Enter expiration month" tabIndex="6"
-              />&nbsp;&nbsp;
+              />&nbsp;&nbsp;<br />
               <span className="trebuchet14">Year (YYYY)</span>&nbsp;
               <input name="CC_EXPIRE_YEAR" id="CC_EXPIRE_YEAR"
                      onChange={event=>{
                        this.updateCcardInfo('expYear', event.target.value);
                      }}
                      type="text" defaultValue="" size="4" maxLength="4"  className="required" title="Enter credit expiration year" tabIndex="7"
-              />&nbsp;&nbsp;
+              />&nbsp;&nbsp;<br /><br />
               <span className="trebuchet14">CVV2</span>&nbsp;
               <input name="CC_PIN" id="CC_PIN"
                      onChange={event=>{
@@ -289,7 +289,7 @@ export default class CCardInfo extends React.Component {
               <table width="580" border="0" cellSpacing="0" cellPadding="0">
                 <tbody>
                 <tr>
-                  <td><div title="Page 1">
+                  <td align="right"><div title="Page 1">
                     <div>
                       <div>
                                             <span className="trebuchet14">Your Credit Card will be charged $
@@ -299,7 +299,14 @@ export default class CCardInfo extends React.Component {
 */}
                                               {this.props.chargeTotal}
                                               <br />
-                                                to complete this purchase.</span>
+                                                to complete this purchase.</span><br />
+                          {! this.props.isTokens &&
+                          <PurchaseButton
+                              pubsub={this.props.pubsub}
+                              isTokens={false}
+                          />
+
+                          }
                       </div>
                     </div>
                   </div></td>
@@ -320,13 +327,7 @@ export default class CCardInfo extends React.Component {
                                     />
                                 }*/}
 
-                    {! this.props.isTokens &&
-                    <PurchaseButton
-                      pubsub={this.props.pubsub}
-                      isTokens={false}
-                    />
 
-                    }
 
                   </td>
                 </tr>
