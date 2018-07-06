@@ -100,6 +100,7 @@ export default class Picksmain extends React.Component {
             this.setState({isTestMode: ! this.state.isTestMode});
         });
 
+
 	}
 
 
@@ -169,7 +170,7 @@ export default class Picksmain extends React.Component {
 
 				self.setState({allPicks: allPicks});
 
-			}
+          }
 		);
 	}
 
@@ -199,6 +200,7 @@ export default class Picksmain extends React.Component {
         purchaseData.member_id = this.state.member.member_id;
         purchaseData.selectedPicks = this.state.selectedPicks;
         purchaseData.isTestMode = this.state.isTestMode;
+        purchaseData.siteID = Utils.getSiteID();
 
 console.log("** sendPurchase: ", purchaseData);
 

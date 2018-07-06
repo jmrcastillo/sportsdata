@@ -1,4 +1,6 @@
 import Money from "money-formatter";
+//import Playbook from "./Playbook";
+import Playbook from "../lib/Playbook";
 
 class Utils  {
 
@@ -60,9 +62,13 @@ class Utils  {
 	getTokensApplied(tokens) {
         return parseInt(tokens.realTokensApplied) + parseInt(tokens.awardTokensApplied)  + parseInt(tokens.makeupTokensApplied)
     }
-    getMemberTokenBalance(member) {
+	getMemberTokenBalance(member) {
         return Money.format ('USD', parseInt(member.tokens_real) + parseInt(member.tokens_award) + parseInt(member.tokens_makeup));
     }
+	getSiteID() {
+		// For now site_id is either 0 or 11
+    return Playbook.state.isMobile ? '11' : '0'
+	}
 
 }
 export default (new Utils);

@@ -13,9 +13,7 @@ import Picksmain from "./pages/Picksmain";
 // Initializer stuff for app global context D. Ison 6-2018
 class BaseInitializer extends React.Component {
   componentDidMount() {
-    console.log("BaseInitializer ", this.props.context, this.props.pathname);
     if (this.props.pathname === '/picks-mobile') {
-      console.log ("Setting isMobile true");
       this.props.context.setIsMobile(true);
     }
   }
