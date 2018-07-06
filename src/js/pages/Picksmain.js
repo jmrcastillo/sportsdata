@@ -395,7 +395,7 @@ console.log("** sendPurchase: ", purchaseData);
     return (
 
       <main className="main">
-        <div className="container">
+        <div>
 			<span className="item active">
 
 			</span>

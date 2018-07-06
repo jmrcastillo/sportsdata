@@ -357,7 +357,7 @@ export default class Cart extends React.Component {
         <div style={this.props.isZoomed ? cartStyleCheckout : cartStyle }>
 
           {/*<!--Start Cart Box-->*/}
-          <table width={width20} border="0" cellSpacing="0" cellPadding="0" align="center">
+          <table width="96%" border="0" cellSpacing="0" cellPadding="0" align="center">
             <tbody>
             <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
               <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
@@ -368,11 +368,11 @@ export default class Cart extends React.Component {
             </tr>
             <tr>
               <td style={{textAlign: 'center', backgroundColor: '#990000' }} >
-                <table width={width10} border="0" cellSpacing="0" cellPadding="0">
+                <table width="100%" border="0" cellSpacing="0" cellPadding="0" align="center">
                   <tbody>
                   <tr>
                     <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
-                      <table width={width20} border="0" cellSpacing="2" cellPadding="2">
+                      <table width="96%" border="0" cellSpacing="2" cellPadding="2" align="center">
                         <tbody>
                         <tr>
                           <td colSpan="4" style={{textAlign: 'center', backgroundColor: 'White'}}>
