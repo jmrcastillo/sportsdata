@@ -32,6 +32,31 @@ export default class Login extends React.Component {
         this.setState(member);
     }
 
+    validateFields() {
+      let result = true;
+
+      if (! this.state.member.password || this.state.member.password.length < 5) {
+        result = false;
+        this.props.notificationManager.error('Password must be at least five characters long.');
+      }
+      if (! this.state.member.first_name || this.state.member.first_name.length < 1) {
+        result = false;
+        this.props.notificationManager.error('First name is required.');
+      }
+      if (! this.state.member.last_name || this.state.member.last_name.length < 1) {
+        result = false;
+        this.props.notificationManager.error('Last name is required.');
+      }
+
+      if (! this.state.member.email || this.state.member.email.length < 1) {
+        result = false;
+        this.props.notificationManager.error('Email is required.');
+      }
+
+      return result;
+    }
+
+
     render() {
 
         return (
@@ -239,11 +264,17 @@ export default class Login extends React.Component {
                             <tr>
                               <td style={{textAlign: "center"}}>
                                 <input type="button" value={this.props.newRegistration ? "Register" : "Update"} onClick={e=>{
+
+                                  if (! this.validateFields()) {
+                                    e.preventDefault();
+                                    return;
+                                  }
+
                                   const member = Object.assign({new_registration: this.props.newRegistration}, this.state.member);
                                   PicksAPI.saveMember(member).done((result)=>{
                                     this.props.notificationManager.success(this.props.newRegistration ? 'Registration Successful' : 'Your changes saved.');
                                     if (this.props.newRegistration) {
-                                      console.log ("RESULT (sending logged-in):", result.member);
+//                                      console.log ("RESULT (sending logged-in):", result.member);
                                       this.props.pubsub.publish('logged-in', result.member);
                                     } else {
                                       this.props.pubsub.publish('member-info', this.state.member);
