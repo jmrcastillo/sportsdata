@@ -48,6 +48,10 @@ export default class Login extends React.Component {
   componentDidMount() {
 
     this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data) => {
+      console.log("LOGIN logged-in listener", message, data);
+    //  PicksAPI.loginMember(data.record_id);
+      this.login(data.member_id, data.password, false);
+
       this.setState({logged_in: true});
       if (typeof (data) !== 'undefined') {
         this.setState({member: data});
@@ -70,7 +74,7 @@ export default class Login extends React.Component {
     return true;
   }
 
-  login(member_id, password) {
+  login(member_id, password, publish=true) {
 
     PicksAPI.login(member_id, password, this.props.notificationManager).done((result) => {
       if (result.success) {
@@ -79,12 +83,19 @@ export default class Login extends React.Component {
           member: result.member
         });
         new Cookies().set("pb-member", result.member.record_id, {path: "/"});
-        this.props.pubsub.publish('logged-in', result.member);
+        if (publish) {
+          this.props.pubsub.publish('logged-in', result.member);
+        }
       }
     });
   }
 
   render() {
+
+    // Null display support
+    if (this.props.hideDisplay) {
+      return null;
+    }
 
     // Free pick popup support
     const modalStyle = {

@@ -41,7 +41,7 @@ export default class Picksmain extends React.Component {
       displayMode: MODES.normal,
       isTokens: false,
       member: {},
-      register: false,
+      isRegistering: false,
       isTestMode: false,
   //          ccard: {}
 		};
@@ -58,7 +58,9 @@ export default class Picksmain extends React.Component {
         // Messaging pubsub
 		this.subscribe_logged_in = this.pubsub.subscribe('logged-in', (message, data)=> {
 			this.setState({logged_in: true,
-                        member: data});
+                        member: data,
+                       isRegistering: false});
+
             if (data.is_suspended && data.is_suspended.toUpperCase() === 'Y') {
                 this.notificationManager.error('Your account is suspended', 'Learn more...', 120000, ()=>{
                     alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
@@ -98,7 +100,7 @@ export default class Picksmain extends React.Component {
     });
 
     this.subscribe_register = this.pubsub.subscribe('register', (message, data)=> {
-      this.setState({register: true});
+      this.setState({isRegistering: true});
     });
 
     this.subscribe_test_mode = this.pubsub.subscribe('test-mode', (message, data)=> {
@@ -297,23 +299,25 @@ console.log("** sendPurchase: ", purchaseData);
                                 <div className="right-bot-corner maxheight">
                                   <div className="left-bot-corner maxheight">
                                     <div className="inner2">
-                                      {(this.state.displayMode === MODES.normal && ! this.state.register) &&
-                                      <Login
-                                        freePick={this.featuredFreePick(this.state.freePicks)}
-                                        pubsub={this.pubsub}
-                                        showFreePlay={this.state.selectedPicks.length === 0}
-                                        notificationManager={this.notificationManager}
-                                      />
+                                      {this.state.displayMode === MODES.normal &&
+                                        <React.Fragment>
+                                          <Login
+                                            freePick={this.featuredFreePick(this.state.freePicks)}
+                                            pubsub={this.pubsub}
+                                            showFreePlay={this.state.selectedPicks.length === 0}
+                                            notificationManager={this.notificationManager}
+                                            hideDisplay={this.state.isRegistering}
+                                          />
+                                          {this.state.isRegistering &&
+                                            <MemberInfo
+                                              member={this.state.member}
+                                              pubsub={this.pubsub}
+                                              notificationManager={this.notificationManager}
+                                              newRegistration={true}
+                                            />
+                                          }
+                                          </React.Fragment>
                                       }
-                                      {(this.state.displayMode === MODES.normal && this.state.register) &&
-                                      <MemberInfo
-                                        member={this.state.member}
-                                        pubsub={this.pubsub}
-                                        notificationManager={this.notificationManager}
-                                        newRegistration={true}
-                                      />
-                                      }
-
 
 
                                       {(this.state.displayMode === MODES.checkout ||

@@ -240,9 +240,15 @@ export default class Login extends React.Component {
                               <td style={{textAlign: "center"}}>
                                 <input type="button" value={this.props.newRegistration ? "Register" : "Update"} onClick={e=>{
                                   const member = Object.assign({new_registration: this.props.newRegistration}, this.state.member);
-                                  PicksAPI.saveMember(member).done((res)=>{
+                                  PicksAPI.saveMember(member).done((result)=>{
                                     this.props.notificationManager.success(this.props.newRegistration ? 'Registration Successful' : 'Your changes saved.');
-                                    this.props.pubsub.publish('member-info', this.state.member);
+                                    if (this.props.newRegistration) {
+                                      console.log ("RESULT (sending logged-in):", result.member);
+                                      this.props.pubsub.publish('logged-in', result.member);
+                                    } else {
+                                      this.props.pubsub.publish('member-info', this.state.member);
+                                    }
+
                                   });
 
                                 }}/>
@@ -251,7 +257,7 @@ export default class Login extends React.Component {
 
 
 
-                            </tbody>
+                          </tbody>
                         </table>
 
                     </td>
@@ -264,38 +270,5 @@ export default class Login extends React.Component {
         );
     }
 }
-
-{/*<tr height="20">
-    <td bgcolor="white" width="386" height="20"><div align="left">&nbsp;<i>Address1:&nbsp;</i><b><input name="ADDRESS1" type="text" value="{ADDRESS1}" size="30" maxLength="50"/>
-    </b></div></td>
-</tr>
-<tr height="20">
-    <td bgcolor="white" width="386" height="20"><div align="left">&nbsp;<i>Address2:&nbsp;</i><b><input name="ADDRESS2" type="text" value="{ADDRESS2}" size="30" maxLength="50"/>
-    <b/></b></div></td>
-    </tr>
-    <tr height="20">
-    <td bgcolor="white" width="386" height="20"><div align="left">&nbsp;<i>City:&nbsp;</i><b>
-    <input name="CITY" type="text" value="{CITY}" size="20" maxLength="30"/>
-    </b><i>&nbsp;&nbsp;State:&nbsp;</i><b><input name="STATE" type="text" value="{STATE}" size="2" maxLength="2"/>
-    </b></div></td>
-    </tr>
-    <tr height="20">
-    <td bgcolor="white" width="386" height="20"><div align="left">&nbsp;<i>Zip:&nbsp;</i><b>
-    <input name="POSTAL" type="text" value="{POSTAL}" size="10" maxLength="10"/>
-    </b><i>&nbsp;&nbsp;Country:&nbsp;</i><b><input name="COUNTRY" type="text" value="{COUNTRY}" size="6" maxLength="12"/>
-    </b></div></td>
-    </tr>
-    <tr height="20">
-    <td height="24" bgcolor="white"><div align="left">&nbsp;<i>Day Phone:&nbsp;</i><b><input name="DAY_PHONE" type="text" value="{DAY_PHONE}" size="12" maxLength="16"/>
-    </b></div></td>
-    </tr>
-    <tr height="20">
-    <td height="20" bgcolor="white"><div align="left">&nbsp;<i>Evening Phone:&nbsp;</i><b><input name="EVE_PHONE" type="text" value="{EVE_PHONE}" size="12" maxLength="16"/>
-    </b></div></td>
-    </tr>
-    <tr height="20">
-    <td height="20" bgcolor="white"><div align="left">&nbsp;<i>Email Address:&nbsp;</i><b><input name="EMAIL" type="text" value="{EMAIL}" size="20" maxLength="50"/>
-    </b></div></td>
-    </tr>*/}
 
 
