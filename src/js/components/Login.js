@@ -208,6 +208,20 @@ export default class Login extends React.Component {
                                      value="Submit"/>
                             </td>
                           </tr>
+
+                          <tr style={{verticalAlign: 'top'}}>
+                            <td height="40" style={{textAlign: 'center', backgroundColor: '#000000'}}>
+                              <div>
+                                <div>
+                                  <span onClick={()=>this.props.pubsub.publish('register')}
+                                    className="trebuchet14BW">Register New Account..
+                                  </span>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+
+
                           </tbody>
                         </table>
                       </form>

@@ -35,13 +35,14 @@ export default class Picksmain extends React.Component {
 			picks: [],
 			allPicks: [],
 			freePicks: [],
-            selectedPicks: '',
-            purchasedPicks: [],
+      selectedPicks: '',
+      purchasedPicks: [],
 			logged_in: false,
-            displayMode: MODES.normal,
-            isTokens: false,
-            member: {},
-            isTestMode: false,
+      displayMode: MODES.normal,
+      isTokens: false,
+      member: {},
+      register: false,
+      isTestMode: false,
   //          ccard: {}
 		};
     }
@@ -70,35 +71,39 @@ export default class Picksmain extends React.Component {
 		this.subscribe_mode_normal = this.pubsub.subscribe('mode-normal', (message, data)=> {
 			this.setState({displayMode: MODES.normal});
 		});
-        this.subscribe_mode_checkout = this.pubsub.subscribe('mode-checkout', (message, data)=> {
-        	this.setState({displayMode: MODES.checkout,
-                            isTokens: data === 'TOKENS'});
-        });
-        this.subscribe_mode_showpicks = this.pubsub.subscribe('mode-showpicks', (message, data)=> {
-            this.setState({displayMode: MODES.showPicks});
-        });
-        this.subscribe_member_info = this.pubsub.subscribe('member-info', (message, data)=> {
-            this.setState({member: data});
-        });
-        this.subscribe_selected_picks = this.pubsub.subscribe('selected-picks', (message, data)=> {
-            console.log("selected-picks", data);
-            this.setState({selectedPicks: data});
-        });
+    this.subscribe_mode_checkout = this.pubsub.subscribe('mode-checkout', (message, data)=> {
+      this.setState({displayMode: MODES.checkout,
+                        isTokens: data === 'TOKENS'});
+    });
+    this.subscribe_mode_showpicks = this.pubsub.subscribe('mode-showpicks', (message, data)=> {
+        this.setState({displayMode: MODES.showPicks});
+    });
+    this.subscribe_member_info = this.pubsub.subscribe('member-info', (message, data)=> {
+        this.setState({member: data});
+    });
+    this.subscribe_selected_picks = this.pubsub.subscribe('selected-picks', (message, data)=> {
+     // console.log("selected-picks", data);
+      this.setState({selectedPicks: data});
+    });
 
-        this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
-            this.sendPurchase(false, data, null);
-        });
+    this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
+      this.sendPurchase(false, data, null);
+    });
 
-        this.subscribe_purchase_tokens = this.pubsub.subscribe('purchase-tokens', (message, data)=> {
-            this.sendPurchase(true, data.ccard ? data.ccard : null, data.tokens);
-        });
-        this.subscribe_purchase = this.pubsub.subscribe('purchase', (message, data)=> {
-			this.sendPurchase(data.isTokens, data.ccard, data.tokens);
-        });
+    this.subscribe_purchase_tokens = this.pubsub.subscribe('purchase-tokens', (message, data)=> {
+      this.sendPurchase(true, data.ccard ? data.ccard : null, data.tokens);
+    });
+    this.subscribe_purchase = this.pubsub.subscribe('purchase', (message, data)=> {
+      this.sendPurchase(data.isTokens, data.ccard, data.tokens);
+    });
 
-        this.subscribe_test_mode = this.pubsub.subscribe('test-mode', (message, data)=> {
-            this.setState({isTestMode: ! this.state.isTestMode});
-        });
+    this.subscribe_register = this.pubsub.subscribe('register', (message, data)=> {
+      this.setState({register: true});
+    });
+
+    this.subscribe_test_mode = this.pubsub.subscribe('test-mode', (message, data)=> {
+      this.setState({isTestMode: ! this.state.isTestMode});
+    });
 
 
 	}
@@ -107,15 +112,16 @@ export default class Picksmain extends React.Component {
 	componentWillUnmount() {
 		this.pubsub.unsubscribe(this.subscribe_logged_in);
 		this.pubsub.unsubscribe(this.subscribe_logged_out);
-        this.pubsub.unsubscribe(this.subscribe_mode_normal);
-        this.pubsub.unsubscribe(this.subscribe_mode_checkout);
-        this.pubsub.unsubscribe(this.subscribe_mode_showpicks);
-        this.pubsub.unsubscribe(this.subscribe_member_info);
-        this.pubsub.unsubscribe(this.subscribe_selected_picks);
-        this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
-        this.pubsub.unsubscribe(this.subscribe_purchase_tokens);
-        this.pubsub.unsubscribe(this.subscribe_purchase);
-        this.pubsub.unsubscribe(this.subscribe_test_mode);
+    this.pubsub.unsubscribe(this.subscribe_mode_normal);
+    this.pubsub.unsubscribe(this.subscribe_mode_checkout);
+    this.pubsub.unsubscribe(this.subscribe_mode_showpicks);
+    this.pubsub.unsubscribe(this.subscribe_member_info);
+    this.pubsub.unsubscribe(this.subscribe_selected_picks);
+    this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
+    this.pubsub.unsubscribe(this.subscribe_purchase_tokens);
+    this.pubsub.unsubscribe(this.subscribe_purchase);
+    this.pubsub.unsubscribe(this.subscribe_register);
+    this.pubsub.unsubscribe(this.subscribe_test_mode);
     }
 
 	loadPicks(self, firstLoad=false) {
@@ -291,7 +297,7 @@ console.log("** sendPurchase: ", purchaseData);
                                 <div className="right-bot-corner maxheight">
                                   <div className="left-bot-corner maxheight">
                                     <div className="inner2">
-                                      {(this.state.displayMode === MODES.normal) &&
+                                      {(this.state.displayMode === MODES.normal && ! this.state.register) &&
                                       <Login
                                         freePick={this.featuredFreePick(this.state.freePicks)}
                                         pubsub={this.pubsub}
@@ -299,6 +305,17 @@ console.log("** sendPurchase: ", purchaseData);
                                         notificationManager={this.notificationManager}
                                       />
                                       }
+                                      {(this.state.displayMode === MODES.normal && this.state.register) &&
+                                      <MemberInfo
+                                        member={this.state.member}
+                                        pubsub={this.pubsub}
+                                        notificationManager={this.notificationManager}
+                                        newRegistration={true}
+                                      />
+                                      }
+
+
+
                                       {(this.state.displayMode === MODES.checkout ||
                                         this.state.displayMode === MODES.showPicks) &&
                                       <MemberInfo
