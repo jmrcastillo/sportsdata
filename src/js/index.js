@@ -8,6 +8,8 @@ import {AppProvider} from "./lib/ContextAPI";
 import  Consumer from "./lib/ContextAPI";
 
 import Picksmain from "./pages/Picksmain";
+import Register from "./pages/Register";
+
 
 
 // Initializer stuff for app global context D. Ison 6-2018
@@ -409,6 +411,7 @@ class App extends Component {
             <Route path="/about" component={About} />
             <Route path="/picks" component={Picksmain} />
             <Route path="/picks-mobile" component={Picksmain} />
+            <Route path="/register" component={Register} />
             <Route path="/member-center" component={MemberCenter} />
             <Route path="/university" component={University} />
             <Route component={Footer}/>

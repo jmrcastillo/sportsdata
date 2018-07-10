@@ -47,6 +47,40 @@ export default class Login extends React.Component {
                                 <td bgcolor="#f5f5f5" height="30" style={{textAlign: "center"}}><div><span className="verdana12b">Customer Information</span><br />
                                     <span className="verdana12">The Info Below Needs To Match Your <br />Credit Card Billing Statement.<br /><br /></span></div></td>
                             </tr>
+
+                            <tr height="28">
+                              <td bgcolor="#FFFFFF" width="342" height="28">
+                                <div align="left">&nbsp;
+                                  <i>Email:&nbsp;</i>
+                                  <b>
+                                    <input className="input" name="EMAIL" type="text" defaultValue={this.props.member.email}
+                                           onChange={event=>{
+                                             this.updateMemberInfo('email', event.target.value);
+                                           }}
+                                           size="20" maxLength="50"/>
+                                  </b>
+                                </div>
+                              </td>
+                            </tr>
+
+                            {this.props.newRegistration &&
+                            <tr height="28">
+                              <td bgcolor="#FFFFFF" width="342" height="28">
+                                <div align="left">&nbsp;
+                                  <i>Password:&nbsp;</i>
+                                  <b>
+                                    <input className="input" name="PASSWORD" type="password" defaultValue={this.props.member.password}
+                                           onChange={event=>{
+                                             this.updateMemberInfo('password', event.target.value);
+                                           }}
+                                           size="20" maxLength="50"/>
+                                  </b>
+                                </div>
+                              </td>
+                            </tr>
+
+                            }
+
                             <tr height="28">
                             <td bgcolor="#FFFFFF" width="342" height="28">
                                 <div align="left">&nbsp;
@@ -199,31 +233,22 @@ export default class Login extends React.Component {
                                 </td>
                             </tr>
 
-                            <tr height="28">
-                                <td bgcolor="#FFFFFF" width="342" height="28">
-                                    <div align="left">&nbsp;
-                                        <i>Email:&nbsp;</i>
-                                        <b>
-                                            <input className="input" name="EMAIL" type="text" defaultValue={this.props.member.email}
-                                                   onChange={event=>{
-                                                       this.updateMemberInfo('email', event.target.value);
-                                                   }}
-                                                   size="20" maxLength="50"/>
-                                        </b>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{textAlign: "center"}}>
-                                    <input type="button" value="Update" onClick={e=>{
-                                        PicksAPI.saveMember(this.state.member).done((res)=>{
-                                            this.props.notificationManager.success('Your changes saved.');
-                                            this.props.pubsub.publish('member-info', this.state.member);
-                                        });
 
-                                    }}/>
-                                </td>
+
+
+                            <tr>
+                              <td style={{textAlign: "center"}}>
+                                <input type="button" value={this.props.newRegistration ? "Register" : "Update"} onClick={e=>{
+                                  const member = Object.assign({new_registration: this.props.newRegistration}, this.state.member);
+                                  PicksAPI.saveMember(member).done((res)=>{
+                                    this.props.notificationManager.success(this.props.newRegistration ? 'Registration Successful' : 'Your changes saved.');
+                                    this.props.pubsub.publish('member-info', this.state.member);
+                                  });
+
+                                }}/>
+                              </td>
                             </tr>
+
 
 
                             </tbody>

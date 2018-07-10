@@ -28,7 +28,7 @@ export default class Picksmain extends React.Component {
 	constructor() {
 		super();
 		this.pubsub = PubSub;
-        this.notificationManager = NotificationManager,
+    this.notificationManager = NotificationManager;
 
 
 		this.state = {
@@ -305,6 +305,7 @@ console.log("** sendPurchase: ", purchaseData);
                                         member={this.state.member}
                                         pubsub={this.pubsub}
                                         notificationManager={this.notificationManager}
+                                        newRegistration={false}
                                       />
                                       }
 
