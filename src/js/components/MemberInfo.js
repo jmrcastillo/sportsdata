@@ -4,6 +4,7 @@
 
 import React from "react";
 import PicksAPI from "../lib/PicksAPI";
+import Utils from "../lib/Utils";
 
 
 
@@ -271,7 +272,10 @@ export default class Login extends React.Component {
                                     return;
                                   }
 
-                                  const member = Object.assign({new_registration: this.props.newRegistration}, this.state.member);
+                                  const member = Object.assign(
+                                    {new_registration: this.props.newRegistration,
+                                    siteID: Utils.getSiteID()
+                                    }, this.state.member);
                                   PicksAPI.saveMember(member).done((result)=>{
                                     this.props.notificationManager.success(this.props.newRegistration ? 'Registration Successful' : 'Your changes saved.');
                                     if (this.props.newRegistration) {
