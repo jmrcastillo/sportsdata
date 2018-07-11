@@ -26,11 +26,12 @@ export default class Login extends React.Component {
     componentWillUnmount() {
     }
 
-    updateMemberInfo(property, value) {
-        let member = this.state.member;
-        member[property] = value;
-        this.setState(member);
-    }
+  updateMemberInfo(property, event, maxLength=null) {
+
+    let member = this.state.member;
+    member[property] = event.target.value;
+    this.setState(member);
+  }
 
     validateFields() {
       let result = true;
@@ -80,7 +81,7 @@ export default class Login extends React.Component {
                                   <b>
                                     <input className="input" name="EMAIL" type="text" defaultValue={this.props.member.email}
                                            onChange={event=>{
-                                             this.updateMemberInfo('email', event.target.value);
+                                             this.updateMemberInfo('email', event);
                                            }}
                                            size="20" maxLength="50"/>
                                   </b>
@@ -95,10 +96,10 @@ export default class Login extends React.Component {
                                   <i>Password:&nbsp;</i>
                                   <b>
                                     <input className="input" name="PASSWORD" type="password" defaultValue={this.props.member.password}
-                                           onChange={event=>{
-                                             this.updateMemberInfo('password', event.target.value);
+                                           onKeyUp={event=>{
+                                             this.updateMemberInfo('password', event);
                                            }}
-                                           size="20" maxLength="50"/>
+                                           size="20" maxLength="12"/>
                                   </b>
                                 </div>
                               </td>
@@ -114,9 +115,9 @@ export default class Login extends React.Component {
                                 <input className="input" name="FIRST_NAME" type="text" defaultValue={this.props.member.first_name}
                                 onChange={event=>{
                                 //    console.log("MemberInfo updating state.member was", this.state.member);
-                                    this.updateMemberInfo('first_name', event.target.value);
+                                    this.updateMemberInfo('first_name', event);
                                 }}
-                                size="20" maxLength="50"/>
+                                size="20" maxLength="20"/>
                                 </b>
                             </div>
                             </td>
@@ -129,9 +130,9 @@ export default class Login extends React.Component {
                                 <b>
                                 <input className="input" name="LAST_NAME" type="text" defaultValue={this.props.member.last_name}
                                        onChange={event=>{
-                                           this.updateMemberInfo('last_name', event.target.value);
+                                           this.updateMemberInfo('last_name', event);
                                        }}
-                                       size="20" maxLength="50"/>
+                                       size="20" maxLength="20"/>
                                 </b>
                                 </div>
                             </td>
@@ -145,7 +146,7 @@ export default class Login extends React.Component {
                                     <b>
                                     <input className="input" name="ADDRESS1" type="text" defaultValue={this.props.member.address1}
                                            onChange={event=>{
-                                               this.updateMemberInfo('address1', event.target.value);
+                                               this.updateMemberInfo('address1', event);
                                            }}
                                            size="30" maxLength="50"/>
                                     </b>
@@ -160,7 +161,7 @@ export default class Login extends React.Component {
                             <b>
                             <input className="input" name="ADDRESS2" type="text" defaultValue={this.props.member.address2}
                                    onChange={event=>{
-                                       this.updateMemberInfo('address2', event.target.value);
+                                       this.updateMemberInfo('address2', event);
                                    }}
                                    size="30" maxLength="50"/>
                             </b>
@@ -175,9 +176,9 @@ export default class Login extends React.Component {
                                         <b>
                                             <input className="input" name="CITY" type="text" defaultValue={this.props.member.city}
                                                    onChange={event=>{
-                                                       this.updateMemberInfo('city', event.target.value);
+                                                       this.updateMemberInfo('city', event);
                                                    }}
-                                                   size="20" maxLength="30"/>
+                                                   size="20" maxLength="50"/>
                                         </b>
                                     </div>
                                 </td>
@@ -190,9 +191,9 @@ export default class Login extends React.Component {
                                         <b>
                                             <input className="input" name="STATE" type="text" defaultValue={this.props.member.state}
                                                    onChange={event=>{
-                                                       this.updateMemberInfo('state', event.target.value);
+                                                       this.updateMemberInfo('state', event);
                                                    }}
-                                                   size="2" maxLength="2"/>
+                                                   size="2" maxLength="50"/>
                                         </b>
                                     </div>
                                 </td>
@@ -205,7 +206,7 @@ export default class Login extends React.Component {
                                         <b>
                                             <input className="input" name="POSTAL" type="text" defaultValue={this.props.member.postal}
                                                    onChange={event=>{
-                                                       this.updateMemberInfo('postal', event.target.value);
+                                                       this.updateMemberInfo('postal', event);
                                                    }}
                                                    size="10" maxLength="10"/>
                                         </b>
@@ -220,9 +221,9 @@ export default class Login extends React.Component {
                                         <b>
                                             <input className="input" name="COUNTRY" type="text" defaultValue={this.props.member.country}
                                                    onChange={event=>{
-                                                       this.updateMemberInfo('country', event.target.value);
+                                                       this.updateMemberInfo('country', event);
                                                    }}
-                                                   size="6" maxLength="10"/>
+                                                   size="6" maxLength="30"/>
                                         </b>
                                     </div>
                                 </td>
@@ -235,9 +236,9 @@ export default class Login extends React.Component {
                                         <b>
                                             <input className="input" name="DAY_PHONE" type="text" defaultValue={this.props.member.day_phone}
                                                    onChange={event=>{
-                                                       this.updateMemberInfo('day_phone', event.target.value);
+                                                       this.updateMemberInfo('day_phone', event);
                                                    }}
-                                                   size="12" maxLength="16"/>
+                                                   size="12" maxLength="20"/>
                                         </b>
                                     </div>
                                 </td>
@@ -250,9 +251,9 @@ export default class Login extends React.Component {
                                         <b>
                                             <input className="input" name="EVE_PHONE" type="text" defaultValue={this.props.member.eve_phone}
                                                    onChange={event=>{
-                                                       this.updateMemberInfo('eve_phone', event.target.value);
+                                                       this.updateMemberInfo('eve_phone', event);
                                                    }}
-                                                   size="12" maxLength="16"/>
+                                                   size="12" maxLength="20"/>
                                         </b>
                                     </div>
                                 </td>
