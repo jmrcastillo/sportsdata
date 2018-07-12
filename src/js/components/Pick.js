@@ -382,6 +382,7 @@ export default class Pick extends React.Component {
                     inCartAsPAW={this.props.inCartAsPAW}
                     memberSuspended={this.props.memberSuspended}
                     memberLevelFlagged={this.props.memberLevelFlagged}
+                    notificationManager={this.props.notificationManager}
                   />
                 </td>
                 <td valign="middle" className="trebuchet13">&nbsp;Discount Pre-Paid:

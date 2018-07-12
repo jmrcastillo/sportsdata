@@ -50,7 +50,8 @@ export default class Login extends React.Component {
   componentDidMount() {
 
     this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data) => {
-      console.log("LOGIN logged-in listener", message, data);
+  //    console.log("LOGIN logged-in listener", message, data);
+
       this.login(data.member_id, data.password, false);
 
       this.setState({logged_in: true, isRegistering: false});

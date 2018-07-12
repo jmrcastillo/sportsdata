@@ -285,7 +285,7 @@ export default class MemberInfo extends React.Component {
                                   PicksAPI.saveMember(member).done((result)=>{
                                     this.props.notificationManager.success(this.props.newRegistration ? 'Registration Successful' : 'Your changes saved.');
                                     if (this.props.newRegistration) {
-                                     console.log ("RESULT (sending logged-in message NOW):", result.member);
+                                  //   console.log ("RESULT (sending logged-in message NOW):", result.member);
                                       this.props.pubsub.publish('logged-in', result.member);
                                     } else {
                                       this.props.pubsub.publish('member-info', this.state.member);
