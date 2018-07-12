@@ -9,6 +9,7 @@ import PicksAPI from "../lib/PicksAPI";
 import SportsCodes from "../lib/SportsCodes"
 import Utils from "../lib/Utils";
 import Cart from "../components/Cart";
+// DELETE M.I.
 import MemberInfo from "../components/MemberInfo";
 import PurchasedPicks from "../components/PurchasedPicks";
 
@@ -41,6 +42,7 @@ export default class Picksmain extends React.Component {
       displayMode: MODES.normal,
       isTokens: false,
       member: {},
+      // DELETE M.I.
       isRegistering: false,
       isTestMode: false,
   //          ccard: {}
@@ -99,8 +101,9 @@ export default class Picksmain extends React.Component {
       this.sendPurchase(data.isTokens, data.ccard, data.tokens);
     });
 
+    // M.I.
     this.subscribe_register = this.pubsub.subscribe('register', (message, data)=> {
-      this.setState({isRegistering: true});
+  //    this.setState({isRegistering: true});
     });
 
     this.subscribe_test_mode = this.pubsub.subscribe('test-mode', (message, data)=> {
@@ -122,6 +125,7 @@ export default class Picksmain extends React.Component {
     this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
     this.pubsub.unsubscribe(this.subscribe_purchase_tokens);
     this.pubsub.unsubscribe(this.subscribe_purchase);
+    // M.I.
     this.pubsub.unsubscribe(this.subscribe_register);
     this.pubsub.unsubscribe(this.subscribe_test_mode);
     }
@@ -272,6 +276,8 @@ console.log("** sendPurchase: ", purchaseData);
                   memberSuspended={this.state.member.is_suspended && this.state.member.is_suspended.toUpperCase() === 'Y'}
                   memberLevelFlagged={Utils.checkFlaggedMemberLevel(this.state.member)}
                   selectedPicks={this.state.selectedPicks}
+                  notificationManager={this.notificationManager}
+
                 />
                 }
                 {(this.state.displayMode === MODES.checkout) &&
@@ -300,23 +306,13 @@ console.log("** sendPurchase: ", purchaseData);
                                   <div className="left-bot-corner maxheight">
                                     <div className="inner2">
                                       {this.state.displayMode === MODES.normal &&
-                                        <React.Fragment>
                                           <Login
                                             freePick={this.featuredFreePick(this.state.freePicks)}
                                             pubsub={this.pubsub}
                                             showFreePlay={this.state.selectedPicks.length === 0}
                                             notificationManager={this.notificationManager}
-                                            hideDisplay={this.state.isRegistering}
+                                        //    hideDisplay={this.state.isRegistering}
                                           />
-                                          {this.state.isRegistering &&
-                                            <MemberInfo
-                                              member={this.state.member}
-                                              pubsub={this.pubsub}
-                                              notificationManager={this.notificationManager}
-                                              newRegistration={true}
-                                            />
-                                          }
-                                          </React.Fragment>
                                       }
 
 
@@ -438,6 +434,7 @@ console.log("** sendPurchase: ", purchaseData);
                   memberSuspended={this.state.member.is_suspended && this.state.member.is_suspended.toUpperCase() === 'Y'}
                   memberLevelFlagged={Utils.checkFlaggedMemberLevel(this.state.member)}
                   selectedPicks={this.state.selectedPicks}
+                  notificationManager={this.notificationManager}
                 />
 
                 }

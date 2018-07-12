@@ -7,6 +7,7 @@ import PicksAPI from "../lib/PicksAPI";
 import Freeplay from "../components/Freeplay";
 import Cookies from "universal-cookie";
 import Modal from 'react-modal';
+import MemberInfo from "../components/MemberInfo";
 
 
 export default class Login extends React.Component {
@@ -21,8 +22,9 @@ export default class Login extends React.Component {
       member_id: '',
       password: '',
       logged_in: !(typeof (memberIDCookie) === 'undefined'),
-      member: null,
+      member: {},
       freePickIsOpen: false,
+      isRegistering: false,
     }
 
 
@@ -48,10 +50,10 @@ export default class Login extends React.Component {
   componentDidMount() {
 
     this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data) => {
-//      console.log("LOGIN logged-in listener", message, data);
+      console.log("LOGIN logged-in listener", message, data);
       this.login(data.member_id, data.password, false);
 
-      this.setState({logged_in: true});
+      this.setState({logged_in: true, isRegistering: false});
       if (typeof (data) !== 'undefined') {
         this.setState({member: data});
       }
@@ -61,12 +63,12 @@ export default class Login extends React.Component {
     });
 
 
+
   }
 
   componentWillUnmount() {
     this.props.pubsub.unsubscribe(this.subscribe_logged_in);
     this.props.pubsub.unsubscribe(this.subscribe_logged_out);
-
   }
 
   shouldComponentUpdate() {
@@ -91,10 +93,19 @@ export default class Login extends React.Component {
 
   render() {
 
-    // Null display support
-    if (this.props.hideDisplay) {
-      return null;
+    if (this.state.isRegistering) {
+      console.log ("LOGIN isRegistering", this.state.member, this.props);
+      return(
+      <MemberInfo
+        member={this.state.member}
+        pubsub={this.props.pubsub}
+        notificationManager={this.props.notificationManager}
+        newRegistration={true}
+      />
+      )
+
     }
+
 
     // Free pick popup support
     const modalStyle = {
@@ -223,7 +234,30 @@ export default class Login extends React.Component {
                             <td height="40" style={{textAlign: 'center', backgroundColor: '#000000'}}>
                               <div>
                                 <div>
-                                  <span onClick={()=>this.props.pubsub.publish('register')}
+                                  <span onClick={()=>{
+
+
+ // TEMP STUFF
+                            const member =   {
+                              first_name: 'DT',
+                              last_name: 'Ison',
+                              address1: '124 Main',
+                              address2: '',
+                              city: 'Covington',
+                              state: 'KY',
+                              postal: '41011',
+                              country: 'USA',
+                              day_phone: '111-222-3333',
+                              eve_phone: '',
+                              email: 'nospam2012@dtison.net'
+                            };
+                   //         console.log("MemberInfo: setstate member", member);
+                            this.setState({member: member});
+
+
+
+                                    this.setState({isRegistering: true})
+                                  }}
                                     className="trebuchet14BW">Register New Account..
                                   </span>
                                 </div>

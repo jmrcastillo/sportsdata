@@ -8,7 +8,7 @@ import Utils from "../lib/Utils";
 
 
 
-export default class Login extends React.Component {
+export default class MemberInfo extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,12 +16,13 @@ export default class Login extends React.Component {
         this.state = {
             member: props.member,
         }
+
+
     }
     componentWillMount() {
 
     }
     componentDidMount() {
-
 
     }
     componentWillUnmount() {
@@ -97,7 +98,7 @@ export default class Login extends React.Component {
                                   <i>Password:&nbsp;</i>
                                   <b>
                                     <input className="input" name="PASSWORD" type="password" defaultValue={this.props.member.password}
-                                           onKeyUp={event=>{
+                                           onChange={event=>{
                                              this.updateMemberInfo('password', event);
                                            }}
                                            size="20" maxLength="12"/>
@@ -276,10 +277,15 @@ export default class Login extends React.Component {
                                     {new_registration: this.props.newRegistration,
                                     siteID: Utils.getSiteID()
                                     }, this.state.member);
+
+
+                                  console.log ("Register OnClick...):", member);
+
+
                                   PicksAPI.saveMember(member).done((result)=>{
                                     this.props.notificationManager.success(this.props.newRegistration ? 'Registration Successful' : 'Your changes saved.');
                                     if (this.props.newRegistration) {
-//                                      console.log ("RESULT (sending logged-in):", result.member);
+                                     console.log ("RESULT (sending logged-in message NOW):", result.member);
                                       this.props.pubsub.publish('logged-in', result.member);
                                     } else {
                                       this.props.pubsub.publish('member-info', this.state.member);

@@ -201,6 +201,8 @@ export default class PickList extends React.Component {
                                                         inCart={inCart}
                                                         inCartAsPAW={isPAW}
                                                         isCartEmpty={this.props.selectedPicks.length === 0}
+                                                        notificationManager={this.props.notificationManager}
+
                                                       />
                                                     </td>
                                                   </tr>
@@ -380,6 +382,7 @@ export default class PickList extends React.Component {
                                                           inCart={inCart}
                                                           inCartAsPAW={isPAW}
                                                           isCartEmpty={this.props.selectedPicks.length === 0}
+                                                          notificationManager={this.props.notificationManager}
                                                         />
                                                       </td>
                                                     </tr>

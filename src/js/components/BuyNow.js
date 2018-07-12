@@ -26,10 +26,10 @@ export default class BuyNow extends React.Component {
 
 
         left: '40%',
-        width: '350',
-        height: '300',
+        width: '150',
+        height: '100',
         top: '10px',
-        backgroundColor: '#ff8'
+        backgroundColor: '#aaa'
       },
 
 
@@ -158,7 +158,11 @@ export default class BuyNow extends React.Component {
                   this.doClose();
               }}>close</button>
 
-              <Login pubsub={this.props.pubsub}/>
+              <Login
+                pubsub={this.props.pubsub}
+                showFreePlay={false}
+                notificationManager={this.props.notificationManager}
+              />
           </Modal>
       </div>
     );
