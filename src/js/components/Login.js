@@ -237,7 +237,7 @@ export default class Login extends React.Component {
                                 <div>
                                   <span onClick={()=>{
 
-
+/*
  // TEMP STUFF
                             const member =   {
                               first_name: 'DT',
@@ -253,7 +253,7 @@ export default class Login extends React.Component {
                               email: 'nospam2012@dtison.net'
                             };
                    //         console.log("MemberInfo: setstate member", member);
-                            this.setState({member: member});
+                            this.setState({member: member});*/
 
 
 
