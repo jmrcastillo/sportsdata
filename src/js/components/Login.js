@@ -124,16 +124,9 @@ export default class Login extends React.Component {
           <span className="trebuchet14" style={{textAlign: 'center'}}>
               Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span
-              onClick={(event) => {
-                //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
-                alert("Logging out now.. ");
-                new Cookies().remove('pb-member');
-                this.props.pubsub.publish('logged-out');
 
-              }}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             {/*    <span onClick={(event)=>{
                   console.log ("Trying freeplay", this.props.freePick.body);
                   this.setState({freePickIsOpen: true});

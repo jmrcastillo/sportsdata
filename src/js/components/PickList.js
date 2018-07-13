@@ -6,6 +6,7 @@ import React from "react";
 import Pick from "../components/Pick";
 import SportsCodes from "../lib/SportsCodes"
 import Consumer from "../lib/ContextAPI";
+import Cookies from "universal-cookie";
 
 
 export default class PickList extends React.Component {
@@ -96,7 +97,21 @@ export default class PickList extends React.Component {
                               <table width="90%" border="0" cellSpacing="0" cellPadding="0">
                                 <tbody>
                                 <tr><td><h3>Guaranteed Experts Picks</h3>
-                                  <h4>Pay After You Win Picks -or- Discount Pre-Paid</h4>
+                                  <h4>Pay After You Win Picks -or- Discount Pre-
+                                    <span
+                                      onClick={(event) => {
+                                        if (! this.state.logged_in) {
+                                          return;
+                                        }
+                                        alert("Logging out now.. ");
+                                        new Cookies().remove('pb-member');
+                                        this.props.pubsub.publish('logged-out');
+                                      }}
+
+                                    >Paid</span>
+
+
+                                  </h4>
                                   <h5>Red Hot Experts Best Bets</h5></td></tr>
                                 <tr>
                                   <td height="40"  style={{textAlign: 'center', backgroundColor: '#000000' }}>
@@ -277,7 +292,19 @@ export default class PickList extends React.Component {
                                 <table width="90%" border="0" cellSpacing="0" cellPadding="0">
                                   <tbody>
                                   <tr><td><h3>Guaranteed Experts Picks</h3>
-                                    <h4>Pay After You Win Picks -or- Discount Pre-Paid</h4>
+                                    <h4>Pay After You Win Picks -or- Discount Pre-
+                                    <span
+                                      onClick={(event) => {
+                                        if (! this.state.logged_in) {
+                                          return;
+                                        }
+                                        //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
+                                        alert("Logging out now.. ");
+                                        new Cookies().remove('pb-member');
+                                        this.props.pubsub.publish('logged-out');
+                                      }}
+
+                                    >Paid</span></h4>
                                     <h5>Red Hot Experts Best Bets</h5></td></tr>
                                   <tr>
                                     <td height="40"  style={{textAlign: 'center', backgroundColor: '#000000' }}>

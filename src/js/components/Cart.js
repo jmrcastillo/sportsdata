@@ -90,6 +90,7 @@ export default class Cart extends React.Component {
             this.setState({logged_in: true});
         });
         this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
+          console.log ("CART logged-out deleting cart");
             this.setState({
                 logged_in: false,
                 picks: []
