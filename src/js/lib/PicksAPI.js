@@ -96,6 +96,7 @@ console.log ("url is " + url);
         })
     }
 
+    // TODO  Pass in the fail function to display an error msg??
 	saveMember(member) {
         return $.post("https://www.playbook.com/picks-api1/save-member",
             member,
@@ -103,6 +104,15 @@ console.log ("url is " + url);
             return res;
         }).fail(()=>console.log('SAVEMEMBER FAIL.'));
 	}
+
+/*  checkMember(member) {
+    return $.post("https://www.playbook.com/picks-api1/check-member",
+      member,
+    ).then(function(res) {
+      return res;
+    }).fail(()=>console.log('CHECKMEMBER FAIL.'));
+  }*/
+
 
     purchaseCCard(purchaseData) {
         return $.post("https://www.playbook.com/picks-api1/purchase-ccard",

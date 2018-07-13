@@ -95,14 +95,22 @@ export default class Login extends React.Component {
   render() {
 
     if (this.state.isRegistering) {
-      console.log ("LOGIN isRegistering", this.state.member, this.props);
+   //   console.log ("LOGIN isRegistering", this.state.member, this.props);
       return(
+        <React.Fragment>
       <MemberInfo
         member={this.state.member}
         pubsub={this.props.pubsub}
         notificationManager={this.props.notificationManager}
         newRegistration={true}
       />
+          <br />
+          <span
+            onClick={e=>this.setState({isRegistering: false})
+          }>
+          Back to Login..
+          </span>
+        </React.Fragment>
       )
 
     }

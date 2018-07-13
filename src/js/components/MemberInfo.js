@@ -279,10 +279,14 @@ export default class MemberInfo extends React.Component {
                                     }, this.state.member);
 
 
-                                  console.log ("Register OnClick...):", member);
-
 
                                   PicksAPI.saveMember(member).done((result)=>{
+                                    if (result.status === '403') {
+                                      this.props.notificationManager.error("Registration unsuccessful.  Please call 800-");
+                                      return;
+                                    }
+
+
                                     this.props.notificationManager.success(this.props.newRegistration ? 'Registration Successful' : 'Your changes saved.');
                                     if (this.props.newRegistration) {
                                   //   console.log ("RESULT (sending logged-in message NOW):", result.member);
