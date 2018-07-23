@@ -1,1 +1,1 @@
-screen -dmS QA yarn picks-app 
+screen -dmS PICKS yarn picks-app 
