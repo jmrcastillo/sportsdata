@@ -32,7 +32,9 @@ module.exports = merge(common, {
         ////})
     ],
     mode: 'production',
-
+devServer: {
+  disableHostCheck: true
+}
 });
 
 /*
