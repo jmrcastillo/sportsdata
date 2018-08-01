@@ -9,6 +9,8 @@ import  Consumer from "./lib/ContextAPI";
 
 import Picksmain from "./pages/Picksmain";
 import Register from "./pages/Register";
+import Cubemain from "./pages/Cubemain";
+
 
 
 
@@ -37,7 +39,11 @@ const Initializer = (props) => (
 
 // Top, Footer helper components
 const Top = (props) => {
-  if (props.location.pathname == '/' || props.location.pathname == '/picks-mobile') {
+  if (props.location.pathname == '/' ||
+    props.location.pathname == '/picks-mobile' ||
+    props.location.pathname == '/cube-main'
+
+  ) {
     return ('')
   }
 
@@ -412,6 +418,8 @@ class App extends Component {
             <Route path="/picks" component={Picksmain} />
             <Route path="/picks-mobile" component={Picksmain} />
             <Route path="/register" component={Register} />
+            <Route path="/cube-main" component={Cubemain} />
+
             <Route path="/member-center" component={MemberCenter} />
             <Route path="/university" component={University} />
             <Route component={Footer}/>
