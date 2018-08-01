@@ -255,7 +255,11 @@ const Top = (props) => {
 const Footer = (props) => {
   //console.log ("FOOTER (path)", props.location.pathname);
 
-  if (props.location.pathname == '/' || props.location.pathname == '/picks-mobile') {
+  if (props.location.pathname == '/' ||
+    props.location.pathname == '/picks-mobile' ||
+    props.location.pathname == '/cube-main'
+
+  ) {
     return ('')
   }
 
