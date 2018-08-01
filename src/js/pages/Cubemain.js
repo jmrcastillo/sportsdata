@@ -38,15 +38,22 @@ export default class Cubemain extends React.Component {
           <table width="100%" border="0">
             <tbody>
             <tr>
-              <td><div align="center"><a href="/picks-mobile"><img src="/images/nav_tiles/tile01.png" width="100%"/></a></div></td>
-              <td><div align="center"><a href="/#/publications"><img src="/images/nav_tiles/tile02.png" width="100%"/></a></div></td>
-              <td><div align="center"><a href="/#/scores-lines"><img src="/images/nav_tiles/tile03.png" width="100%"/></a></div></td>
+                <td colspan="3"><div align="center"><img src="/images/carousel02.jpg" width="100%" /></div></td>
             </tr>
             <tr>
-              <td><div align="center"><a href="/#/wagertalk"><img src="/images/nav_tiles/tile04.png" width="100%"/></a></div></td>
-              <td><div align="center"><a href="/#/line-moves"><img src="/images/nav_tiles/tile05.png" width="100%"/></a></div></td>
+              <td><div align="center"><a href="/picks-mobile"><img src="/images/nav_tiles/tile01.png" width="100%"/></a></div></td>
+                <td><div align="center"><a href="/#/scores-lines"><img src="/images/nav_tiles/tile03.png" width="100%"/></a></div></td>
+                <td><div align="center"><a href="/#/login"><img src="/images/nav_tiles/tile10.png" width="100%"/></a></div></td>
+
+
+            </tr>
+            <tr>
+              <td><div align="center"><a href="/#/cappers-report-card"><img src="/images/nav_tiles/tile11.png" width="100%"/></a></div></td>
+                <td><div align="center"><a href="/#/publications"><img src="/images/nav_tiles/tile02.png" width="100%"/></a></div></td>
+                <td><div align="center"><a href="http://cube.statfox.com"><img src="/images/nav_tiles/tile06.png" width="100%"/></a></div></td>
+              {/*<td><div align="center"><a href="/#/line-moves"><img src="/images/nav_tiles/tile05.png" width="100%"/></a></div></td>*/}
               {/*<td><div align="center"><a href="/#/trends-matchups"><img src="/images/nav_tiles/tile06.png" width="100%"/></a></div></td>*/}
-              <td><div align="center"><a href="http://cube.statfox.com"><img src="/images/nav_tiles/tile06.png" width="100%"/></a></div></td>
+
 
 
             </tr>
