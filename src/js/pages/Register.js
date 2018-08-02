@@ -7,6 +7,7 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import MemberInfo from "../components/MemberInfo";
 import PubSub from "pubsub-js";
+import Login from "../components/Login";
 
 export default class Picksmain extends React.Component {
 
@@ -50,12 +51,18 @@ export default class Picksmain extends React.Component {
   render() {
 	  return (
 	    <React.Fragment>
-      <MemberInfo
+{/*      <MemberInfo
         member={this.member}
         pubsub={this.pubsub}
         notificationManager={this.notificationManager}
         newRegistration={true}
-      />
+      />*/}
+
+        <Login
+          pubsub={this.pubsub}
+          showFreePlay={false}
+          notificationManager={this.notificationManager}
+        />
         <NotificationContainer/>
 
       </React.Fragment>
