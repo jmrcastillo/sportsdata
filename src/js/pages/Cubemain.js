@@ -29,10 +29,7 @@ export default class Cubemain extends React.Component {
             <img src="/images/carousel01.jpg"/>
             <img src="/images/carousel05.jpg"/>
           </Carousel>*/}
-          <br />
 
-          - CAROUSEL incompatible with React 16.x  -
-        <br />
 
 
           <table width="100%" border="0">
