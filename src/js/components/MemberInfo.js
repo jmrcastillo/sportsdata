@@ -101,7 +101,7 @@ export default class MemberInfo extends React.Component {
                                            onChange={event=>{
                                              this.updateMemberInfo('password', event);
                                            }}
-                                           size="20" maxLength="12"/>
+                                           size="20" maxLength="30"/>
                                   </b>
                                 </div>
                               </td>
