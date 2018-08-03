@@ -47,9 +47,9 @@ export default class Picksmain extends React.Component {
       NodeGzip.gzip(`${data.member_id}|${data.password}`).then(compressed => {
      //   debugger;
         const login = URLSafeBase64.encode(compressed)
-        const url = `https://www.playbook.com/ecps/default/member_login.php?LOGIN=${login}`
+        const url = `https://www.ipsports.net/ecps/default/member_login.php?LOGIN=${login}`
         console.log ("** DEBUG** Register - login 64 ", url);
-     //   window.location.assign(url);
+        window.location.assign(url);
       })
 
     });
