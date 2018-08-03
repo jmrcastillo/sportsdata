@@ -5,9 +5,11 @@
 import React from "react";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
-import MemberInfo from "../components/MemberInfo";
 import PubSub from "pubsub-js";
 import Login from "../components/Login";
+import URLSafeBase64 from "urlsafe-base64";
+
+import NodeGzip from "node-gzip";
 
 export default class Picksmain extends React.Component {
 
@@ -37,13 +39,25 @@ export default class Picksmain extends React.Component {
 
 	componentWillMount() {
 
+
 	}
 	componentDidMount() {
+    this.subscribe_logged_in = this.pubsub.subscribe('logged-in', (message, data)=> {
 
+      NodeGzip.gzip(`${data.member_id}|${data.password}`).then(compressed => {
+        debugger;
+        const login = URLSafeBase64.encode(compressed)
+        const url = `https://www.playbook.com/ecps/default/member_login.php?LOGIN=${login}`
+        console.log ("** DEBUG** Register - login 64 ", url);
+     //   window.location.assign(url);
+      })
+
+    });
   }
 
 
 	componentWillUnmount() {
+    this.pubsub.unsubscribe(this.subscribe_logged_in);
 
   }
 
