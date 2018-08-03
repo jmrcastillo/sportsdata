@@ -45,7 +45,7 @@ export default class Picksmain extends React.Component {
     this.subscribe_logged_in = this.pubsub.subscribe('logged-in', (message, data)=> {
 
       NodeGzip.gzip(`${data.member_id}|${data.password}`).then(compressed => {
-        debugger;
+     //   debugger;
         const login = URLSafeBase64.encode(compressed)
         const url = `https://www.playbook.com/ecps/default/member_login.php?LOGIN=${login}`
         console.log ("** DEBUG** Register - login 64 ", url);
