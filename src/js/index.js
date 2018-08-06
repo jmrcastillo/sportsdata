@@ -8,8 +8,16 @@ import {AppProvider} from "./lib/ContextAPI";
 import  Consumer from "./lib/ContextAPI";
 
 import Picksmain from "./pages/Picksmain";
-import Register from "./pages/Register";
 import Cubemain from "./pages/Cubemain";
+
+import Register from "./pages/Register";
+import ScoresLines from "./pages/ScoresLines";
+import Publications from "./pages/Publications";
+import TrendsMatchups from "./pages/TrendsMatchups";
+
+import SteamAlerts from "./pages/SteamAlerts";
+import VideosPodcasts from "./pages/VideosPodcasts";
+import BettingTools from "./pages/BettingTools";
 
 
 
@@ -35,15 +43,24 @@ const Initializer = (props) => (
   </Consumer>
 )
 
+const NoNav = [
+  '/',
+  '/picks-mobile',
+  '/cube-main',
+  '/login-register',
+  '/scores-lines',
+  '/publications',
+  '/trends-matchups',
+  '/steam-alerts',
+  '/videos-podcasts',
+  '/betting-tools',
 
+]
 
 // Top, Footer helper components
 const Top = (props) => {
-  if (props.location.pathname == '/' ||
-    props.location.pathname == '/picks-mobile' ||
-    props.location.pathname == '/cube-main'
 
-  ) {
+  if (NoNav.includes(props.location.pathname)) {
     return ('')
   }
 
@@ -254,12 +271,7 @@ const Top = (props) => {
 
 const Footer = (props) => {
   //console.log ("FOOTER (path)", props.location.pathname);
-
-  if (props.location.pathname == '/' ||
-    props.location.pathname == '/picks-mobile' ||
-    props.location.pathname == '/cube-main'
-
-  ) {
+  if (NoNav.includes(props.location.pathname)) {
     return ('')
   }
 
@@ -421,8 +433,16 @@ class App extends Component {
             <Route path="/about" component={About} />
             <Route path="/picks" component={Picksmain} />
             <Route path="/picks-mobile" component={Picksmain} />
-            <Route path="/register" component={Register} />
             <Route path="/cube-main" component={Cubemain} />
+
+            <Route path="/login-register" component={Register} />
+            <Route path="/scores-lines" component={ScoresLines} />
+            <Route path="/publications" component={Publications} />
+            <Route path="/trends-matchups" component={TrendsMatchups} />
+            <Route path="/steam-alerts" component={SteamAlerts} />
+            <Route path="/videos-podcasts" component={VideosPodcasts} />
+            <Route path="/betting-tools" component={BettingTools} />
+
 
             <Route path="/member-center" component={MemberCenter} />
             <Route path="/university" component={University} />
