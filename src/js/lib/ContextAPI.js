@@ -3,7 +3,7 @@ import React, {Component, createContext} from "react";
 // Provider and Consumer are connected through their "parent" context
 const {Provider, Consumer} = createContext();
 
-import Playbook from "../lib/Playbook";
+//import Playbook from "../lib/Playbook";
 
 // Provider exported wrapped in an AppProvider
 class AppProvider extends Component {
@@ -15,13 +15,17 @@ class AppProvider extends Component {
     picks: [],
     // Start real data
     isMobile: false,
+    siteID: '0',
   }
 
+  // TODO:  Get rid of this..
   updateGlobalState() {
-    Playbook.setState(this.state);
+  //  Playbook.setState(this.state);
   }
   render() {
     //  console.log ("Provider: ", this.state.isMobile, this.props);
+    console.log ("Context API Rendering..", this.state);
+
     return (
       <Provider value={{
         state: this.state,
@@ -35,7 +39,10 @@ class AppProvider extends Component {
                       this.setState({picks: picks});
                   });
               }*/
-        setIsMobile: (isMobile) => this.setState({isMobile: isMobile}, this.updateGlobalState)
+        setIsMobile: (isMobile) => this.setState({isMobile: isMobile}, this.updateGlobalState),
+        setSiteID: (siteID) => this.setState({siteID: siteID}, this.updateGlobalState),
+
+
 
       }}>
         {this.props.children}

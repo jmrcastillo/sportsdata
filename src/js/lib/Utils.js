@@ -1,9 +1,14 @@
 import Money from "money-formatter";
-//import Playbook from "./Playbook";
-import Playbook from "../lib/Playbook";
+import Cookies from "universal-cookie";
 
 class Utils  {
 
+  constructor() {
+    this.cookies =  new Cookies();
+
+
+  }
+  // TODO:  try constructor for Cookies()
 /*	contains(target) {
 		for (i in this) {
 			if (this[i] === target) return true;
@@ -11,9 +16,9 @@ class Utils  {
 		return false;
 	}*/
 
-    applyPrepaidDiscount(price) {
+  applyPrepaidDiscount(price) {
         return Math.floor(0.7 * price);
-    }
+  }
 	isNumeric(n) {
 		return !isNaN(parseFloat(n)) && isFinite(n);
 	}
@@ -65,10 +70,26 @@ class Utils  {
 	getMemberTokenBalance(member) {
         return Money.format ('USD', parseInt(member.tokens_real) + parseInt(member.tokens_award) + parseInt(member.tokens_makeup));
     }
+
 	getSiteID() {
-		// For now site_id is either 0 or 11
-    return Playbook.state.isMobile ? '11' : '0'
+    let result = '0';
+    const id = this.cookies.get('site-id');
+    if (typeof (id) != 'undefined') {
+      result = id;
+    }
+    return result;
+    //return Playbook.state.isMobile ? '11' : '0'
 	}
+// TODO:  Design some kind of a global cookie object (or cookie manager)
+	// Presently does no stringification
+	saveCookie(name, value) {
+  //  console.log("Setting cookie ", name, value);
+    this.cookies.set(name, value, {path: "/"});
+
+  }
+  getCookie(name) {
+    return this.cookies.get(name);
+  }
 
 }
 export default (new Utils);

@@ -19,15 +19,24 @@ import SteamAlerts from "./pages/SteamAlerts";
 import VideosPodcasts from "./pages/VideosPodcasts";
 import BettingTools from "./pages/BettingTools";
 
-
+import Utils from "./lib/Utils";
 
 
 // Initializer stuff for app global context D. Ison 6-2018
 class BaseInitializer extends React.Component {
   componentDidMount() {
-    if (this.props.pathname === '/picks-mobile') {
-      this.props.context.setIsMobile(true);
+    console.log ("BaseInitializer..");
+
+    switch (this.props.pathname) {
+      case '/picks-mobile':
+      case '/cube-main':
+        Utils.saveCookie('site-id', '11');
+      break;
+      case '/picks':
+        Utils.saveCookie('site-id', '0');
+      break;
     }
+
   }
 
   render() {
@@ -37,8 +46,10 @@ class BaseInitializer extends React.Component {
 
 const Initializer = (props) => (
   <Consumer>
-    {context =>
-      <BaseInitializer context={context} pathname={props.location.pathname} />
+    {context => {
+      window.pbContext = context;
+      return  <BaseInitializer context={context} pathname={props.location.pathname}/>
+    }
     }
   </Consumer>
 )

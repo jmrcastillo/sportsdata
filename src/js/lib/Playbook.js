@@ -1,5 +1,6 @@
 
 // Experimental Global Object
+// De-activated 8-2018
 
 class Playbook  {
 

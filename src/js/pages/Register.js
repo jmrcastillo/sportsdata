@@ -10,6 +10,7 @@ import Login from "../components/Login";
 import URLSafeBase64 from "urlsafe-base64";
 
 import NodeGzip from "node-gzip";
+import Utils from "../lib/Utils";
 
 export default class Picksmain extends React.Component {
 
@@ -42,10 +43,11 @@ export default class Picksmain extends React.Component {
 
 	}
 	componentDidMount() {
+	  console.log("Register site-id is ",  Utils.getSiteID());
+
     this.subscribe_logged_in = this.pubsub.subscribe('logged-in', (message, data)=> {
 
       NodeGzip.gzip(`${data.member_id}|${data.password}`).then(compressed => {
-     //   debugger;
         const login = URLSafeBase64.encode(compressed)
         const url = `https://www.ipsports.net/ecps/default/member_login.php?LOGIN=${login}`
         console.log ("** DEBUG** Register - login 64 ", url);
