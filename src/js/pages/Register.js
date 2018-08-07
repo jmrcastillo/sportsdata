@@ -48,9 +48,10 @@ export default class Picksmain extends React.Component {
     this.subscribe_logged_in = this.pubsub.subscribe('logged-in', (message, data)=> {
 
       NodeGzip.gzip(`${data.member_id}|${data.password}`).then(compressed => {
+        const siteID = Utils.getSiteID();
         const login = URLSafeBase64.encode(compressed)
-        const url = `https://www.ipsports.net/ecps/default/member_login.php?LOGIN=${login}`
-        console.log ("** DEBUG** Register - login 64 ", url);
+        const url = `https://www.ipsports.net/ecps/default/member_login.php?LOGIN=${login}&SITE_ID=${siteID}`;
+        //console.log ("** DEBUG** Register - login 64 ", url);
         window.location.assign(url);
       })
 

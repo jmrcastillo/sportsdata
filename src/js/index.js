@@ -23,6 +23,7 @@ import Utils from "./lib/Utils";
 
 
 // Initializer stuff for app global context D. Ison 6-2018
+// Converted to cookie-based 8-2018
 class BaseInitializer extends React.Component {
   componentDidMount() {
     console.log ("BaseInitializer..");
@@ -47,7 +48,8 @@ class BaseInitializer extends React.Component {
 const Initializer = (props) => (
   <Consumer>
     {context => {
-      window.pbContext = context;
+
+     // window.pbContext = context;
       return  <BaseInitializer context={context} pathname={props.location.pathname}/>
     }
     }

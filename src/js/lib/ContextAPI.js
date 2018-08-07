@@ -18,7 +18,7 @@ class AppProvider extends Component {
     siteID: '0',
   }
 
-  // TODO:  Get rid of this..
+  // TODO:  Get rid of this.. was only done because react context api is not easily usable outside of render functions.
   updateGlobalState() {
   //  Playbook.setState(this.state);
   }

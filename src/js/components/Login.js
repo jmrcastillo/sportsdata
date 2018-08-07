@@ -5,17 +5,18 @@
 import React from "react";
 import PicksAPI from "../lib/PicksAPI";
 import Freeplay from "../components/Freeplay";
-import Cookies from "universal-cookie";
 import Modal from 'react-modal';
 import MemberInfo from "../components/MemberInfo";
-
+import Utils from "../lib/Utils";
 
 export default class Login extends React.Component {
 
   constructor(props) {
     super(props);
 
-    const memberIDCookie = new Cookies().get("pb-member");
+//    const memberIDCookie = new Cookies().get("pb-member");
+    const memberIDCookie = Utils.getCookie("pb-member");
+
 
     this.state = {
       record_id: typeof (memberIDCookie) === 'undefined' ? '' : memberIDCookie,
@@ -84,7 +85,9 @@ export default class Login extends React.Component {
           logged_in: true,
           member: result.member
         });
-        new Cookies().set("pb-member", result.member.record_id, {path: "/"});
+      //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
+        Utils.saveCookie("pb-member", result.member.record_id);
+
         if (publish) {
           this.props.pubsub.publish('logged-in', result.member);
         }

@@ -5,7 +5,6 @@
 import React from "react";
 import Money from "money-formatter";
 import Utils from "../lib/Utils";
-import Cookies from "universal-cookie";
 import PicksAPI from "../lib/PicksAPI";
 import CheckoutButton from "../components/CheckoutButton";
 import CCardInfo from "../components/CCardInfo";
@@ -23,8 +22,10 @@ export default class Cart extends React.Component {
             logged_in: this.props.loggedIn,
         }
         // Try re-load cart from cookies
-        const cookie =  new Cookies().get("pb-cart");
-        if (typeof (cookie) != 'undefined') {
+//        const cookie =  new Cookies().get("pb-cart");
+        const cookie =  Utils.getCookie("pb-cart");
+
+      if (typeof (cookie) != 'undefined') {
             const picks = cookie.split(',').map(pick=>{
                 const elements = pick.split('|');
                 return {pick_id: elements[0], isPAW: elements[1]}
@@ -129,8 +130,10 @@ export default class Cart extends React.Component {
 
     savePicksAsCookie(picks) {
         const cookiePicks = Utils.stringifyPicks(picks);
-        new Cookies().set("pb-cart", cookiePicks, {path: "/"});
-        this.props.pubsub.publish('selected-picks', cookiePicks);
+      //  new Cookies().set("pb-cart", cookiePicks, {path: "/"});
+        Utils.saveCookie("pb-cart", cookiePicks);
+
+      this.props.pubsub.publish('selected-picks', cookiePicks);
     }
 
     cartTotal(picks) {
