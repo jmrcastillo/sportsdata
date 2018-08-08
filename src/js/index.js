@@ -18,6 +18,8 @@ import TrendsMatchups from "./pages/TrendsMatchups";
 import SteamAlerts from "./pages/SteamAlerts";
 import VideosPodcasts from "./pages/VideosPodcasts";
 import BettingTools from "./pages/BettingTools";
+import CappersReportCard from "./pages/CappersReportCard";
+
 
 import Utils from "./lib/Utils";
 
@@ -26,7 +28,7 @@ import Utils from "./lib/Utils";
 // Converted to cookie-based 8-2018
 class BaseInitializer extends React.Component {
   componentDidMount() {
-    console.log ("BaseInitializer..");
+  //  console.log ("BaseInitializer..");
 
     switch (this.props.pathname) {
       case '/picks-mobile':
@@ -67,6 +69,7 @@ const NoNav = [
   '/steam-alerts',
   '/videos-podcasts',
   '/betting-tools',
+  '/cappers-report-card',
 
 ]
 
@@ -328,7 +331,7 @@ const Footer = (props) => {
 
 
 // Examples
-
+/*
 const About = ()=>(
   <div>
     <h1>ABOUT</h1>
@@ -337,6 +340,7 @@ const About = ()=>(
     <h3>Webpack build system 4.8.3.</h3>
   </div>
 )
+
 
 const University = ()=>(
   <div>
@@ -359,6 +363,7 @@ const MemberCenter = ()=>(
 
   </div>
 )
+*/
 
 
 
@@ -443,7 +448,6 @@ class App extends Component {
             <Route component={Top}/>
 
             <Route exact path="/" component={Holder} />
-            <Route path="/about" component={About} />
             <Route path="/picks" component={Picksmain} />
             <Route path="/picks-mobile" component={Picksmain} />
             <Route path="/cube-main" component={Cubemain} />
@@ -455,10 +459,8 @@ class App extends Component {
             <Route path="/steam-alerts" component={SteamAlerts} />
             <Route path="/videos-podcasts" component={VideosPodcasts} />
             <Route path="/betting-tools" component={BettingTools} />
+            <Route path="/cappers-report-card" component={CappersReportCard} />
 
-
-            <Route path="/member-center" component={MemberCenter} />
-            <Route path="/university" component={University} />
             <Route component={Footer}/>
 
 
