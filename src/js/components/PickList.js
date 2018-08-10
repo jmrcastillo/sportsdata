@@ -60,9 +60,12 @@ export default class PickList extends React.Component {
       // Mobile rendering support via Context API
       return (
         <Consumer>
-          {(context) => (
-            context.state.isMobile ? this.renderMobile() : this.renderNormal()
-          )}
+          {(context) => {
+              console.log ("Picklist...", context.state.isMobile);
+
+            return context.state.isMobile ? this.renderMobile() : this.renderNormal()
+          }
+          }
         </Consumer>
       )
     }
