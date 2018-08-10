@@ -34,6 +34,9 @@ class BaseInitializer extends React.Component {
       case '/picks-mobile':
       case '/cube-main':
         Utils.saveCookie('site-id', '11');
+        // TODO:  This is legacy support for using react context api as a global data resource, and doing it this way needs to be reviewed.
+        this.props.context.setIsMobile(true);
+
       break;
       case '/picks':
         Utils.saveCookie('site-id', '0');

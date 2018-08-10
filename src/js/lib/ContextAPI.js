@@ -23,8 +23,7 @@ class AppProvider extends Component {
   //  Playbook.setState(this.state);
   }
   render() {
-    //  console.log ("Provider: ", this.state.isMobile, this.props);
-    console.log ("Context API Rendering..", this.state);
+ //   console.log ("Context API Rendering..", this.state);
 
     return (
       <Provider value={{
