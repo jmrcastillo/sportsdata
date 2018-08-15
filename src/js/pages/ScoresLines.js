@@ -14,7 +14,7 @@ export default class ScoresLines extends React.Component {
   render() {
     return (
       <div>
-        <Iframe url="https://www.ipsports.net/ecps/cube-content/lines/lines.php?sport=nba&period=0"  width="100%"/>
+        <Iframe url="https://www.ipsports.net/ecps/cube-content/lines/lines.php?sport=nfl&period=0"  width="100%"/>
       </div>
     );
   }
