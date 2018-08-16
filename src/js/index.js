@@ -25,7 +25,7 @@ import Utils from "./lib/Utils";
 
 // Cube Nav Menu
 import InfinityMenu from "react-infinity-menu";
-import "react-infinity-menu/src/infinity-menu.css";
+//import "react-infinity-menu/src/infinity-menu.css";
 
 
 // Initializer stuff for app global context D. Ison 6-2018
@@ -332,28 +332,34 @@ const PicksFooter = (props) => {
 
 // Cube Top / Menu
    class CubeTop extends React.Component {
-     constructor() {
-       super();
+     constructor(props) {
+       super(props);
        this.state = {
          schema: [],
          functions: [
-           ()=>{this.props.router.push('/')},
-           ()=>{this.props.router.push('privacy-policy')},
-           ()=>{
-             window.location.assign("https://www.ipsports.net/ecps/default/member_login.php?SITE_ID=11")
-           },
-           ()=>{this.props.router.push('expert-picks')},
-           ()=>{this.props.router.push('publications')},
-           ()=>{this.props.router.push('scores-lines')},
-           ()=>{this.props.router.push('wagertalk')},
-           ()=>{this.props.router.push('betting-tools')},
-           ()=>{this.props.router.push('steam-alerts')},
+           ()=>{//console.log("Root property", this.props);
+            this.props.history.push('/cube-main')},
+
+           ()=>{this.props.history.push('/cube-main')},
+
+           ()=>{this.props.history.push('/picks-mobile')},
+           ()=>{this.props.history.push('/scores-lines')},
+           ()=>{this.props.history.push('/login-register')},
+           ()=>{this.props.history.push('/cappers-report-card')},
+           ()=>{this.props.history.push('/publications')},
+                      ()=>{
+                        window.location.assign("http://cube.statfox.com");
+                      },
+           ()=>{this.props.history.push('/steam-alerts')},
+           ()=>{this.props.history.push('/videos-podcasts')},
+           ()=>{this.props.history.push('/betting-tools')},
+
          ]
        };
+       this.props = props;
      }
 
      componentWillMount() {
-console.log("Cube menu will mount()");
        this.setState({
          schema:
            [
@@ -363,67 +369,78 @@ console.log("Cube menu will mount()");
                isOpen: false,
                children: [
                  {
-                   name: "Home",
+                   name: "Cube Home",
                    id: 1,
                    isOpen: false,
                    children: [],
                  },
+
                  {
-                   name: "Privacy Policy",
+                   name: "Expert Picks",
                    id: 2,
                    isOpen: false,
                    children: [],
-
                  },
+
                  {
-                   name: "Purchases",
+                   name: "Scores and Lines",
                    id: 3,
                    isOpen: false,
                    children: [],
 
                  },
                  {
-                   name: "Expert Picks",
+                   name: "Login / Register",
                    id: 4,
                    isOpen: false,
                    children: [],
 
                  },
                  {
-                   name: "Newsletters & Publications",
+                   name: "Handicapper's Report Card",
                    id: 5,
                    isOpen: false,
                    children: [],
 
                  },
                  {
-                   name: "Scores & Lines",
+                   name: "Newsletters & Publications",
                    id: 6,
                    isOpen: false,
                    children: [],
 
                  },
                  {
-                   name: "Videos & Podcasts",
+                   name: "Today's Matchups and Trends",
                    id: 7,
                    isOpen: false,
                    children: [],
 
                  },
                  {
-                   name: "Betting Tools",
+                   name: "Steam Alerts",
                    id: 8,
                    isOpen: false,
                    children: [],
 
                  },
                  {
-                   name: "Steam Alerts",
+                   name: "Videos & Podcasts",
                    id: 9,
                    isOpen: false,
                    children: [],
 
                  },
+
+
+                 {
+                   name: "Betting Tools",
+                   id: 10,
+                   isOpen: false,
+                   children: [],
+
+                 },
+
 
 
                ],
@@ -486,7 +503,7 @@ const Top = (props) => {
   }
 
   if (CubeNav.includes(props.location.pathname)) {
-    return <CubeTop/>
+    return <CubeTop {...props} />
   }
   return '';
 }

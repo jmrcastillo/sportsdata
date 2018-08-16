@@ -35,7 +35,7 @@ export default class Cubemain extends React.Component {
           <table width="100%" border="0">
             <tbody>
             <tr>
-                <td colspan="3"><div align="center"><img src="/images/carousel02.jpg" width="100%" /></div></td>
+                <td colSpan="3"><div align="center"><img src="/images/carousel02.jpg" width="100%" /></div></td>
             </tr>
             <tr>
               <td><div align="center"><a href="/picks-mobile"><img src="/images/nav_tiles/tile01.png" width="100%"/></a></div></td>
