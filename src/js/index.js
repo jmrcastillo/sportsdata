@@ -25,7 +25,6 @@ import Utils from "./lib/Utils";
 
 // Cube Nav Menu
 import InfinityMenu from "react-infinity-menu";
-//import "react-infinity-menu/src/infinity-menu.css";
 
 
 // Initializer stuff for app global context D. Ison 6-2018
@@ -331,129 +330,126 @@ const PicksFooter = (props) => {
 }
 
 // Cube Top / Menu
-   class CubeTop extends React.Component {
-     constructor(props) {
-       super(props);
-       this.state = {
-         schema: [],
-         functions: [
-           ()=>{//console.log("Root property", this.props);
-            this.props.history.push('/cube-main')},
-
-           ()=>{this.props.history.push('/cube-main')},
-
-           ()=>{this.props.history.push('/picks-mobile')},
-           ()=>{this.props.history.push('/scores-lines')},
-           ()=>{this.props.history.push('/login-register')},
-           ()=>{this.props.history.push('/cappers-report-card')},
-           ()=>{this.props.history.push('/publications')},
-                      ()=>{
-                        window.location.assign("http://cube.statfox.com");
-                      },
-           ()=>{this.props.history.push('/steam-alerts')},
-           ()=>{this.props.history.push('/videos-podcasts')},
-           ()=>{this.props.history.push('/betting-tools')},
-
-         ]
+    class CubeTop extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          schema: [],
+          functions: [
+            ()=>{this.props.history.push('/cube-main')},
+            ()=>{this.props.history.push('/cube-main')},
+            ()=>{this.props.history.push('/picks-mobile')},
+            ()=>{this.props.history.push('/scores-lines')},
+            ()=>{this.props.history.push('/login-register')},
+            ()=>{this.props.history.push('/cappers-report-card')},
+            ()=>{this.props.history.push('/publications')},
+            ()=>{
+            window.location.assign("http://cube.statfox.com");
+            },
+            ()=>{this.props.history.push('/steam-alerts')},
+            ()=>{this.props.history.push('/videos-podcasts')},
+            ()=>{this.props.history.push('/betting-tools')},
+          ]
        };
        this.props = props;
+
+
      }
 
      componentWillMount() {
        this.setState({
          schema:
-           [
+         [
+         {
+           name: "Playbook Cube",
+           id: 0,
+           isOpen: false,
+           children: [
              {
-               name: "Playbook Cube",
-               id: 0,
+               name: "Cube Home",
+               id: 1,
                isOpen: false,
-               children: [
-                 {
-                   name: "Cube Home",
-                   id: 1,
-                   isOpen: false,
-                   children: [],
-                 },
-
-                 {
-                   name: "Expert Picks",
-                   id: 2,
-                   isOpen: false,
-                   children: [],
-                 },
-
-                 {
-                   name: "Scores and Lines",
-                   id: 3,
-                   isOpen: false,
-                   children: [],
-
-                 },
-                 {
-                   name: "Login / Register",
-                   id: 4,
-                   isOpen: false,
-                   children: [],
-
-                 },
-                 {
-                   name: "Handicapper's Report Card",
-                   id: 5,
-                   isOpen: false,
-                   children: [],
-
-                 },
-                 {
-                   name: "Newsletters & Publications",
-                   id: 6,
-                   isOpen: false,
-                   children: [],
-
-                 },
-                 {
-                   name: "Today's Matchups and Trends",
-                   id: 7,
-                   isOpen: false,
-                   children: [],
-
-                 },
-                 {
-                   name: "Steam Alerts",
-                   id: 8,
-                   isOpen: false,
-                   children: [],
-
-                 },
-                 {
-                   name: "Videos & Podcasts",
-                   id: 9,
-                   isOpen: false,
-                   children: [],
-
-                 },
-
-
-                 {
-                   name: "Betting Tools",
-                   id: 10,
-                   isOpen: false,
-                   children: [],
-
-                 },
-
-
-
-               ],
+               children: [],
              },
 
-           ]
+             {
+               name: "Expert Picks",
+               id: 2,
+               isOpen: false,
+               children: [],
+             },
+
+             {
+               name: "Scores and Lines",
+               id: 3,
+               isOpen: false,
+               children: [],
+
+             },
+             {
+               name: "Login / Register",
+               id: 4,
+               isOpen: false,
+               children: [],
+
+             },
+             {
+               name: "Handicapper's Report Card",
+               id: 5,
+               isOpen: false,
+               children: [],
+
+             },
+             {
+               name: "Newsletters & Publications",
+               id: 6,
+               isOpen: false,
+               children: [],
+
+             },
+             {
+               name: "Today's Matchups and Trends",
+               id: 7,
+               isOpen: false,
+               children: [],
+
+             },
+             {
+               name: "Steam Alerts",
+               id: 8,
+               isOpen: false,
+               children: [],
+
+             },
+             {
+               name: "Videos & Podcasts",
+               id: 9,
+               isOpen: false,
+               children: [],
+
+             },
+
+             {
+               name: "Betting Tools",
+               id: 10,
+               isOpen: false,
+               children: [],
+
+             },
+
+             ],
+           },
+
+         ]
 
        });
 
 
      }
 
+    componentDidMount() {
 
+    }
 
 
 
@@ -462,16 +458,16 @@ const PicksFooter = (props) => {
          <InfinityMenu
            tree={this.state.schema}
            disableDefaultHeaderContent={true}
-           //	onNodeMouseClick={this.onNodeMouseClick.bind(this)}
+
            onNodeMouseClick={(event, schema, node, level, keyPath) => {
+
+             this.state.functions[node.id]();
+             if (node.id > 0) {
+               schema[0].isOpen = false;
+             }
              this.setState({
                schema: schema
              });
-
-//					console.log("Mouse click: ", node, level, keyPath);
-             //                   console.log("node.id is ", node.id);
-             this.state.functions[node.id]();
-
 
 
 
@@ -482,17 +478,6 @@ const PicksFooter = (props) => {
 
        );
      }
-
-
-
-
-/*  render() {
-    return (
-      <React.Fragment>
-        CUBE NAVIGATION MENU HERE
-      </React.Fragment>
-    )
-  }*/
 
 }
 
