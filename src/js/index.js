@@ -61,10 +61,13 @@ const Initializer = (props) => (
   </Consumer>
 )
 
-const NoNav = [
-  '/',
-  '/picks-mobile',
+const PicksNav = [
+  '/picks',
+]
+
+const CubeNav = [
   '/cube-main',
+  '/picks-mobile',
   '/login-register',
   '/scores-lines',
   '/publications',
@@ -73,15 +76,11 @@ const NoNav = [
   '/videos-podcasts',
   '/betting-tools',
   '/cappers-report-card',
-
 ]
 
-// Top, Footer helper components
-const Top = (props) => {
 
-  if (NoNav.includes(props.location.pathname)) {
-    return ('')
-  }
+// Picks Top, Footer
+const PicksTop = (props) => {
 
   return (
     <React.Fragment>
@@ -287,12 +286,7 @@ const Top = (props) => {
 }
 
 
-
-const Footer = (props) => {
-  //console.log ("FOOTER (path)", props.location.pathname);
-  if (NoNav.includes(props.location.pathname)) {
-    return ('')
-  }
+const PicksFooter = (props) => {
 
   return (
     <div id="footer">
@@ -329,6 +323,42 @@ const Footer = (props) => {
       </div>
     </div>
   )
+
+}
+
+// Cube Top
+const CubeTop = (props) => {
+
+  return (
+    <React.Fragment>
+
+      CUBE NAVIGATION MENU HERE
+    </React.Fragment>
+  )
+
+}
+
+// Displays contents, navigation, etc., according to values in PicksNav and CubeNav arrays
+const Top = (props) => {
+  if (PicksNav.includes(props.location.pathname)) {
+    return <PicksTop/>
+  }
+
+  if (CubeNav.includes(props.location.pathname)) {
+    return <CubeTop/>
+  }
+}
+
+
+
+
+
+const Footer = (props) => {
+  if (PicksNav.includes(props.location.pathname)) {
+    return <PicksFooter/>
+  }
+
+  return '';
 
 }
 
