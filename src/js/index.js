@@ -460,7 +460,6 @@ const PicksFooter = (props) => {
            disableDefaultHeaderContent={true}
 
            onNodeMouseClick={(event, schema, node, level, keyPath) => {
-
              this.state.functions[node.id]();
              if (node.id > 0) {
                schema[0].isOpen = false;
@@ -468,9 +467,6 @@ const PicksFooter = (props) => {
              this.setState({
                schema: schema
              });
-
-
-
            }}
            //	maxLeaves={2}
          />
