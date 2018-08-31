@@ -52,13 +52,15 @@ console.log ("url is " + url);
 
 	login(member_id, password, notificationManager) {
 
-        const failAlert = function(code) {
-            notificationManager.error('*** Login Failed ***', 'More Help', 120000, ()=>{
-                alert('Login with your email address and password, or Register a new account. Support line 1-800-643-4700.');
-            });
-        };
+    const failAlert = function(code) {
+        notificationManager.error('*** Login Failed ***', 'More Help', 120000, ()=>{
+            alert('Login with your email address and password, or Register a new account. Support line 1-800-643-4700.');
+        });
+    };
 
-		return $.getJSON(`https://www.playbook.com/picks-api1/login/${member_id}/${password}`).then(function(result) {
+    // For if special chars in password
+    const urlPassword = encodeURIComponent(password);
+    return $.getJSON(`https://www.playbook.com/picks-api1/login/${member_id}/${urlPassword}`).then(function(result) {
 		    if (! result.success) {
 		        failAlert('');
             }
