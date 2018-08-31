@@ -17,6 +17,7 @@ import PubSub from 'pubsub-js';
 import Moment from "moment";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import Consumer from "../lib/ContextAPI";
+import QueryString from "query-string";
 
 const MODES = {
     normal: {value: 0, name: "Normal", code: "N"},
@@ -132,58 +133,42 @@ export default class Picksmain extends React.Component {
 
 	loadPicks(self, firstLoad=false) {
 
-		//    var newPicks = [];
+    const params = QueryString.parse(this.props.location.search);
+    const ecapper_id = params.ECAPPER_ID ? params.ECAPPER_ID : '';
 
-// TODO:  Figure out ECAPPER_ID
-		const ecapper_id = '';
-/*
-        const ecapper_id = (this.props && this.props.router.location.query.ECAPPER_ID) ?
-            this.props.router.location.query.ECAPPER_ID : '';
-*/
+   // console.log("Picksmain loadPicks(): ecapper_id",  ecapper_id);
 
-  //      console.log("Picksmain params:",  ecapper_id);
+    PicksAPI.loadPicks(ecapper_id).done((picks) => {
 
-
-        PicksAPI.loadPicks(ecapper_id).done((picks) => {
-				/*            newPicks = picks.map(pick => {
-				 // Todo:  Any processing on load..
-				 return pick;
-				 });
-
-				 self.setState({picks:newPicks});*/
-
-				const freePicks = picks.filter(pick=>{
-					return parseInt(pick.price) === 0;
-				});
-				self.setState({freePicks: freePicks});
+      const freePicks = picks.filter(pick=>{
+        return parseInt(pick.price) === 0;
+      });
+      self.setState({freePicks: freePicks});
 
 
-				var paidPicks = picks.filter(pick=>{
-					return parseInt(pick.price) > 0;
-				});
+      var paidPicks = picks.filter(pick=>{
+        return parseInt(pick.price) > 0;
+      });
 
-				var allPicks = {};
-				SportsCodes.getSportsOrdered().forEach (sport=>{
-					allPicks[sport] = [];
-				});
+      var allPicks = {};
+      SportsCodes.getSportsOrdered().forEach (sport=>{
+        allPicks[sport] = [];
+      });
 
- const maxPicks = 23000;
+      const maxPicks = 23000;
 	 //			const maxPicks = 5;
 
 
-				paidPicks.forEach((pick, index)=>{
-					if (index < maxPicks) {
-			//			console.log("PICK ", pick.pick_id, pick.sport);
-                        allPicks[pick.sport].push(pick);
-                    }
-				});
+      paidPicks.forEach((pick, index)=>{
+        if (index < maxPicks) {
+          allPicks[pick.sport].push(pick);
+        }
+      });
 
-//console.log ("allPicks: ", allPicks);
 
-				self.setState({allPicks: allPicks});
+      self.setState({allPicks: allPicks});
 
-          }
-		);
+    });
 	}
 
 	featuredFreePick(self) {
