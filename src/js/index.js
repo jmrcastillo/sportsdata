@@ -550,11 +550,11 @@ class Person extends Component {
         <Consumer>
           {(context) => (
             <React.Fragment>
-              Dummy Content
+              Test Interface
               <p>Age: {context.state.age}</p>
               <p>Name: {context.state.name}</p>
               <button onClick={e =>{
-                console.log ("dummy value: ", context.dummy);
+              //  console.log ("dummy value: ", context.dummy);
                 context.growAYearOlder();
               }}>Add a Year</button>
             </React.Fragment>
