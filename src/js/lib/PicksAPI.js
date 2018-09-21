@@ -100,6 +100,13 @@ console.log ("url is " + url);
 
     // TODO  Pass in the fail function to display an error msg??
 	saveMember(member) {
+    // For if special chars in password
+/*
+      if (member.password) {
+        member.password = encodeURIComponent(member.password);
+      }
+*/
+
         return $.post("https://www.playbook.com/picks-api1/save-member",
             member,
            ).then(function(res) {
