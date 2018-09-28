@@ -50,8 +50,16 @@ export default class Picksmain extends React.Component {
       NodeGzip.gzip(`${data.member_id}|${data.password}`).then(compressed => {
         const siteID = Utils.getSiteID();
         const login = URLSafeBase64.encode(compressed)
-        const url = `https://www.ipsports.net/ecps/default/member_login.php?LOGIN=${login}&SITE_ID=${siteID}`;
-        //console.log ("** DEBUG** Register - login 64 ", url);
+//        const url = `https://www.ipsports.net/ecps/default/member_login.php?LOGIN=${login}&SITE_ID=${siteID}`;
+
+
+    //    console.log ("** Saving member id ", data.member_id);
+     //   debugger;
+
+        Utils.saveCookie("cube_member_id", data.member_id);
+
+        const url = `https://www.ipsports.net/ecps/default/member_login.php?SITE_ID=${siteID}`;
+
         window.location.assign(url);
       })
 
