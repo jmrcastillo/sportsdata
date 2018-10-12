@@ -14,7 +14,6 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
 
-//    const memberIDCookie = new Cookies().get("pb-member");
     const memberIDCookie = Utils.getCookie("pb-member");
 
 
@@ -85,7 +84,7 @@ export default class Login extends React.Component {
           logged_in: true,
           member: result.member
         });
-      //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
+
         Utils.saveCookie("pb-member", result.member.record_id);
 
         if (publish) {
