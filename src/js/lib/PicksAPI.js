@@ -7,6 +7,7 @@
 import $ from "jquery";
 import CryptoJS from "crypto-js";
 import URLSafeBase64 from "urlsafe-base64";
+import Utils from "./Utils";
 //var URLSafeBase64 = require('urlsafe-base64');
 
 // Following patterns from
@@ -60,8 +61,10 @@ console.log ("url is " + url);
 
     // For if special chars in password
     const urlPassword = encodeURIComponent(password);
-    return $.getJSON(`https://www.playbook.com/picks-api1/login/${member_id}/${urlPassword}`).then(function(result) {
-		    if (! result.success) {
+    const siteID = Utils.getCookie('site-id');
+    return $.getJSON(`https://www.playbook.com/picks-api1/login/${siteID}/${member_id}/${urlPassword}`).then(function(result) {
+
+        if (! result.success) {
 		        failAlert('');
             }
 			return result;
@@ -82,6 +85,20 @@ console.log ("url is " + url);
 
 		})
 	}
+
+  getLoginStatus() {
+    return this.loadServerTime().then((time) => {
+      var data = {time: time + 10};
+      var text = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping').toString();
+      text = URLSafeBase64.encode(text);
+      return $.getJSON(`https://www.playbook.com/picks-api1/get-login-status/${text}`).then(function(result) {
+        return result;
+      });
+
+    })
+  }
+
+
 
     loadPicksList(list) {
         return this.loadServerTime().then((time) => {

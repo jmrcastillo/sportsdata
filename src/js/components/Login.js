@@ -28,7 +28,9 @@ export default class Login extends React.Component {
     }
 
 
-    // Auto-login member on record_id
+
+
+      // Auto-login member on record_id
     if (this.state.logged_in) {
 
       PicksAPI.loginMember(this.state.record_id).done((result) => {
