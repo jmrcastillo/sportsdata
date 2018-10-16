@@ -91,10 +91,17 @@ console.log ("url is " + url);
       var data = {time: time + 10};
       var text = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping').toString();
       text = URLSafeBase64.encode(text);
-      return $.getJSON(`https://www.playbook.com/picks-api1/get-login-status/${text}`).then(function(result) {
-        return result;
-      });
-
+      // Experimental cookies
+      let result = {};
+      const siteID = Utils.getCookie('site-id');
+      const memberID = Utils.getCookie("pb-member");
+      if (memberID === 'undefined') {
+        result.status = false;
+      } else {
+        return $.getJSON(`https://www.playbook.com/picks-api1/get-login-status/${siteID}/${memberID}/${text}`).then(function (result) {
+          return result;
+        });
+      }
     })
   }
 

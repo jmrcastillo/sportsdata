@@ -31,8 +31,8 @@ export default class Login extends React.Component {
 
 
       // Auto-login member on record_id
-    if (this.state.logged_in) {
-
+/*    if (this.state.logged_in) {
+// Do this only if status returns true
       PicksAPI.loginMember(this.state.record_id).done((result) => {
 
         if (result.success) {
@@ -43,7 +43,30 @@ export default class Login extends React.Component {
           this.props.pubsub.publish('logged-out');
         }
       });
-    }
+    }*/
+
+    //  Go out and get the status for whatever's in pb-member
+    PicksAPI.getLoginStatus().then((result)=>{
+      console.log(result);
+
+      if (result.logged_in === 1) {
+        PicksAPI.loginMember(this.state.record_id).done((result) => {
+
+          if (result.success) {
+            this.state.member = result.member;
+            this.props.pubsub.publish('logged-in', result.member);
+          } else {
+            this.state.logged_in = false;
+            this.props.pubsub.publish('logged-out');
+          }
+        });
+      }
+
+
+
+
+    })
+
   }
 
   componentWillMount() {
