@@ -64,13 +64,17 @@ console.log ("url is " + url);
     const siteID = Utils.getCookie('site-id');
     return $.getJSON(`https://www.playbook.com/picks-api1/login/${siteID}/${member_id}/${urlPassword}`).then(function(result) {
 
-        if (! result.success) {
-		        failAlert('');
-            }
+      if (! result.success) {
+        failAlert('');
+      }
+/*     if (result.success) {
+        console.log ("API setting pb-member cookie", result.member.record_id);
+    //    Utils.setCookie("pb-member", result.member.record_id);
+      }*/
 			return result;
 		}).fail(()=> {
-            failAlert('');
-        });
+        failAlert('');
+      });
 	}
 
 
@@ -107,7 +111,28 @@ console.log ("url is " + url);
 
 
 
-    loadPicksList(list) {
+  logout(memberID) {
+    return this.loadServerTime().then((time) => {
+      var data = {time: time + 10};
+      var text = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping').toString();
+      text = URLSafeBase64.encode(text);
+      // Experimental cookies
+    //  let result = {};
+      const siteID = Utils.getCookie('site-id');
+
+        return $.getJSON(`https://www.playbook.com/picks-api1/logout/${siteID}/${memberID}/${text}`).then(function (result) {
+          return result;
+        });
+
+    })
+  }
+
+
+
+
+
+
+  loadPicksList(list) {
         return this.loadServerTime().then((time) => {
             var data = {time: time + 10};
             var text = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping').toString();

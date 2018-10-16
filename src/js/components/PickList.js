@@ -7,6 +7,8 @@ import Pick from "../components/Pick";
 import SportsCodes from "../lib/SportsCodes"
 import Consumer from "../lib/ContextAPI";
 import Cookies from "universal-cookie";
+import PicksAPI from "../lib/PicksAPI";
+import Utils from "../lib/Utils";
 
 
 export default class PickList extends React.Component {
@@ -104,6 +106,8 @@ export default class PickList extends React.Component {
                                           return;
                                         }
                                         alert("Logging out now.. ");
+                                        const memberID = Utils.getCookie("pb-member");
+                                        PicksAPI.logout(memberID);
                                         new Cookies().remove('pb-member');
                                         this.props.pubsub.publish('logged-out');
                                       }}
@@ -300,6 +304,8 @@ export default class PickList extends React.Component {
                                         }
                                         //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
                                         alert("Logging out now.. ");
+                                        const memberID = Utils.getCookie("pb-member");
+                                        PicksAPI.logout(memberID);
                                         new Cookies().remove('pb-member');
                                         this.props.pubsub.publish('logged-out');
                                       }}

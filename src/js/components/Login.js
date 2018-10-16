@@ -8,6 +8,7 @@ import Freeplay from "../components/Freeplay";
 import Modal from 'react-modal';
 import MemberInfo from "../components/MemberInfo";
 import Utils from "../lib/Utils";
+import Cookies from "universal-cookie";
 
 export default class Login extends React.Component {
 
@@ -158,9 +159,21 @@ export default class Login extends React.Component {
         <div>
           <span className="trebuchet14" style={{textAlign: 'center'}}>
               Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span
+              onClick={(event) => {
+                if (! this.state.logged_in) {
+                  return;
+                }
+             //   alert("Logging out now.. ");
+                const memberID = Utils.getCookie("pb-member");
+                PicksAPI.logout(memberID);
+                new Cookies().remove('pb-member');
+                this.props.pubsub.publish('logged-out');
+              }}
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            >Logout</span>
+
 
             {/*    <span onClick={(event)=>{
                   console.log ("Trying freeplay", this.props.freePick.body);
