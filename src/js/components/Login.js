@@ -48,7 +48,7 @@ export default class Login extends React.Component {
 
     //  Go out and get the status for whatever's in pb-member
     PicksAPI.getLoginStatus().then((result)=>{
-      console.log(result);
+      let loggedIn = false;
 
       if (result.logged_in === 1) {
         PicksAPI.loginMember(this.state.record_id).done((result) => {
@@ -56,14 +56,15 @@ export default class Login extends React.Component {
           if (result.success) {
             this.state.member = result.member;
             this.props.pubsub.publish('logged-in', result.member);
-          } else {
-            this.state.logged_in = false;
-            this.props.pubsub.publish('logged-out');
+            loggedIn = true;
           }
         });
       }
 
-
+      if (! loggedIn) {
+          this.state.logged_in = false;
+          this.props.pubsub.publish('logged-out');
+      }
 
 
     })

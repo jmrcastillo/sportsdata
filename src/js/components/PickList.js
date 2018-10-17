@@ -106,8 +106,8 @@ export default class PickList extends React.Component {
                                           return;
                                         }
                                         alert("Logging out now.. ");
-                                        const memberID = Utils.getCookie("pb-member");
-                                        PicksAPI.logout(memberID);
+                                        const recordID = Utils.getCookie("pb-member");
+                                        PicksAPI.logout(recordID);
                                         new Cookies().remove('pb-member');
                                         this.props.pubsub.publish('logged-out');
                                       }}
@@ -304,8 +304,8 @@ export default class PickList extends React.Component {
                                         }
                                         //  new Cookies().set("pb-member", result.member.record_id, {path: "/"});
                                         alert("Logging out now.. ");
-                                        const memberID = Utils.getCookie("pb-member");
-                                        PicksAPI.logout(memberID);
+                                        const recordID = Utils.getCookie("pb-member");
+                                        PicksAPI.logout(recordID);
                                         new Cookies().remove('pb-member');
                                         this.props.pubsub.publish('logged-out');
                                       }}

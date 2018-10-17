@@ -98,11 +98,11 @@ console.log ("url is " + url);
       // Experimental cookies
       let result = {};
       const siteID = Utils.getCookie('site-id');
-      const memberID = Utils.getCookie("pb-member");
-      if (memberID === 'undefined') {
+      const recordID = Utils.getCookie("pb-member");
+      if (typeof(recordID) === 'undefined') {
         result.status = false;
       } else {
-        return $.getJSON(`https://www.playbook.com/picks-api1/get-login-status/${siteID}/${memberID}/${text}`).then(function (result) {
+        return $.getJSON(`https://www.playbook.com/picks-api1/get-login-status/${siteID}/${recordID}/${text}`).then(function (result) {
           return result;
         });
       }
@@ -111,7 +111,7 @@ console.log ("url is " + url);
 
 
 
-  logout(memberID) {
+  logout(recordID) {
     return this.loadServerTime().then((time) => {
       var data = {time: time + 10};
       var text = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping').toString();
@@ -120,7 +120,7 @@ console.log ("url is " + url);
     //  let result = {};
       const siteID = Utils.getCookie('site-id');
 
-        return $.getJSON(`https://www.playbook.com/picks-api1/logout/${siteID}/${memberID}/${text}`).then(function (result) {
+        return $.getJSON(`https://www.playbook.com/picks-api1/logout/${siteID}/${recordID}/${text}`).then(function (result) {
           return result;
         });
 
