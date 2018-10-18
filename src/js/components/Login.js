@@ -50,6 +50,7 @@ export default class Login extends React.Component {
     PicksAPI.getLoginStatus().then((result)=>{
       let loggedIn = false;
 
+
       if (result.logged_in === 1) {
         PicksAPI.loginMember(this.state.record_id).done((result) => {
 
@@ -166,10 +167,7 @@ export default class Login extends React.Component {
                 if (! this.state.logged_in) {
                   return;
                 }
-             //   alert("Logging out now.. ");
-                const memberID = Utils.getCookie("pb-member");
-                PicksAPI.logout(memberID);
-                new Cookies().remove('pb-member');
+                PicksAPI.logout(Utils.getCookie("pb-member"));
                 this.props.pubsub.publish('logged-out');
               }}
 

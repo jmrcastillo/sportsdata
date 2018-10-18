@@ -101,6 +101,8 @@ console.log ("url is " + url);
       const recordID = Utils.getCookie("pb-member");
       if (typeof(recordID) === 'undefined') {
         result.status = false;
+      //  console.log ("Returning FALSE");
+        return result;
       } else {
         return $.getJSON(`https://www.playbook.com/picks-api1/get-login-status/${siteID}/${recordID}/${text}`).then(function (result) {
           return result;
