@@ -148,8 +148,12 @@ export default class PickList extends React.Component {
                                     {/*  Picks grouped by sport */}
                                     {SportsCodes.getSportsOrdered().map((sport, i) => {
 
+                                      const requestedSport = Utils.getCookie('selected-sport');
+                                    //  console.log ("requestedSport and sport", requestedSport, sport);
+
                                       const picks = this.props.allPicks[sport];
-                                      if (typeof (picks) != 'undefined' && picks.length > 0) {
+                                      if (typeof (picks) != 'undefined' && picks.length > 0 &&
+                                        (requestedSport == 'ALL' || parseInt(sport) === parseInt(requestedSport))) {
 
                                         return (
                                           <div key={sport}>
