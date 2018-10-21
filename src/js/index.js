@@ -45,7 +45,10 @@ class BaseInitializer extends React.Component {
         Utils.saveCookie('site-id', '0');
       break;
     }
-
+    // Initialization for selected-sport dropdown in PickList
+    if (typeof (Utils.getCookie('selected-sport')) === 'undefined') {
+      Utils.saveCookie('selected-sport', 'ALL')
+    }
   }
 
   render() {

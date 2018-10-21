@@ -9,6 +9,7 @@ import Consumer from "../lib/ContextAPI";
 import Cookies from "universal-cookie";
 import PicksAPI from "../lib/PicksAPI";
 import Utils from "../lib/Utils";
+import SelectSport from "../components/SelectSport";
 
 
 export default class PickList extends React.Component {
@@ -17,9 +18,6 @@ export default class PickList extends React.Component {
         super(props);
 
         this.state = {
-/*            picks: [],
-            allPicks: [],  // PROPS
-            freePicks: [],*/
             logged_in: false,
         };
 
@@ -117,12 +115,9 @@ export default class PickList extends React.Component {
                                       <tr>
                                         <td align="right">
                                           <h4>
-                                            <select name="sport" size="1" onChange={e=>{console.log("CHANGED", e);}}>
-                                              <option value="">All Sports</option>
-
-                                              <option value="../football/issue12/newsletter.pdf">Issue 12</option>
-
-                                            </select>
+                                           <SelectSport
+                                            allPicks={this.props.allPicks}
+                                           />
 
                                           </h4>
                                         </td>
