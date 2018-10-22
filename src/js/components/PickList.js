@@ -18,7 +18,8 @@ export default class PickList extends React.Component {
         super(props);
 
         this.state = {
-            logged_in: false,
+          logged_in: false,
+          selected_sport:  Utils.getCookie('selected-sport'),
         };
 
     }
@@ -35,15 +36,16 @@ export default class PickList extends React.Component {
         });
         this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
             this.setState({logged_in: false});
-
         });
-
+      this.subscribe_selected_sport = this.props.pubsub.subscribe('selected-sport', (message, data)=> {
+        this.setState({selected_sport: data});
+      });
     }
 
     componentWillUnmount() {
-        this.props.pubsub.unsubscribe(this.subscribe_logged_in);
-        this.props.pubsub.unsubscribe(this.subscribe_logged_in);
-
+      this.props.pubsub.unsubscribe(this.subscribe_logged_in);
+      this.props.pubsub.unsubscribe(this.subscribe_logged_in);
+      this.props.pubsub.unsubscribe(this.subscribe_selected_sport);
     }
 
     // Returns inCart: Whether the pick is in selectedPicks isPAW: Whether that pick is added as PAW or PPD
@@ -115,11 +117,13 @@ export default class PickList extends React.Component {
                                       <tr>
                                         <td align="right">
                                           <h4>
-                                           <SelectSport
-                                            allPicks={this.props.allPicks}
-                                           />
-
+                                            {/* TODO:  Why was select in this H4? */}
                                           </h4>
+                                          <SelectSport
+                                            allPicks={this.props.allPicks}
+                                            pubsub={this.props.pubsub}
+                                          />
+
                                         </td>
                                       </tr>
                                       </tbody>
@@ -148,12 +152,9 @@ export default class PickList extends React.Component {
                                     {/*  Picks grouped by sport */}
                                     {SportsCodes.getSportsOrdered().map((sport, i) => {
 
-                                      const requestedSport = Utils.getCookie('selected-sport');
-                                    //  console.log ("requestedSport and sport", requestedSport, sport);
-
                                       const picks = this.props.allPicks[sport];
                                       if (typeof (picks) != 'undefined' && picks.length > 0 &&
-                                        (requestedSport == 'ALL' || parseInt(sport) === parseInt(requestedSport))) {
+                                        (this.state.selected_sport == 'ALL' || parseInt(sport) === parseInt(this.state.selected_sport))) {
 
                                         return (
                                           <div key={sport}>
@@ -288,35 +289,12 @@ export default class PickList extends React.Component {
                                         <tr>
                                           <td align="right">
                                             <h4>
-                                              {/*                                                                                <script type="text/javascript" language="javascript"><!--
-                                                                                         function leapto(form)  {
-                                                                                         var myindex=form.dest.selectedIndex
-                                                                                         window.location=(form.dest.options[myindex].value);
-
-                                                                                         }
-                                                                                         // -->
-                                                                                         </script>
-                                                                                         [Script for dropdown]*/}
-
-                                              {/* <form name="myform1" id="myform1">
-                                                                                         <select name="dest" size="1" onchange="leapto(document.myform1);">
-                                                                                         <option value="">Sort By</option>
-
-                                                                                         <option value="../football/issue12/newsletter.pdf">Issue 12</option>
-                                                                                         <option value="../football/issue11/newsletter.pdf">Issue 11</option>
-                                                                                         <option value="../football/issue10/newsletter.pdf">Issue 10</option>
-                                                                                         <option value="../football/issue9/newsletter.pdf">Issue 9</option>
-                                                                                         <option value="../football/issue8/newsletter.pdf">Issue 8</option>
-                                                                                         <option value="../football/issue7/newsletter.pdf">Issue 7</option>
-                                                                                         <option value="../football/issue6/newsletter.pdf">Issue 6</option>
-                                                                                         <option value="../football/issue5/newsletter.pdf">Issue 5</option>
-                                                                                         <option value="../football/issue4/newsletter.pdf">Issue 4</option>
-                                                                                         <option value="../football/issue3/newsletter.pdf">Issue 3</option>
-                                                                                         <option value="../football/issue2/newsletter.pdf">Issue 2</option>
-                                                                                         <option value="../football/pre/newsletter.pdf">Preseason</option>
-                                                                                         </select>
-                                                                                         </form>*/}
+                                              {/* TODO:  Why was select in this H4? */}
                                             </h4>
+                                            <SelectSport
+                                              allPicks={this.props.allPicks}
+                                              pubsub={this.props.pubsub}
+                                            />
                                           </td>
                                         </tr>
                                         </tbody>
@@ -346,7 +324,9 @@ export default class PickList extends React.Component {
                                       {SportsCodes.getSportsOrdered().map((sport, i) => {
 
                                         const picks = this.props.allPicks[sport];
-                                        if (typeof (picks) != 'undefined' && picks.length > 0) {
+                                        if (typeof (picks) != 'undefined' && picks.length > 0 &&
+                                          (this.state.selected_sport == 'ALL' || parseInt(sport) === parseInt(this.state.selected_sport))) {
+
 
                                           return (
                                             <div key={sport}>

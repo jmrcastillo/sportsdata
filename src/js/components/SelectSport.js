@@ -57,8 +57,9 @@ export default class SelectSport extends React.Component {
       <Select
         value={selectedOption}
         onChange={selection=>{
-          console.log(`Option selected:`, selection);
           Utils.saveCookie('selected-sport', selection.value);
+          this.props.pubsub.publish('selected-sport', selection.value);
+
         }}
         options={this.state.options}
       />

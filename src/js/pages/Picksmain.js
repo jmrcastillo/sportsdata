@@ -133,9 +133,13 @@ export default class Picksmain extends React.Component {
 
 	loadPicks(self, firstLoad=false) {
 
-    const params = QueryString.parse(this.props.location.search);
-    const ecapper_id = params.ECAPPER_ID ? params.ECAPPER_ID : '';
+	  let ecapper_id = '';
 
+	  if (self.props.location) {
+      const params = QueryString.parse(self.props.location.search);
+      ecapper_id = params.ECAPPER_ID ? params.ECAPPER_ID : '';
+
+    }
    // console.log("Picksmain loadPicks(): ecapper_id",  ecapper_id);
 
     PicksAPI.loadPicks(ecapper_id).done((picks) => {
