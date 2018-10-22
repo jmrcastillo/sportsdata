@@ -28,15 +28,13 @@ export default class PickList extends React.Component {
     }
     componentDidMount() {
 
-
         // Messaging pubsub
-        this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data)=> {
-            this.setState({logged_in: true});
-
-        });
-        this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
-            this.setState({logged_in: false});
-        });
+      this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data)=> {
+          this.setState({logged_in: true});
+      });
+      this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
+          this.setState({logged_in: false});
+      });
       this.subscribe_selected_sport = this.props.pubsub.subscribe('selected-sport', (message, data)=> {
         this.setState({selected_sport: data});
       });

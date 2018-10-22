@@ -11,10 +11,8 @@ export default class SelectSport extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      avalableSports: [],
       options: [],
     }
-
   }
   componentWillMount() {
 
@@ -32,30 +30,24 @@ export default class SelectSport extends React.Component {
       return (typeof (picks) != 'undefined' && picks.length > 0);
     });
 
-
+    // Build dropdown options from availableSports
     let options = [{value: 'ALL', label: "ALL Sports"}];
     availableSports.forEach(e=>{
       const option = {value: e, label: SportsCodes.getText(e)};
       options.push(option);
     })
 
-
-
-
-    this.setState({availableSports: availableSports, options: options});
-
- //   console.log ("GOt available", availableSports);
-
-    }
+    this.setState({options: options});
+  }
 
 
   render() {
 
-  const selectedOption = 'ALL';
+  //  console.log ("Render selected-sport is", Utils.getCookie('selected-sport'));
     return (
 
       <Select
-        value={selectedOption}
+        value={Utils.getCookie('selected-sport')}
         onChange={selection=>{
           Utils.saveCookie('selected-sport', selection.value);
           this.props.pubsub.publish('selected-sport', selection.value);
