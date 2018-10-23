@@ -13,6 +13,26 @@ export default class SelectSport extends React.Component {
     this.state = {
       options: [],
     }
+    this.selectStyle  = {
+/*      option: (base, state) => ({
+        ...base,
+        borderBottom: '1px dotted pink',
+        color: state.isFullscreen ? 'red' : 'blue',
+        padding: 20,
+      }),*/
+      control: () => ({
+        // none of react-selects styles are passed to <View />
+        width: 100,
+      }),
+/*      singleValue: (base, state) => {
+        const opacity = state.isDisabled ? 0.5 : 1;
+        const transition = 'opacity 300ms';
+
+        return { ...base, opacity, transition };
+      }*/
+    }
+
+
   }
   componentWillMount() {
 
@@ -51,8 +71,9 @@ export default class SelectSport extends React.Component {
         onChange={selection=>{
           Utils.saveCookie('selected-sport', selection.value);
           this.props.pubsub.publish('selected-sport', selection.value);
-
         }}
+        styles={this.selectStyle}
+
         options={this.state.options}
       />
 
