@@ -109,7 +109,7 @@ export default class PickList extends React.Component {
                                   </h4>
                                   <h5>Red Hot Experts Best Bets</h5></td></tr>
                                 <tr>
-                                  <td height="40"  style={{textAlign: 'center', backgroundColor: '#000000' }}>
+                                  <td height="40"  style={{textAlign: 'right', backgroundColor: '#000000' }}>
                                     <table width="90%" border="0" cellSpacing="0" cellPadding="0">
                                       <tbody>
                                       <tr>
@@ -117,10 +117,10 @@ export default class PickList extends React.Component {
                                           <h4>
                                             {/* TODO:  Why was select in this H4? */}
                                           </h4>
-                                          <SelectSport
+                                          <div style={{textAlign: 'right' }}><SelectSport
                                             allPicks={this.props.allPicks}
                                             pubsub={this.props.pubsub}
-                                          />
+                                          /></div>
 
                                         </td>
                                       </tr>

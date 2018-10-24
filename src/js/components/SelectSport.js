@@ -54,7 +54,11 @@ export default class SelectSport extends React.Component {
           this.props.pubsub.publish('selected-sport', selection.value);
         }}
         className={'reactSelect'}
+        placeholder={
+            'Select Sport'
+        }
         options={this.state.options}
+
       />
 
     );
