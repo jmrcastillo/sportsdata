@@ -53,7 +53,7 @@ export default class Login extends React.Component {
 
       if (result.logged_in === 1) {
         PicksAPI.loginMember(this.state.record_id).done((result) => {
-
+console.log ("Logging in member ", result);
           if (result.success) {
             this.state.member = result.member;
             this.props.pubsub.publish('logged-in', result.member);
