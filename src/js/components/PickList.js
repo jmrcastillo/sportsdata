@@ -10,6 +10,8 @@ import Cookies from "universal-cookie";
 import PicksAPI from "../lib/PicksAPI";
 import Utils from "../lib/Utils";
 import SelectSport from "../components/SelectSport";
+import SelectEcapper from "../components/SelectEcapper";
+
 
 
 export default class PickList extends React.Component {
@@ -117,10 +119,16 @@ export default class PickList extends React.Component {
                                           <h4>
                                             {/* TODO:  Why was select in this H4? */}
                                           </h4>
-                                          <div style={{textAlign: 'right' }}><SelectSport
+                                          <div style={{textAlign: 'right' }}>
+                                            <SelectEcapper
+                                              allPicks={this.props.allPicks}
+                                              pubsub={this.props.pubsub}
+                                            />
+                                          <SelectSport
                                             allPicks={this.props.allPicks}
                                             pubsub={this.props.pubsub}
-                                          /></div>
+                                          />
+                                          </div>
 
                                         </td>
                                       </tr>
