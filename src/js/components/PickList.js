@@ -145,36 +145,16 @@ export default class PickList extends React.Component {
                                   <td style={{ backgroundColor: '#990000' }}>
 
 
-                                    {/*      {
-                                                                         //const a = [0,1];
-                                                                         [0].forEach((element, i)=>{
-                                                                         console.log ("Faking a pick with <TestComponent>", i);
-                                                                         <div key={i}>
-                                                                         <TestComponent
-                                                                         />
-                                                                         </div>
-
-                                                                         })
-                                                                         }*/}
-
-
-
-
                                     {/*  Picks grouped by sport */}
                                     {SportsCodes.getSportsOrdered().map((sport, i) => {
 
                                       const picks = this.props.allPicks[sport];
+                                      const hasPicksForSport = (this.state.selected_sport === 'ALL' || parseInt(sport) === parseInt(this.state.selected_sport));
+                                      const hasPicksFromEcapper = ((this.state.selected_ecapper === 'ALL') || (typeof picks.find(e => {
+                                        return e.ecapper_id === this.state.selected_ecapper;
+                                      })) !== 'undefined');
 
-                                      const  hasPicksForSport = (this.state.selected_sport == 'ALL' || parseInt(sport) === parseInt(this.state.selected_sport));
-
-                                      //  Filter for ecapper_id if not ALL
-                                      let hasPicksFromEcapper = true;
-                                      if (this.state.selected_ecapper != 'ALL') {
-                                        hasPicksFromEcapper = ! picks.find(e => {
-                                          return e.ecapper_id === pick.ecapper_id;
-                                        });
-                                      }
-
+//console.log ("Sport ", sport, "hasPicksFromEcapper", hasPicksFromEcapper);
 
                                       if (typeof (picks) != 'undefined' && picks.length > 0 && hasPicksFromEcapper && hasPicksForSport) {
 
@@ -199,7 +179,9 @@ export default class PickList extends React.Component {
                                               <tbody>
                                               {/*  List of picks for this sport */}
 
-                                              {picks.map((pick, i) => {
+                                              {picks.filter(e=>{
+                                                return (this.state.selected_ecapper === 'ALL' || (e.ecapper_id === this.state.selected_ecapper));
+                                              }).map((pick, i) => {
 
                                                 const {inCart, isPAW} = this.pickIsInCart(pick);
                                                 return (
