@@ -35,16 +35,13 @@ export default class SelectEcapper extends React.Component {
 
     // Scan allPicks, build list of ecappers
     let ecappers = [];
-    let ecapper_ids = [];
 
     for (var key in nextProps.allPicks) {
       nextProps.allPicks[key].forEach(pick=>{
-        if (! ecapper_ids.includes(pick.ecapper_id)) {
-/*          if (ecappers.find(ec=>{
-            return e.ecapper_id ===
-          }) === 'undefined') {*/
-          ecapper_ids.push(pick.ecapper_id);
-          ecappers.push({ecapper_id: pick.ecapper_id, ecapper_name: pick.ecapper_name});
+        if (! ecappers.find(e=>{
+          return e.ecapper_id === pick.ecapper_id;
+        })) {
+        ecappers.push({ecapper_id: pick.ecapper_id, ecapper_name: pick.ecapper_name});
         }
       })
     };
