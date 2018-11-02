@@ -21,7 +21,8 @@ export default class PickList extends React.Component {
 
         this.state = {
           logged_in: false,
-          selected_sport:  Utils.getCookie('selected-sport'),
+          selected_sport:  'ALL',
+          selected_ecapper: 'ALL',
         };
 
     }
@@ -40,12 +41,16 @@ export default class PickList extends React.Component {
       this.subscribe_selected_sport = this.props.pubsub.subscribe('selected-sport', (message, data)=> {
         this.setState({selected_sport: data});
       });
+      this.subscribe_selected_ecapper = this.props.pubsub.subscribe('selected-ecapper', (message, data)=> {
+        this.setState({selected_ecapper: data});
+      });
     }
 
     componentWillUnmount() {
       this.props.pubsub.unsubscribe(this.subscribe_logged_in);
       this.props.pubsub.unsubscribe(this.subscribe_logged_in);
       this.props.pubsub.unsubscribe(this.subscribe_selected_sport);
+      this.props.pubsub.unsubscribe(this.subscribe_selected_ecapper);
     }
 
     // Returns inCart: Whether the pick is in selectedPicks isPAW: Whether that pick is added as PAW or PPD
@@ -159,8 +164,19 @@ export default class PickList extends React.Component {
                                     {SportsCodes.getSportsOrdered().map((sport, i) => {
 
                                       const picks = this.props.allPicks[sport];
-                                      if (typeof (picks) != 'undefined' && picks.length > 0 &&
-                                        (this.state.selected_sport == 'ALL' || parseInt(sport) === parseInt(this.state.selected_sport))) {
+
+                                      const  hasPicksForSport = (this.state.selected_sport == 'ALL' || parseInt(sport) === parseInt(this.state.selected_sport));
+
+                                      //  Filter for ecapper_id if not ALL
+                                      let hasPicksFromEcapper = true;
+                                      if (this.state.selected_ecapper != 'ALL') {
+                                        hasPicksFromEcapper = ! picks.find(e => {
+                                          return e.ecapper_id === pick.ecapper_id;
+                                        });
+                                      }
+
+
+                                      if (typeof (picks) != 'undefined' && picks.length > 0 && hasPicksFromEcapper && hasPicksForSport) {
 
                                         return (
                                           <div key={sport}>

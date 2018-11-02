@@ -46,7 +46,17 @@ export default class SelectEcapper extends React.Component {
       })
     };
 
-    // Todo: sort, larry first?
+    ecappers.sort((a, b)=>{
+      const first = 'larry';
+      if (b.ecapper_id === first) {
+        return 1;
+      }
+      if (a.ecapper_id === first) {
+        return -1;
+      }
+      return (a.ecapper_name > b.ecapper_name);
+
+    })
 
 
     // Build dropdown options from ecappers

@@ -43,12 +43,16 @@ export default class SelectSport extends React.Component {
 
 
   render() {
+    let selected = Utils.getCookie('selected-ecapper');
+    if (! selected || selected.length == 0) {
+      selected = 'ALL';
+    }
 
   //  console.log ("Render selected-sport is", Utils.getCookie('selected-sport'));
     return (
 
       <Select
-        value={Utils.getCookie('selected-sport')}
+        value={selected}
         onChange={selection=>{
           Utils.saveCookie('selected-sport', selection.value);
           this.props.pubsub.publish('selected-sport', selection.value);
