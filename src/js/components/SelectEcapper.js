@@ -11,6 +11,7 @@ export default class SelectEcapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selected: 'ALL',
       options: [],
     }
 
@@ -19,9 +20,9 @@ export default class SelectEcapper extends React.Component {
 
   }
   componentDidMount() {
-    this.subscribe_selected_sport = this.props.pubsub.subscribe('selected_sport', (message, data)=> {
-      // this.setState({logged_in: true});
-      // Reset our menu and ecappers = ALL
+    this.subscribe_selected_sport = this.props.pubsub.subscribe('selected-sport', (message, data)=> {
+      this.rebuildOptions(this.props);
+      this.setState({selected: 'ALL'});
     });
   }
 
@@ -30,18 +31,18 @@ export default class SelectEcapper extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.rebuildOptions(nextProps);
+  }
 
-//  TODO:  This should become a function to call from listener above
-
-    // Scan allPicks, build list of ecappers
+  rebuildOptions(props) {
     let ecappers = [];
 
-    for (var key in nextProps.allPicks) {
-      nextProps.allPicks[key].forEach(pick=>{
+    for (var key in props.allPicks) {
+      props.allPicks[key].forEach(pick=>{
         if (! ecappers.find(e=>{
           return e.ecapper_id === pick.ecapper_id;
         })) {
-        ecappers.push({ecapper_id: pick.ecapper_id, ecapper_name: pick.ecapper_name});
+          ecappers.push({ecapper_id: pick.ecapper_id, ecapper_name: pick.ecapper_name});
         }
       })
     };
@@ -66,24 +67,20 @@ export default class SelectEcapper extends React.Component {
       options.push(option);
     })
 
+  //  console.log ("SelectEcapper Setting Options", options);
+
     this.setState({options: options});
+
   }
 
-
   render() {
-
-    //  console.log ("Render selected-sport is", Utils.getCookie('selected-sport'));
-    let selected = Utils.getCookie('selected-ecapper');
-    if (! selected || selected.length == 0) {
-      selected = 'ALL';
-    }
 
     return (
 
       <Select
-        value={selected}
+        value={this.state.selected}
         onChange={selection=>{
-          Utils.saveCookie('selected-ecapper', selection.value);
+          this.setState ({selected: selection.value});
           this.props.pubsub.publish('selected-ecapper', selection.value);
         }}
         className={'reactSelect'}

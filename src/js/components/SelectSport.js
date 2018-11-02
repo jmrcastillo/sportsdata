@@ -11,6 +11,7 @@ export default class SelectSport extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selected: 'ALL',
       options: [],
     }
 
@@ -19,15 +20,25 @@ export default class SelectSport extends React.Component {
 
   }
   componentDidMount() {
-
+    this.subscribe_selected_ecapper = this.props.pubsub.subscribe('selected-ecapper', (message, data)=> {
+      this.rebuildOptions(this.props);
+      this.setState({selected: 'ALL'});
+  //    this.props.pubsub.publish('selected-sport', 'ALL');
+    });
   }
 
+  componentWillUnmount() {
+    this.props.pubsub.unsubscribe(this.subscribe_selected_ecapper);
+  }
 
   componentWillReceiveProps(nextProps) {
+    this.rebuildOptions(nextProps);
+  }
 
+  rebuildOptions(props) {
     // Scan Sports Codes, see which ones have length > 0
     const availableSports = SportsCodes.getSportsOrdered().filter((sport, i) => {
-      const picks = nextProps.allPicks[sport];
+      const picks = props.allPicks[sport];
       return (typeof (picks) != 'undefined' && picks.length > 0);
     });
 
@@ -37,24 +48,20 @@ export default class SelectSport extends React.Component {
       const option = {value: e, label: SportsCodes.getText(e)};
       options.push(option);
     })
+  //  console.log ("SelectSport Setting Options", options);
 
     this.setState({options: options});
   }
 
-
   render() {
-    let selected = Utils.getCookie('selected-ecapper');
-    if (! selected || selected.length == 0) {
-      selected = 'ALL';
-    }
 
-  //  console.log ("Render selected-sport is", Utils.getCookie('selected-sport'));
-    return (
+
+     return (
 
       <Select
-        value={selected}
+        value={this.state.selected}
         onChange={selection=>{
-          Utils.saveCookie('selected-sport', selection.value);
+          this.setState ({selected: selection.value});
           this.props.pubsub.publish('selected-sport', selection.value);
         }}
         className={'reactSelect'}
