@@ -127,8 +127,9 @@ export default class PickList extends React.Component {
                                           <div style={{textAlign: 'right' }}>
                                             <SelectEcapper
                                               allPicks={this.props.allPicks}
+
                                               pubsub={this.props.pubsub}
-                                            />
+                                            />&nbsp;&nbsp;
                                           <SelectSport
                                             allPicks={this.props.allPicks}
                                             pubsub={this.props.pubsub}
