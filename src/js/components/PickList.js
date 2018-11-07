@@ -296,6 +296,11 @@ export default class PickList extends React.Component {
                                             <h4>
                                               {/* TODO:  Why was select in this H4? */}
                                             </h4>
+                                            <SelectEcapper
+                                              allPicks={this.props.allPicks}
+
+                                              pubsub={this.props.pubsub}
+                                            />&nbsp;&nbsp;
                                             <SelectSport
                                               allPicks={this.props.allPicks}
                                               pubsub={this.props.pubsub}
