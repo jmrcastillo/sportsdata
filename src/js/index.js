@@ -27,6 +27,7 @@ import Utils from "./lib/Utils";
 import InfinityMenu from "react-infinity-menu";
 
 
+
 // Initializer stuff for app global context D. Ison 6-2018
 // Converted to cookie-based 8-2018
 class BaseInitializer extends React.Component {
@@ -553,7 +554,7 @@ class Person extends Component {
         <Consumer>
           {(context) => (
             <React.Fragment>
-              Test Interface
+              Test Interface React v. {React.version}
               <p>Score: {context.state.age}</p>
               <p>Name: {context.state.name}</p>
               <button onClick={e =>{
