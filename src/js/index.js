@@ -35,18 +35,19 @@ import InfinityMenu from "react-infinity-menu";
 
 class BaseInitializer extends React.Component {
   componentDidMount() {
-    console.log ("BaseInitializer..", this.props);
+  //  console.log ("BaseInitializer..", this.props);
 
     switch (this.props.pathname) {
       case '/picks-mobile':
       case '/cube-main':
-        console.log ("Site ID 11, ismobile true", this.props);
+    //    console.log ("Site ID 11, ismobile true", this.props);
 
         Utils.saveCookie('site-id', '11');
+        this.props.context.setSiteID('11');
         this.props.context.setIsMobile(true);
-
       break;
       case '/picks':
+        this.props.context.setSiteID('0');
         Utils.saveCookie('site-id', '0');
       break;
     }

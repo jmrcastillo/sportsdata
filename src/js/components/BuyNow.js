@@ -5,7 +5,7 @@
 import React from "react";
 import Login from "../components/Login";
 import Modal from 'react-modal';
-import GlobalContext from "../lib/GlobalContext";
+import {GlobalContext} from "../lib/GlobalContext";
 
 export default class BuyNow extends React.Component {
   static contextType = GlobalContext;

@@ -13,6 +13,7 @@ class GlobalProvider extends Component {
     isMobile: false,
     siteID: '0',
 
+// Test values
     name: 'Playbook test',
     age: 10,
     cool: true,
@@ -29,15 +30,9 @@ class GlobalProvider extends Component {
       <GlobalContext.Provider value={{
         state: this.state,
 
-   //     setIsMobile: (isMobile) => this.setState({isMobile: isMobile}, this.updateGlobalState),
-     //   setSiteID: (siteID) => this.setState({siteID: siteID}, this.updateGlobalState),
-
         setIsMobile: (isMobile) => this.setState({isMobile: isMobile}),
-        getIsMobile: () => this.state.isMobile,
-
+        setSiteID: (siteID) => this.setState({siteID: siteID}),
         setIsLoggingIn: (isLoggingIn) => this.setState({isLoggingIn: isLoggingIn}),
-        getIsLoggingIn: () => this.state.isLoggingIn,
-
 
       }}>
       {this.props.children}
@@ -54,3 +49,8 @@ class GlobalProvider extends Component {
 
 export  {GlobalContext, GlobalProvider};
 
+
+//     setIsMobile: (isMobile) => this.setState({isMobile: isMobile}, this.updateGlobalState),
+//   setSiteID: (siteID) => this.setState({siteID: siteID}, this.updateGlobalState),
+// getIsMobile: () => this.state.isMobile,
+//         getIsLoggingIn: () => this.state.isLoggingIn,
