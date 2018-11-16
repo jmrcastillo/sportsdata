@@ -5,9 +5,10 @@
 import React from "react";
 import Money from "money-formatter";
 import Utils from "../lib/Utils";
-import Consumer from "../lib/ContextAPI";
+import {GlobalContext} from "../lib/GlobalContext";
 
 export default class TokensOnlyPurchase extends React.Component {
+  static contextType = GlobalContext;
 
     constructor(props) {
         super(props);
@@ -33,11 +34,9 @@ export default class TokensOnlyPurchase extends React.Component {
 
       // Mobile rendering support via Context API
       return (
-        <Consumer>
-          {(context) => (
-            context.state.isMobile ? this.renderMobile() : this.renderNormal()
-          )}
-        </Consumer>
+
+            this.context.state.isMobile ? this.renderMobile() : this.renderNormal()
+
       )
     }
 

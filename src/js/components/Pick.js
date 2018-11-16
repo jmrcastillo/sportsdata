@@ -13,7 +13,6 @@ import SportsCodes from "../lib/SportsCodes"
 import BuyNow from "../components/BuyNow";
 import Utils from "../lib/Utils";
 
-import Consumer from "../lib/ContextAPI";
 
 
 

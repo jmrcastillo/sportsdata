@@ -5,11 +5,12 @@
 import React from "react";
 import Utils from "../lib/Utils";
 import PurchaseButton  from "../components/PurchaseButton";
-import Consumer from "../lib/ContextAPI";
+import {GlobalContext} from "../lib/GlobalContext";
 
 
 
 export default class CCardInfo extends React.Component {
+  static contextType = GlobalContext;
 
     constructor(props) {
         super(props);
@@ -83,15 +84,11 @@ export default class CCardInfo extends React.Component {
 
       // Mobile rendering support via Context API
       return (
-        <Consumer>
-          {(context) => (
-            context.state.isMobile ?
+            this.context.state.isMobile ?
               this.renderMobile(
                 purchaseButtonOpacity) :
               this.renderNormal(
                 purchaseButtonOpacity)
-          )}
-        </Consumer>
       );
 
 
