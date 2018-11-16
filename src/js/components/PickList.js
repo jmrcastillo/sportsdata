@@ -3,10 +3,10 @@
  */
 
 import React from "react";
+import {GlobalContext} from "../lib/GlobalContext";
+
 import Pick from "../components/Pick";
 import SportsCodes from "../lib/SportsCodes"
-import Consumer from "../lib/ContextAPI";
-import Cookies from "universal-cookie";
 import PicksAPI from "../lib/PicksAPI";
 import Utils from "../lib/Utils";
 import SelectSport from "../components/SelectSport";
@@ -15,8 +15,9 @@ import SelectEcapper from "../components/SelectEcapper";
 
 
 export default class PickList extends React.Component {
+  static contextType = GlobalContext;
 
-    constructor(props) {
+  constructor(props) {
         super(props);
 
         this.state = {
@@ -65,13 +66,9 @@ export default class PickList extends React.Component {
     render() {
 
       // Mobile rendering support via Context API
-      return (
-        <Consumer>
-          {(context) => (
-            context.state.isMobile ? this.renderMobile() : this.renderNormal()
-          )}
-        </Consumer>
-      )
+      return this.context.state.isMobile ? this.renderMobile() : this.renderNormal()
+
+
     }
 
 

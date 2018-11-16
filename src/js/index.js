@@ -3,9 +3,10 @@ import React, {Component, Fragment} from 'react'
 import {render} from 'react-dom'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import {AppProvider} from "./lib/ContextAPI";
-// TODO:  Can be combined into line above?
-import  Consumer from "./lib/ContextAPI";
+import {GlobalContext, GlobalProvider} from "./lib/GlobalContext";
+ const { Provider, Consumer } = GlobalContext;
+
+
 
 import Picksmain from "./pages/Picksmain";
 import Cubemain from "./pages/Cubemain";
@@ -29,15 +30,19 @@ import InfinityMenu from "react-infinity-menu";
 
 // Initializer stuff for app global context D. Ison 6-2018
 // Converted to cookie-based 8-2018
+// TODO:  Can we convert it all back to GlobalContext?
+// TODO:  Cart - original isLoggedIn check we started out with
+
 class BaseInitializer extends React.Component {
   componentDidMount() {
-  //  console.log ("BaseInitializer..");
+    console.log ("BaseInitializer..", this.props);
 
     switch (this.props.pathname) {
       case '/picks-mobile':
       case '/cube-main':
+        console.log ("Site ID 11, ismobile true", this.props);
+
         Utils.saveCookie('site-id', '11');
-        // TODO:  This is legacy support for using react context api as a global data resource, and doing it this way needs to be reviewed.
         this.props.context.setIsMobile(true);
 
       break;
@@ -45,10 +50,10 @@ class BaseInitializer extends React.Component {
         Utils.saveCookie('site-id', '0');
       break;
     }
-    // Initialization for selected-sport dropdown in PickList
+/*    // Initialization for selected-sport dropdown in PickList
     if (typeof (Utils.getCookie('selected-sport')) === 'undefined') {
       Utils.saveCookie('selected-sport', 'ALL')
-    }
+    }*/
   }
 
   render() {
@@ -506,40 +511,7 @@ const Footer = (props) => {
 }
 
 
-// Examples
-/*
-const About = ()=>(
-  <div>
-    <h1>ABOUT</h1>
 
-    <h3>React App version {React.version} Running..</h3>
-    <h3>Webpack build system 4.8.3.</h3>
-  </div>
-)
-
-
-const University = ()=>(
-  <div>
-    <h1>Playbook University</h1>
-
-  </div>
-)
-
-const Picks = ()=>(
-  <div>
-    <h2>Current Picks App should go here (PicksMain)</h2>
-
-  </div>
-)
-
-
-const MemberCenter = ()=>(
-  <div>
-    <h2>Placeholder for future Member Center / Member Profile / Preferences UI</h2>
-
-  </div>
-)
-*/
 
 
 
@@ -581,49 +553,39 @@ const Holder = (props) => {
 }
 
 
+const Holder2 = (props) => {
+
+
+  return (
+    <React.Fragment>
+      Picks App Root
+    </React.Fragment>
+  )
+}
+
+
+
 class App extends Component {
 
-  render() {
+  static contextType = GlobalContext;
+
+
+    render() {
 
     return (
-      <AppProvider>
+      <GlobalProvider>
         <Router>
           <React.Fragment>
-            {/*          <p>Supported App URLS:<br />
-            <Link to="/">Home</Link>
-            <br />
-            <Link to="/about">About</Link>
-            <br />
-            <Link to="/picks">Picks</Link>
-            <br />
-            <Link to="/member-center">Member Center</Link>
-            <br />
-
-            <Link to="/test">Test</Link>
-
-            <br />
-            <Link to="/university">University</Link>
-          </p>*/}
 
 
-            {/* <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/topics">Topics</Link>
-              </li>
-            </ul>*/}
 
             <Route component={Initializer}/>
 
 
+
             <Route component={Top}/>
 
-            <Route exact path="/" component={Holder} />
+            <Route exact path="/" component={Holder2} />
             <Route path="/picks" component={Picksmain} />
             <Route path="/picks-mobile" component={Picksmain} />
             <Route path="/cube-main" component={Cubemain} />
@@ -642,7 +604,7 @@ class App extends Component {
 
           </React.Fragment>
         </Router>
-      </AppProvider>
+      </GlobalProvider>
     );
   }
 }
@@ -652,6 +614,29 @@ render(
   document.getElementById('picksapp')
 
 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*const App = () => {
     return <div>
@@ -676,39 +661,37 @@ https://tylermcginnis.com/react-router-cannot-get-url-refresh/
 
 
 
+// Examples
+/*
+const About = ()=>(
+  <div>
+    <h1>ABOUT</h1>
 
-// Global (Context) Provider
-/*class AppProvider extends Component {
+    <h3>React App version {React.version} Running..</h3>
+    <h3>Webpack build system 4.8.3.</h3>
+  </div>
+)
 
-  state = {
-    name: 'Playbook test',
-    age: 10,
-    cool: true,
-    picks: [],
-    // Start real data
-    isMobile: false,
-  }
 
-  render() {
-  //  console.log ("Provider: ", this.state.isMobile, this.props);
-    return (
-      <AppContext.Provider value={{
-        state: this.state,
-        growAYearOlder: () => this.setState({
-          age: this.state.age + 1
-        }),
-        dummy: 100,
-        /!*      loadPicks: ()=> {
-                  console.log("Picks loaded");
-                  PicksAPI.loadPicks().done((picks) => {
-                      this.setState({picks: picks});
-                  });
-              }*!/
-        setIsMobile: (isMobile) => this.setState({isMobile: isMobile})
+const University = ()=>(
+  <div>
+    <h1>Playbook University</h1>
 
-      }}>
-      {this.props.children}
-      </AppContext.Provider>
-    )
-  }
-}*/
+  </div>
+)
+
+const Picks = ()=>(
+  <div>
+    <h2>Current Picks App should go here (PicksMain)</h2>
+
+  </div>
+)
+
+
+const MemberCenter = ()=>(
+  <div>
+    <h2>Placeholder for future Member Center / Member Profile / Preferences UI</h2>
+
+  </div>
+)
+*/

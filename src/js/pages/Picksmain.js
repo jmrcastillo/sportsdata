@@ -16,7 +16,8 @@ import PurchasedPicks from "../components/PurchasedPicks";
 import PubSub from 'pubsub-js';
 import Moment from "moment";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
-import Consumer from "../lib/ContextAPI";
+import {GlobalContext} from "../lib/GlobalContext";
+
 import QueryString from "query-string";
 
 const MODES = {
@@ -25,7 +26,10 @@ const MODES = {
     showPicks: {value: 2, name: "Show Picks", code: "S"},
 };
 
+
+
 export default class Picksmain extends React.Component {
+  static contextType = GlobalContext;
 
 	constructor() {
 		super();
@@ -229,14 +233,17 @@ console.log("** sendPurchase: ", purchaseData);
             member={this.state.member}
 		/>
 
+/*
+    if (! this.context) {
+      console.log ("Picksmain No context ", this);
+      return '';
+    }
+*/
+
+
     // Mobile rendering support via Context API
-    return (
-      <Consumer>
-      {(context) => (
-        context.state.isMobile ? this.renderMobile(cart) : this.renderNormal(cart)
-      )}
-      </Consumer>
-    )
+//console.log ("Picksmain.. ", this);
+    return this.context.state.isMobile ? this.renderMobile(cart) : this.renderNormal(cart)
 
 	}
 

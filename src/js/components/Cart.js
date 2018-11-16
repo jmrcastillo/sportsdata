@@ -9,10 +9,11 @@ import PicksAPI from "../lib/PicksAPI";
 import CheckoutButton from "../components/CheckoutButton";
 import CCardInfo from "../components/CCardInfo";
 import TokensInfo from "../components/TokensInfo";
-import Consumer from "../lib/ContextAPI";
+import GlobalContext from "../lib/GlobalContext";
 
 
 export default class Cart extends React.Component {
+  static contextType = GlobalContext;
 
     constructor(props) {
         super(props);
@@ -91,6 +92,13 @@ export default class Cart extends React.Component {
             this.setState({logged_in: true});
         });
         this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
+/*
+          if (this.context.state.isLoggingIn) {
+            console.log ("CART got logged-out  but NOT deleting cart");
+            return;
+          }
+*/
+
           console.log ("CART logged-out deleting cart");
             this.setState({
                 logged_in: false,
@@ -176,9 +184,8 @@ export default class Cart extends React.Component {
 
       // Mobile rendering support via Context API
       return (
-        <Consumer>
-          {(context) => (
-            context.state.isMobile ?
+
+            this.context.state.isMobile ?
               this.renderMobile(
                 context,
                 itemsTitle,
@@ -194,8 +201,6 @@ export default class Cart extends React.Component {
                 cartStyle,
                 cartStyleCheckout
               )
-          )}
-        </Consumer>
       );
     }
 

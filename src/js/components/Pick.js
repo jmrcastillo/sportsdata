@@ -5,6 +5,7 @@
 import React from "react";
 import Money from "money-formatter";
 import CheckoutButton from "../components/CheckoutButton";
+import {GlobalContext} from "../lib/GlobalContext";
 
 // Temporarily disabled for pick expiration soon notices
 import Moment from "moment";
@@ -17,6 +18,7 @@ import Consumer from "../lib/ContextAPI";
 
 
 export default class Pick extends React.Component {
+  static contextType = GlobalContext;
 
     constructor(props) {
         super(props);
@@ -64,31 +66,26 @@ export default class Pick extends React.Component {
 
       // Mobile rendering support via Context API
       return (
-        <Consumer>
-          {(context) => (
-            context.state.isMobile ?
+
+            this.context.state.isMobile ?
               this.renderMobile(
-                context,
                 sportBoxStyle,
                 pickBoxStyle,
                 expireStyle,
                 expireIcon,
                 expiresIn) :
               this.renderNormal(
-                context,
                 sportBoxStyle,
                 pickBoxStyle,
                 expireStyle,
                 expireIcon,
                 expiresIn
               )
-          )}
-        </Consumer>
+
       );
     }
 
-    renderNormal(context,
-                  sportBoxStyle,
+    renderNormal(sportBoxStyle,
                   pickBoxStyle,
                   expireStyle,
                   expireIcon,
@@ -216,7 +213,7 @@ export default class Pick extends React.Component {
               <tbody>
               <tr>
                 <td style={pickBoxStyle} className="trebuchet16">
-                  {(this.props.inCart && context.state.isMobile)  ?
+                  {(this.props.inCart && this.context.state.isMobile)  ?
                     <React.Fragment>
                       <CheckoutButton
                         type="CC"
@@ -271,8 +268,7 @@ export default class Pick extends React.Component {
 
 
 
-  renderMobile(context,
-               sportBoxStyle,
+  renderMobile(sportBoxStyle,
                pickBoxStyle,
                expireStyle,
                expireIcon,
@@ -400,7 +396,7 @@ export default class Pick extends React.Component {
               <tbody>
               <tr>
                 <td style={pickBoxStyle} className="trebuchet16">
-                  {(this.props.inCart && context.state.isMobile)  ?
+                  {(this.props.inCart && this.context.state.isMobile)  ?
                     <React.Fragment>
                       <CheckoutButton
                         type="CC"

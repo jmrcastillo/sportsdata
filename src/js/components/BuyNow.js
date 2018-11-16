@@ -5,10 +5,10 @@
 import React from "react";
 import Login from "../components/Login";
 import Modal from 'react-modal';
-
+import GlobalContext from "../lib/GlobalContext";
 
 export default class BuyNow extends React.Component {
-
+  static contextType = GlobalContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -59,7 +59,11 @@ export default class BuyNow extends React.Component {
   }
 
   doClose() {
-    //      console.log ("Buynow doing Close()");
+        console.log ("Buynow doing Close(), setting IsLoggingIn false..");
+
+    this.context.setIsLoggingIn(false);
+
+
     this.props.pubsub.publish('empty-cart');
     this.setState({modalIsOpen: false});
   }
@@ -76,6 +80,7 @@ export default class BuyNow extends React.Component {
       });
     };
     const onClickLoggedOut = (event) => {
+      this.context.setIsLoggingIn(true);
       this.setState({modalIsOpen: true});
       this.props.pubsub.publish('add-pick', {
         pick:
