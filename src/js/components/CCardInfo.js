@@ -5,11 +5,12 @@
 import React from "react";
 import Utils from "../lib/Utils";
 import PurchaseButton  from "../components/PurchaseButton";
-import Consumer from "../lib/ContextAPI";
+import {GlobalContext} from "../lib/GlobalContext";
 
 
 
 export default class CCardInfo extends React.Component {
+  static contextType = GlobalContext;
 
     constructor(props) {
         super(props);
@@ -83,15 +84,11 @@ export default class CCardInfo extends React.Component {
 
       // Mobile rendering support via Context API
       return (
-        <Consumer>
-          {(context) => (
-            context.state.isMobile ?
+            this.context.state.isMobile ?
               this.renderMobile(
                 purchaseButtonOpacity) :
               this.renderNormal(
                 purchaseButtonOpacity)
-          )}
-        </Consumer>
       );
 
 
@@ -113,7 +110,7 @@ export default class CCardInfo extends React.Component {
 
             <tr>
               <td height="32" style={{textAlign: 'right', backgroundcolor: 'White'}}><span className="trebuchet14">Card Number:</span>&nbsp;</td>
-              <td style={{textAlign: 'left', backgroundcolor: 'White'}}><label for="CC_NUMBER"></label>
+              <td style={{textAlign: 'left', backgroundcolor: 'White'}}><label htmlFor="CC_NUMBER"></label>
                 <input name="CC_NUMBER"
                        onKeyDown={event=>{
                          if (event.ctrlKey || event.shiftKey || event.keyCode === 8 || event.keyCode === 46) {
@@ -170,7 +167,7 @@ export default class CCardInfo extends React.Component {
                       <div>
                         <div>
                                             <span className="trebuchet14">Your Credit Card will be charged $
-                                                <label for="CCARD_TOTAL"></label>
+                                                <label htmlFor="CCARD_TOTAL"></label>
                                               {/*
                                                 <input name="CCARD_TOTAL" type="text" id="CCARD_TOTAL" defaultValue={total} size="6" disabled/>
 */}
@@ -236,7 +233,7 @@ export default class CCardInfo extends React.Component {
 
           <tr>
             <td height="32" style={{textAlign: 'right', backgroundcolor: 'White'}}><span className="trebuchet14">Card Number:</span>&nbsp;</td>
-            <td style={{textAlign: 'left', backgroundcolor: 'White'}}><label for="CC_NUMBER"></label>
+            <td style={{textAlign: 'left', backgroundcolor: 'White'}}><label htmlFor="CC_NUMBER"></label>
               <input name="CC_NUMBER"
                      onKeyDown={event=>{
                        if (event.ctrlKey || event.shiftKey || event.keyCode === 8 || event.keyCode === 46) {
@@ -293,7 +290,7 @@ export default class CCardInfo extends React.Component {
                     <div>
                       <div>
                                             <span className="trebuchet14">Your Credit Card will be charged $
-                                                <label for="CCARD_TOTAL"></label>
+                                                <label htmlFor="CCARD_TOTAL"></label>
                                               {/*
                                                 <input name="CCARD_TOTAL" type="text" id="CCARD_TOTAL" defaultValue={total} size="6" disabled/>
 */}
