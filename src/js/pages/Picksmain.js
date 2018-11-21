@@ -20,6 +20,7 @@ import {GlobalContext} from "../lib/GlobalContext";
 
 import QueryString from "query-string";
 
+
 const MODES = {
     normal: {value: 0, name: "Normal", code: "N"},
     checkout: {value: 1, name: "Checkout", code: "C"},
@@ -206,8 +207,10 @@ export default class Picksmain extends React.Component {
         purchaseData.selectedPicks = this.state.selectedPicks;
         purchaseData.isTestMode = this.state.isTestMode;
         purchaseData.siteID = Utils.getSiteID();
+        purchaseData.cartID = Utils.fakeGuid();
 
-console.log("** sendPurchase: ", purchaseData);
+
+      console.log("** sendPurchase: ", purchaseData);
 
 
         PicksAPI.purchaseCCard(purchaseData).done((result) => {
