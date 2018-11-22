@@ -41,6 +41,7 @@ export default class TokensOnlyPurchase extends React.Component {
     }
 
   renderNormal() {
+
     return (
       <div align="center">
 
@@ -69,8 +70,9 @@ export default class TokensOnlyPurchase extends React.Component {
           <tr>
             <td colSpan="2" style={{textAlign: 'center' }}>
               <form name="form1" method="post" action=""><span className="trebuchet14">Total Amount of Tokens deducted from your available balance for this purchase:</span>
-                <span className="trebuchet14"><input name="token_quantity" type="text" id="token_quantity"
-                                                     value={Utils.getTokensApplied(this.props.tokens)} size="5" maxLength="5"  readOnly
+                <span className="trebuchet14">
+                  <input name="token_quantity" type="text" id="token_quantity"
+                   value={Utils.getTokensApplied(this.props.tokens)} size="5" maxLength="5"  readOnly
                 /></span>
                 <input type="hidden" name="IS_TOKENS_PURCHASE"  id="IS_TOKENS_PURCHASE" value="YES"/>
                 <br />

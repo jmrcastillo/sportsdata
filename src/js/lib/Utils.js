@@ -65,7 +65,7 @@ class Utils  {
        return Money.format ('USD', parseInt(tokens.realTokens) + parseInt(tokens.awardTokens) + parseInt(tokens.makeupTokens));
 	}
 	getTokensApplied(tokens) {
-        return parseInt(tokens.realTokensApplied) + parseInt(tokens.awardTokensApplied)  + parseInt(tokens.makeupTokensApplied)
+      return parseInt(tokens.realTokensApplied) + parseInt(tokens.awardTokensApplied)  + parseInt(tokens.makeupTokensApplied)
     }
 	getMemberTokenBalance(member) {
         return Money.format ('USD', parseInt(member.tokens_real) + parseInt(member.tokens_award) + parseInt(member.tokens_makeup));

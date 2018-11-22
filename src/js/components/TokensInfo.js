@@ -15,8 +15,12 @@ export default class TokensInfo extends React.Component {
         this.state = {
             isChargeAuthorized: false,
             tokens: {realTokensApplied: 0,
-                awardTokensApplied: 0,
-                realTokensNeeded: 0
+              awardTokensApplied: 0,
+              makeupTokensApplied: 0,
+              realTokensNeeded: 0,
+              realTokens: 0,
+              awardTokens: 0,
+              makeupTokens: 0,
             },
         }
     }
