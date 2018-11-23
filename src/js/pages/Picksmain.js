@@ -207,7 +207,7 @@ export default class Picksmain extends React.Component {
         purchaseData.selectedPicks = this.state.selectedPicks;
         purchaseData.isTestMode = this.state.isTestMode;
         purchaseData.siteID = Utils.getSiteID();
-        purchaseData.cartID = Utils.fakeGuid();
+//        purchaseData.cartID = Utils.fakeGuid();
 
 
       console.log("** sendPurchase: ", purchaseData);

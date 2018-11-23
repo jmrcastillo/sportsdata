@@ -18,42 +18,42 @@ export default class Cart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            picks: [],
-            cartTotal: 0,
-            logged_in: this.props.loggedIn,
+          picks: [],
+          cartTotal: 0,
+          logged_in: this.props.loggedIn,
+          cartID: Utils.fakeGuid(),
         }
+
         // Try re-load cart from cookies
-//        const cookie =  new Cookies().get("pb-cart");
-        const cookie =  Utils.getCookie("pb-cart");
+      const cookie =  Utils.getCookie("pb-cart");
 
       if (typeof (cookie) != 'undefined') {
-            const picks = cookie.split(',').map(pick=>{
-                const elements = pick.split('|');
-                return {pick_id: elements[0], isPAW: elements[1]}
-            });
+        const picks = cookie.split(',').map(pick=>{
+            const elements = pick.split('|');
+            return {pick_id: elements[0], isPAW: elements[1]}
+        });
 
-      //      console.log("Cart: picks", picks);
+        const pickList = picks.reduce((prev, curr)=>{
+            return prev + curr.pick_id + ',';
+        },'').slice(0, -1);
 
-            const pickList = picks.reduce((prev, curr)=>{
-                return prev + curr.pick_id + ',';
-            },'').slice(0, -1);
+        (pickList.length > 0) && PicksAPI.loadPicksList(pickList).done(loadedPicks => {
+           const picksWithType = loadedPicks.map((pick, index) => {
+             pick.isPAW = (picks[index].isPAW === 'true');
+             return pick;
+           }
+         );
 
-            (pickList.length > 0) && PicksAPI.loadPicksList(pickList).done(loadedPicks => {
-                   const picksWithType = loadedPicks.map((pick, index) => {
-                           pick.isPAW = (picks[index].isPAW === 'true');
-                           return pick;
-                       }
-                   );
+         this.setState({
+           picks: picksWithType,
+           cartTotal: this.cartTotal(picksWithType),
+         });
 
-                   this.setState({
-                       picks: picksWithType,
-                       cartTotal: this.cartTotal(picksWithType)
-                   });
-                   // To notify parent of selected picks on initial load
-                   this.props.pubsub.publish('selected-picks',  Utils.stringifyPicks(picksWithType));
-               });
+         // To notify parent of selected picks on initial load
+         this.props.pubsub.publish('selected-picks',  Utils.stringifyPicks(picksWithType));
+       });
 
-        }
+      }
     }
 
     componentWillMount() {
@@ -79,9 +79,10 @@ export default class Cart extends React.Component {
                 }
             }
             if (picks.length > 0) {
-                this.setState({
-                    picks: picks,
-                    cartTotal: this.cartTotal(picks)
+
+              this.setState({
+                  picks: picks,
+                  cartTotal: this.cartTotal(picks),
                 });
                 this.savePicksAsCookie(picks);
             }
@@ -93,16 +94,16 @@ export default class Cart extends React.Component {
         });
         this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
 
-          if (this.context.state.isLoggingIn) {
+   /*       if (this.context.state.isLoggingIn) {
             console.log ("CART got logged-out msg -  but isLoggingIn is TRUE");
            return;
-          }
+          }*/
 
 
           console.log ("CART logged-out deleting cart");
             this.setState({
                 logged_in: false,
-                picks: []
+                picks: [],
             });
             this.savePicksAsCookie([]);
         });
@@ -138,8 +139,9 @@ export default class Cart extends React.Component {
 
     savePicksAsCookie(picks) {
         const cookiePicks = Utils.stringifyPicks(picks);
-      //  new Cookies().set("pb-cart", cookiePicks, {path: "/"});
         Utils.saveCookie("pb-cart", cookiePicks);
+
+    //    console.log ("Picks saver (#picks, cart id) ", this.state.picks.length, this.state.cartID);
 
       this.props.pubsub.publish('selected-picks', cookiePicks);
     }
@@ -158,6 +160,7 @@ export default class Cart extends React.Component {
             return accumulator + parseInt(pick.isPAW  ? pick.price : Utils.applyPrepaidDiscount(pick.price));
         }, 0);
     }
+
 
     render() {
 
