@@ -260,7 +260,7 @@ console.log ("Logging in member ", result);
                               <input value={this.state.password} onChange={(event) => {
                                 this.setState({password: event.target.value});
                               }} name="PASSWORD" type="text" id="PASSWORD" size="16"
-                                     maxLength="12"/>
+                                     maxLength="30"/>
 
                             </td>
                           </tr>
