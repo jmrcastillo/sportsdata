@@ -211,7 +211,7 @@ const PicksTop = (props) => {
 
                 <ul className="levels">
 
-                  <li><a href="http://198.15.73.20:1039/#/">Today's Guaranteed Picks</a></li>
+                  <li><a href="https://www.picksite.com/picks">Today's Guaranteed Picks</a></li>
                   <li><a href="http://www.playbook.com/Playbook-Sports-Picks#freepicks">Today's Free Picks</a></li>
                   <li><a href="http://www.playbook.com/Playbook-Handicappers/">Experts Home Page</a></li>
                   <li><a href="http://www.playbook.com/Handicapper-Report-Card">Experts Report Card</a></li>
