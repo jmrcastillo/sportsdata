@@ -21,7 +21,6 @@ export default class Cart extends React.Component {
           picks: [],
           cartTotal: 0,
           logged_in: this.props.loggedIn,
-          cartID: Utils.fakeGuid(),
         }
 
         // Try re-load cart from cookies
@@ -60,7 +59,11 @@ export default class Cart extends React.Component {
 
     }
     componentDidMount() {
-        this.subscribe_add_pick = this.props.pubsub.subscribe('add-pick', (message, data)=> {
+      this.subscribe_add_pick = this.props.pubsub.subscribe('add-pick', (message, data)=> {
+            // cartID support (for Picksmain)
+            if (this.state.picks.length === 0 ) {
+              this.props.pubsub.publish('cart-id', Utils.fakeGuid());
+            }
 
             const findIndex = this.state.picks.findIndex((pick)=>{
                 return pick.pick_id === data.pick.pick_id;
@@ -79,7 +82,6 @@ export default class Cart extends React.Component {
                 }
             }
             if (picks.length > 0) {
-
               this.setState({
                   picks: picks,
                   cartTotal: this.cartTotal(picks),
@@ -138,11 +140,9 @@ export default class Cart extends React.Component {
     }
 
     savePicksAsCookie(picks) {
-        const cookiePicks = Utils.stringifyPicks(picks);
-        Utils.saveCookie("pb-cart", cookiePicks);
-
-    //    console.log ("Picks saver (#picks, cart id) ", this.state.picks.length, this.state.cartID);
-
+      const cookiePicks = Utils.stringifyPicks(picks);
+      Utils.saveCookie("pb-cart", cookiePicks);
+      //   console.log ("savePicksAsCookie (selected-picks) is ", cookiePicks);
       this.props.pubsub.publish('selected-picks', cookiePicks);
     }
 

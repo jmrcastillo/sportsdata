@@ -43,6 +43,7 @@ export default class Picksmain extends React.Component {
 			allPicks: [],
 			freePicks: [],
       selectedPicks: '',
+      cartID: '',
       purchasedPicks: [],
 			logged_in: false,
       displayMode: MODES.normal,
@@ -92,10 +93,12 @@ export default class Picksmain extends React.Component {
         this.setState({member: data});
     });
     this.subscribe_selected_picks = this.pubsub.subscribe('selected-picks', (message, data)=> {
-     // console.log("selected-picks", data);
       this.setState({selectedPicks: data});
     });
-
+    this.subscribe_cart_id = this.pubsub.subscribe('cart-id', (message, data)=> {
+      console.log ("cardID set to ", data);
+      this.setState({cartID: data});
+    });
     this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
       this.sendPurchase(false, data, null);
     });
@@ -128,6 +131,7 @@ export default class Picksmain extends React.Component {
     this.pubsub.unsubscribe(this.subscribe_mode_showpicks);
     this.pubsub.unsubscribe(this.subscribe_member_info);
     this.pubsub.unsubscribe(this.subscribe_selected_picks);
+    this.pubsub.unsubscribe(this.subscribe_cart_id);
     this.pubsub.unsubscribe(this.subscribe_purchase_ccard);
     this.pubsub.unsubscribe(this.subscribe_purchase_tokens);
     this.pubsub.unsubscribe(this.subscribe_purchase);
@@ -207,7 +211,7 @@ export default class Picksmain extends React.Component {
         purchaseData.selectedPicks = this.state.selectedPicks;
         purchaseData.isTestMode = this.state.isTestMode;
         purchaseData.siteID = Utils.getSiteID();
-//        purchaseData.cartID = Utils.fakeGuid();
+        purchaseData.cartID = this.state.cartID;
 
 
       console.log("** sendPurchase: ", purchaseData);
