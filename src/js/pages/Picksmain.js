@@ -96,7 +96,7 @@ export default class Picksmain extends React.Component {
       this.setState({selectedPicks: data});
     });
     this.subscribe_cart_id = this.pubsub.subscribe('cart-id', (message, data)=> {
-      console.log ("cardID set to ", data);
+      console.log ("cartID set to ", data);
       this.setState({cartID: data});
     });
     this.subscribe_purchase_ccard = this.pubsub.subscribe('purchase-ccard', (message, data)=> {
