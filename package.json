@@ -16,6 +16,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "compression-webpack-plugin": "^1.1.11",
     "crypto-js": "^3.1.9-1",
     "css-loader": "^1.0.0",
@@ -33,6 +34,7 @@
     "react-notifications": "^1.4.3",
     "react-router-dom": "^4.2.2",
     "react-select": "^2.1.1",
+    "reactstrap": "^7.1.0",
     "striptags": "^3.1.1",
     "universal-cookie": "^2.1.5",
     "urlsafe-base64": "^1.0.0",
