@@ -19,6 +19,7 @@ class PicksAPI  {
 
 	loadServerTime() {
 		return $.getJSON('https://www.playbook.com/picks-api1/get-server-time').then(function(time) {
+      console.log(time);
 			return time;
 		});
 	}
@@ -128,11 +129,6 @@ console.log ("url is " + url);
 
     })
   }
-
-
-
-
-
 
   loadPicksList(list) {
         return this.loadServerTime().then((time) => {

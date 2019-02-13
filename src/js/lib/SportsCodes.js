@@ -31,6 +31,31 @@ class SportsCodes  {
 	getText(sport) {
 		return this.sports[sport];
 	}
+
+	getImgsrc(sport){
+		var imgsrc;
+		console.log(sport);
+		switch(sport){
+			case 12 : imgsrc = 'images/Sport_Logos/nfl_logo.png'; break;
+			case 13 : imgsrc = 'images/Sport_Logos/ncaafb_logo.jpeg'; break;
+			case 10 : imgsrc = 'images/Sport_Logos/nba_blueborder.png'; break;
+			case 11 : imgsrc = 'images/Sport_Logos/mens_ncaabb.jpeg'; break;
+			case 14 : imgsrc = 'images/Sport_Logos/cfb_playoffs.jpeg'; break;
+			case 15 : imgsrc = 'images/Sport_Logos/wnba_logo.jpeg'; break;
+			case 16 : imgsrc = 'images/Sport_Logos/soccer_logo.jpeg'; break;
+			case 1 : imgsrc = 'images/Sport_Logos/mlb_logo.png'; break;
+			case 5 : imgsrc = 'images/Sport_Logos/PGA_Golf.png'; break;
+			case 3 : imgsrc = 'images/Sport_Logos/Boxing_logo.jpeg'; break;
+			case 6 : imgsrc = 'images/Sport_Logos/hockey.png'; break;
+			case 7 : imgsrc = 'images/Sport_Logos/horseracing.jpeg'; break;
+			case 8 : imgsrc = 'images/Sport_Logos/nfl_logo.png'; break;
+			case 9 : imgsrc = 'images/Sport_Logos/nascar_border.jpeg'; break;
+			default: 
+		}
+
+		return imgsrc;
+	}
+
 	getGameStart(sport, minutes) {
 	//	console.log("Getting game start for sport", sport, minutes);
 
