@@ -83,7 +83,7 @@ export default class SelectEcapper extends React.Component {
           this.setState ({selected: selection.value});
           this.props.pubsub.publish('selected-ecapper', selection.value);
         }}
-        className={'reactSelect1'}
+        className={'reactSelect1 col-12 col-md-6 my-1'}
         placeholder={
           'Select Expert'
         }

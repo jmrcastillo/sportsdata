@@ -10,9 +10,12 @@ import CheckoutButton from "../components/CheckoutButton";
 import CCardInfo from "../components/CCardInfo";
 import TokensInfo from "../components/TokensInfo";
 import {GlobalContext} from "../lib/GlobalContext";
+// import {CardElement, injectStripe} from 'react-stripe-elements';
+// import 'babel-polyfill';
 
 
-export default class Cart extends React.Component {
+class Cart extends React.Component {
+
   static contextType = GlobalContext;
 
     constructor(props) {
@@ -21,10 +24,14 @@ export default class Cart extends React.Component {
           picks: [],
           cartTotal: 0,
           logged_in: this.props.loggedIn,
+          cartID: Utils.fakeGuid(),
         }
+
+        // this.submit = this.submit.bind(this);
 
         // Try re-load cart from cookies
       const cookie =  Utils.getCookie("pb-cart");
+   //   console.log('cookie: '+cookie);
 
       if (typeof (cookie) != 'undefined') {
         const picks = cookie.split(',').map(pick=>{
@@ -59,11 +66,7 @@ export default class Cart extends React.Component {
 
     }
     componentDidMount() {
-      this.subscribe_add_pick = this.props.pubsub.subscribe('add-pick', (message, data)=> {
-            // cartID support (for Picksmain)
-            if (this.state.picks.length === 0 ) {
-              this.props.pubsub.publish('cart-id', Utils.fakeGuid());
-            }
+        this.subscribe_add_pick = this.props.pubsub.subscribe('add-pick', (message, data)=> {
 
             const findIndex = this.state.picks.findIndex((pick)=>{
                 return pick.pick_id === data.pick.pick_id;
@@ -82,6 +85,7 @@ export default class Cart extends React.Component {
                 }
             }
             if (picks.length > 0) {
+
               this.setState({
                   picks: picks,
                   cartTotal: this.cartTotal(picks),
@@ -94,21 +98,7 @@ export default class Cart extends React.Component {
         this.subscribe_logged_in = this.props.pubsub.subscribe('logged-in', (message, data)=> {
             this.setState({logged_in: true});
         });
-        this.subscribe_logged_out = this.props.pubsub.subscribe('logged-out', (message, data)=> {
-
-   /*       if (this.context.state.isLoggingIn) {
-            console.log ("CART got logged-out msg -  but isLoggingIn is TRUE");
-           return;
-          }*/
-
-
-          console.log ("CART logged-out deleting cart");
-            this.setState({
-                logged_in: false,
-                picks: [],
-            });
-            this.savePicksAsCookie([]);
-        });
+        
         this.subscribe_empty_cart = this.props.pubsub.subscribe('empty-cart', (message, data)=> {
             this.setState({
                 picks: []
@@ -123,14 +113,6 @@ export default class Cart extends React.Component {
         }
     }
 
-/*    componentWillReceiveProps(nextProps) {
-        console.log("**Cart WillReceiveProps..");
-
-
-
-    }*/
-
-
     componentWillUnmount() {
         this.savePicksAsCookie(this.state.picks);
         this.props.pubsub.unsubscribe(this.subscribe_add_pick);
@@ -140,29 +122,34 @@ export default class Cart extends React.Component {
     }
 
     savePicksAsCookie(picks) {
-      const cookiePicks = Utils.stringifyPicks(picks);
-      Utils.saveCookie("pb-cart", cookiePicks);
-      //   console.log ("savePicksAsCookie (selected-picks) is ", cookiePicks);
+        const cookiePicks = Utils.stringifyPicks(picks);
+        Utils.saveCookie("pb-cart", cookiePicks);
+
+    //    console.log ("Picks saver (#picks, cart id) ", this.state.picks.length, this.state.cartID);
+
       this.props.pubsub.publish('selected-picks', cookiePicks);
     }
 
     cartTotal(picks) {
-
- /*      const cartTotal = picks.reduce((accumulator, pick)=>{
-           const temp = accumulator + parseInt ((pick.isPAW  ? pick.price : Utils.applyPrepaidDiscount(pick.price)));
-           console.log("Cart - calculating cart total ", accumulator, temp);
-
-           return temp;
-       }, 0);
-       console.log("Cart - total is now ", cartTotal, picks.length);
-*/
         return picks.reduce((accumulator, pick)=>{
             return accumulator + parseInt(pick.isPAW  ? pick.price : Utils.applyPrepaidDiscount(pick.price));
         }, 0);
     }
 
+    // async submit(ev) {
+    //     let {token} = await this.props.stripe.createToken({name: "Name"});
+    //     let response = await fetch("/charge", {
+    //     method: "POST",
+    //     headers: {"Content-Type": "text/plain"},
+    //     body: token.id
+    // });
+
+    //   if (response.ok) console.log("Purchase Complete!")
+    // }
+
 
     render() {
+console.log ("Cart rendering");
 
         const itemsTitle = this.state.picks.length === 0 ? "Add picks to cart to purchase" : "Items In My Cart";
 
@@ -170,8 +157,8 @@ export default class Cart extends React.Component {
         const width20 = this.props.isZoomed ? 620 : 320;
 
       const cartStyle = {
-          position: 'fixed',
-          top: '20%',
+          // position: 'fixed',
+          // top: '20%',
           opacity: '.8',
           visibility: this.state.picks.length > 0  ? 'visible' : 'hidden'
         }
@@ -180,28 +167,19 @@ export default class Cart extends React.Component {
 
         }
 
-
         if (! this.state.logged_in) {
           return null;
         }
 
       // Mobile rendering support via Context API
       return (
-
-            this.context.state.isMobile ?
-              this.renderMobile(
-                itemsTitle,
-                width10,
-                width20,
-                cartStyle,
-                cartStyleCheckout) :
-              this.renderNormal(
-                itemsTitle,
-                width10,
-                width20,
-                cartStyle,
-                cartStyleCheckout
-              )
+            this.renderNormal(
+              itemsTitle,
+              width10,
+              width20,
+              cartStyle,
+              cartStyleCheckout
+            )
       );
     }
 
@@ -213,93 +191,58 @@ export default class Cart extends React.Component {
                cartStyle,
                cartStyleCheckout) {
     return (
-      <div style={this.props.isZoomed ? cartStyleCheckout : cartStyle}>
+      <div className="row m-0 sticky-top">
+        <div className="col-12 p-0"><span className="pl-cartlbl">My Cart</span></div>
 
         {/*<!--Start Cart Box-->*/}
-        <table width={width20} border="0" cellSpacing="0" cellPadding="0">
+        <div className="table-wrapper-scroll-y mb-4 w-100">
+        <table className="table pl-carttbl">
           <tbody>
-          <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
-            <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
-              <div>
-                <div> <span className="trebuchet14BW">My Cart</span> </div>
-              </div>
-            </div></td>
-          </tr>
-          <tr>
-            <td style={{textAlign: 'center', backgroundColor: '#990000' }} >
-              <table width={width10} border="0" cellSpacing="0" cellPadding="0">
-                <tbody>
-                <tr>
-                  <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
-                    <table width={width20} border="0" cellSpacing="2" cellPadding="2">
-                      <tbody>
-                      <tr>
-                        <td colSpan="4" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                          <span className="trebuchet14B">{itemsTitle}</span>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          {/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
-                      </tr>
+          {/* <tr>
+            <td><span className="trebuchet14B">{itemsTitle}</span></td>
+          </tr> */}
+          {this.state.picks.map((pick, i) => {
+            const price = pick.isPAW ? Money.format ('USD', pick.price) : Money.format ('USD', Utils.applyPrepaidDiscount(pick.price));
+            //                             console.log ("Cart ", pick, price);
+            return (
+              <tr key={i}>
+                <td>
+                  <span className="" onClick={(event)=>{
+                          console.log("Deleting pick", i, "from cart");
+                          let picks = this.state.picks;
+                          picks.splice(i, 1);
+                          this.setState({
+                            picks: picks,
+                            cartTotal: this.cartTotal(picks)
+                          })
 
-                      {this.state.picks.map((pick, i) => {
-                        const price = pick.isPAW ? Money.format ('USD', pick.price) : Money.format ('USD', Utils.applyPrepaidDiscount(pick.price));
-                        //                             console.log ("Cart ", pick, price);
-                        return (
-                          <tr key={i}>
-                            <td width="28" style={{textAlign: 'center', backgroundColor: 'White'}}>
-
-                              <img src="images/trash.png" width="25"
-                                   onClick={(event)=>{
-                                     console.log("Deleting pick", i, "from cart");
-                                     let picks = this.state.picks;
-                                     picks.splice(i, 1);
-                                     this.setState({
-                                       picks: picks,
-                                       cartTotal: this.cartTotal(picks)
-                                     })
-
-                                     this.savePicksAsCookie(picks);
-                                   }}
-                              />
-                            </td>
-                            <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                              <span className="trebuchet12B">{pick.title}</span>
-                            </td>
-                            <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                              <span className="trebuchet14B">{price}</span>
-                            </td>
-                            {this.props.isZoomed &&
-                            <td width="50"
-                                style={{textAlign: 'center', backgroundColor: 'White'}}>
-                              <span className="trebuchet14B">Type:<br />{pick.isPAW ? 'G' : 'PP'}</span>
-                            </td>
-                            }
-                          </tr>
-                        )})}
-
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-                </tbody>
-                {/*                            {this.props.isZoomed &&
-                                <div float: right><span className="trebuchet14BW">Total:&nbsp;{TOTAL}</span></div>
-                            }*/}
-              </table></td>
-          </tr>
-          <tr>
-            <td style={{textAlign: 'center', backgroundColor: 'Maroon'}}>&nbsp;</td>
-          </tr>
-
-          <tr>
-            <td style={{textAlign: 'center', backgroundColor: 'White'}}><br /><br />
-
-              {this.props.isZoomed &&
-              <div>
-                <a href="#" onClick={event=> {
-                  this.props.pubsub.publish('mode-normal');
+                          this.savePicksAsCookie(picks);
+                        }}>
+                  <i className="fa fa-trash"></i>
+                  </span>
+                </td>
+                <td>
+                  <span className="trebuchet12B">{pick.title}</span>
+                </td>
+                <td>
+                  <span className="trebuchet14B">{price}</span>
+                </td>
+                {this.props.isZoomed &&
+                <td>
+                  <span className="trebuchet14B">Type:<br />{pick.isPAW ? 'G' : 'PP'}</span>
+                </td>
                 }
-                }><img src="/images/return_catalog_btn.png" border="0" />
-                </a>
+              </tr>
+            )})}
+          </tbody>
+        </table>
+        </div>
+        {this.props.isZoomed &&
+              <div className="row m-0">
+                <button onClick={event=> {
+                  this.props.pubsub.publish('mode-normal');
+                }} className="btn btn-lg pl-cartbtn m-2"><i className="fa fa-angle-left"></i>Continue Shopping</button>
+                
                 {! this.props.isTokens &&
                 <CCardInfo
                   chargeTotal={this.state.cartTotal}
@@ -317,27 +260,23 @@ export default class Cart extends React.Component {
               </div>
               }
               {! this.props.isZoomed &&
-              <div>
+              <div className="row m-0">
                 <CheckoutButton
                   type="CC"
                   pubsub={this.props.pubsub}
                   enabled={this.state.picks.length > 0}
                 />
-                <br />
                 <CheckoutButton
                   type="TOKENS"
                   pubsub={this.props.pubsub}
                   enabled={this.state.picks.length > 0}
                 />
 
-                <br />
+                <div className="col-12 text-right p-0 my-2">
                 Your tokens <strong> {Utils.getMemberTokenBalance(this.props.member)}</strong>
+                </div>
               </div>
               }
-            </td>
-          </tr>
-          </tbody>
-        </table>
         {/*<!--end cartn box-->*/}
       </div>
 
@@ -345,164 +284,7 @@ export default class Cart extends React.Component {
     )
 
   }
-
-
-
-
-
-
-
-
-
-
-
-    renderMobile(itemsTitle,
-                  width10,
-                  width20,
-                  cartStyle,
-                  cartStyleCheckout) {
-      return (
-        <div style={this.props.isZoomed ? cartStyleCheckout : cartStyle }>
-
-          {/*<!--Start Cart Box-->*/}
-          <table width="96%" border="0" cellSpacing="0" cellPadding="0" align="center">
-            <tbody>
-            <tr style={{textAlign: 'center', backgroundColor: '#990000'}}>
-              <td height="40" style={{textAlign: 'center', backgroundColor: '#990000'}}><div title="Page 1">
-                <div>
-                  <div> <span className="trebuchet14BW">My Cart</span> </div>
-                </div>
-              </div></td>
-            </tr>
-            <tr>
-              <td style={{textAlign: 'center', backgroundColor: '#990000' }} >
-                <table width="100%" border="0" cellSpacing="0" cellPadding="0" align="center">
-                  <tbody>
-                  <tr>
-                    <td style={{textAlign: 'center', backgroundColor: '#990000' }}>
-                      <table width="96%" border="0" cellSpacing="2" cellPadding="2" align="center">
-                        <tbody>
-                        <tr>
-                          <td colSpan="4" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                            <span className="trebuchet14B">{itemsTitle}</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            {/*<a href="#" className="topnav_trebuchet12Bred">Click Here To Expand</a>*/}</td>
-                        </tr>
-
-                        {this.state.picks.map((pick, i) => {
-                          const price = pick.isPAW ? Money.format ('USD', pick.price) : Money.format ('USD', Utils.applyPrepaidDiscount(pick.price));
-                          //                             console.log ("Cart ", pick, price);
-                          return (
-                            <tr key={i}>
-                              <td width="28" style={{textAlign: 'center', backgroundColor: 'White'}}>
-
-                                <img src="images/trash.png" width="25"
-                                     onClick={(event)=>{
-                                       console.log("Deleting pick", i, "from cart");
-                                       let picks = this.state.picks;
-                                       picks.splice(i, 1);
-                                       this.setState({
-                                         picks: picks,
-                                         cartTotal: this.cartTotal(picks)
-                                       })
-
-                                       this.savePicksAsCookie(picks);
-                                     }}
-                                />
-                              </td>
-                              <td height="44" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                <span className="trebuchet12B">{pick.title}</span>
-                              </td>
-                              <td width="50" style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                <span className="trebuchet14B">{price}</span>
-                              </td>
-                              {this.props.isZoomed &&
-                              <td width="50"
-                                  style={{textAlign: 'center', backgroundColor: 'White'}}>
-                                <span className="trebuchet14B">Type:<br />{pick.isPAW ? 'G' : 'PP'}</span>
-                              </td>
-                              }
-                            </tr>
-                          )})}
-
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                  </tbody>
-                  {/*                            {this.props.isZoomed &&
-                                <div float: right><span className="trebuchet14BW">Total:&nbsp;{TOTAL}</span></div>
-                            }*/}
-                </table></td>
-            </tr>
-            <tr>
-              <td style={{textAlign: 'center', backgroundColor: 'Maroon'}}>&nbsp;</td>
-            </tr>
-
-            <tr>
-              <td style={{textAlign: 'center', backgroundColor: 'White'}}><br /><br />
-
-                {this.props.isZoomed &&
-                <div>
-                  <a href="#" onClick={event=> {
-                    this.props.pubsub.publish('mode-normal');
-                  }
-                  }><img src="/images/return_catalog_btn.png" border="0" />
-                  </a>
-                  {! this.props.isTokens &&
-                  <CCardInfo
-                    chargeTotal={this.state.cartTotal}
-                    pubsub={this.props.pubsub}
-                  />
-                  }
-                  {this.props.isTokens &&
-                  <TokensInfo
-                    cartTotal={this.state.cartTotal}
-                    pubsub={this.props.pubsub}
-                    member={this.props.member}
-                  />
-                  }
-
-                </div>
-                }
-                {! this.props.isZoomed &&
-                <div>
-                  <CheckoutButton
-                    type="CC"
-                    pubsub={this.props.pubsub}
-                    enabled={this.state.picks.length > 0}
-                  />
-                  <br />
-                  <CheckoutButton
-                    type="TOKENS"
-                    pubsub={this.props.pubsub}
-                    enabled={this.state.picks.length > 0}
-                  />
-
-                  <br />
-                  Your tokens <strong> {Utils.getMemberTokenBalance(this.props.member)}</strong>
-                </div>
-                }
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          {/*<!--end cartn box-->*/}
-        </div>
-
-      )
-
-    }
-
-
 }
 
-
-
-
-{/*
- <i className={'fa fa-trash'} ></i>
- */}
-
-
-
+// export default injectStripe(Cart);
+export default Cart;

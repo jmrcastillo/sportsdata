@@ -55,28 +55,19 @@ export default class PurchaseButton extends React.Component {
 
 
         return (
+            <button className="btn btn-lg pl-cartbtn" id="PURCHASE_SUBMITTED_TOKENS" name="PURCHASE_SUBMITTED_TOKENS" alt="update_cart"  style={purchaseButtonStyle}
+            onClick={event=>{
+             event.preventDefault();
+             if (! buttonEnabled) {
+                 return;
+             }
 
-            <input type="image" name="PURCHASE_SUBMITTED_TOKENS" id="PURCHASE_SUBMITTED_TOKENS"
-                   src="images/purchase-button.png"
-                   width="200" height="45" alt="update_cart"  style={purchaseButtonStyle} value="submit"
-                   onClick={event=>{
-                    event.preventDefault();
-                    if (! buttonEnabled) {
-                        return;
-                    }
-
-                    const purchase = {tokens: this.props.tokens,
-                                    ccard: this.state.ccard};
-                    console.log("PurchaseButton: purchase", purchase);
-                    this.props.pubsub.publish('purchase', {isTokens: this.props.isTokens,
-                                                        tokens: this.props.tokens,
-                                                        ccard: this.state.ccard});
-
-                   }}
-
-
-            />
-
+             const purchase = {tokens: this.props.tokens,
+                             ccard: this.state.ccard};
+             console.log("PurchaseButton: purchase", purchase);
+             this.props.pubsub.publish('purchase', {isTokens: this.props.isTokens,
+                                                 tokens: this.props.tokens,
+                                                 ccard: this.state.ccard}); }}>Purchase</button>
         );
     }
 }

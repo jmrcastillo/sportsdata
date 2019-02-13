@@ -26,55 +26,13 @@ export default class Freeplay extends React.Component {
 
         return (
         <div>
-
-
             {/*<!--Start loggedin box-->*/}
-            <table width="320" border="0" cellSpacing="0" cellPadding="0">
-                <tbody>
-                <tr style={{verticalAlign: 'top' }}>
-                    <td height="6" style={{textAlign: 'center', backgroundColor: '#000000' }}>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style={{textAlign: 'center', backgroundColor: '#000000' }}><table width="320" border="0" cellSpacing={2} cellPadding={2}>
-                        <tbody>
-                        <tr>
-                            <td className="trebuchet14" style={{textAlign: 'center', backgroundColor: '#FFFFFF' }}>
-                                <table width="310" border="0" cellSpacing="0" cellPadding="0">
-                                    <tbody>
-                                    <tr>
-                                        <td> <span className="trebuchet14B" style={{textAlign: 'left'}}>{freePickTitle}
-                                            <br /></span>
-                                            {/*              <span
-                                             dangerouslySetInnerHTML={
-                                             {__html: freePickBody}
-                                             }
-
-                                             />*/}
-                                            <span className="trebuchet14"><ReadMore text={freePickBody} /></span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table></td>
-                </tr>
-                <tr>
-                    <td height="6" style={{textAlign: 'center', backgroundColor: '#000000' }}>&nbsp;</td>
-                </tr>
-                </tbody>
-            </table>
+            <div className="alert alert-secondary" role="alert">
+            <span className="trebuchet14B" style={{textAlign: 'left'}}>{freePickTitle}</span>
+            <ReadMore text={freePickBody} />
+            </div>
             {/*<!--end loggedin box-->*/}
-
-
-
         </div>
-
-
-
         );
     }
 }

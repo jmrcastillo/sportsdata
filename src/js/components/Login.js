@@ -158,11 +158,10 @@ console.log ("Logging in member ", result);
 
     if (this.state.logged_in) {
       return (
-        <div>
-          <span className="trebuchet14" style={{textAlign: 'center'}}>
-              Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span
+        <div className="p-2">
+          <div className="row m-0 my-2">
+              <span className="col text-left p-0">Welcome back, <strong>{this.state.member ? this.state.member.first_name : ''}</strong></span>
+              <span className="col-3 text-right p-0"
               onClick={(event) => {
                 if (! this.state.logged_in) {
                   return;
@@ -172,17 +171,7 @@ console.log ("Logging in member ", result);
               }}
 
             >Logout</span>
-
-
-            {/*    <span onClick={(event)=>{
-                  console.log ("Trying freeplay", this.props.freePick.body);
-                  this.setState({freePickIsOpen: true});
-
-              }}>Get Today's Free Pick
-              </span>*/}
-          </span>
-          <br/>
-
+          </div>
           <Modal
                 isOpen={this.state.freePickIsOpen}
                 onAfterOpen={(event)=>{
@@ -212,121 +201,29 @@ console.log ("Logging in member ", result);
     }
     else {
       return (
-        <div>
-
-
-          {/*<!--Start login box-->*/}
-          <table width="320" border="0" cellSpacing="0" cellPadding="0">
-            <tbody>
-            <tr style={{verticalAlign: 'top'}}>
-              <td height="40" style={{textAlign: 'center', backgroundColor: '#000000'}}>
-                <div>
-                  <div>
-                    <h3><span
-                      className="trebuchet14BW">Login To View Today's Featured Free Play</span>
-                    </h3>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td width="4" style={{textAlign: "center", backgroundColor: '#000000'}}>
-                <table width="310" border="0" cellSpacing="0" cellPadding="0">
-                  <tbody>
-                  <tr>
-                    <td style={{textAlign: 'center', backgroundColor: '#000000'}}>
-
-                      <form onSubmit={(event) => {
-                        this.login(this.state.member_id, this.state.password);
-                        event.preventDefault();
-                      }}>
-
-                        <table width="310" border="0" cellSpacing="0" cellPadding="0">
-                          <tbody>
-                          <tr>
-                            <td height="32" style={{textAlign: 'center'}}>
-
-                              <span className="trebuchet14BW">Username:</span>&nbsp;
-                              <input value={this.state.member_id} onChange={(event) => {
-                                this.setState({member_id: event.target.value});
-                              }} name="MEMBER_ID" type="text" id="MEMBER_ID" size="16"
-                                     maxLength="80"/>
-
-                            </td>
-                          </tr>
-                          <tr>
-                            <td height="32" align="center">
-                              <span className="trebuchet14BW">Password:</span>&nbsp;&nbsp;
-                              <input value={this.state.password} onChange={(event) => {
-                                this.setState({password: event.target.value});
-                              }} name="PASSWORD" type="text" id="PASSWORD" size="16"
-                                     maxLength="30"/>
-
-                            </td>
-                          </tr>
-                          <tr>
-                            <td height="42" align="center">
-                              <input type="submit" name="SUBMIT" id="SUBMIT"
-                                     value="Submit"/>
-                            </td>
-                          </tr>
-
-                          <tr style={{verticalAlign: 'top'}}>
-                            <td height="40" style={{textAlign: 'center', backgroundColor: '#000000'}}>
-                              <div>
-                                <div>
-                                  <span onClick={()=>{
-
-/*
- // TEMP STUFF
-                            const member =   {
-                              first_name: 'DT',
-                              last_name: 'Ison',
-                              address1: '124 Main',
-                              address2: '',
-                              city: 'Covington',
-                              state: 'KY',
-                              postal: '41011',
-                              country: 'USA',
-                              day_phone: '111-222-3333',
-                              eve_phone: '',
-                              email: 'nospam2012@dtison.net'
-                            };
-                   //         console.log("MemberInfo: setstate member", member);
-                            this.setState({member: member});*/
-
-
-
-                                    this.setState({isRegistering: true})
-                                  }}
-                                    className="trebuchet14BW">Register New Account..
-                                  </span>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-
-
-                          </tbody>
-                        </table>
-                      </form>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td style={{textAlign: 'center', backgroundColor: '#000000'}}>&nbsp;</td>
-            </tr>
-            </tbody>
-          </table>
-          {/*<!--end login box-->*/}
-
-
-        </div>
-
-
+        <React.Fragment>
+           <div className="loginbox px-4 py-2">
+            <h3>
+              <span className="logintxt">Login To View Today's Featured Free Play</span>
+            </h3>
+            <form onSubmit={(event) => {
+                this.login(this.state.member_id, this.state.password);
+                event.preventDefault();
+              }}>
+                <span className="">Username:</span>&nbsp;
+                      <input className="form-control" value={this.state.member_id} onChange={(event) => {
+                        this.setState({member_id: event.target.value});
+                      }} name="MEMBER_ID" type="text" id="MEMBER_ID" size="16" maxLength="80"/>
+                <span className="">Password:</span>&nbsp;&nbsp;
+                      <input className="form-control" value={this.state.password} onChange={(event) => {
+                        this.setState({password: event.target.value});}} 
+                        name="PASSWORD" type="password" id="PASSWORD" size="16" maxLength="12"/>
+                <input className="btn btn-lg btn-dark btn-block mt-2 text-uppercase" type="submit" name="SUBMIT" id="SUBMIT" value="Submit"/>
+                <span onClick={()=>{this.setState({isRegistering: true})}} className="trebuchet14BW">Register New Account..
+                </span>
+              </form>
+          </div>
+        </React.Fragment>
       );
     }
   }

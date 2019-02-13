@@ -59,12 +59,6 @@ export default class TokensInfo extends React.Component {
 
     render() {
 
-
-//        console.log("TokensInfo isChargeAuthorized cartTotal", this.state.isChargeAuthorized, this.props.cartTotal);
- //       console.log("TokensInfo tokens summary: ", this.state.realTokensApplied, this.state.awardTokensApplied, this.state.realTokensNeeded);
- //       console.log("TokensInfo render() cartTotal ", this.props.cartTotal);
- //  console.log("TokensInfo realTokensNeeded ", this.state.realTokensNeeded);
-
         return (
 
             <div align="center">

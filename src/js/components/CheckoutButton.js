@@ -19,7 +19,7 @@ export default class CheckoutButton extends React.Component {
 
     render() {
 
-        const src = this.props.type === 'CC' ? 'images/checkoutCC.png' : 'images/checkoutT.png';
+        const src = this.props.type === 'CC' ? 'Checkout Ccard' : 'Checkout Tokens';
         const opacity = this.props.enabled ? 1 : .1;
         const handler = this.props.enabled ?
         (event)=>{
@@ -33,32 +33,22 @@ export default class CheckoutButton extends React.Component {
             height = 25;
         }
 
-        if (! this.props.minified) {
-            return (
-                <img src={src} width={width} height={height}
-                     onClick={handler}
-                     style={{opacity: opacity}}
-                />
-
-            );
-        }
-
         return (
-            <span>
-            <img src={src} width={width} height={height}
-               onClick={handler}
-               style={{opacity: opacity}}
-            />
+            <React.Fragment>
+                <button type="button" className="btn pl-cartbtn col mx-1" onClick={handler}>{src}</button>
+                {/* <img src={src} width={width} height={height}
+                
+                style={{opacity: opacity}}
+                /> */}
 
-            {this.props.enabled && this.props.minified && this.props.type === 'CC' &&
-                <img src={"images/creditcard-logos.jpg"} height={height} style={{display: 'inline-block'}}  />
+                {this.props.enabled && this.props.minified && this.props.type === 'CC' &&
+                    <img src={"images/creditcard-logos.jpg"} height={height} style={{display: 'inline-block'}}  />
 
-            }
-            {this.props.enabled && this.props.minified && this.props.type === 'TOKENS' &&
-                 <img src={"images/token_green.png"} height={height}   style={{display: 'inline-block'}}  />
-            }
-            </span>
-
+                }
+                {this.props.enabled && this.props.minified && this.props.type === 'TOKENS' &&
+                    <img src={"images/token_green.png"} height={height}   style={{display: 'inline-block'}}  />
+                }
+            </React.Fragment>
         );
     }
 }

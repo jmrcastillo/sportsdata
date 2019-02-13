@@ -64,7 +64,7 @@ export default class SelectSport extends React.Component {
           this.setState ({selected: selection.value});
           this.props.pubsub.publish('selected-sport', selection.value);
         }}
-        className={'reactSelect'}
+        className={'reactSelect col-12 col-md-6 my-1'}
         placeholder={
             'Select Sport'
         }

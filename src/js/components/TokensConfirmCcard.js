@@ -37,69 +37,44 @@ export default class TokensConfirmCcard extends React.Component {
         return (
 
             <div align="center">
+                <span className="trebuchet14B d-block"><strong>Playbucks Information</strong></span>
 
+                <span className="trebuchet14Bred">Click &nbsp;</span>
 
-                <table width="600">
-                    <tbody>
-                    <tr>
-                        <td height="32" colSpan="2" style={{textAlign: 'center', backgroundColor: '#CCCCCC'}}><span className="trebuchet14B"><strong>Playbucks Information</strong></span></td>
-                    </tr>
+                <div className="confirmCheckbox">
+                    <input type="checkbox" defaultValue={false} id="CONFIRM_PURCHASE"  name="CONFIRM_PURCHASE"
+                        onChange={(event)=>{
+                            // this.setState({isChargeAuthorized: ! this.state.isChargeAuthorized});
+                            this.props.pubsub.publish('toggle-charge-authorized');
+                        }}
+                    />
+                    <label htmlFor="CONFIRM_PURCHASE"></label>
+                </div>
 
-                    <tr>
-                        <td align="right">
+                <span className="trebuchet14B">I Authorize Playbook To Charge My Credit Card<br />
+                    {Money.format ('USD', this.props.tokens.realTokensNeeded)} in order To Complete This Purchase.<br />
+                    My Playbucks Tokens Will Be Combined with<br />
+                    this Credit Card Charge.
+                </span>
+                <br/><br/>
+                Your Current Token Balance {Utils.getTokenBalance(this.props.tokens)} <br />
+                    <span className="trebuchet14"><strong>
+                        <font color="navy">Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</font></strong></span>
+                
+                    <span className="trebuchet14 d-block my-1">Total Amount of Tokens deducted from your available balance for this sale:&nbsp;
+                    {Money.format ('USD', Utils.getTokensApplied(this.props.tokens))}
 
-                    <span className="trebuchet14Bred">Click&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-
-                            <div className="confirmCheckbox">
-                                <input type="checkbox" defaultValue={false} id="CONFIRM_PURCHASE"  name="CONFIRM_PURCHASE"
-                                       onChange={(event)=>{
-                                          // this.setState({isChargeAuthorized: ! this.state.isChargeAuthorized});
-                                           this.props.pubsub.publish('toggle-charge-authorized');
-                                       }}
-                                />
-                                <label for="CONFIRM_PURCHASE"></label>
-                            </div>
-
-                        </td>
-                        <td align="center" className="verdana14">
-                            <span className="trebuchet14B">I Authorize Playbook To Charge My Credit Card<br />
-                                {Money.format ('USD', this.props.tokens.realTokensNeeded)} in order To Complete This Purchase.<br />
-                                My Playbucks Tokens Will Be Combined with<br />
-                                this Credit Card Charge.
-                            </span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="150" align="center"><img src="images/token_green.png" width="100"/></td>
-                        <td align="center"><span className="trebuchet14">Your Current Token Balance {Utils.getTokenBalance(this.props.tokens)} <br />
-                            <strong>
-                                <font color="navy">Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</font></strong></span></td>
-                    </tr>
-
-
-                    <tr>
-                        <td colSpan="2" align="center">
-                    <span className="trebuchet14">Total Amount of Tokens deducted from your available balance for this sale:&nbsp;
-                        <input name="token_quantity" type="text" id="token_quantity"
-                               value={Money.format ('USD', Utils.getTokensApplied(this.props.tokens))}
-                               size="5" maxLength="5"  readOnly
-                        />
+                    <input name="token_quantity" type="hidden" id="token_quantity"
+                        value={Money.format ('USD', Utils.getTokensApplied(this.props.tokens))}
+                        size="5" maxLength="5" />
                     </span>
-
                     <br />
                     <PurchaseButton
                         pubsub={this.props.pubsub}
                         isTokens={true}
                         tokens={this.props.tokens}
                     />
-                    </td>
-                    </tr>
-
-                    </tbody>
-                </table>
-
-
+               <br/>
             </div>
 
         );

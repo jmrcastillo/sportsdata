@@ -62,8 +62,6 @@ export default class BuyNow extends React.Component {
         console.log ("Buynow doing Close(), setting IsLoggingIn false..");
 
     this.context.setIsLoggingIn(false);
-
-
     this.props.pubsub.publish('empty-cart');
     this.setState({modalIsOpen: false});
   }
@@ -121,7 +119,7 @@ export default class BuyNow extends React.Component {
 
     return (
 
-      <div>
+      <React.Fragment>
 
         {alreadyInCartAsPAW &&
         <h5 style={{'color': 'maroon'}}>PAY after WIN selection.</h5>
@@ -132,11 +130,9 @@ export default class BuyNow extends React.Component {
 
 
         {!alreadyInCartAsPAW && !alreadyInCartAsPPD &&
-        <img src="images/buynow.png" className={buynowClass}
-             onClick={onClick} width="125" border="0" align="left"
-        />
-        }
+        <button type="button" className={buynowClass+" pl-cartbtn btn text-upper mb-1 btn-lg m-auto"} onClick={onClick}><i className="fa fa-shopping-cart"></i> Buy Now </button>
 
+        }
 
            <Modal
               isOpen={this.state.modalIsOpen}
@@ -153,12 +149,13 @@ export default class BuyNow extends React.Component {
               onRequestClose={(event)=>{
                   this.doClose();
               }}
-              style={this.customStyles}
-              contentLabel="Example Modal"
+              // style={'z-index:99;'}
+              contentLabel="Login"
               ariaHideApp={false}
+              // className="modal fade"
           >
 
-              <h2 ref={subtitle => this.subtitle = subtitle}>LOGIN</h2>
+              <h2 ref={subtitle => this.subtitle = subtitle}></h2>
               <button onClick={(event)=>{
                   this.doClose();
               }}>close</button>
@@ -167,9 +164,10 @@ export default class BuyNow extends React.Component {
                 pubsub={this.props.pubsub}
                 showFreePlay={false}
                 notificationManager={this.props.notificationManager}
+                className="modal-dialog modal-dialog-centered"
               />
           </Modal>
-      </div>
+      </React.Fragment>
     );
 
 

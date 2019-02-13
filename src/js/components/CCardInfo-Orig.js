@@ -32,13 +32,10 @@ export default class Login extends React.Component {
         return (
 
             <div align="center">
-                
-                <!-- Start shopping_cart_main_purchase_ccard.html-->
-                <table width="600" border="0" cellSpacing="0" cellPadding="0">
+                <table className="table">
                     <tr>
                         <td colspan="2" align="center"><span className="verdana14"><b>Credit Card Information</b></span></td>
                     </tr>
-
                     <tr>
                         <td height="32" align="right"><span className="verdana14">Card Number:</span>&nbsp;</td>
                         <td><label for="CC_NUMBER"></label>
@@ -140,7 +137,6 @@ export default class Login extends React.Component {
                 });
 
                 </script>*/}
-                <!-- End shopping_cart_main_purchase_ccard.html-->
             </div>
 
         );
