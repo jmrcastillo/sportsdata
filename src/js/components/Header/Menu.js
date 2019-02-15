@@ -136,7 +136,7 @@ export default class Menu extends React.Component {
                     <UncontrolledDropdown nav inNavbar className="nav-item dropdown">
                     <DropdownToggle nav caret>Experts</DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem className="dropdown-item" href="http://198.15.73.20:1039/#/">Today's Guaranteed Picks</DropdownItem>
+                        <DropdownItem className="dropdown-item" href="https://www.picksite.com/picks">Today's Guaranteed Picks</DropdownItem>
                         <DropdownItem className="dropdown-item" href="http://www.playbook.com/Playbook-Sports-Picks#freepicks">Today's Free Picks</DropdownItem>
                         <DropdownItem className="dropdown-item" href="http://www.playbook.com/Playbook-Handicappers/">Experts Home Page</DropdownItem>
                         <DropdownItem className="dropdown-item" href="http://www.playbook.com/Handicapper-Report-Card">Experts Report Card</DropdownItem>
