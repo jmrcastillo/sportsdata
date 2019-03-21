@@ -285,7 +285,7 @@ export default class Picksmain extends React.Component {
           {/* {this.state.isTestMode ? " -- Purchases will be done in TEST mode -- ": ''} */}
 
         <div className="row m-0">
-          <div className="col-md-8 col-12 p-0 order-2 order-md-1">
+          <div className="col-md-8 col-12 p-0 order-2 order-md-1 right-panel">
           {(this.state.displayMode === MODES.normal) &&
                 <PickList
                   pubsub={this.pubsub}
@@ -305,7 +305,7 @@ export default class Picksmain extends React.Component {
                 }
           </div>
 
-          <div className="col-md-4 col-12 p-0 order-1 order-md-2 sticky-top">
+          <div className="col-md-4 col-12 p-0 order-1 order-md-2 sticky-top right-login">
 
           <div className={(this.state.displayMode === MODES.checkout) ? 'd-none' : 'd-block'}>
             {this.state.selectedPicks != '' && this.state.logged_in == true ?  <button className="mob_anchor btn btn-lg btn-dark d-block d-md-none float-right border-0 pl-cartbtn" onClick={this.toggleModal}>
@@ -331,7 +331,7 @@ export default class Picksmain extends React.Component {
                 }
             </Modal>
              
-             <div className="d-none d-md-block px-2">
+             <div className="d-none d-md-block px-2 sticky-top">
              {this.state.displayMode === MODES.normal &&
                   <Login
                     freePick={this.featuredFreePick(this.state.freePicks)}
