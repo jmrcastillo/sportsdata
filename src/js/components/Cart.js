@@ -30,7 +30,7 @@ export default class Cart extends React.Component {
 
     // Try re-load cart from cookies
     const cookie =  Utils.getCookie("pb-cart");
-    //   console.log('cookie: '+cookie);
+    console.log('cookie: '+cookie);
 
     if (typeof (cookie) != 'undefined') {
       const picks = cookie.split(',').map(pick=>{
@@ -66,11 +66,6 @@ export default class Cart extends React.Component {
   }
   componentDidMount() {
     this.subscribe_add_pick = this.props.pubsub.subscribe('add-pick', (message, data)=> {
-
-      // cartID support
-      if (this.state.picks.length === 0 ) {
-        this.props.pubsub.publish('cart-id', Utils.fakeGuid());
-      }
 
       const findIndex = this.state.picks.findIndex((pick)=>{
         return pick.pick_id === data.pick.pick_id;
@@ -128,7 +123,9 @@ export default class Cart extends React.Component {
   savePicksAsCookie(picks) {
     const cookiePicks = Utils.stringifyPicks(picks);
     Utils.saveCookie("pb-cart", cookiePicks);
+
     //    console.log ("Picks saver (#picks, cart id) ", this.state.picks.length, this.state.cartID);
+
     this.props.pubsub.publish('selected-picks', cookiePicks);
   }
 
@@ -138,9 +135,19 @@ export default class Cart extends React.Component {
     }, 0);
   }
 
+  // async submit(ev) {
+  //     let {token} = await this.props.stripe.createToken({name: "Name"});
+  //     let response = await fetch("/charge", {
+  //     method: "POST",
+  //     headers: {"Content-Type": "text/plain"},
+  //     body: token.id
+  // });
+
+  //   if (response.ok) console.log("Purchase Complete!")
+  // }
+
 
   render() {
-  //  console.log ("Cart rendering");
 
     const itemsTitle = this.state.picks.length === 0 ? "Add picks to cart to purchase" : "Items In My Cart";
 
@@ -233,6 +240,7 @@ export default class Cart extends React.Component {
           <button onClick={event=> {
             this.props.pubsub.publish('mode-normal');
           }} className="btn btn-lg pl-cartbtn m-2"><i className="fa fa-angle-left"></i>Continue Shopping</button>
+          <div className="clearfix w-100">&nbsp;</div>
 
           {! this.props.isTokens &&
           <CCardInfo
@@ -277,17 +285,4 @@ export default class Cart extends React.Component {
   }
 }
 
-
-//--- -------------------------------
 // export default injectStripe(Cart);
-
-// async submit(ev) {
-//     let {token} = await this.props.stripe.createToken({name: "Name"});
-//     let response = await fetch("/charge", {
-//     method: "POST",
-//     headers: {"Content-Type": "text/plain"},
-//     body: token.id
-// });
-
-//   if (response.ok) console.log("Purchase Complete!")
-// }
