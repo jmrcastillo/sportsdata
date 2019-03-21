@@ -17,12 +17,12 @@ export default class BuyNow extends React.Component {
 
     this.customStyles = {
       content: {
-        /*                 top                   : '50%',
-                        left                  : '50%',
-                        right                 : 'auto',
-                        bottom                : 'auto',
-                        marginRight           : '-50%',
-                        transform             : 'translate(-50%, -50%)',*/
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)',
 
 
         left: '40%',
@@ -31,6 +31,7 @@ export default class BuyNow extends React.Component {
         top: '10px',
         backgroundColor: '#aaa'
       },
+      overlay: {zIndex:999}
 
 
       /*            backgroundColor: '#ff8',
@@ -149,10 +150,9 @@ export default class BuyNow extends React.Component {
               onRequestClose={(event)=>{
                   this.doClose();
               }}
-              // style={'z-index:99;'}
+              style={this.state.customStyles}
               contentLabel="Login"
               ariaHideApp={false}
-              // className="modal fade"
           >
 
               <h2 ref={subtitle => this.subtitle = subtitle}></h2>
