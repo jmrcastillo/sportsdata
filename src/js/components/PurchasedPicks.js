@@ -9,119 +9,113 @@ import Utils from "../lib/Utils";
 
 export default class PurchasedPicks extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
 
     }
-    componentWillMount() {
 
-    }
-    componentDidMount() {
+  }
+  componentWillMount() {
 
-    }
-    componentWillUnmount() {
-    }
+  }
+  componentDidMount() {
 
-
-    render() {
-
-
-  //      console.log("<Cart> # Picks ", this.state.picks.length);
-        return (
-        <div>
+  }
+  componentWillUnmount() {
+  }
 
 
-            {/*<!--Start Cart Box-->*/}
-            <table width="630" border="0" cellSpacing="0" cellPadding="0">
-                <tbody>
-                <tr style={{textAlign: 'center', backgroundcolor: '#990000'}}>
-                    <td height="40" style={{textAlign: 'center', backgroundcolor: '#990000'}}><div title="Page 1">
-                        <div>
-                            <div> <span className="trebuchet14BW">Your Picks</span> </div>
-                        </div>
-                    </div></td>
-                </tr>
-                <tr>
-                    <td style={{textAlign: 'center', backgroundcolor: '#990000' }} >
-                        <table width="620" border="0" cellSpacing="0" cellPadding="0">
-                            <tbody>
-                            <tr>
-                                <td style={{textAlign: 'center', backgroundcolor: '#990000' }}>
-                                    <table width="630" border="0" cellSpacing="2" cellPadding="2">
-                                    <tbody>
-
-
-                                  {this.props.purchasedPicks.map((pick, i) => {
-                                        //  console.log("PurchasedPicks pick", pick, i);
-                                        return (
-                                        <tr key={i}>
-                                          <td colSpan="5"
-                                              style={{textAlign: 'left', backgroundcolor: 'White'}}>
-                                              <span className="trebuchet14B" style={{float:'left'}}>{pick.title}
+  render() {
+    return (
+      <div>
+        {/*<!--Start Cart Box-->*/}
+        <div className="row m-0">
+          <div className="col-12 m-auto">
+            <h2 className="row mx-0 my-4">Your Picks</h2>
+            <div className="row m-0">
+              {this.props.purchasedPicks.map((pick, i) => {
+                //  console.log("PurchasedPicks pick", pick, i);
+                return (
+                  <div className="my-2" key={i}>
+                    <div style={{textAlign: 'left'}}>
+                                              <span className="font-weight-bold my-2 w-100">{pick.title}
                                               </span>
-
-                                              <br />
-
-
-                                              <span
-                                                  className="trebuchet14" style={{float:'left'}}
-                                                   dangerouslySetInnerHTML={
-                                                        {__html: pick.body}
-                                                    }
-                                              />
-
-                                              <br />
-                                              <br />
-                                          </td>
-                                        </tr>
-                                        );
-
-                                    })}
-
-
-
-
-                                <tr>
-                                    <td width="28"
-                                        style={{textAlign: 'center', backgroundcolor: 'White'}}>
-
-
-                                    </td>
-                                </tr>
-
-                                </tbody>
-                                </table>
-                                </td>
-                            </tr>
-
-                            </tbody>
-
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#" onClick={event=> {
-                            this.props.pubsub.publish('mode-normal');
+                      <p
+                        className=""
+                        dangerouslySetInnerHTML={
+                          {__html: pick.body}
                         }
-                        }><img src="/images/return_catalog_btn.png" border="0" />
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            {/*<!--end cartn box-->*/}
+                      />
+                    </div>
+                  </div>
+                );
+
+              })}
+            </div>
+          </div>
         </div>
+        <table width="630" border="0" cellSpacing="0" cellPadding="0">
+          <tbody>
+          <tr style={{textAlign: 'center', backgroundcolor: '#990000'}}>
+            <td height="40" style={{textAlign: 'center', backgroundcolor: '#990000'}}><div title="Page 1">
+              <div>
+                <div> <span className="trebuchet14BW"></span> </div>
+              </div>
+            </div></td>
+          </tr>
+          <tr>
+            <td style={{textAlign: 'center', backgroundcolor: '#990000' }} >
+              <table width="620" border="0" cellSpacing="0" cellPadding="0">
+                <tbody>
+                <tr>
+                  <td style={{textAlign: 'center', backgroundcolor: '#990000' }}>
+                    <table width="630" border="0" cellSpacing="2" cellPadding="2">
+                      <tbody>
 
 
 
-        );
-    }
+
+
+
+
+                      <tr>
+                        <td width="28"
+                            style={{textAlign: 'center', backgroundcolor: 'White'}}>
+
+
+                        </td>
+                      </tr>
+
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+
+                </tbody>
+
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button className="btn btn-lg pl-cartbtn m-2" onClick={event=> {
+                this.props.pubsub.publish('mode-normal');
+              }
+              }><i className="fa fa-angle-left"></i>Continue Shopping
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        {/*<!--end cartn box-->*/}
+      </div>
+
+
+
+    );
+  }
 }
-
 
 
 
