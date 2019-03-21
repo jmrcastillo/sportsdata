@@ -6,79 +6,100 @@ import React from "react";
 import Money  from "money-formatter";
 import PurchaseButton  from "../components/PurchaseButton";
 import Utils from "../lib/Utils";
+import CCardInfo from "../components/CCardInfo";
 
 export default class TokensConfirmCcard extends React.Component {
 
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpened: false,
+    };
+    this.toggleBox = this.toggleBox.bind(this);
+  }
 
-    }
+  toggleBox() {
+    this.setState(oldState => ({ isOpened: !oldState.isOpened }));
+  }
 
-    componentWillMount() {
+  componentWillMount() {
 
-    }
-    componentDidMount() {
-
-
-    }
-    componentWillReceiveProps(nextProps) {
-
-    }
-
-    componentWillUnmount() {
-    }
+  }
+  componentDidMount() {
 
 
-    render() {
+  }
+  componentWillReceiveProps(nextProps) {
+
+  }
+
+  componentWillUnmount() {
+  }
 
 
-       //console.log("TokensInfo isChargeAuthorized cartTotal", this.state.isChargeAuthorized);
+  render() {
 
-        return (
 
-            <div align="center">
-                <span className="trebuchet14B d-block"><strong>Playbucks Information</strong></span>
+    //console.log("TokensInfo isChargeAuthorized cartTotal", this.state.isChargeAuthorized);
 
-                <span className="trebuchet14Bred">Click &nbsp;</span>
+    return (
+      <div className="col-12">
+        <div className="row m-0">
+          <h2 className="col-12 my-4">Playbucks Information</h2>
+        </div>
 
-                <div className="confirmCheckbox">
-                    <input type="checkbox" defaultValue={false} id="CONFIRM_PURCHASE"  name="CONFIRM_PURCHASE"
-                        onChange={(event)=>{
-                            // this.setState({isChargeAuthorized: ! this.state.isChargeAuthorized});
-                            this.props.pubsub.publish('toggle-charge-authorized');
-                        }}
-                    />
-                    <label htmlFor="CONFIRM_PURCHASE"></label>
-                </div>
+        <div className="row mx-0 my-2">
+          <span className="col-8">Your Current Token Balance</span>
+          <span className="col-4 font-weight-bold text-right">{Utils.getTokenBalance(this.props.tokens)}</span>
+        </div>
+        <div className="row mx-0 my-2">
+          <span className="col-8">Current Purchase Total</span>
+          <span className="col-4 font-weight-bold text-right">{Money.format ('USD', this.props.cartTotal)}</span>
+        </div>
+        <div className="row mx-0 my-2">
+          <span className="col-8">Total Amount of Tokens deducted from your available balance for this sale:</span>
+          <span className="col-4 font-weight-bold text-right">{Money.format ('USD', Utils.getTokensApplied(this.props.tokens))}</span>
+        </div>
 
-                <span className="trebuchet14B">I Authorize Playbook To Charge My Credit Card<br />
-                    {Money.format ('USD', this.props.tokens.realTokensNeeded)} in order To Complete This Purchase.<br />
-                    My Playbucks Tokens Will Be Combined with<br />
-                    this Credit Card Charge.
-                </span>
-                <br/><br/>
-                Your Current Token Balance {Utils.getTokenBalance(this.props.tokens)} <br />
-                    <span className="trebuchet14"><strong>
-                        <font color="navy">Current Purchase Total {Money.format ('USD', this.props.cartTotal)}</font></strong></span>
-                
-                    <span className="trebuchet14 d-block my-1">Total Amount of Tokens deducted from your available balance for this sale:&nbsp;
-                    {Money.format ('USD', Utils.getTokensApplied(this.props.tokens))}
+        <input name="token_quantity" type="hidden" id="token_quantity" value={Money.format ('USD', Utils.getTokensApplied(this.props.tokens))} size="5" maxLength="5" />
 
-                    <input name="token_quantity" type="hidden" id="token_quantity"
-                        value={Money.format ('USD', Utils.getTokensApplied(this.props.tokens))}
-                        size="5" maxLength="5" />
-                    </span>
-                    <br />
-                    <PurchaseButton
-                        pubsub={this.props.pubsub}
-                        isTokens={true}
-                        tokens={this.props.tokens}
-                    />
-               <br/>
+        <div className="row mx-0 my-4 bg-warning py-2">
+          <p className="col-10 text-justify m-0"><b>I Authorize Playbook to charge my Credit Card</b>&nbsp;
+            <b>{Money.format ('USD', this.props.tokens.realTokensNeeded)}</b> in order to complete this purchase.
+            My Playbucks Tokens Will Be Combined with
+            this Credit Card Charge.
+          </p>
+
+          <div className="col-2">
+            <div className="squaredTwo" data-toggle="tooltip" title="Click to proceed on credit card payment">
+              <input type="checkbox" className="confirmCCbtn" defaultValue={false} id="CONFIRM_PURCHASE"  name="CONFIRM_PURCHASE"
+                     onChange={this.toggleBox}
+                // onChange={(event)=>{
+                //     // this.setState({isChargeAuthorized: ! this.state.isChargeAuthorized});
+                //     // this.props.pubsub.publish('toggle-charge-authorized');
+                // }}
+              />
+              <label htmlFor="CONFIRM_PURCHASE"></label>
             </div>
+          </div>
+        </div>
 
-        );
-    }
+        {this.state.isOpened && <CCardInfo
+          chargeTotal={this.props.tokens.realTokensNeeded}
+          isTokens={true}
+          pubsub={this.props.pubsub}
+        />}
+
+        {this.state.isOpened && <PurchaseButton
+          pubsub={this.props.pubsub}
+          isTokens={true}
+          tokens={this.props.tokens}
+        />}
+
+      </div>
+
+    );
+  }
 }
 /*
 {Money.format ('USD', parseInt(this.props.tokens.awardTokens) + parseInt(this.props.tokens.realTokens))}
@@ -138,4 +159,3 @@ export default class TokensConfirmCcard extends React.Component {
 
 
                 </script>*/
-
