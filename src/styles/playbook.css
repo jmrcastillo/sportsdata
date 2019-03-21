@@ -47,6 +47,62 @@ input.required:focus {
     border-color: #47b6f6;
 }
 
+/* new checkbox style */
+/* .squaredTwo */
+.squaredTwo {
+    width: 31px;
+    height: 31px;
+    position: relative;
+    margin: 20px auto;
+    background: #fcfff4;
+    border: 3px solid #000;
+}
+
+.squaredTwo:checked{
+    border: 3px solid #008000;
+}
+
+.squaredTwo label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    background: #fff;
+    /* linear-gradient(to bottom, #222222 0%, #45484d 100%); */
+}
+.squaredTwo label:after {
+    content: '';
+    width: 15px;
+    height: 8px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border: 3px solid #008000;
+    border-top: none;
+    border-right: none;
+    background: transparent;
+    opacity: 0;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.squaredTwo label:hover::after {
+    opacity: 0.3;
+}
+.squaredTwo input[type=checkbox] {
+    visibility: hidden;
+}
+.squaredTwo input[type=checkbox]:checked + label:after {
+    opacity: 1;
+}
+
+/* end .squaredTwo */
+
+.text-justify{
+    text-align: justify;
+}
+
 .confirmCheckbox {
     width: 122px;
     height: 26px;
@@ -56,7 +112,7 @@ input.required:focus {
     border-radius: 50px;
     box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
 }
-.confirmCheckbox:after {
+/* .confirmCheckbox:after {
     content: 'NO';
     color: #e41212;
 
@@ -66,8 +122,8 @@ input.required:focus {
     font: 12px/26px Arial, sans-serif;
     font-weight: bold;
     text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
-}
-.confirmCheckbox:before {
+} */
+/* .confirmCheckbox:before {
     content: 'I AGREE';
     color: #27ae60;
     position: absolute;
@@ -75,7 +131,7 @@ input.required:focus {
     z-index: 0;
     font: 12px/26px Arial, sans-serif;
     font-weight: bold;
-}
+} */
 .confirmCheckbox label {
     display: block;
     width: 58px;
@@ -93,12 +149,12 @@ input.required:focus {
     transition: all 0.4s ease;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
 }
-.confirmCheckbox input[type=checkbox] {
+/* .confirmCheckbox input[type=checkbox] {
     visibility: hidden;
 }
 .confirmCheckbox input[type=checkbox]:checked + label {
     left: 62px;
-}
+} */
 
 .datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #006699; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }.datagrid table td, .datagrid table th { padding: 3px 10px; }.datagrid table tbody td { color: #00496B; border-left: 1px solid #B1BBBF;font-size: 12px;border-bottom: 1px solid #B1BBBF;font-weight: normal; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }
 
@@ -459,17 +515,17 @@ input.required:focus {
     display: none
 }
 .expiresin120 {
-     
-     font-weight: bold;
-     color: Blue
- }
+
+    font-weight: bold;
+    color: Blue
+}
 .expiresin10 {
-    
+
     color: Maroon
 }
 
 .price-bold {
-    /* 
+    /*
     font-size: 12px; */
     font-weight: bold;
     line-height: 22px;
@@ -482,7 +538,7 @@ a:hover{text-decoration:none;}
 h1 { font-size:3em; line-height:1em; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#fff; font-weight:normal; letter-spacing:-1px; width:600px; margin-bottom:42px;}
 h2 { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:22px; line-height:1em; font-weight:normal; margin-bottom:23px; color:#515151;}
 h2.alt { letter-spacing:-1px;}
-h3 { 
+h3 {
     font-family: sans-serif;
     font-size: 22px;
     line-height: 1em;
@@ -491,11 +547,11 @@ h3 {
     margin-bottom: 4px;
 }
 h4 { font-family: sans-serif;
-     font-size:14px; 
-     font-weight:normal; 
-     color:#b3b1b1; 
-     float:right;
-    }
+    font-size:14px;
+    font-weight:normal;
+    color:#b3b1b1;
+    float:right;
+}
 
 h4 strong { font-size:1.1em; color:#2cb6e9; display:block;}
 h5 { font-size:1em; margin-bottom:5px;}
@@ -669,7 +725,7 @@ div#pa-navbar .dropdown-menu a{
 }
 
 #pa-navbar-menu{
-    /* z-index: 9999999999999; */
+    z-index: 2;
     background: #333;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#555), to(#2a2a2a));
     background: -webkit-linear-gradient(top, #555, #2a2a2a);
@@ -696,7 +752,7 @@ div#pa-navbar .dropdown-menu a{
     color: white;
     font-style: normal;
     font-size: 16px;
-    
+
     font-weight: bold;
     text-decoration: none;
 }
@@ -903,16 +959,50 @@ div#pa-navbar .dropdown-menu a{
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
     margin: 1rem 0;
-  }
-  
-  .StripeElement--focus {
+}
+
+.StripeElement--focus {
     box-shadow: 0 1px 3px 0 #cfd7df;
-  }
-  
-  .StripeElement--invalid {
+}
+
+.StripeElement--invalid {
     border-color: #fa755a;
-  }
-  
-  .StripeElement--webkit-autofill {
+}
+
+.StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
-  }
+}
+
+.right-login{
+    z-index:1;
+}
+
+.login-modal{
+    z-index:99;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+    z-index: 9999;
+}
+
+.right-panel{
+    z-index: 1;
+}
+
+.pb-ccform input{
+    border: 0;
+}
+
+.pb-ccform > div {
+    padding: 0 4px !important;
+}
+
+.pb-ccform-wrapper{
+    width: 96%;
+    margin: auto;
+}
+
+.pb-ccform {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
