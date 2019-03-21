@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {CardElement, injectStripe} from 'react-stripe-elements/';
+import $ from "jquery";
+import {CardElement,CardNumberElement, CardCVCElement, injectStripe} from 'react-stripe-elements/';
 import 'babel-polyfill';
 
 class CheckoutForm extends Component {
@@ -9,23 +10,33 @@ class CheckoutForm extends Component {
     this.submit = this.submit.bind(this);
   }
 
-  async submit(ev) {
+  async submit(purchaseData) {
     // User clicked submit
-    let {token} = await this.props.stripe.createToken({name: "sk_test_GdcpC6Ydn4CPQbLYchGwkPAe"});
-    let response = await fetch("/charge", {
-      method: "POST",
-      headers: {"Content-Type": "text/plain"},
-      body: token.id
-    });
-    if (response.ok) this.setState({complete: true});
+    console.log(cardnum.val());
 
+    return $.post("https://www.playbook.com/picks-api1/purchase-ccard",
+      purchaseData,
+    ).then(function(res) {
+      return res;
+    }).fail(()=>console.log('PURCHASECCARD FAIL.'));
+
+    // return $.post("https://www.playbook.com/picks-api1/purchase-ccard",
+    //         purchaseData,
+    //     ).then(function(res) {
+    //         return res;
+    //     }).fail(()=>console.log('PURCHASECCARD FAIL.'));
   }
 
   render() {
     if (this.state.complete) return <span className="alert alert-success">Purchase Complete</span>;
     return (
       <div className="checkout">
-        <CardElement style={{base: {fontSize: '18px'}}} />
+        <label>
+          Card Number <Label></Label>
+          <CardNumberElement id="cardnum" />
+        </label>
+        <label for='cvc'>CVC Label</label>
+        <CardCVCElement id='cvc' />
         <button onClick={this.submit} className="btn btn-lg pl-cartbtn">Send</button>
       </div>
     );
