@@ -218,8 +218,7 @@ console.log ("Logging in member ", result);
                       <input className="form-control" value={this.state.password} onChange={(event) => {
                         this.setState({password: event.target.value});}} 
                         name="PASSWORD" type="password" id="PASSWORD" size="16" maxLength="30"/>
-                <input className="btn btn-lg btn-dark btn-block mt-2 text-uppercase" type="submit" name="SUBMIT" id="SUBMIT" value="Submit"/>
-                <span onClick={()=>{this.setState({isRegistering: true})}} className="trebuchet14BW">Register New Account..
+              <input className="btn btn-lg btn-dark btn-block mt-2 text-uppercase" type="submit" name="SUBMIT" id="submitlogin" value="Submit"/>                <span onClick={()=>{this.setState({isRegistering: true})}} className="trebuchet14BW">Register New Account..
                 </span>
               </form>
           </div>
