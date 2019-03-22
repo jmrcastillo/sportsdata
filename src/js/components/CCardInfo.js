@@ -17,12 +17,15 @@ export default class CCardInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //ccard: {},
             ccard: {
-                number: '5444305280019650',
+/*                number: '5444305280019650',
                 expMonth: '02',
                 expYear: '2021',
-                cvv: '165'
+                cvv: '165'*/
+              number: '',
+              expMonth: '',
+              expYear: '',
+              cvv: ''
             },
 
           cardType: '',
