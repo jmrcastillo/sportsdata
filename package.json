@@ -50,6 +50,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --host 0.0.0.0 --config ./webpack.dev.js --open",
+    "start-prod": "webpack-dev-server --host 0.0.0.0 --port 1039 --config ./webpack.dev.js --open",
     "picks-app": "webpack-dev-server --host 0.0.0.0 --port 1039 --content-base src --history-api-fallback --config ./webpack.prod.js --open",
     "build": "npm run clean && npm run compile",
     "clean": "rm -rf ./build/index.bundle.js",

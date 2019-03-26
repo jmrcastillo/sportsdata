@@ -32,9 +32,12 @@ module.exports = merge(common, {
         ////})
     ],
     mode: 'production',
-devServer: {
+  devServer: {
+    contentBase: './src',
+    port: 1039,
+    historyApiFallback: true,
   disableHostCheck: true
-}
+  },
 });
 
 /*
