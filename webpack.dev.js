@@ -10,6 +10,8 @@ module.exports = merge(common, {
     contentBase: './src',
     port: 1042,
     historyApiFallback: true,
+    disableHostCheck: true
+
   },
 
   mode: 'development',
