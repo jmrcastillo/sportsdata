@@ -63,7 +63,7 @@ export default class Pick extends React.Component {
         const expireIcon = '';
         const expiresIn = '';
 
-      // Mobile rendering support via Context API
+/*      // Mobile rendering support via Context API
       return (
 
             this.context.state.isMobile ?
@@ -81,7 +81,16 @@ export default class Pick extends React.Component {
                 expiresIn
               )
 
+      );*/
+
+      return this.renderNormal(
+        sportBoxStyle,
+        pickBoxStyle,
+        expireStyle,
+        expireIcon,
+        expiresIn
       );
+
     }
 
     renderNormal(sportBoxStyle,
@@ -171,6 +180,8 @@ export default class Pick extends React.Component {
                expireStyle,
                expireIcon,
                expiresIn) {
+
+      console.log ("Render mobile ---");
     return (
       <table width="100%" border="0"  cellSpacing="2" cellPadding="2" style={pickBoxStyle}>
         <tbody>
