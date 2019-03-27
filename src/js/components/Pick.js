@@ -82,7 +82,7 @@ export default class Pick extends React.Component {
               )
 
       );*/
-console.log ("Pick render ", Utils.getSiteID());
+
       return this.renderNormal(
         sportBoxStyle,
         pickBoxStyle,
