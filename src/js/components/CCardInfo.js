@@ -35,8 +35,7 @@ export default class CCardInfo extends React.Component {
 
     }
     componentDidMount() {
-
-
+      this.CC_NUMBER.focus();
     }
     componentWillUnmount() {
     }
@@ -46,6 +45,15 @@ export default class CCardInfo extends React.Component {
         ccard[property] = value;
         this.setState(ccard);
         this.props.pubsub.publish('ccard', ccard);
+
+        if(ccard.expMonth.length == 2){
+          this.CC_EXPIRE_YEAR.focus();
+        }
+
+        if(ccard.expYear.length == 2){
+          this.CC_PIN.focus();
+        }
+        console.log(ccard);
     }
 
     numberWithSpaces(x, format) {
@@ -53,10 +61,6 @@ export default class CCardInfo extends React.Component {
       ccnum = x.split('');
       let arr = new Set([4,9,14]);
 
-      // for(var i=0; i<x.length; i++){
-      //   test += x.charAt(arr[i]).join(' ');
-      // }
-      // console.log(test.length);
       if(format == 'amex'){
         arr = new Set([4,11,17]);
       }
@@ -81,6 +85,8 @@ export default class CCardInfo extends React.Component {
     if (cardNumber.length === 0) {
       ccard['number'] = '';
       return '';
+    } else if(cardNumber.length == 19){
+      this.CC_EXPIRE_MONTH.focus();
     }
 
     ccard['number'] = this.numberWithSpaces(cardNumber, 'others');
@@ -151,7 +157,7 @@ export default class CCardInfo extends React.Component {
                      // this.updateCcardInfo('number', event.target.value);
                      this.setState({cardType: this.determineCardType(event.target.value)});
                    }} value={this.state.ccard.number}
-                   type="text" id="CC_NUMBER"  size="19" maxLength="19"  className="required form-control" title="Enter credit card number" placeholder="Card Number" />
+                   type="text" id="CC_NUMBER"  size="19" maxLength="19"  className="required form-control" title="Enter credit card number" placeholder="Card Number" ref={(input) => { this.CC_NUMBER = input; }}  />
             <span className="text-warning py-2" id="CC_TYPE">{this.state.cardType}</span>
           </div>
           <div className="col">
@@ -159,20 +165,20 @@ export default class CCardInfo extends React.Component {
                    onChange={event=>{
                      this.updateCcardInfo('expMonth', event.target.value);
                    }}
-                   type="text" defaultValue="" size="2" maxLength="2" className="required form-control" title="Enter expiration month" placeholder="(MM)" />
+                   type="text" defaultValue="" size="2" maxLength="2" className="required form-control" title="Enter expiration month" placeholder="(MM)" ref={(input) => { this.CC_EXPIRE_MONTH = input; }} />
           </div>
-          <div className="col-2">
+          <div className="col">
             <input name="CC_EXPIRE_YEAR" id="CC_EXPIRE_YEAR"
                    onChange={event=>{
                      this.updateCcardInfo('expYear', event.target.value);
-                   }} type="text" defaultValue="" size="2" maxLength="2"  className="required form-control" title="Enter credit expiration year" placeholder="(YY)" />
+                   }} type="text" defaultValue="" size="2" maxLength="2"  className="required form-control" title="Enter credit expiration year" placeholder="(YY)" ref={(input) => { this.CC_EXPIRE_YEAR = input; }} />
           </div>
           <div className="col">
             <input name="CC_PIN" id="CC_PIN"
                    onChange={event=>{
                      this.updateCcardInfo('cvv', event.target.value);
                    }}
-                   type="text" defaultValue="" size="5" maxLength="5"   className="required form-control" title="Enter credit card Verification Number (CVV2)" placeholder="CVV2" />
+                   type="text" defaultValue="" size="5" maxLength="5"   className="required form-control" title="Enter credit card Verification Number (CVV2)" placeholder="CVV2" ref={(input) => { this.CC_PIN = input; }} />
           </div>
           <div className="col">
             <a title="Credit Card Verification Numbers" href="JavaScript:openWinD('https://www.ipsports.net/ecps/pages/cvv2/cvv2_1.html',420,450)"><img src="images/mini_cvv2.gif" alt="Credit Card Verification Number"  border="0" align="absmiddle"/> </a>
