@@ -35,7 +35,7 @@ export default class CCardInfo extends React.Component {
 
     }
     componentDidMount() {
-      this.CC_NUMBER.focus();
+      // this.CC_NUMBER.focus();
     }
     componentWillUnmount() {
     }
@@ -142,8 +142,8 @@ export default class CCardInfo extends React.Component {
           <span className="text-left col-12 p-0"><h2>Credit Card Information</h2></span>
         </div>
         <div className="form-row pb-ccform">
-          <div className="col-6">
-            <input autoFocus name="CC_NUMBER" onKeyDown={event=>{
+          <div className="col-12 col-md-6 cc-num-container">
+            <input name="CC_NUMBER" onKeyDown={event=>{
               if (event.ctrlKey || event.shiftKey || event.keyCode === 8 || event.keyCode === 46) {
                 return true;
               }
@@ -180,7 +180,7 @@ export default class CCardInfo extends React.Component {
                    }}
                    type="text" defaultValue="" size="5" maxLength="5"   className="required form-control" title="Enter credit card Verification Number (CVV2)" placeholder="CVV2" ref={(input) => { this.CC_PIN = input; }} />
           </div>
-          <div className="col">
+          <div className="col my-1">
             <a title="Credit Card Verification Numbers" href="JavaScript:openWinD('https://www.ipsports.net/ecps/pages/cvv2/cvv2_1.html',420,450)"><img src="images/mini_cvv2.gif" alt="Credit Card Verification Number"  border="0" align="absmiddle"/> </a>
           </div>
         </div>
