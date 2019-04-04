@@ -142,7 +142,7 @@ export default class CCardInfo extends React.Component {
           <span className="text-left col-12 p-0"><h2>Credit Card Information</h2></span>
         </div>
         <div className="form-row pb-ccform">
-          <div className="col-12 col-md-6 cc-num-container">
+          <div className="col-12 col-md-7 cc-num-container">
             <input name="CC_NUMBER" onKeyDown={event=>{
               if (event.ctrlKey || event.shiftKey || event.keyCode === 8 || event.keyCode === 46) {
                 return true;
@@ -165,20 +165,20 @@ export default class CCardInfo extends React.Component {
                    onChange={event=>{
                      this.updateCcardInfo('expMonth', event.target.value);
                    }}
-                   type="text" defaultValue="" size="2" maxLength="2" className="required form-control" title="Enter expiration month" placeholder="(MM)" ref={(input) => { this.CC_EXPIRE_MONTH = input; }} />
+                   type="text" defaultValue="" size="2" maxLength="2" className="required form-control px-0" title="Enter expiration month" placeholder="(MM)" ref={(input) => { this.CC_EXPIRE_MONTH = input; }} />
           </div>
           <div className="col">
             <input name="CC_EXPIRE_YEAR" id="CC_EXPIRE_YEAR"
                    onChange={event=>{
                      this.updateCcardInfo('expYear', event.target.value);
-                   }} type="text" defaultValue="" size="2" maxLength="2"  className="required form-control" title="Enter credit expiration year" placeholder="(YY)" ref={(input) => { this.CC_EXPIRE_YEAR = input; }} />
+                   }} type="text" defaultValue="" size="2" maxLength="2"  className="required form-control px-0" title="Enter credit expiration year" placeholder="(YY)" ref={(input) => { this.CC_EXPIRE_YEAR = input; }} />
           </div>
           <div className="col">
             <input name="CC_PIN" id="CC_PIN"
                    onChange={event=>{
                      this.updateCcardInfo('cvv', event.target.value);
                    }}
-                   type="text" defaultValue="" size="5" maxLength="5"   className="required form-control" title="Enter credit card Verification Number (CVV2)" placeholder="CVV2" ref={(input) => { this.CC_PIN = input; }} />
+                   type="text" defaultValue="" size="5" maxLength="5"   className="required form-control px-0" title="Enter credit card Verification Number (CVV2)" placeholder="CVV2" ref={(input) => { this.CC_PIN = input; }} />
           </div>
           <div className="col my-1">
             <a title="Credit Card Verification Numbers" href="JavaScript:openWinD('https://www.ipsports.net/ecps/pages/cvv2/cvv2_1.html',420,450)"><img src="images/mini_cvv2.gif" alt="Credit Card Verification Number"  border="0" align="absmiddle"/> </a>

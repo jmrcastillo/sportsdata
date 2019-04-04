@@ -908,6 +908,16 @@ div#pa-navbar .dropdown-menu a{
     }
 }
 
+#CC_NUMBER:focus{
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
 @media (max-width: 736px) {
     #pa-navbar-menu a.nav-link{
         margin-left: 1rem;
