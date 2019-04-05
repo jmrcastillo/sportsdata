@@ -174,7 +174,16 @@ export default class CCardInfo extends React.Component {
                    }} type="text" defaultValue="" size="2" maxLength="2"  className="required form-control px-0" title="Enter credit expiration year" placeholder="(YY)" ref={(input) => { this.CC_EXPIRE_YEAR = input; }} />
           </div>
           <div className="col">
-            <input name="CC_PIN" id="CC_PIN"
+            <input name="CC_PIN" id="CC_PIN" onKeyDown={event=>{
+                    if (event.ctrlKey || event.shiftKey || event.keyCode === 8 || event.keyCode === 46) {
+                      return true;
+                    }
+
+                    if (! Utils.isNumeric(event.key)) {
+                      event.preventDefault();
+                    }
+                    return true;
+                  }}
                    onChange={event=>{
                      this.updateCcardInfo('cvv', event.target.value);
                    }}
