@@ -89,7 +89,7 @@ export default class PickList extends React.Component {
         <h3 className="text-center md-text-left py-2">Guaranteed Experts Picks</h3>
         <div className="row m-0">
           <h5 className="col-12 col-md-6 text-left redhottxt p-0 text-center md-text-left">Red Hot Experts Best Bets</h5>
-          <h5 className="col-12 col-md-6 text-md-right p-0 payaftertxt text-center md-text-left">Pay After You Win Picks -or- Discount Pre-
+          <h5 className="col-12 col-md-6 text-md-right p-0 payaftertxt text-center md-text-left">Pay After You Win Picks -or- Prepaid-
               <span
                 onClick={(event) => {
                   if (! this.state.logged_in) {
@@ -100,7 +100,7 @@ export default class PickList extends React.Component {
                   this.props.pubsub.publish('logged-out');
                 }}
 
-              >Paid</span>
+              >Discount</span>
           </h5>
         </div>
 
