@@ -18,7 +18,7 @@ class PicksAPI  {
 
 
 	loadServerTime() {
-		return $.getJSON('https://www.playbook.com/picks-api1/get-server-time').then(function(time) {
+		return $.getJSON('https://www.playbooksports.com/picks-api1/get-server-time').then(function(time) {
       console.log(time);
 			return time;
 		});
@@ -34,10 +34,10 @@ class PicksAPI  {
 			text = URLSafeBase64.encode(text);
 
 //console.log ("ID is " + text)
-            let url = `https://www.playbook.com/picks-api1/getpicks/${text}`;
+            let url = `https://www.playbooksports.com/picks-api1/getpicks/${text}`;
 
             if (ecapper_id && ecapper_id.length > 0) {
-                url = `https://www.playbook.com/picks-api1/get-ecapper-picks/${ecapper_id}/${text}`;
+                url = `https://www.playbooksports.com/picks-api1/get-ecapper-picks/${ecapper_id}/${text}`;
             }
 
 			return $.getJSON(url).then(function(picks) {
@@ -47,7 +47,7 @@ class PicksAPI  {
 	}
 /*
 
-			let url = `https://www.playbook.com/picks-api1/getpicks/${text}`;
+			let url = `https://www.playbooksports.com/picks-api1/getpicks/${text}`;
 console.log ("url is " + url);
 
  */
@@ -63,7 +63,7 @@ console.log ("url is " + url);
     // For if special chars in password
     const urlPassword = encodeURIComponent(password);
     const siteID = Utils.getCookie('site-id');
-    return $.getJSON(`https://www.playbook.com/picks-api1/login/${siteID}/${member_id}/${urlPassword}`).then(function(result) {
+    return $.getJSON(`https://www.playbooksports.com/picks-api1/login/${siteID}/${member_id}/${urlPassword}`).then(function(result) {
 
       if (! result.success) {
         failAlert('');
@@ -84,7 +84,7 @@ console.log ("url is " + url);
 			var data = {time: time + 10};
 			var text = CryptoJS.AES.encrypt(JSON.stringify(data), 'devotedtoartofsportshandicapping').toString();
 			text = URLSafeBase64.encode(text);
-			return $.getJSON(`https://www.playbook.com/picks-api1/login-member/${record_id}/${text}`).then(function(result) {
+			return $.getJSON(`https://www.playbooksports.com/picks-api1/login-member/${record_id}/${text}`).then(function(result) {
 				return result;
 			});
 
@@ -105,7 +105,7 @@ console.log ("url is " + url);
       //  console.log ("Returning FALSE");
         return result;
       } else {
-        return $.getJSON(`https://www.playbook.com/picks-api1/get-login-status/${siteID}/${recordID}/${text}`).then(function (result) {
+        return $.getJSON(`https://www.playbooksports.com/picks-api1/get-login-status/${siteID}/${recordID}/${text}`).then(function (result) {
           return result;
         });
       }
@@ -123,7 +123,7 @@ console.log ("url is " + url);
     //  let result = {};
       const siteID = Utils.getCookie('site-id');
 
-        return $.getJSON(`https://www.playbook.com/picks-api1/logout/${siteID}/${recordID}/${text}`).then(function (result) {
+        return $.getJSON(`https://www.playbooksports.com/picks-api1/logout/${siteID}/${recordID}/${text}`).then(function (result) {
           return result;
         });
 
@@ -137,7 +137,7 @@ console.log ("url is " + url);
 
             text = URLSafeBase64.encode(text);
 
-            const url = `https://www.playbook.com/picks-api1/getpicks-list/${list}/${text}`;
+            const url = `https://www.playbooksports.com/picks-api1/getpicks-list/${list}/${text}`;
 
             return $.getJSON(url).then(function(picks) {
                 return picks;
@@ -154,7 +154,7 @@ console.log ("url is " + url);
       }
 */
 
-        return $.post("https://www.playbook.com/picks-api1/save-member",
+        return $.post("https://www.playbooksports.com/picks-api1/save-member",
             member,
            ).then(function(res) {
             return res;
@@ -162,7 +162,7 @@ console.log ("url is " + url);
 	}
 
 /*  checkMember(member) {
-    return $.post("https://www.playbook.com/picks-api1/check-member",
+    return $.post("https://www.playbooksports.com/picks-api1/check-member",
       member,
     ).then(function(res) {
       return res;
@@ -171,7 +171,7 @@ console.log ("url is " + url);
 
 
     purchaseCCard(purchaseData) {
-        return $.post("https://www.playbook.com/picks-api1/purchase-ccard",
+        return $.post("https://www.playbooksports.com/picks-api1/purchase-ccard",
             purchaseData,
         ).then(function(res) {
             return res;
@@ -179,7 +179,7 @@ console.log ("url is " + url);
     }
 
     tokensQuery(member, amount) {
-        const url = `https://www.playbook.com/picks-api1/tokens-query/${member.member_id}/${amount}`;
+        const url = `https://www.playbooksports.com/picks-api1/tokens-query/${member.member_id}/${amount}`;
    //     console.log("PicksAPI ", url);
         return $.getJSON(url).then(function(result) {
           return result;

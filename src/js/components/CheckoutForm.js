@@ -14,17 +14,13 @@ class CheckoutForm extends Component {
     // User clicked submit
     console.log(cardnum.val());
 
-    return $.post("https://www.playbook.com/picks-api1/purchase-ccard",
+    return $.post("https://www.playbooksports.com/picks-api1/purchase-ccard",
       purchaseData,
     ).then(function(res) {
       return res;
     }).fail(()=>console.log('PURCHASECCARD FAIL.'));
 
-    // return $.post("https://www.playbook.com/picks-api1/purchase-ccard",
-    //         purchaseData,
-    //     ).then(function(res) {
-    //         return res;
-    //     }).fail(()=>console.log('PURCHASECCARD FAIL.'));
+ 
   }
 
   render() {
