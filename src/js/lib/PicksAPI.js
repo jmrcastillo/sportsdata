@@ -56,7 +56,7 @@ console.log ("url is " + url);
 
     const failAlert = function(code) {
         notificationManager.error('*** Login Failed ***', 'More Help', 120000, ()=>{
-            alert('Login with your email address and password, or Register a new account. Support line 1-800-643-4700.');
+            alert('Login with your email address and password, or Register a new account. Support line 954-377-8000.');
         });
     };
 

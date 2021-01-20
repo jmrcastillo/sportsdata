@@ -82,8 +82,8 @@ export default class Menu extends React.Component {
             <React.Fragment>
                 <div className="container p-0">
                     <div className="logo">
-                        <a href="http://www.playbook.com">
-                            <img alt="Playbook.com" src="http://www.playbook.com/playbook_logo6.png" width="239" />
+                        <a href="http://www.playbooksports.com">
+                            <img alt="Playbooksports.com" src="http://www.playbooksports.com/playbook_logo6.png" width="239" />
                         </a>
                     </div>
                 </div>
@@ -94,7 +94,7 @@ export default class Menu extends React.Component {
                         <Collapse isOpen={this.state.isOpen} navbar id="pa-navbar">
                             <Nav className="navbar-nav mr-auto">
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link" href="http://www.playbook.com"><span className="topnav_trebuchet16Bwhite">Home</span></NavLink>
+                                    <NavLink className="nav-link" href="http://www.playbooksports.com"><span className="topnav_trebuchet16Bwhite">Home</span></NavLink>
                                 </NavItem>
                                 <UncontrolledDropdown nav inNavbar>
                                     <DropdownToggle nav caret>Shops</DropdownToggle>
@@ -137,40 +137,39 @@ export default class Menu extends React.Component {
                                     <DropdownToggle nav caret>Experts</DropdownToggle>
                                     <DropdownMenu>
                                         <DropdownItem className="dropdown-item" href="https://www.picksite.com/picks">Today's Guaranteed Picks</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/Playbook-Sports-Picks#freepicks">Today's Free Picks</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/Playbook-Handicappers/">Experts Home Page</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/Handicapper-Report-Card">Experts Report Card</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/Playbook-Picks-Policy">Playbook Picks Policy</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/Playbook-Sports-Picks#freepicks">Today's Free Picks</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/Playbook-Handicappers/">Experts Home Page</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/Handicapper-Report-Card">Experts Report Card</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/Playbook-Picks-Policy">Playbook Picks Policy</DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link" href="http://www.playbook.com/Playbook-Lines-Scores/"><span className="topnav_trebuchet16Bwhite">Lines/Scores</span></NavLink>
+                                    <NavLink className="nav-link" href="http://www.playbooksports.com/Playbook-Lines-Scores/"><span className="topnav_trebuchet16Bwhite">Lines/Scores</span></NavLink>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link" href="http://www.playbook.com/Playbook-Basketball/"><span className="topnav_trebuchet16Bwhite">Basketball</span></NavLink>
+                                    <NavLink className="nav-link" href="http://www.playbooksports.com/Playbook-Basketball/"><span className="topnav_trebuchet16Bwhite">Basketball</span></NavLink>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link" href="http://www.playbook.com/Playbook-Football/"><span className="topnav_trebuchet16Bwhite">Football</span></NavLink>
-                                </NavItem>
+                                    <NavLink className="nav-link" href="http://www.playbooksports.com/Playbook-Football/"><span className="topnav_trebuchet16Bwhite">Football</span></NavLink>                                </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link" href="http://www.playbook.com/TokenRewards/"><span className="topnav_trebuchet16Bwhite">Get Tokens</span></NavLink>
+                                    <NavLink className="nav-link" href="http://www.playbooksports.com/TokenRewards/"><span className="topnav_trebuchet16Bwhite">Get Tokens</span></NavLink>
                                 </NavItem>
                                 <UncontrolledDropdown nav inNavbar className="nav-item dropdown">
                                     <DropdownToggle nav caret>Betting Tools</DropdownToggle>
                                     <DropdownMenu className="dropdown-menu">
                                         <DropdownItem className="dropdown-item">
                                             Stats Center</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/Playbook-Betting-Tools#capperslounge">Cappers Lounge</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/Playbook-Betting-Tools/vids_audio.php">Videos / Podcast</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/Playbook-Advantage">Playbook Advantage</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/angles_systems_trends.html">Systems, Angles & Trends</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/blackbook_systems.html">Black Book Systems</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/Playbook-Betting-Tools#capperslounge">Cappers Lounge</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/Playbook-Betting-Tools/vids_audio.php">Videos / Podcast</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/Playbook-Advantage">Playbook Advantage</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/angles_systems_trends.html">Systems, Angles & Trends</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/blackbook_systems.html">Black Book Systems</DropdownItem>
                                         <DropdownItem className="dropdown-item" href="http://www.sportsbookreview.com/betting-sites/" target="_blank">Sportsbook Rankings</DropdownItem>
-                                        <DropdownItem className="dropdown-item" href="http://www.playbook.com/pages/sports_pages2012.html">Sports Pages</DropdownItem>
+                                        <DropdownItem className="dropdown-item" href="http://www.playbooksports.com/pages/sports_pages2012.html">Sports Pages</DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link" href="http://www.playbook.com"><span className="topnav_trebuchet16Bwhite">Member Center</span></NavLink>
+                                    <NavLink className="nav-link" href="http://www.playbooksports.com"><span className="topnav_trebuchet16Bwhite">Member Center</span></NavLink>
                                 </NavItem>
                             </Nav>
                         </Collapse>

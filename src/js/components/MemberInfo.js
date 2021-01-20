@@ -238,7 +238,7 @@ export default class MemberInfo extends React.Component {
 
                         PicksAPI.saveMember(member).done((result)=>{
                         if (result.status === '403') {
-                            this.props.notificationManager.error("Registration unsuccessful.  Please call customer support at 1-800-752-9266.");
+                            this.props.notificationManager.error("Registration unsuccessful.  Please call customer support at 954-377-8000.");
                             return;
                         }
 

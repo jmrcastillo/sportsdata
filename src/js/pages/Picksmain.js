@@ -87,7 +87,7 @@ export default class Picksmain extends React.Component {
 
             if (data.is_suspended && data.is_suspended.toUpperCase() === 'Y') {
                 this.notificationManager.error('Your account is suspended', 'Learn more...', 120000, ()=>{
-                    alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
+                    alert('There is a problem with your account.  To resolve this, please call us at 954-377-8000.');
                 });
             }
         });

@@ -115,32 +115,32 @@ const PicksFooter = (props) => {
     <div id="footer" className="py-4">
       <div className="container p-0">
         <ul className="nav justify-content-center">
-          <li><a href="http://www.playbook.com/Playbook-About-Us" className="topnav_trebuchet12">About
+          <li><a href="http://www.playbooksports.com/Playbook-About-Us" className="topnav_trebuchet12">About
             Us</a>|
           </li>
-          <li><a href="http://www.playbook.com/ecps/default/member_login.php"
+          <li><a href="http://www.playbooksports.com/ecps/default/member_login.php"
                  className="topnav_trebuchet12">Contact Us</a>|
           </li>
-          <li><a href="http://www.playbook.com/ecps/default/member_login.php"
+          <li><a href="http://www.playbooksports.com/ecps/default/member_login.php"
                  className="topnav_trebuchet12">Log In</a>|
           </li>
-          <li><a href="http://www.playbook.com/ecps/defaulst/member_login.php"
+          <li><a href="http://www.playbooksports.com/ecps/defaulst/member_login.php"
                  className="topnav_trebuchet12">Member Center</a>|
           </li>
-          <li><a href="http://www.playbook.com/member/register?PLAYBOOK=YES" className='iframe'><span
+          <li><a href="http://www.playbooksports.com/member/register?PLAYBOOK=YES" className='iframe'><span
             className="topnav_trebuchet12w">Register</span></a>|
           </li>
-          <li><a href="http://www.playbook.com/Playbook-Privacy-Policy" className="topnav_trebuchet12">Privacy
+          <li><a href="http://www.playbooksports.com/Playbook-Privacy-Policy" className="topnav_trebuchet12">Privacy
             Policy</a>|
           </li>
-          <li><a href="http://www.playbook.com/index_store.php" className="topnav_trebuchet12">Store</a>
+          <li><a href="http://www.playbooksports.com/index_store.php" className="topnav_trebuchet12">Store</a>
           </li>
         </ul>
       </div>
       <div className="container py-0 px-4">
-        <span className="trebuchet13 copytxt">Copyright &copy; 2018&nbsp;Playbook&reg;
+        <span className="trebuchet13 copytxt">Copyright &copy; 2021&nbsp;Playbook&reg;
           Enterprises Inc.<i>&nbsp;&nbsp;<br />
-        </i>Toll Free Support:&nbsp;1-800-643-4700&nbsp;&nbsp;All Logos &copy; to their&nbsp;respective organizations. This website does not endorse or encourage illegal gambling. All information contained herein is for amusement purposes only. Any contrary of such information is specifically prohibited.</span>
+        </i>Toll Free Support:&nbsp;954-377-8000&nbsp;&nbsp;All Logos &copy; to their&nbsp;respective organizations. This website does not endorse or encourage illegal gambling. All information contained herein is for amusement purposes only. Any contrary of such information is specifically prohibited.</span>
       </div>
     </div>
   )

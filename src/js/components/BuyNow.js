@@ -94,11 +94,11 @@ export default class BuyNow extends React.Component {
     let onClick = {};
     if (this.props.memberSuspended) {
       onClick = () => {
-        alert('There is a problem with your account.  To resolve this, please call us at 1-800-643-4700.');
+        alert('There is a problem with your account.  To resolve this, please call us at 954-377-8000.');
       }
     } else if (this.props.memberLevelFlagged) {   // member level issue returns true;
       onClick = () => {
-        alert("For your protection there is a purchase limit associated with your account. Please call 1-800-643-4700 to have your limit changed. Thank You -- The Staff at Ecapper LLC");
+        alert("For your protection there is a purchase limit associated with your account. Please call 954-377-8000 to have your limit changed. Thank You -- The Staff at Ecapper LLC");
       }
     } else if (this.props.loggedIn) {
       onClick = onClickLoggedIn;
