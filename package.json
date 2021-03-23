@@ -41,14 +41,17 @@
     "react-select": "^2.1.1",
     "react-stripe-elements": "^2.0.2",
     "reactstrap": "^7.0.2",
+    "source-map-explorer": "^2.5.2",
     "stripe": "^6.22.0",
     "striptags": "^3.1.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "universal-cookie": "^2.1.5",
     "urlsafe-base64": "^1.0.0",
     "webpack-cli": "^3.2.1",
     "webpack-merge": "^4.2.1"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "webpack-dev-server --host 0.0.0.0 --config ./webpack.dev.js --open",
     "start-prod": "webpack-dev-server --host 0.0.0.0 --port 1039 --config ./webpack.dev.js --open",
     "picks-app": "webpack-dev-server --host 0.0.0.0 --port 1039 --content-base src --history-api-fallback --config ./webpack.prod.js --open",

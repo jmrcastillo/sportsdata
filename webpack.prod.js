@@ -1,5 +1,5 @@
 const merge = require('webpack-merge');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const common = require('./webpack.common.js');
 const webpack = require('webpack');
 
@@ -12,7 +12,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 // Source for IgnorePlugin: https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
 module.exports = merge(common, {
     plugins: [
-        new UglifyJSPlugin(),
+       new UglifyJSPlugin(),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
 
