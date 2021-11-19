@@ -6,7 +6,7 @@ import React from "react";
 import Utils from "../lib/Utils";
 import PurchaseButton  from "../components/PurchaseButton";
 import {GlobalContext} from "../lib/GlobalContext";
-
+import CryptoJS from "crypto-js";
 
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from '../components/CheckoutForm';
@@ -110,7 +110,8 @@ export default class CCardInfo extends React.Component {
         break;
     }
 
-    // this.updateCcardInfo('number', cardNumber.split(' '));
+    ccard['invoice_reference'] = Buffer.from(CryptoJS.AES.encrypt(ccard['number'], 'devotedtoartofsportshandicapping').toString(), 'binary').toString('base64');
+
     this.setState(ccard);
     return type;
   }
@@ -154,7 +155,6 @@ export default class CCardInfo extends React.Component {
               return true;
             }}
                    onChange={event=>{
-                     // this.updateCcardInfo('number', event.target.value);
                      this.setState({cardType: this.determineCardType(event.target.value)});
                    }} value={this.state.ccard.number}
                    type="text" id="CC_NUMBER"  size="19" maxLength="19"  className="required form-control" title="Enter credit card number" placeholder="Card Number" ref={(input) => { this.CC_NUMBER = input; }}  />
