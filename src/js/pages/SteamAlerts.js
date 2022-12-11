@@ -12,7 +12,7 @@ export default class SteamAlerts extends React.Component {
   render() {
     return (
       <div>
-        <Iframe url="https://www.playbook.com/member/steamalert"  width="100%"/>
+        <Iframe url="https://itsplaybook.com/member/steamalert/all"  width="100%"/>
       </div>
     );
   }
