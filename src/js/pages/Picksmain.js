@@ -11,6 +11,7 @@ import Utils from "../lib/Utils";
 import Cart from "../components/Cart";
 // DELETE M.I.
 import MemberInfo from "../components/MemberInfo";
+import Event from "../components/Events";
 import PurchasedPicks from "../components/PurchasedPicks";
 
 import PubSub from 'pubsub-js';
@@ -101,7 +102,7 @@ export default class Picksmain extends React.Component {
       this.setState({displayMode: MODES.checkout,
                         isTokens: data === 'TOKENS',
                         modal: false});
-                        
+
     });
     this.subscribe_mode_showpicks = this.pubsub.subscribe('mode-showpicks', (message, data)=> {
         this.setState({displayMode: MODES.showPicks});
@@ -244,7 +245,7 @@ export default class Picksmain extends React.Component {
             }
             this.pubsub.publish('empty-cart');
             this.pubsub.publish('mode-showpicks');
-            
+
         });
     }
 
@@ -270,11 +271,11 @@ export default class Picksmain extends React.Component {
 
     // Mobile rendering support via Context API
     //console.log ("Picksmain.. ", this);
-    // return this.context.state.isMobile ? this.renderNormal(cart) : 
+    // return this.context.state.isMobile ? this.renderNormal(cart) :
     return this.renderNormal(cart)
 
   }
-  
+
 
 	renderNormal(cart) {
     return (
@@ -295,7 +296,7 @@ export default class Picksmain extends React.Component {
                   selectedPicks={this.state.selectedPicks}
                   notificationManager={this.notificationManager}
                 />
-                } 
+                }
                 {(this.state.displayMode === MODES.checkout) && cart }
                 {(this.state.displayMode === MODES.showPicks) &&
                 <PurchasedPicks
@@ -309,9 +310,9 @@ export default class Picksmain extends React.Component {
 
           <div className={(this.state.displayMode === MODES.checkout) ? 'd-none' : 'd-block'}>
             {this.state.selectedPicks != '' && this.state.logged_in == true ?  <button className="mob_anchor btn btn-lg btn-dark d-block d-md-none float-right border-0 pl-cartbtn" onClick={this.toggleModal}>
-            <i className="fa fa-shopping-cart"></i> 
+            <i className="fa fa-shopping-cart"></i>
             </button> : <button className="mob_anchor btn btn-lg btn-dark d-block d-md-none float-right border-0 disabled">
-            <i className="fa fa-shopping-cart"></i> 
+            <i className="fa fa-shopping-cart"></i>
             </button> }
           </div>
 
@@ -330,7 +331,7 @@ export default class Picksmain extends React.Component {
                 cart
                 }
             </Modal>
-             
+
              <div className="d-none d-md-block px-2 sticky-top">
              {this.state.displayMode === MODES.normal &&
                   <Login
@@ -340,7 +341,7 @@ export default class Picksmain extends React.Component {
                     notificationManager={this.notificationManager}
                   />
               }
-              
+
               {(this.state.displayMode === MODES.checkout ||
                 this.state.displayMode === MODES.showPicks) &&
               <MemberInfo
@@ -354,9 +355,10 @@ export default class Picksmain extends React.Component {
               {(this.state.displayMode === MODES.normal) &&
               cart
               }
+              <Event/>
               </div>
 
-             
+
           </div>
           </div>
 
