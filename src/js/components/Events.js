@@ -11,12 +11,6 @@ const Event = () => {
   const client_id = process.env.CLIENT_ID;
   const client_secret = process.env.CLIENT_SECRET;
 
-  console.log("SHOW ENV Value")
-  console.log(username)
-  console.log(password)
-  console.log(grant_type)
-  console.log(client_id)
-  console.log(client_secret)
   // Filtered Data removed blank Title and Teaser
   const filteredData = data.filter(item => item.title !== "" && item.teaser !== "");
   console.log("This is Filter Event State")
