@@ -371,7 +371,9 @@ class App extends Component {
             <Route path="/betting-tools" component={BettingTools} />
             <Route path="/cappers-report-card" component={CappersReportCard} />
 
+              {/*
             <Route component={Footer}/>
+              */}
 
 
           </React.Fragment>
